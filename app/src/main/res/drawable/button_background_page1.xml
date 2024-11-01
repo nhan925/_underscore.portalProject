@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Optional: Border Layer -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#FFFFFF"/> <!-- Border color -->
+            <corners android:radius="16dp"/> <!-- Match the button's corner radius -->
+        </shape>
+    </item>
+
+    <!-- Background Color Layer -->
+    <item android:bottom="2dp" android:left="2dp" android:right="2dp" android:top="2dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#ACD8F6"/> <!-- Light blue color as per Figma design -->
+            <corners android:radius="16dp"/> <!-- Adjusted curvature to match Figma design -->
+        </shape>
+    </item>
+
+</layer-list>

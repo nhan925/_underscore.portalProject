@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/main"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#FFFFFF"
+    tools:context=".MainActivity">
+
+
+    <!-- Polygon 3 -->
+
+    <!-- Polygon 7 -->
+
+    <!-- Polygon 4 -->
+
+    <View
+        android:id="@+id/view2"
+        android:layout_width="468dp"
+        android:layout_height="274dp"
+        android:layout_marginEnd="190dp"
+        android:layout_marginBottom="740dp"
+        android:background="@drawable/polygon_3"
+        android:rotation="320"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="484dp"
+        android:layout_height="321dp"
+        android:layout_marginStart="-500dp"
+        android:layout_marginBottom="400dp"
+        android:alpha="0.8"
+        android:background="@drawable/polygon_7"
+        android:rotation="53"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <View
+        android:layout_width="331dp"
+        android:layout_height="272dp"
+        android:layout_marginStart="275dp"
+        android:background="@drawable/polygon_4"
+        android:rotation="51"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="82dp" />
+
+    <!-- Polygon 5 -->
+    <View
+        android:id="@+id/view3"
+        android:layout_width="391dp"
+        android:layout_height="833dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="355dp"
+        android:layout_marginBottom="-300dp"
+        android:background="@drawable/polygon_5"
+        android:rotation="53"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Polygon 2 -->
+    <View
+        android:layout_width="341dp"
+        android:layout_height="295dp"
+        android:layout_marginStart="275dp"
+        android:alpha="0.6"
+        android:background="@drawable/polygon_2"
+        android:rotation="140"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="-54dp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Logo -->
+
+    <!-- App Title -->
+
+    <!-- Rectangle Button -->
+
+    <!-- Frame for Signup Option -->
+
+
+    <!-- Text: "Bạn chưa có tài khoản?" -->
+
+    <ImageView
+        android:id="@+id/logoImage"
+        android:layout_width="108dp"
+        android:layout_height="96dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="150dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="450dp"
+        android:src="@drawable/fit_logo_hcmus"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/view"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view2"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/appTitle"
+        android:layout_width="301dp"
+        android:layout_height="230dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginBottom="250dp"
+        android:text="HCMUS\nStudent Portal\nApplication"
+        android:textColor="#99000000"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/logoImage"
+        app:layout_constraintVertical_bias="1.0"
+        tools:ignore="MissingConstraints" />
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/loginButtonFAB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="120dp"
+        android:backgroundTint="@drawable/button_color_selector"
+        app:rippleColor="#BBDEFB"
+        android:text="Đăng nhập"
+        android:textColor="#543636"
+        android:textSize="16sp"
+        app:icon="@drawable/ic_login"
+        app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" />
+
+
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="170dp"
+        android:layout_marginBottom="70dp"
+        android:text="Bạn chưa có tài khoản?"
+        android:textColor="#543636"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="9dp"
+        android:layout_marginBottom="70dp"
+        android:text="Đăng kí"
+        android:textColor="#543636"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView"
+        tools:ignore="MissingConstraints" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- res/drawable/polygon_3.xml -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Shadow -->
+    <item>
+        <shape>
+            <solid android:color="#19000000" /> <!-- Adjust shadow color -->
+            <corners android:radius="20dp" />
+        </shape>
+    </item>
+    <!-- Main Polygon Shape -->
+    <item android:top="3dp" android:left="3dp">
+        <shape>
+            <solid android:color="#EAF7FF" />
+            <corners android:radius="20dp" />
+        </shape>
+    </item>
+</layer-list>

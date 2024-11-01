@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Polygon 3 -->
+    <View
+        android:layout_width="287dp"
+        android:layout_height="200dp"
+        android:background="@drawable/polygon_3"
+        android:rotation="330"
+        tools:layout_editor_absoluteX="-78dp"
+        tools:layout_editor_absoluteY="-135dp" />
+
+    <!-- Polygon 7 -->
+    <View
+        android:layout_width="484dp"
+        android:layout_height="321dp"
+        android:alpha="0.9"
+        android:background="@drawable/polygon_7"
+        android:color="#EAF7FF"
+       android:radius="20dp"
+        android:rotation="53"
+        tools:layout_editor_absoluteX="-253dp"
+        tools:layout_editor_absoluteY="204dp" />
+
+    <!-- Polygon 4 -->
+    <View
+        android:layout_width="331dp"
+        android:layout_height="272dp"
+        android:background="@drawable/polygon_4"
+        android:rotation="51"
+        tools:layout_editor_absoluteX="267dp"
+        tools:layout_editor_absoluteY="82dp" />
+
+    <!-- Polygon 5 -->
+    <View
+        android:layout_width="391dp"
+        android:layout_height="833dp"
+        android:background="@drawable/polygon_5"
+        android:rotation="53"
+        tools:layout_editor_absoluteX="80dp"
+        tools:layout_editor_absoluteY="354dp" />
+
+    <!-- Polygon 2 -->
+    <View
+        android:layout_width="341dp"
+        android:layout_height="295dp"
+        android:alpha="0.6"
+        android:background="@drawable/polygon_2"
+        android:rotation="140"
+        tools:layout_editor_absoluteX="279dp"
+        tools:layout_editor_absoluteY="-54dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
