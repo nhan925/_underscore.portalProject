@@ -1,0 +1,42 @@
+<resources>
+    <string name="app_name">Login_Portal</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="login_button_text">Đăng nhập</string>
+    <string name="register_button_text">Quên mật khẩu</string>
+    <string name="username_hint">Nhập vào tên đăng nhập</string>
+    <string name="password_hint">Nhập vào mật khẩu</string>
+    <string name="remember_me">Nhớ mật khẩu</string>
+    <string name="forgot_password">Quên mật khẩu</string>
+    <string name="welcome_text">Chào mừng đến Portal</string>
+    <string name="username_label">Tên đăng nhập</string>
+    <string name="password_label">Mật khẩu</string>
+    <string name="description_text">Hãy dùng tên đăng nhập để lấy lại mật khẩu</string>
+    <string name="get_password">Lấy mật khẩu</string>
+    <string name="google_sign_in_button_text">Đăng nhập với Outlook</string>
+    <string name="description_text1">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</string>"
+    <string name="language_eng">ENG</string>
+    <string name="language_vie">VIE</string>
+    <string name="new_password_sent_message">Mật khẩu mới đã được gửi đến email của bạn.</string>
+    <string name="otp_label">Xác thực OTP</string>
+    <string name="otp_send">Mã OTP sẽ được gửi đến mail của bạn:</string>
+    <string name="MK">Tạo mật khẩu mới</string>
+    <string name="congrat">CHÚC MỪNG</string>
+    <string name="text">Bạn đã khởi tạo mât khẩu thành công.</string>
+    <string name="send_again">Chưa nhận được OTP? Gửi lại</string>
+    <string name="Logout">Đăng xuất</string>
+
+
+    <string name="title_activity_main">Main</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+</resources>

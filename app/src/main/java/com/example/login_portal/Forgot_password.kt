@@ -8,25 +8,21 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
-class MainActivity : BaseActivity() {
-    private lateinit var loginButtonFAB: Button
-
+class Forgot_password : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
-
-
-
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_forgot_password)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        val btnSubmit = findViewById<Button>(R.id.btnSubmit)
 
-        loginButtonFAB = findViewById<Button>(R.id.loginButtonFAB)
-        loginButtonFAB.setOnClickListener {
-            val intent = Intent(this, MainActivity2::class.java)
+        btnSubmit.setOnClickListener {
+            // chuyển đến trang reset_password
+            val intent = Intent(this, Reset_password::class.java)
             startActivity(intent)
         }
 

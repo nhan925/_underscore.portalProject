@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/reset_successfull"
+    tools:context=".Reset_successfull">
+
+    <!-- Subtitle -->
+
+    <TextView
+        android:id="@+id/tvOtpHeader"
+        android:layout_width="203dp"
+        android:layout_height="44dp"
+        android:text="@string/congrat"
+        android:textColor="#3D3939"
+        android:textSize="23sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.182"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.126" />
+
+    <TextView
+        android:id="@+id/tvSubtitle"
+        android:layout_width="372dp"
+        android:layout_height="45dp"
+        android:layout_below="@id/tvOtpHeader"
+        android:layout_marginStart="36dp"
+        android:text="@string/text"
+        android:textColor="#575555"
+        android:textSize="19sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvOtpHeader"
+        app:layout_constraintVertical_bias="0.033" />
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/btnLogin_3"
+        android:layout_width="170dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="348dp"
+        android:backgroundTint="#6EACD6"
+        android:text="@string/login_button_text"
+        android:textColor="#543636"
+
+
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.987"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvSubtitle"
+        app:rippleColor="#BBDEFB" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

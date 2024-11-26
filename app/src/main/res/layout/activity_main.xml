@@ -139,38 +139,11 @@
         android:layout_marginBottom="120dp"
         android:backgroundTint="@drawable/button_color_selector"
         app:rippleColor="#BBDEFB"
-        android:text="Đăng nhập"
+        android:text="@string/login_button_text"
         android:textColor="#543636"
         android:textSize="16sp"
         app:icon="@drawable/ic_login"
         app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" />
-
-
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="170dp"
-        android:layout_marginBottom="70dp"
-        android:text="Bạn chưa có tài khoản?"
-        android:textColor="#543636"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="9dp"
-        android:layout_marginBottom="70dp"
-        android:text="Đăng kí"
-        android:textColor="#543636"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView"
-        tools:ignore="MissingConstraints" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
