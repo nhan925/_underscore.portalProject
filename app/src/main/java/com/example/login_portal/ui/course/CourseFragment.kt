@@ -1,4 +1,4 @@
-package com.example.login_portal.ui.gallery
+package com.example.login_portal.ui.course
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,11 +7,14 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.example.login_portal.databinding.FragmentGalleryBinding
+import com.example.login_portal.databinding.FragmentCourseBinding
 
-class GalleryFragment : Fragment() {
 
-    private var _binding: FragmentGalleryBinding? = null
+
+
+class CourseFragment : Fragment() {
+
+    private var _binding: FragmentCourseBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -22,14 +25,14 @@ class GalleryFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val galleryViewModel =
-            ViewModelProvider(this).get(GalleryViewModel::class.java)
+        val courseViewModel =
+            ViewModelProvider(this).get(CourseViewModel::class.java)
 
-        _binding = FragmentGalleryBinding.inflate(inflater, container, false)
+        _binding = FragmentCourseBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textGallery
-        galleryViewModel.text.observe(viewLifecycleOwner) {
+        val textView: TextView = binding.textCourse
+        courseViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
         }
         return root

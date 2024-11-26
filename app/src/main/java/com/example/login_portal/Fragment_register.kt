@@ -9,7 +9,9 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.example.login_portal.utils.Validator
 import com.google.android.material.snackbar.Snackbar
+import com.google.android.material.textfield.TextInputEditText
 import java.util.Locale
 
 
@@ -27,9 +29,8 @@ class Fragment_register : Fragment() {
         val getPasswordButton = view.findViewById<Button>(R.id.btn_resetpassword_2)
 
         getPasswordButton.setOnClickListener {
-
             // chuyển đến trang ForgotPassword
-            val intent = Intent(activity, Forgot_password::class.java)
+            val intent = Intent(activity, Main::class.java)
             startActivity(intent)
 
 

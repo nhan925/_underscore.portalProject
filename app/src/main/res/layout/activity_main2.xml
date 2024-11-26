@@ -203,26 +203,25 @@
     </com.google.android.material.textfield.TextInputLayout>
 
 
-
     <com.google.android.material.textfield.TextInputLayout
 
         android:id="@+id/passwordInput"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="367dp"
-        android:layout_height="78dp"
+        android:layout_width="368dp"
+        android:layout_height="66dp"
         android:layout_marginTop="40dp"
         android:hint="@string/password_hint"
 
 
+        android:textColor="#000000"
+        app:endIconMode="password_toggle"
+        app:helperTextTextColor="@color/red"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.553"
+
         app:layout_constraintStart_toStartOf="parent"
+
         app:layout_constraintTop_toBottomOf="@id/usernameInput"
-        android:textColor="#000000"
-
-        app:endIconMode="password_toggle"
-
-        app:helperTextTextColor="@color/red"
 
         app:startIconDrawable="@drawable/ic_lock">
 
@@ -231,8 +230,7 @@
             android:id="@+id/textPasswordInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:maxLength="21"
-            />
+            android:maxLength="21" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <!-- Login Button -->
@@ -279,7 +277,7 @@
         android:textColor="#543636"
         android:textSize="16sp"
         app:cornerRadius="33dp"
-        app:icon="@drawable/google"
+        app:icon="@drawable/ic_outlook"
         app:iconTint="@null"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.517"

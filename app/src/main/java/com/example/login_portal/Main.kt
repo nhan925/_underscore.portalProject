@@ -13,7 +13,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import com.example.login_portal.databinding.ActivityMain3Binding
 
-class Main : AppCompatActivity() {
+class Main : BaseActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMain3Binding
@@ -38,7 +38,8 @@ class Main : AppCompatActivity() {
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow
+                R.id.nav_Dashboard, R.id.nav_Notification,
+                R.id.nav_Score, R.id.nav_Schedule, R.id.nav_Tuition, R.id.nav_InforStudent, R.id.nav_course
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)

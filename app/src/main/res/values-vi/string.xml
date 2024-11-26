@@ -15,7 +15,8 @@
     <string name="description_text">Hãy dùng tên đăng nhập để lấy lại mật khẩu</string>
     <string name="get_password">Lấy mật khẩu</string>
     <string name="google_sign_in_button_text">Đăng nhập với Outlook</string>
-    <string name="description_text1">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</string>"
+    <string name="description_text1">Truy cập hệ thống để quản lý và theo dõi thông tin một cách dễ dàng.</string>"
+    <string name="description_text2">Xác minh OTP nhanh chóng, bảo vệ tài khoản của bạn an toàn.</string>
     <string name="language_eng">ENG</string>
     <string name="language_vie">VIE</string>
     <string name="new_password_sent_message">Mật khẩu mới đã được gửi đến email của bạn.</string>
@@ -39,4 +40,19 @@
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
+
+    <string name="menu_dash">Dashboard</string>
+    <string name="menu_infor">Thông tin sinh viên</string>
+    <string name="menu_Noti">Thông báo</string>
+    <string name="menu_score">Điểm số</string>
+    <string name="menu_schedule">Lịch học</string>
+    <string name="menu_register">Đăng kí học phần</string>
+    <string name="menu_tuition">Học phí</string>
+    <string name="menu_scholarship">Học bổng</string>
+    <string name="menu_request">Yêu cầu</string>
+    <string name="menu_chatbox">Chatbox</string>
+    <string name="menu_feedback">Phản hồi</string>
+    <string name="menu_setting">Cài đặt</string>
+    <string name="menu_payment">Lịch sử thanh toán</string>
+
 </resources>

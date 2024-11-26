@@ -3,23 +3,50 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_home">
+    app:startDestination="@+id/nav_Dashboard">
+
 
     <fragment
-        android:id="@+id/nav_home"
-        android:name="com.example.login_portal.ui.home.HomeFragment"
-        android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
+        android:id="@+id/nav_Dashboard"
+        android:name="com.example.login_portal.ui.dashboard.DashboardFragment"
+        android:label="@string/menu_dash"
+        tools:layout="@layout/fragment_dashboard" />
+    <fragment
+        android:id="@+id/nav_Notification"
+        android:name="com.example.login_portal.ui.notification.NotificationFragment"
+        android:label="@string/menu_Noti"
+        tools:layout="@layout/fragment_notification" />
+    <fragment
+        android:id="@+id/nav_InforStudent"
+        android:name="com.example.login_portal.ui.information.InformationFragment"
+        android:label="@string/menu_infor"
+        tools:layout="@layout/fragment_information" />
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.example.login_portal.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        android:id="@+id/nav_Score"
+        android:name="com.example.login_portal.ui.score.ScoreFragment"
+        android:label="@string/menu_score"
+        android:layout="@layout/fragment_score" />
+    <fragment
+        android:id="@+id/nav_Schedule"
+        android:name="com.example.login_portal.ui.schedule.ScheduleFragment"
+        android:label="@string/menu_schedule"
+        android:layout="@layout/fragment_schedule" />
+    <fragment
+        android:id="@+id/nav_Tuition"
+        android:name="com.example.login_portal.ui.tuition.TuitionFragment"
+        android:label="@string/menu_tuition"
+        android:layout="@layout/fragment_tuition" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.example.login_portal.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:id="@+id/nav_course"
+        android:name="com.example.login_portal.ui.course.CourseFragment"
+        android:label="@string/menu_register"
+        android:layout="@layout/fragment_course" />
+
+
+
+
+
+
 </navigation>
