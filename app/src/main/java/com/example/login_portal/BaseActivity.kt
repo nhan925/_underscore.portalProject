@@ -10,7 +10,7 @@ open class BaseActivity : AppCompatActivity() {
     override fun attachBaseContext(newBase: Context) {
         val languageCode = newBase.getSharedPreferences("appPreferences", Context.MODE_PRIVATE)
             .getString("appLanguage", "en") ?: "en"
-
+        //Comment code right here to test
         val locale = Locale(languageCode)
         Locale.setDefault(locale)
 
