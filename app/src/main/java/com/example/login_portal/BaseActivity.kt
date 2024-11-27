@@ -3,7 +3,9 @@ package com.example.login_portal
 import android.content.Context
 import android.content.res.Configuration
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import com.example.login_portal.utils.ApiServiceHelper
 import java.util.Locale
 
 open class BaseActivity : AppCompatActivity() {
@@ -28,6 +30,13 @@ open class BaseActivity : AppCompatActivity() {
         val languageCode = getSharedPreferences("appPreferences", Context.MODE_PRIVATE)
             .getString("appLanguage", "en") ?: "en"
         updateConfiguration(languageCode)
+
+
+        //TODO: hard code login here
+        ApiServiceHelper.login("student1", "Nhan123$") { isSuccess ->
+            if (!isSuccess)
+                Log.i("d", "Login failed")
+        }
     }
 
     private fun updateConfiguration(languageCode: String) {
