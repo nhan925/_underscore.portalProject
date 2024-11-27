@@ -49,10 +49,14 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
+    implementation(libs.androidx.legacy.support.v4)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-    implementation("com.google.android.material:material:1.9.0") // Update the version as needed
-    implementation("androidx.fragment:fragment-ktx:1.5.7") // For Fragment transactions
-    implementation("androidx.security:security-crypto:1.1.0-alpha06")
+    implementation(libs.material.v190) // Update the version as needed
+    implementation(libs.androidx.fragment.ktx.v157) // For Fragment transactions
+    implementation(libs.androidx.security.crypto)
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+    implementation(libs.gson)
 }
