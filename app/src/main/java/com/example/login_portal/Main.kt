@@ -2,7 +2,6 @@ package com.example.login_portal
 
 import android.os.Bundle
 import android.view.Menu
-import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.navigation.NavigationView
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -10,7 +9,6 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
-import androidx.appcompat.app.AppCompatActivity
 import com.example.login_portal.databinding.ActivityMain3Binding
 
 class Main : BaseActivity() {
@@ -26,11 +24,6 @@ class Main : BaseActivity() {
 
         setSupportActionBar(binding.appBarMain.toolbar)
 
-        binding.appBarMain.fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null)
-                .setAnchorView(R.id.fab).show()
-        }
         val drawerLayout: DrawerLayout = binding.drawerLayout
         val navView: NavigationView = binding.navView
         val navController = findNavController(R.id.nav_host_fragment_content_main)
@@ -39,7 +32,8 @@ class Main : BaseActivity() {
         appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.nav_Dashboard, R.id.nav_Notification,
-                R.id.nav_Score, R.id.nav_Schedule, R.id.nav_Tuition, R.id.nav_InforStudent, R.id.nav_course
+                R.id.nav_Score, R.id.nav_Schedule, R.id.nav_Tuition, R.id.nav_InforStudent,
+                R.id.nav_course, R.id.nav_Request
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
