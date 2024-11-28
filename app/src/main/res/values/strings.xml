@@ -57,7 +57,29 @@
     <string name="request_reExaminationTitle">ReExamination</string>
     <string name="request_requestForTranscriptTitle">Request for transcript</string>
 
+    <string name="feedback_system_category_title">Category</string>
+    <string-array name="feedback_system_category_items">
+        <item>Error Report</item>
+        <item>Give feedback</item>
+    </string-array>
 
-    \
+    <string name="feedback_system_complete_button">Complete</string>
 
+    <string name="feedback_course_guide">Please rate your level of satisfaction with this course using the following scale: 1 (very dissatisfied), 2 (dissatisfied), 3 (neutral), 4 (satisfied), 5 (very satisfied). Your feedback will help improve the course.</string>
+    <string-array name="feedback_course_question">
+        <item>How difficult do you find this course?</item>
+        <item>Do you feel that the lectures and study materials are clear and easy to understand?</item>
+        <item>How satisfied are you with the support provided by the instructor throughout the course?</item>
+        <item>Do you feel that the knowledge gained in this course is applicable to real-life situations?</item>
+        <item> How difficult do you find the quizzes and assignments in this course?</item>
+    </string-array>
+
+    <string name="feedback_teacher_guide">Please rate your level of satisfaction with this instructor using the following scale: 1 (very dissatisfied), 2 (dissatisfied), 3 (neutral), 4 (satisfied), 5 (very satisfied). Your feedback will contribute to improving the learning process.</string>
+    <string-array name="feedback_teacher_question">
+        <item>Does the instructor explain concepts in a way that is easy to understand?</item>
+        <item>How approachable and available is the instructor for questions and assistance?</item>
+        <item>How well does the instructor engage students and encourage participation?</item>
+        <item>How knowledgeable and well-prepared is the instructor in the subject matter?</item>
+        <item>How effectively does the instructor provide feedback on assignments and exams?</item>
+    </string-array>
 </resources>

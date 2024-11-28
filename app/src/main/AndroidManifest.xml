@@ -46,6 +46,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".ui.feedback_course.FeedbackCourseActivity"
+            android:exported="true" />
+
+        <activity android:name=".ui.feedback_course.FeedbackTeacherActivity"
+            android:exported="true" />
+        
     </application>
 
 </manifest>

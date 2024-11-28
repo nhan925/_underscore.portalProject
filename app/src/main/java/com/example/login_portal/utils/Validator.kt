@@ -20,7 +20,17 @@ object Validator {
             else -> ValidationResult(true)
         }
     }
+
+    fun validateFeedbackContent(content: String): ValidationResult {
+        return when {
+            content.isEmpty() -> ValidationResult(false, "Nội dung phản hồi không được để trống")
+            content.length < 10 -> ValidationResult(false, "Nội dung phản hồi phải có ít nhất 10 ký tự")
+            content.length > 500 -> ValidationResult(false, "Nội dung phản hồi không được quá 500 ký tự")
+            else -> ValidationResult(true)
+        }
+    }
 }
+
 
 data class ValidationResult(
     val isValid: Boolean,

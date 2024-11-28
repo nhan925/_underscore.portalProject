@@ -33,7 +33,7 @@ class Main : BaseActivity() {
             setOf(
                 R.id.nav_Dashboard, R.id.nav_Notification,
                 R.id.nav_Score, R.id.nav_Schedule, R.id.nav_Tuition, R.id.nav_InforStudent,
-                R.id.nav_course, R.id.nav_Request
+                R.id.nav_course, R.id.nav_Request, R.id.nav_Feedback_System, R.id.nav_Feedback_Course
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)

@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
@@ -18,7 +17,7 @@ class Forgot_password : BaseActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        val btnSubmit = findViewById<Button>(R.id.btnSubmit)
+        val btnSubmit = findViewById<Button>(R.id.submit_btn)
 
         btnSubmit.setOnClickListener {
             // chuyển đến trang reset_password
