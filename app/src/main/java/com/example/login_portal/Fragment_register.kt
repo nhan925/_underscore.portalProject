@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
+import androidx.collection.emptyLongSet
 import androidx.fragment.app.Fragment
 import com.example.login_portal.utils.Validator
 import com.google.android.material.snackbar.Snackbar
@@ -27,11 +28,21 @@ class Fragment_register : Fragment() {
 
         // Find the "Get New Password" button by ID
         val getPasswordButton = view.findViewById<Button>(R.id.btn_resetpassword_2)
+        val emailEditText = view.findViewById<TextInputEditText>(R.id.textUsernameInput1)
 
         getPasswordButton.setOnClickListener {
-            // chuyển đến trang ForgotPassword
-            val intent = Intent(activity, Main::class.java)
+            val email = emailEditText.text.toString()
+            val emailValidation = Validator.validateEmail(email)
+            if (!emailValidation.isValid) {
+                Toast.makeText(activity, emailValidation.errorMessage, Toast.LENGTH_SHORT).show()
+                emailEditText.error = emailValidation.errorMessage
+                return@setOnClickListener
+            }
+
+            val intent = Intent(activity, Forgot_password::class.java)
+            intent.putExtra("email", email)
             startActivity(intent)
+
 
 
         }

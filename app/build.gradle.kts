@@ -53,10 +53,15 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+  
+    implementation("com.airbnb.android:lottie:3.4.0")
+
     implementation(libs.material.v190) // Update the version as needed
     implementation(libs.androidx.fragment.ktx.v157) // For Fragment transactions
     implementation(libs.androidx.security.crypto)
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
     implementation(libs.gson)
+
 }
