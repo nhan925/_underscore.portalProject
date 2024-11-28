@@ -55,4 +55,5 @@ dependencies {
     implementation("com.google.android.material:material:1.9.0") // Update the version as needed
     implementation("androidx.fragment:fragment-ktx:1.5.7") // For Fragment transactions
     implementation("androidx.security:security-crypto:1.1.0-alpha06")
+    implementation("com.airbnb.android:lottie:3.4.0")
 }

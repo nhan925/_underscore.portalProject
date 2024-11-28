@@ -187,7 +187,13 @@ class MainActivity2 : BaseActivity() {
 
     private fun navigateHome(){
         startActivity(Intent(this, HomePageTest::class.java))
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
         finish()
+    }
+
+    override fun finish() {
+        super.finish()
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
     }
 
     private fun verifyCredentials(email: String, password: String): Boolean {
