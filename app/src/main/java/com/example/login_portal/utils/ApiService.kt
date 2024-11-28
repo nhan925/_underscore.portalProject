@@ -29,7 +29,7 @@ interface ApiService {
 
     // Example GET request with Authorization header
     @GET("{endpoint}")
-    fun get(@Path("endpoint", encoded = true) endpoint: String, @Header("Authorization") authorization: String): Call<String>
+    fun get(@Path("endpoint", encoded = true) endpoint: String, @Header("Authorization") authorization: String): Call<ResponseBody>
 
     // Example POST request with Authorization header
     @POST("{endpoint}")
@@ -37,11 +37,11 @@ interface ApiService {
 
     // Example PUT request with Authorization header
     @PUT("{endpoint}")
-    fun put(@Path("endpoint", encoded = true) endpoint: String, @Body data: Any, @Header("Authorization") authorization: String): Call<String>
+    fun put(@Path("endpoint", encoded = true) endpoint: String, @Body data: Any, @Header("Authorization") authorization: String): Call<ResponseBody>
 
     // Example DELETE request with Authorization header
     @DELETE("{endpoint}")
-    fun delete(@Path("endpoint", encoded = true) endpoint: String, @Header("Authorization") authorization: String): Call<String>
+    fun delete(@Path("endpoint", encoded = true) endpoint: String, @Header("Authorization") authorization: String): Call<ResponseBody>
 }
 
 object ApiServiceHelper {
@@ -104,10 +104,10 @@ object ApiServiceHelper {
     }
 
     // Example of a GET request with Authorization
-    fun get(endpoint: String, callback: (String?) -> Unit) {
+    fun get(endpoint: String, callback: (ResponseBody?) -> Unit) {
         jwtToken?.let { token ->
-            apiService.get(endpoint, "Bearer $token").enqueue(object : Callback<String> {
-                override fun onResponse(call: Call<String>, response: Response<String>) {
+            apiService.get(endpoint, "Bearer $token").enqueue(object : Callback<ResponseBody> {
+                override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
                     if (response.isSuccessful) {
                         callback(response.body())
                     } else {
@@ -115,7 +115,7 @@ object ApiServiceHelper {
                     }
                 }
 
-                override fun onFailure(call: Call<String>, t: Throwable) {
+                override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
                     Log.e("ApiServiceHelper", "GET request failed", t)
                     callback(null)
                 }
@@ -145,10 +145,10 @@ object ApiServiceHelper {
     }
 
     // Example of a PUT request with Authorization
-    fun put(endpoint: String, data: Any, callback: (String?) -> Unit) {
+    fun put(endpoint: String, data: Any, callback: (ResponseBody?) -> Unit) {
         jwtToken?.let { token ->
-            apiService.put(endpoint, data, "Bearer $token").enqueue(object : Callback<String> {
-                override fun onResponse(call: Call<String>, response: Response<String>) {
+            apiService.put(endpoint, data, "Bearer $token").enqueue(object : Callback<ResponseBody> {
+                override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
                     if (response.isSuccessful) {
                         callback(response.body())
                     } else {
@@ -156,7 +156,7 @@ object ApiServiceHelper {
                     }
                 }
 
-                override fun onFailure(call: Call<String>, t: Throwable) {
+                override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
                     Log.e("ApiServiceHelper", "PUT request failed", t)
                     callback(null)
                 }
@@ -165,10 +165,10 @@ object ApiServiceHelper {
     }
 
     // Example of a DELETE request with Authorization
-    fun delete(endpoint: String, callback: (String?) -> Unit) {
+    fun delete(endpoint: String, callback: (ResponseBody?) -> Unit) {
         jwtToken?.let { token ->
-            apiService.delete(endpoint, "Bearer $token").enqueue(object : Callback<String> {
-                override fun onResponse(call: Call<String>, response: Response<String>) {
+            apiService.delete(endpoint, "Bearer $token").enqueue(object : Callback<ResponseBody> {
+                override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
                     if (response.isSuccessful) {
                         callback(response.body())
                     } else {
@@ -176,7 +176,7 @@ object ApiServiceHelper {
                     }
                 }
 
-                override fun onFailure(call: Call<String>, t: Throwable) {
+                override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
                     Log.e("ApiServiceHelper", "DELETE request failed", t)
                     callback(null)
                 }

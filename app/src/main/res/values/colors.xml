@@ -8,4 +8,7 @@
     <color name="background_color">#FFFFFF</color>
     <color name="blue" > #6EACD6</color>
     <color name="red"> #FF0000</color>
+    <color name="item_dark_overlay">#33000000</color>
+    <color name="orange">#FF5733</color>
+    <color name="green">#50C878</color>
 </resources>

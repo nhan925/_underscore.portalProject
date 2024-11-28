@@ -56,6 +56,22 @@
     <string name="menu_slideshow">Slideshow</string>
     <string name="request_reExaminationTitle">ReExamination</string>
     <string name="request_requestForTranscriptTitle">Request for transcript</string>
+    <string name="request_status_all">All</string>
+    <string name="request_detail_detail_tab">Detail</string>
+    <string name="request_detail_answer_tab">Response</string>
+    <string name="request_detail_cancel_op">Cancel</string>
+    <string name="request_detail_resend_op">Resend</string>
+    <string name="request_detail_goback">Go back</string>
+    <string name="request_detail_detail_tab_content">Content</string>
+    <string name="request_detail_answer_by">By</string>
+    <string name="request_detail_answer_title">Response</string>
+    <string name="request_status_processing">Đang xử lý</string>
+    <string name="request_status_processed">Đã xử lý</string>
+    <string name="request_status_canceled">Đã hủy</string>
+    <string name="request_resend_failed">Resend failed !</string>
+    <string name="request_resend_success">Resend successfully !</string>
+    <string name="request_cancel_failed">Cancel failed !</string>
+    <string name="request_cancel_success">Cancel successfully !</string>
 
 
     \

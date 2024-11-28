@@ -10,9 +10,26 @@ class RequestViewModel : ViewModel() {
     private val _requests = MutableLiveData<List<RequestItem>>()
     val requests: LiveData<List<RequestItem>> = _requests
 
-   init {
-        RequestDao.getAllRequest { data ->
-            _requests.value = data // Update LiveData, which will trigger UI updates
+    private val _status = MutableLiveData<List<String>>()
+    val status: LiveData<List<String>> = _status
+
+    init {
+        reset()
+    }
+
+    fun filterByStatus(status: String) {
+        RequestDao.getRequests(status) { data ->
+            _requests.value = data
+        }
+    }
+
+    fun reset() {
+        RequestDao.getRequests { data ->
+            _requests.value = data
+        }
+
+        RequestDao.getRequestsStatus { data ->
+            _status.value = data
         }
     }
 }
