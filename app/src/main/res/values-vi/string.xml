@@ -72,5 +72,12 @@
     <string name="request_resend_success">Gửi lại thành công !</string>
     <string name="request_cancel_failed">Hủy thất bại !</string>
     <string name="request_cancel_success">Hủy thành công !</string>
+    <string name="course_register_period_title">Các kỳ đăng ký</string>
+    <string name="course_register_period_close_day">Ngày đóng:</string>
+    <string name="course_register_period_open_day">Ngày mở</string>
+    <string name="course_register_status_opening">Đang mở</string>
+    <string name="course_register_status_closed">Đã đóng</string>
+    <string name="course_register_status_not_opened_yet">Chưa mở</string>
+    <string name="request_border_title">Các yêu cầu</string>
 
 </resources>

@@ -5,11 +5,17 @@ package com.example.login_portal.ui.course
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.login_portal.ui.requests.RequestItem
 
 class CourseViewModel : ViewModel() {
+    private val _periods = MutableLiveData<List<Period>>()
+    val periods: LiveData<List<Period>> = _periods
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is Dashboard Fragment"
+    init {
+        reset()
     }
-    val text: LiveData<String> = _text
+
+    fun reset() {
+        CourseRegistrationDao.getPeriods { data -> _periods.value = data }
+    }
 }

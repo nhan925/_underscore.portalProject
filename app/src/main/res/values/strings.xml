@@ -72,6 +72,13 @@
     <string name="request_resend_success">Resend successfully !</string>
     <string name="request_cancel_failed">Cancel failed !</string>
     <string name="request_cancel_success">Cancel successfully !</string>
+    <string name="course_register_period_title">Registration Periods</string>
+    <string name="course_register_period_close_day">Close day:</string>
+    <string name="course_register_period_open_day">Open day:</string>
+    <string name="course_register_status_opening">Opening</string>
+    <string name="course_register_status_closed">Closed</string>
+    <string name="course_register_status_not_opened_yet">Not opened yet</string>
+    <string name="request_border_title">Requests</string>
 
 
     \
