@@ -1,8 +1,9 @@
 package com.example.login_portal.ui.feedback_course
 
 data class Course (
-    val name: String,
-    val code: String,
+    val courseName: String,
+    val courseID: String,
     val teacherName: String,
+    val classID: String,
     val status: Boolean
 )

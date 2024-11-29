@@ -43,13 +43,24 @@ class FeedbackSystemFragment : Fragment() {
             val selectedCategory = binding.fbSystemCategoryList.text.toString()
             val content = binding.textInputLayout2.editText?.text.toString()
 
-            if(!validateFeedbackContent(content)){
+            feedbackSystemViewModel.updatedSelectedCategory(selectedCategory)
+            feedbackSystemViewModel.updateFeedbackContent(content)
+
+            if(!feedbackSystemViewModel.validateFeedbackContent(requireContext())){
                 return@setOnClickListener
             }
 
-            feedbackSystemViewModel.updateSelectedCategory(selectedCategory)
-            feedbackSystemViewModel.updateFeedbackContent(content)
-            feedbackSystemViewModel.postFeedback()
+            feedbackSystemViewModel.postFeedback { isSuccess ->
+                if(isSuccess){
+                    Toast.makeText(requireContext(), "Ban đã gửi thành công", Toast.LENGTH_SHORT).show()
+                    binding.textInputLayout2.editText?.setText("")
+                    binding.fbSystemCategoryList.setText("")
+
+                }
+                else{
+                    Toast.makeText(requireContext(), "Bạn đã gửi thất bại", Toast.LENGTH_SHORT).show()
+                }
+            }
         }
         return root
     }
@@ -59,14 +70,5 @@ class FeedbackSystemFragment : Fragment() {
         _binding = null
     }
 
-    private fun validateFeedbackContent(content: String): Boolean {
-        var result = Validator.validateFeedbackContent(content)
-        if(result.isValid){
-            return true
-        }
-        else{
-            Toast.makeText(context, result.errorMessage, Toast.LENGTH_SHORT).show()
-            return false
-        }
-    }
+
 }

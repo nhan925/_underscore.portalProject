@@ -25,7 +25,6 @@ import com.example.login_portal.ui.feedback_course.AdapterForListCourse
 import com.example.login_portal.ui.feedback_course.AdapterForListQuestion
 import com.example.login_portal.ui.feedback_course.Course
 import com.example.login_portal.ui.feedback_course.FeedbackCourseViewModel
-import com.example.login_portal.ui.feedback_course.FeedbackTeacherActivity
 import com.example.login_portal.ui.feedback_course.Question
 import com.example.login_portal.utils.Validator
 
@@ -38,14 +37,11 @@ class FeedbackCourseActivity : BaseActivity() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var continueButton: Button
     private lateinit var backButton: Button
-
-
-
+    private lateinit var scoreList: MutableList<Int>
+    private val viewModel = FeedbackCourseViewModel.getInstance()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.fragment_feedback_course)
-
-        val feedbackCourseViewModel = ViewModelProvider(this).get(FeedbackCourseViewModel::class.java)
 
         val courseName = intent.getStringExtra("courseName")
         val teacherName = intent.getStringExtra("teacherName")
@@ -60,7 +56,7 @@ class FeedbackCourseActivity : BaseActivity() {
         teacherNameTV.text = teacherName
         guideTV.text = resources.getString(R.string.feedback_course_guide)
         //Dùng ViewModel gọi lấy các câu hỏi
-        val questionList = feedbackCourseViewModel.getQuestionList(1, resources)
+        val questionList = viewModel.getQuestionList(1, resources)
 
         recyclerView = findViewById(R.id.recyclerView)
         val questionAdapter = AdapterForListQuestion(questionList)
@@ -69,11 +65,17 @@ class FeedbackCourseActivity : BaseActivity() {
 
         continueButton.setOnClickListener {
             if (checkIfAllQuestionsAnswered()) {
-                //Save to database
-                val intent = Intent(this, FeedbackTeacherActivity::class.java)
-                intent.putExtra("courseName", courseName)
-                intent.putExtra("teacherName", teacherName)
-                startActivity(intent)
+                //get score
+                scoreList = getScoreList().toMutableList()
+                viewModel.updateCourseScore(scoreList)
+
+                val feedbackTeacherFragment = FeedbackTeacher.newInstance(courseName ?: "", teacherName ?: "")
+                supportFragmentManager.beginTransaction()
+                    .replace(R.id.fb_course_fragment, feedbackTeacherFragment)
+                    .commit()
+
+                backButton.visibility = View.GONE
+                continueButton.visibility = View.GONE
             } else {
                 // Nếu chưa trả lời hết câu hỏi, yêu cầu người dùng hoàn tất
                 Toast.makeText(this, "Vui lòng trả lời tất cả câu hỏi", Toast.LENGTH_SHORT).show()
@@ -85,4 +87,10 @@ class FeedbackCourseActivity : BaseActivity() {
         val questionList = (recyclerView.adapter as AdapterForListQuestion).questionList
         return questionList.all { it.isAnswered }
     }
+
+    private fun getScoreList(): List<Int> {
+        val questionList = (recyclerView.adapter as AdapterForListQuestion).questionList
+        return questionList.map { it.rating } // Trả về danh sách các giá trị `rating`
+    }
+
 }

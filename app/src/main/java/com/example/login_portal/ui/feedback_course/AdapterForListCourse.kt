@@ -1,15 +1,17 @@
 package com.example.login_portal.ui.feedback_course
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.login_portal.R
 
 // Define the adapter for course list
 class AdapterForListCourse(
-    private val courseList: List<Course>,
+    private var courseList: List<Course>,
     private val onItemClicked: (Course) -> Unit
 ) : RecyclerView.Adapter<AdapterForListCourse.CourseViewHolder>() {
 
@@ -31,23 +33,42 @@ class AdapterForListCourse(
     // Bind data to the item views
     override fun onBindViewHolder(holder: CourseViewHolder, position: Int) {
         val course = courseList[position]
-        holder.courseNameTextView.text = course.name
-        holder.courseCodeTextView.text = course.code
+        holder.courseNameTextView.text = course.courseName
+        holder.courseCodeTextView.text = course.courseID
         holder.teacherNameTextView.text = course.teacherName
         holder.courseStatusTextView.text = if (course.status) "Đã đánh giá" else "Chưa đánh giá"
 
-        // Set color for course status
-        when (course.status) {
-            true -> holder.courseStatusTextView.setTextColor(holder.itemView.resources.getColor(R.color.green))
-            false -> holder.courseStatusTextView.setTextColor(holder.itemView.resources.getColor(R.color.red))
+        // Set màu và trạng thái click
+        if (course.status) {
+            holder.courseStatusTextView.setTextColor(
+                ContextCompat.getColor(holder.itemView.context, R.color.green)
+            )
+            holder.itemView.setBackgroundColor(
+                ContextCompat.getColor(holder.itemView.context, com.google.android.material.R.color.material_dynamic_tertiary100)
+            )
+        } else {
+            holder.courseStatusTextView.setTextColor(
+                ContextCompat.getColor(holder.itemView.context, R.color.red)
+            )
+            holder.itemView.setBackgroundColor(
+                ContextCompat.getColor(holder.itemView.context, R.color.white)
+            )
         }
 
-        // Set OnClickListener
+        // Xử lý sự kiện click
         holder.itemView.setOnClickListener {
-            onItemClicked(course)
+            if (!course.status) {
+                onItemClicked(course)
+            }
         }
     }
 
     // Return the size of your dataset
     override fun getItemCount() = courseList.size
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun updateData(newCourseList: List<Course>) {
+        courseList = newCourseList
+        notifyDataSetChanged()
+    }
 }

@@ -7,24 +7,6 @@
     android:background="@drawable/fragment_background">
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-        android:id="@+id/backButton"
-        android:layout_width="170dp"
-        android:layout_height="45dp"
-        android:backgroundTint="#6EACD6"
-        android:text="Quay về"
-        android:textColor="#543636"
-
-
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.112"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerView"
-        app:layout_constraintVertical_bias="0.446"
-        app:rippleColor="#BBDEFB" />
-
-    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/continueButton"
         android:layout_width="170dp"
         android:layout_height="45dp"
@@ -159,17 +141,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView14"
         app:layout_constraintVertical_bias="0.121" />
-
-    <FrameLayout
-        android:id="@+id/fb_course_fragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-    </FrameLayout>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

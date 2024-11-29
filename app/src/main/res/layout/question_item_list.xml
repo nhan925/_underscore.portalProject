@@ -10,6 +10,7 @@
         android:layout_width="200dp"
         android:layout_height="49dp"
         android:text="Nội dung môn học có rõ ràng và dễ hiểu không?"
+        android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.023"
@@ -65,4 +66,5 @@
             android:scaleX="0.8"
             android:scaleY="0.8"/>
     </RadioGroup>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

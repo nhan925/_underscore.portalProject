@@ -47,8 +47,8 @@ interface ApiService {
 object ApiServiceHelper {
 
     private const val BASE_URL = "http://10.0.2.2:3001" // Replace with your base URL
-    var jwtToken: String? = null
-
+    //var jwtToken: String? = null
+    var jwtToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIiA6ICIwN2M5ODdiNi1iYjgxLTQwOTMtODE4Zi0xNmQ5YjZiNWIwNmMiLCAicm9sZSIgOiAiU3R1ZGVudCIsICJleHAiIDogMTczMjk3NTkwNH0.VidC3ep_amHoEoAmbas9MQI_RjAamuhRF4t8Oh4GQac"
     private val retrofit: Retrofit = Retrofit.Builder()
         .baseUrl(BASE_URL)
         .addConverterFactory(GsonConverterFactory.create()) // Use Gson converter
@@ -66,7 +66,7 @@ object ApiServiceHelper {
         apiService.login(loginData).enqueue(object : Callback<String> {
             override fun onResponse(call: Call<String>, response: Response<String>) {
                 if (response.isSuccessful) {
-                    jwtToken = response.body() // Assuming the JWT token is the response body
+                    //jwtToken = response.body() // Assuming the JWT token is the response body
                     callback(true)
                 } else {
                     callback(false)
@@ -89,7 +89,7 @@ object ApiServiceHelper {
         apiService.loginWithOutlook(outlookData).enqueue(object : Callback<String> {
             override fun onResponse(call: Call<String>, response: Response<String>) {
                 if (response.isSuccessful) {
-                    jwtToken = response.body() // Store the JWT token
+                    //jwtToken = response.body() // Store the JWT token
                     callback(true)
                 } else {
                     callback(false)
