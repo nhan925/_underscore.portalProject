@@ -79,6 +79,18 @@
     <string name="course_register_status_closed">Closed</string>
     <string name="course_register_status_not_opened_yet">Not opened yet</string>
     <string name="request_border_title">Requests</string>
+    <string name="choose_course_title">Courses</string>
+    <string name="choose_course_search">Search for courses</string>
+    <string name="choose_course_general_info">General informations</string>
+    <string name="choose_course_general_info_major">Major:</string>
+    <string name="choose_course_general_info_max_credits">Max credits:</string>
+    <string name="choose_course_general_info_registered_credits">Registered credits:</string>
+    <string name="choose_course_general_info_registered_courses">Registered courses:</string>
+    <string name="choose_course_opening">Opening</string>
+    <string name="choose_course_re_study">Re-study</string>
+    <string name="choose_course_registered_course">Registered</string>
+    <string name="course_item_code">Code:</string>
+    <string name="course_item_credits">Credits:</string>
 
 
     \

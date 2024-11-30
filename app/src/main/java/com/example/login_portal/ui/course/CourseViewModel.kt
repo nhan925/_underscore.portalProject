@@ -2,6 +2,8 @@ package com.example.login_portal.ui.course
 
 
 
+import android.view.View
+import android.widget.FrameLayout
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -12,10 +14,13 @@ class CourseViewModel : ViewModel() {
     val periods: LiveData<List<Period>> = _periods
 
     init {
-        reset()
+        reset { }
     }
 
-    fun reset() {
-        CourseRegistrationDao.getPeriods { data -> _periods.value = data }
+    fun reset(callback: (Unit?) -> Unit) {
+        CourseRegistrationDao.getPeriods {
+            data -> _periods.value = data
+            callback(null)
+        }
     }
 }

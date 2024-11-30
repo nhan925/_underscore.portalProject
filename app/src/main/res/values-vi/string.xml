@@ -79,5 +79,17 @@
     <string name="course_register_status_closed">Đã đóng</string>
     <string name="course_register_status_not_opened_yet">Chưa mở</string>
     <string name="request_border_title">Các yêu cầu</string>
+    <string name="choose_course_title">Các học phần</string>
+    <string name="choose_course_search">Tìm kiếm học phần</string>
+    <string name="choose_course_general_info">Thông tin đăng ký</string>
+    <string name="choose_course_general_info_major">Ngành:</string>
+    <string name="choose_course_general_info_max_credits">Số TC tối đa:</string>
+    <string name="choose_course_general_info_registered_credits">Số TC đã ĐK:</string>
+    <string name="choose_course_general_info_registered_courses">Số HP đã ĐK:</string>
+    <string name="choose_course_opening">Đang mở</string>
+    <string name="choose_course_re_study">Cải thiện/Học lại</string>
+    <string name="choose_course_registered_course">Đã đăng ký</string>
+    <string name="course_item_code">Mã:</string>
+    <string name="course_item_credits">Số TC:</string>
 
 </resources>
