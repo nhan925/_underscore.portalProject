@@ -56,6 +56,33 @@
     <string name="menu_slideshow">Slideshow</string>
     <string name="request_reExaminationTitle">ReExamination</string>
     <string name="request_requestForTranscriptTitle">Request for transcript</string>
+    <string name="infor_student_frag_student_role">Student</string>
+    <string name="infor_student_frag_information_general">General</string>
+    <string name="infor_student_frag_information_detail">Detail</string>
+    <string name="infor_student_frag_information_contact">Contact</string>
+    <string name="infor_student_frag_full_name">Full Name</string>
+    <string name="infor_student_frag_id_student">ID Student</string>
+    <string name="infor_student_frag_major">Major</string>
+    <string name="infor_student_frag_year_of_admission">Year Of Admission</string>
+    <string name="infor_student_frag_academic_program">Academic Program</string>
+    <string name="infor_student_frag_gender">Gender</string>
+    <string name="infor_student_frag_date_of_birth">Date Of Birth</string>
+    <string name="infor_student_frag_nationality">Nationality</string>
+    <string name="infor_student_frag_ethnicity">Ethnicity</string>
+    <string name="infor_student_frag_identity_card_number">Identity Card Number</string>
+    <string name="infor_student_frag_email">School Email</string>
+    <string name="infor_student_frag_personal_email">Personal Email</string>
+    <string name="infor_student_frag_phone_number">Phone Number</string>
+    <string name="infor_student_frag_address">Address</string>
+    <string name="infor_student_frag_error_mail">Invalid email</string>
+    <string name="infor_student_frag_notEmpty">Fields cannot be empty</string>
+    <string name="infor_student_frag_error_phoneNumber">Phone number must have exactly 10 digits and cannot contain letters.</string>
+    <string name="infor_student_frag_error_alert_dialog">Error</string>
+    <string name="infor_student_frag_close_dialog">Close</string>
+    <string name="infor_student_frag_upload_avatar">Upload Avatar</string>
+    <string name="infor_student_frag_remove_avatar">Remove Avatar</string>
+    <string name="infor_student_frag_already_default">The image has reverted to the default.</string>
+    <string name="infor_student_frag_change_avatar">Change Avatar</string>
 
 
     \

@@ -1,6 +1,8 @@
 package com.example.login_portal.utils
 
 import android.util.Log
+import com.google.gson.Gson
+import okhttp3.ResponseBody
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.Call
@@ -27,32 +29,32 @@ interface ApiService {
 
     // Example GET request with Authorization header
     @GET("{endpoint}")
-    fun get(@Path("endpoint") endpoint: String, @Header("Authorization") authorization: String): Call<String>
+    fun get(@Path("endpoint", encoded = true) endpoint: String, @Header("Authorization") authorization: String): Call<ResponseBody>
 
     // Example POST request with Authorization header
     @POST("{endpoint}")
-    fun post(@Path("endpoint") endpoint: String, @Body data: Any, @Header("Authorization") authorization: String): Call<String>
+    fun post(@Path("endpoint", encoded = true) endpoint: String, @Body data: Any, @Header("Authorization") authorization: String): Call<ResponseBody>
 
     // Example PUT request with Authorization header
     @PUT("{endpoint}")
-    fun put(@Path("endpoint") endpoint: String, @Body data: Any, @Header("Authorization") authorization: String): Call<String>
+    fun put(@Path("endpoint", encoded = true) endpoint: String, @Body data: Any, @Header("Authorization") authorization: String): Call<ResponseBody>
 
     // Example DELETE request with Authorization header
     @DELETE("{endpoint}")
-    fun delete(@Path("endpoint") endpoint: String, @Header("Authorization") authorization: String): Call<String>
+    fun delete(@Path("endpoint", encoded = true) endpoint: String, @Header("Authorization") authorization: String): Call<ResponseBody>
 }
 
 object ApiServiceHelper {
 
     private const val BASE_URL = "http://10.0.2.2:3001" // Replace with your base URL
-    private var jwtToken: String? = null
+    var jwtToken: String? = null
 
     private val retrofit: Retrofit = Retrofit.Builder()
         .baseUrl(BASE_URL)
         .addConverterFactory(GsonConverterFactory.create()) // Use Gson converter
         .build()
 
-    private val apiService: ApiService = retrofit.create(ApiService::class.java)
+    val apiService: ApiService = retrofit.create(ApiService::class.java)
 
     // Login using username and password (Map approach)
     fun login(username: String, password: String, callback: (Boolean) -> Unit) {
@@ -102,10 +104,10 @@ object ApiServiceHelper {
     }
 
     // Example of a GET request with Authorization
-    fun get(endpoint: String, callback: (String?) -> Unit) {
+    fun get(endpoint: String, callback: (ResponseBody?) -> Unit) {
         jwtToken?.let { token ->
-            apiService.get(endpoint, "Bearer $token").enqueue(object : Callback<String> {
-                override fun onResponse(call: Call<String>, response: Response<String>) {
+            apiService.get(endpoint, "Bearer $token").enqueue(object : Callback<ResponseBody> {
+                override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
                     if (response.isSuccessful) {
                         callback(response.body())
                     } else {
@@ -113,7 +115,7 @@ object ApiServiceHelper {
                     }
                 }
 
-                override fun onFailure(call: Call<String>, t: Throwable) {
+                override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
                     Log.e("ApiServiceHelper", "GET request failed", t)
                     callback(null)
                 }
@@ -121,19 +123,20 @@ object ApiServiceHelper {
         }
     }
 
-    // Example of a POST request with Authorization
-    fun post(endpoint: String, data: Any, callback: (String?) -> Unit) {
+    // Raw POST request with Authorization
+    fun post(endpoint: String, data: Any, callback: (ResponseBody?) -> Unit) {
         jwtToken?.let { token ->
-            apiService.post(endpoint, data, "Bearer $token").enqueue(object : Callback<String> {
-                override fun onResponse(call: Call<String>, response: Response<String>) {
+            val request = apiService.post(endpoint, data, "Bearer $token")
+            request.enqueue(object : Callback<ResponseBody> {
+                override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
                     if (response.isSuccessful) {
-                        callback(response.body())
+                        callback(response.body()) // Return raw response body
                     } else {
                         callback(null)
                     }
                 }
 
-                override fun onFailure(call: Call<String>, t: Throwable) {
+                override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
                     Log.e("ApiServiceHelper", "POST request failed", t)
                     callback(null)
                 }
@@ -142,10 +145,10 @@ object ApiServiceHelper {
     }
 
     // Example of a PUT request with Authorization
-    fun put(endpoint: String, data: Any, callback: (String?) -> Unit) {
+    fun put(endpoint: String, data: Any, callback: (ResponseBody?) -> Unit) {
         jwtToken?.let { token ->
-            apiService.put(endpoint, data, "Bearer $token").enqueue(object : Callback<String> {
-                override fun onResponse(call: Call<String>, response: Response<String>) {
+            apiService.put(endpoint, data, "Bearer $token").enqueue(object : Callback<ResponseBody> {
+                override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
                     if (response.isSuccessful) {
                         callback(response.body())
                     } else {
@@ -153,7 +156,7 @@ object ApiServiceHelper {
                     }
                 }
 
-                override fun onFailure(call: Call<String>, t: Throwable) {
+                override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
                     Log.e("ApiServiceHelper", "PUT request failed", t)
                     callback(null)
                 }
@@ -162,10 +165,10 @@ object ApiServiceHelper {
     }
 
     // Example of a DELETE request with Authorization
-    fun delete(endpoint: String, callback: (String?) -> Unit) {
+    fun delete(endpoint: String, callback: (ResponseBody?) -> Unit) {
         jwtToken?.let { token ->
-            apiService.delete(endpoint, "Bearer $token").enqueue(object : Callback<String> {
-                override fun onResponse(call: Call<String>, response: Response<String>) {
+            apiService.delete(endpoint, "Bearer $token").enqueue(object : Callback<ResponseBody> {
+                override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
                     if (response.isSuccessful) {
                         callback(response.body())
                     } else {
@@ -173,7 +176,7 @@ object ApiServiceHelper {
                     }
                 }
 
-                override fun onFailure(call: Call<String>, t: Throwable) {
+                override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
                     Log.e("ApiServiceHelper", "DELETE request failed", t)
                     callback(null)
                 }

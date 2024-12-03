@@ -3,7 +3,9 @@ package com.example.login_portal
 import android.content.Context
 import android.content.res.Configuration
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import com.example.login_portal.utils.ApiServiceHelper
 import java.util.Locale
 
 open class BaseActivity : AppCompatActivity() {
