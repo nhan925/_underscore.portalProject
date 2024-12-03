@@ -91,5 +91,23 @@
     <string name="choose_course_registered_course">Đã đăng ký</string>
     <string name="course_item_code">Mã:</string>
     <string name="course_item_credits">Số TC:</string>
+    <string name="course_item_class">Lớp:</string>
+    <string name="choose_class_title">Các lớp</string>
+    <string name="choose_class_general_title">Thông tin học phần</string>
+    <string name="choose_class_code">Mã môn:</string>
+    <string name="choose_class_num_of_classes">Số lớp học:</string>
+    <string name="choose_class_course_name">Tên môn:</string>
+    <string name="choose_class_status">Trạng thái:</string>
+    <string name="choose_class_classes_recycler">Danh sách lớp</string>
+    <string name="choose_course_alert">Vượt quá số tín chỉ tối đa !</string>
+    <string name="choose_couse_status_registered">Đã đăng ký</string>
+    <string name="choose_couse_status_unregistered">Chưa đăng ký</string>
+    <string name="choose_couse_status_studied">Đã học</string>
+    <string name="class_item_name">Tên lớp:</string>
+    <string name="class_item_day">Ngày học:</string>
+    <string name="class_item_time">Giờ học:</string>
+    <string name="class_item_room">Phòng học:</string>
+    <string name="class_item_slot">Số slot:</string>
+    <string name="class_item_registered">Đã đăng ký:</string>
 
 </resources>

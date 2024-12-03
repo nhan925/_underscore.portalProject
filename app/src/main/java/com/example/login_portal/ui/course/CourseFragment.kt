@@ -50,7 +50,9 @@ class CourseFragment : Fragment() {
         val adapter = RegistrationPeriodItemAdapter(listOf(), requireContext())
         recyclerView.adapter = adapter
         adapter.onItemClick = { item ->
-
+            val intent = Intent(requireContext(), ChooseCourseActivity::class.java)
+            intent.putExtra("PERIOD_ID", item.Id)
+            startActivity(intent)
         }
 
         viewModel.periods.observe(viewLifecycleOwner, Observer { data ->

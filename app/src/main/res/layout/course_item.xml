@@ -5,28 +5,22 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.5" />
-
     <com.google.android.material.card.MaterialCardView
         android:layout_width="0dp"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/guideline4"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground">
 
             <TextView
                 android:id="@+id/course_item_name"
@@ -38,6 +32,7 @@
                 android:text="Lập trình hướng đối tượng"
                 android:textSize="13sp"
                 android:textStyle="bold"
+                android:lines="2"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -49,7 +44,7 @@
                 android:layout_marginTop="4dp"
                 android:alpha="0.8"
                 android:text="@string/course_item_code"
-                android:textSize="11sp"
+                android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="@+id/course_item_name"
                 app:layout_constraintTop_toBottomOf="@+id/course_item_name" />
 
@@ -57,11 +52,11 @@
                 android:id="@+id/course_item_credits_lebel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
                 android:alpha="0.8"
                 android:text="@string/course_item_credits"
-                android:textSize="11sp"
+                android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/course_item_code_label"
                 app:layout_constraintTop_toBottomOf="@+id/course_item_code_label" />
@@ -72,7 +67,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:text="4"
-                android:textSize="11sp"
+                android:textSize="12sp"
                 app:layout_constraintStart_toEndOf="@+id/course_item_credits_lebel"
                 app:layout_constraintTop_toTopOf="@+id/course_item_credits_lebel" />
 
@@ -82,9 +77,30 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:text="CSC1001"
-                android:textSize="11sp"
+                android:textSize="12sp"
                 app:layout_constraintStart_toEndOf="@+id/course_item_code_label"
                 app:layout_constraintTop_toTopOf="@+id/course_item_code_label" />
+
+            <TextView
+                android:id="@+id/course_item_class_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:alpha="0.8"
+                android:text="@string/course_item_class"
+                android:textSize="12sp"
+                app:layout_constraintStart_toEndOf="@+id/course_item_credits"
+                app:layout_constraintTop_toTopOf="@+id/course_item_credits" />
+
+            <TextView
+                android:id="@+id/course_item_class"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="22CTT4"
+                android:textSize="12sp"
+                app:layout_constraintStart_toEndOf="@+id/course_item_class_label"
+                app:layout_constraintTop_toTopOf="@+id/course_item_class_label" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

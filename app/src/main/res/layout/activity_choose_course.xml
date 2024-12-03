@@ -10,7 +10,7 @@
     tools:context=".ui.course.ChooseCourseActivity">
 
     <Button
-        android:id="@+id/iconButton"
+        android:id="@+id/choose_course_back_btn"
         style="?attr/materialIconButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -27,15 +27,18 @@
         android:text="@string/choose_course_title"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/iconButton"
+        app:layout_constraintStart_toEndOf="@+id/choose_course_back_btn"
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.search.SearchBar
-        android:id="@+id/searchBar"
+        android:id="@+id/choose_course_act_search_bar"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         app:strokeColor="@color/item_dark_overlay"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:clickable="true"
         app:strokeWidth="1dp"
         android:hint="@string/choose_course_search"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
@@ -49,7 +52,7 @@
         android:clickable="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline3"
-        app:layout_constraintTop_toTopOf="@+id/searchBar"
+        app:layout_constraintTop_toTopOf="@+id/choose_course_act_search_bar"
         app:srcCompat="@drawable/request_filter" />
 
     <androidx.constraintlayout.widget.Guideline
@@ -75,7 +78,7 @@
         app:hintTextAppearance="@style/hintTextStyle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchBar">
+        app:layout_constraintTop_toBottomOf="@+id/choose_course_act_search_bar">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -104,7 +107,7 @@
             android:alpha="0.8"
             android:text="@string/choose_course_general_info_registered_credits"
             app:layout_constraintStart_toStartOf="@+id/textView12"
-            app:layout_constraintTop_toTopOf="@+id/textView11" />
+            app:layout_constraintTop_toTopOf="@+id/choose_course_act_max_credits" />
 
         <TextView
             android:id="@+id/textView8"
@@ -118,11 +121,11 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView15"
+            android:id="@+id/choose_course_act_registered_credits"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="12"
-            app:layout_constraintStart_toStartOf="@+id/textView13"
+            app:layout_constraintStart_toStartOf="@+id/choose_course_act_registered_courses"
             app:layout_constraintTop_toTopOf="@+id/textView14" />
 
         <TextView
@@ -136,7 +139,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
         <TextView
-            android:id="@+id/textView10"
+            android:id="@+id/choose_course_act_major"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -145,11 +148,11 @@
             app:layout_constraintTop_toTopOf="@+id/textView8" />
 
         <TextView
-            android:id="@+id/textView11"
+            android:id="@+id/choose_course_act_max_credits"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="25"
-            app:layout_constraintStart_toStartOf="@+id/textView10"
+            app:layout_constraintStart_toStartOf="@+id/choose_course_act_major"
             app:layout_constraintTop_toTopOf="@+id/textView9" />
 
         <TextView
@@ -159,11 +162,11 @@
             android:layout_marginStart="16dp"
             android:alpha="0.8"
             android:text="@string/choose_course_general_info_registered_courses"
-            app:layout_constraintStart_toEndOf="@+id/textView10"
-            app:layout_constraintTop_toTopOf="@+id/textView10" />
+            app:layout_constraintStart_toEndOf="@+id/choose_course_act_major"
+            app:layout_constraintTop_toTopOf="@+id/choose_course_act_major" />
 
         <TextView
-            android:id="@+id/textView13"
+            android:id="@+id/choose_course_act_registered_courses"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -174,6 +177,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/choose_course_act_container"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"

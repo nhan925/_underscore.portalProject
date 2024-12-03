@@ -18,8 +18,8 @@ class CourseViewModel : ViewModel() {
     }
 
     fun reset(callback: (Unit?) -> Unit) {
-        CourseRegistrationDao.getPeriods {
-            data -> _periods.value = data
+        CourseRegistrationDao.getPeriods { data ->
+            _periods.value = data
             callback(null)
         }
     }

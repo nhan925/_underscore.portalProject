@@ -91,6 +91,24 @@
     <string name="choose_course_registered_course">Registered</string>
     <string name="course_item_code">Code:</string>
     <string name="course_item_credits">Credits:</string>
+    <string name="course_item_class">Class:</string>
+    <string name="choose_class_title">Classes</string>
+    <string name="choose_class_general_title">Course infomations</string>
+    <string name="choose_class_code">Course ID:</string>
+    <string name="choose_class_num_of_classes">Num. of classes:</string>
+    <string name="choose_class_course_name">Course name:</string>
+    <string name="choose_class_status">Status:</string>
+    <string name="choose_class_classes_recycler">Classes</string>
+    <string name="choose_course_alert">Exceeding the credit limit !</string>
+    <string name="choose_couse_status_registered">Registered</string>
+    <string name="choose_couse_status_unregistered">Unregistered</string>
+    <string name="choose_couse_status_studied">Studied</string>
+    <string name="class_item_name">Class name:</string>
+    <string name="class_item_day">Day:</string>
+    <string name="class_item_time">Time:</string>
+    <string name="class_item_room">Room:</string>
+    <string name="class_item_slot">Slot:</string>
+    <string name="class_item_registered">Registered:</string>
 
 
     \
