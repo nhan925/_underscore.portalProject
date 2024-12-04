@@ -109,5 +109,19 @@
     <string name="class_item_room">Phòng học:</string>
     <string name="class_item_slot">Số slot:</string>
     <string name="class_item_registered">Đã đăng ký:</string>
+    <string name="choose_class_register">Đăng ký</string>
+    <string name="choose_class_cancel">Hủy đăng ký</string>
+    <string name="choose_class_not_selected_alert">Chưa chọn lớp !</string>
+    <string name="choose_class_registered_alert">Bạn đã đăng ký lớp này rồi !</string>
+    <string name="choose_class_dialog_title">Xác nhận</string>
+    <string name="choose_class_dialog_message">Bạn có chắc chắn muốn đăng ký không ? Sau khi đăng ký kết quả cũ sẽ bị xóa và không thể khôi phục !</string>
+    <string name="choose_class_dialog_decline">Hủy</string>
+    <string name="choose_class_accept">Đăng ký</string>
+    <string name="choose_class_register_error">Đã có lỗi xảy ra trong quá trình đăng ký !</string>
+    <string name="choose_class_register_limit">Lớp không còn slot !</string>
+    <string name="choose_class_register_duplicate_time">Trùng lịch với môn đã đăng ký !</string>
+    <string name="choose_class_register_success">Đăng ký thành công !</string>
+    <string name="choose_class_cancel_success">Hùy thành công !</string>
+    <string name="choose_class_cancel_failed">Hủy thất bại !</string>
 
 </resources>

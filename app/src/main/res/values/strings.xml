@@ -109,6 +109,20 @@
     <string name="class_item_room">Room:</string>
     <string name="class_item_slot">Slot:</string>
     <string name="class_item_registered">Registered:</string>
+    <string name="choose_class_register">Register</string>
+    <string name="choose_class_cancel">Unregister</string>
+    <string name="choose_class_not_selected_alert">Please select a class !</string>
+    <string name="choose_class_registered_alert">You have registered this class !</string>
+    <string name="choose_class_dialog_title">Warning</string>
+    <string name="choose_class_dialog_message">Are you sure to register this class ? After registering, your previous result will be lost !</string>
+    <string name="choose_class_dialog_decline">Decline</string>
+    <string name="choose_class_accept">Accept</string>
+    <string name="choose_class_register_error">Register failed ! There\'s an error happened !</string>
+    <string name="choose_class_register_limit">The class have been full !</string>
+    <string name="choose_class_register_duplicate_time">You have registered for a class whose time is the same as this !</string>
+    <string name="choose_class_register_success">Register successfully !</string>
+    <string name="choose_class_cancel_success">Cancel successfully !</string>
+    <string name="choose_class_cancel_failed">Cancel failed !</string>
 
 
     \

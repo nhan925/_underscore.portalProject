@@ -5,7 +5,7 @@ data class ChooseClassesInformations (
     var CourseName: String = "",
     var Status: String = "",
     var Classes: List<ClassesOfCourse> = listOf(),
-    var RegisteredClassId: String = "",
+    var RegisteredClassId: String? = null,
     var PeriodId: Int = 0
 ) {
     val NumberOfClasses: Int

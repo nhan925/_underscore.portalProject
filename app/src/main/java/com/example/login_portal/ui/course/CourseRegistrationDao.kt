@@ -1,5 +1,6 @@
 package com.example.login_portal.ui.course
 
+import android.util.Log
 import com.example.login_portal.ui.requests.RequestItem
 import com.example.login_portal.utils.ApiServiceHelper
 import com.google.gson.Gson
@@ -46,6 +47,37 @@ object CourseRegistrationDao {
             }
             else {
                 callback(ChooseClassesInformations())
+            }
+        }
+    }
+
+    fun registerClass(toRegisterClassId: String, registeredClassId: String?, callback: (String) -> Unit) {
+        val data = object {
+            val to_register_class_id = toRegisterClassId
+            val registered_class_id = registeredClassId
+        }
+
+        ApiServiceHelper.post("/rpc/register_class", data) { response ->
+            if (response != null) {
+                callback(response.string())
+            }
+            else {
+                callback("ERROR")
+            }
+        }
+    }
+
+    fun cancelClass(cancelClassId: String, callback: (String) -> Unit) {
+        val data = object {
+            val canceled_class_id = cancelClassId
+        }
+
+        ApiServiceHelper.post("/rpc/cancel_course", data) { response ->
+            if (response != null) {
+                callback(response.string())
+            }
+            else {
+                callback("ERROR")
             }
         }
     }
