@@ -89,10 +89,9 @@ class InformationFragment : Fragment() {
         val navAvatarImageView = headerView.findViewById<ImageView>(R.id.nav_header_main_student_avatar)
 
         informationViewModel.informations.observe(viewLifecycleOwner) { info ->
-            info?.AvatarUrl?.let { avarUrl ->
-                loadAvatarIntoImageView(avarUrl,binding.informationFragmentStudentAvatar)
-                loadAvatarIntoImageView(avarUrl,navAvatarImageView)
-            }
+            val avatarUrl = info?.AvatarUrl?.takeIf { it.isNotEmpty() } ?: ""
+            loadAvatarIntoImageView(avatarUrl, binding.informationFragmentStudentAvatar)
+            loadAvatarIntoImageView(avatarUrl, navAvatarImageView)
         }
         return root
     }
@@ -101,6 +100,7 @@ class InformationFragment : Fragment() {
         Glide.with(requireContext())
             .load(imageUrl)
             .placeholder(R.drawable.baseline_person_24) // Ảnh mặc định
+            .error(R.drawable.baseline_person_24)
             .transform(CenterCrop())
             .into(imageView)
     }

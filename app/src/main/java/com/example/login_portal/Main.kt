@@ -77,6 +77,7 @@ class Main : BaseActivity() {
             Glide.with(this)
                 .load(data.AvatarUrl)
                 .placeholder(R.drawable.baseline_person_24)
+                .error(R.drawable.baseline_person_24)
                 .into(imgAvatar!!)
             txtUserName!!.setText(data.FullName)
             txtSchoolEmail!!.setText(data.SchoolEmail)

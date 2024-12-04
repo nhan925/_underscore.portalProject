@@ -84,7 +84,15 @@ class Information_Contact : Fragment() {
             toggleEditMode()
 
         }
+
         return root
+    }
+
+    override fun onPause() {
+        super.onPause()
+        if (informationViewModel.isEditing.value == true){
+            toggleEditMode()
+        }
     }
 
     private fun toggleEditMode() {

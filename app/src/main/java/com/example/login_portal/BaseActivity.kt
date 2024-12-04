@@ -32,7 +32,7 @@ open class BaseActivity : AppCompatActivity() {
         updateConfiguration(languageCode)
 
         //TODO: hard code login here
-        ApiServiceHelper.login("student1", "Nhi1234#") { isSuccess ->
+        ApiServiceHelper.login("student1", "1234") { isSuccess ->
             if (!isSuccess)
                 Log.i("d", "Login failed")
         }
