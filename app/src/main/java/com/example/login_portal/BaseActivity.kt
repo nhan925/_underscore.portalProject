@@ -30,6 +30,12 @@ open class BaseActivity : AppCompatActivity() {
         val languageCode = getSharedPreferences("appPreferences", Context.MODE_PRIVATE)
             .getString("appLanguage", "en") ?: "en"
         updateConfiguration(languageCode)
+
+        //TODO: hard code login here
+        ApiServiceHelper.login("student1", "Nhi1234#") { isSuccess ->
+            if (!isSuccess)
+                Log.i("d", "Login failed")
+        }
     }
 
     private fun updateConfiguration(languageCode: String) {

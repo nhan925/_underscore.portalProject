@@ -9,14 +9,17 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.example.login_portal.R
 import com.example.login_portal.databinding.FragmentInformationBinding
+import com.google.android.material.navigation.NavigationView
 import com.google.android.material.tabs.TabLayout
 import kotlinx.coroutines.launch
 import java.io.File
@@ -81,17 +84,26 @@ class InformationFragment : Fragment() {
             showAvatarOptions()
         }
 
+        val navigationView = requireActivity().findViewById<NavigationView>(R.id.nav_view)
+        val headerView = navigationView.getHeaderView(0) // Header đầu tiên
+        val navAvatarImageView = headerView.findViewById<ImageView>(R.id.nav_header_main_student_avatar)
+
         informationViewModel.informations.observe(viewLifecycleOwner) { info ->
-            info?.AvatarUrl?.let {
-                Glide.with(requireContext())
-                    .load(it)  // Tải ảnh từ URL
-                    .placeholder(R.drawable.baseline_person_24)  // Ảnh mặc định nếu lỗi
-                    .into(binding.informationFragmentStudentAvatar)  // Đặt vào ImageView
+            info?.AvatarUrl?.let { avarUrl ->
+                loadAvatarIntoImageView(avarUrl,binding.informationFragmentStudentAvatar)
+                loadAvatarIntoImageView(avarUrl,navAvatarImageView)
             }
         }
         return root
     }
 
+    private fun loadAvatarIntoImageView(imageUrl: String?, imageView: ImageView) {
+        Glide.with(requireContext())
+            .load(imageUrl)
+            .placeholder(R.drawable.baseline_person_24) // Ảnh mặc định
+            .transform(CenterCrop())
+            .into(imageView)
+    }
 
     private fun showAvatarOptions() {
         var resource = requireContext()
@@ -127,11 +139,9 @@ class InformationFragment : Fragment() {
         }
     }
 
-
     private fun removeAvatar(){
         informationViewModel.removeAvatar()
     }
-
 
     override fun onDestroyView() {
         super.onDestroyView()
