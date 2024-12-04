@@ -52,21 +52,20 @@ class InformationViewModel(private val context: Context) : ViewModel() {
         viewModelScope.launch {
         reset()
             informations.observeForever { info ->
-            if (informations.value?.AvatarUrl.isNullOrEmpty()) {
+            /*if (informations.value?.AvatarUrl.isNullOrEmpty()) {
                 var defaultAvt = context.getDrawable(R.drawable.baseline_person_24)
                 val currentInfo = informations.value ?: InformationsForInformation()
                 currentInfo.AvatarBitmap = defaultAvt?.toBitmap()
                 _informations.postValue(informations.value)
                 isDefaultAvt = true
             } else {
-                /*val inputStream = context.contentResolver.openInputStream(informations.value?.AvatarUrl!!.toUri())
+                *//*val inputStream = context.contentResolver.openInputStream(informations.value?.AvatarUrl!!.toUri())
                 _informations.value?.setAvatarBitmap(inputStream)
                 val currentInfo = _informations.value ?: InformationsForInformation()
-                _informations.value = currentInfo*/
+                _informations.value = currentInfo*//*
                 _informations.postValue(informations.value)
                 isDefaultAvt = false
-            }
-
+            }*/
                 editPersonalEmail.value = info.PersonalEmail ?: ""
                 editPhoneNumber.value = info.PhoneNumber ?: ""
                 editAddress.value = info.Address ?: ""
@@ -79,7 +78,6 @@ class InformationViewModel(private val context: Context) : ViewModel() {
         withContext(Dispatchers.IO) {
         InformationsForInformationDao.getInformation { data ->
             _informations.value = data
-            Log.d("GETINFOR",data.toString())
         }}
     }
 
@@ -146,11 +144,12 @@ class InformationViewModel(private val context: Context) : ViewModel() {
         if (fileUri != null)
         {
             val inputStream = context.contentResolver.openInputStream(fileUri)
-            _informations.value?.setAvatarBitmap(inputStream)
-            //_informations.value?.AvatarUrl = fileUri.toString()
             val currentInfo = _informations.value ?: InformationsForInformation()
+            currentInfo.AvatarUrl = fileUri.toString()
+            currentInfo.setAvatarBitmap(inputStream)
             _informations.value = currentInfo
             isDefaultAvt = false
+
             viewModelScope.launch {
                 uploadAvatarToDatabase(fileUri)
             }
