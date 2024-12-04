@@ -2,6 +2,7 @@ package com.example.login_portal.ui.course
 
 
 
+import android.util.Log
 import android.view.View
 import android.widget.FrameLayout
 import androidx.lifecycle.LiveData

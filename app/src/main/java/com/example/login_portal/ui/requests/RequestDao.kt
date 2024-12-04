@@ -19,7 +19,7 @@ object RequestDao {
 
         ApiServiceHelper.post("/rpc/get_all_request_data", data) { response ->
             if (response != null) {
-                val result: List<RequestItem> = Gson().fromJson(response.string(), object : TypeToken<List<RequestItem>>() {}.type)
+                val result: List<RequestItem> = Gson().fromJson(response, object : TypeToken<List<RequestItem>>() {}.type)
                 callback(result) // Pass the result to the callback
             } else {
                 callback(listOf()) // Pass empty list if no response
@@ -30,7 +30,7 @@ object RequestDao {
     fun getRequestsStatus(callback: (List<String>) -> Unit) {
         ApiServiceHelper.get("/rpc/get_status_list") { response ->
             if (response != null) {
-                val result: List<String> = Gson().fromJson(response.string(), object : TypeToken<List<String>>() {}.type)
+                val result: List<String> = Gson().fromJson(response, object : TypeToken<List<String>>() {}.type)
                 callback(result) // Pass the result to the callback
             } else {
                 callback(listOf()) // Pass empty list if no response
@@ -44,7 +44,7 @@ object RequestDao {
         }
         ApiServiceHelper.post("/rpc/get_answer_request", data) { response ->
             if (response != null) {
-                val result: RequestAnswer = Gson().fromJson(response.string(), RequestAnswer::class.java)
+                val result: RequestAnswer = Gson().fromJson(response, RequestAnswer::class.java)
                 if (result.AnswerId == null)
                     callback(RequestAnswer())
                 else

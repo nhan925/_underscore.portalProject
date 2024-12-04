@@ -10,7 +10,7 @@ object CourseRegistrationDao {
     fun getPeriods(callback: (List<Period>) -> Unit) {
         ApiServiceHelper.get("/rpc/get_courses_registration_period") { response ->
             if (response != null) {
-                val result: List<Period> = Gson().fromJson(response.string(), object : TypeToken<List<Period>>() {}.type)
+                val result: List<Period> = Gson().fromJson(response, object : TypeToken<List<Period>>() {}.type)
                 callback(result) // Pass the result to the callback
             } else {
                 callback(listOf()) // Pass empty list if no response
@@ -25,7 +25,7 @@ object CourseRegistrationDao {
 
         ApiServiceHelper.post("/rpc/get_choose_courses_information", data) { response ->
             if (response != null) {
-                val result: ChooseCourseInformations = Gson().fromJson(response.string(), ChooseCourseInformations::class.java)
+                val result: ChooseCourseInformations = Gson().fromJson(response, ChooseCourseInformations::class.java)
                 callback(result)
             }
             else {
@@ -42,7 +42,7 @@ object CourseRegistrationDao {
 
         ApiServiceHelper.post("/rpc/get_choose_classes_information", data) { response ->
             if (response != null) {
-                val result: ChooseClassesInformations = Gson().fromJson(response.string(), ChooseClassesInformations::class.java)
+                val result: ChooseClassesInformations = Gson().fromJson(response, ChooseClassesInformations::class.java)
                 callback(result)
             }
             else {
@@ -59,7 +59,7 @@ object CourseRegistrationDao {
 
         ApiServiceHelper.post("/rpc/register_class", data) { response ->
             if (response != null) {
-                callback(response.string())
+                callback(response)
             }
             else {
                 callback("ERROR")
@@ -74,7 +74,7 @@ object CourseRegistrationDao {
 
         ApiServiceHelper.post("/rpc/cancel_course", data) { response ->
             if (response != null) {
-                callback(response.string())
+                callback(response)
             }
             else {
                 callback("ERROR")
