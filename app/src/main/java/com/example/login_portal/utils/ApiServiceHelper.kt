@@ -5,6 +5,7 @@ import android.os.Looper
 import com.github.kittinunf.fuel.Fuel
 import com.github.kittinunf.fuel.core.extensions.jsonBody
 import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 
 object ApiServiceHelper {
     const val BASE_URL = "http://10.0.2.2:3001"
@@ -66,7 +67,10 @@ object ApiServiceHelper {
     // Example POST request with Authorization
     fun post(endpoint: String, data: Any, callback: (String?) -> Unit) {
         jwtToken?.let { token ->
-            val jsonData = Gson().toJson(data)
+            val jsonData = GsonBuilder()
+                .serializeNulls()
+                .create()
+                .toJson(data)
             Fuel.post("$BASE_URL$endpoint")
                 .header("Authorization", "Bearer $token")
                 .jsonBody(jsonData)
