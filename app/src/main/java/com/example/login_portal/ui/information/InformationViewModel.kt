@@ -128,7 +128,7 @@ class InformationViewModel(private val context: Context) : ViewModel() {
         )
         ApiServiceHelper.post("/rpc/update_contact_information", contactInfo) { responseBody ->
             if (responseBody != null) {
-                val result = responseBody.string()
+                val result = responseBody
             } else {
                 Log.e("Save", "Update failed")
             }
@@ -174,7 +174,7 @@ class InformationViewModel(private val context: Context) : ViewModel() {
 
         ApiServiceHelper.post("/rpc/update_avatar", mapOf("image_url" to "")) { responseBody ->
             if (responseBody != null) {
-                val result = responseBody.string()
+                val result = responseBody
             } else {
                 Log.e("Save", "Update failed")
             }
@@ -193,7 +193,7 @@ class InformationViewModel(private val context: Context) : ViewModel() {
             _informations.value = currentInfo
             ApiServiceHelper.post("/rpc/update_avatar", mapOf("image_url" to imageUrl)) { responseBody ->
                 if (responseBody != null) {
-                    val result = responseBody.string()
+                    val result = responseBody
                 } else {
                     Log.e("Save", "Update failed")
                 }

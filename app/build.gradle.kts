@@ -42,6 +42,10 @@ android {
 }
 
 dependencies {
+    val room_version = "2.6.1"
+    implementation("androidx.room:room-runtime:$room_version")
+    ksp("androidx.room:room-compiler:$room_version")
+    implementation("androidx.room:room-ktx:$room_version")
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
@@ -59,15 +63,11 @@ dependencies {
     implementation(libs.material.v190) // Update the version as needed
     implementation(libs.androidx.fragment.ktx.v157) // For Fragment transactions
     implementation(libs.androidx.security.crypto)
-    implementation(libs.retrofit)
     implementation(libs.converter.gson)
     implementation(libs.gson)
     implementation(libs.okhttp)
     implementation(libs.dotenv.kotlin)
     implementation(libs.glide)
-
-    val room_version = "2.6.1"
-    implementation("androidx.room:room-runtime:$room_version")
-    ksp("androidx.room:room-compiler:$room_version")
-    implementation("androidx.room:room-ktx:$room_version")
+    implementation(libs.fuel)
+    implementation(libs.fuel.gson)
 }

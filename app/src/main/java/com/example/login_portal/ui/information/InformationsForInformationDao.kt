@@ -10,7 +10,7 @@ object InformationsForInformationDao {
         ApiServiceHelper.get("/rpc/get_informations_info") { response ->
             if (response != null) {
                     val gson = Gson()
-                    val result = gson.fromJson(response.string(), InformationsForInformation::class.java)
+                    val result = gson.fromJson(response, InformationsForInformation::class.java)
                     callback(result)
             } else {
                 callback(InformationsForInformation())
