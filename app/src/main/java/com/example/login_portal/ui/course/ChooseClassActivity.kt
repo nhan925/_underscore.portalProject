@@ -87,7 +87,7 @@ class ChooseClassActivity : BaseActivity() {
 
             val operations = mutableListOf(getString(R.string.choose_class_register))
 
-            if (intent.getStringExtra("STATUS")!! == getString(R.string.choose_couse_status_registered))
+            if (viewModel.status == getString(R.string.choose_couse_status_registered))
                 operations.add(1, getString(R.string.choose_class_cancel))
 
             operations.forEachIndexed { index, title ->

@@ -79,6 +79,15 @@ class ClassItemAdapter(
             holder.itemView.isEnabled = false
             holder.itemView.alpha = 0.5F
         }
+
+        if (item.RegisteredSlot >= item.MaxSlot) {
+            holder.itemView.isEnabled = false
+            holder.itemView.alpha = 0.5F
+        }
+        else {
+            holder.itemView.isEnabled = true
+            holder.itemView.alpha = 1F
+        }
     }
 
     override fun getItemCount(): Int {

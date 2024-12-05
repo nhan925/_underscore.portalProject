@@ -1,31 +1,32 @@
 package com.example.login_portal.ui.course
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
-import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import com.example.login_portal.BaseActivity
 import com.example.login_portal.R
-import com.example.login_portal.ui.requests.RequestDetailAnswer
-import com.example.login_portal.ui.requests.RequestDetailContent
-import com.example.login_portal.ui.requests.RequestItem
+import com.example.login_portal.utils.removeAccents
+import com.google.android.material.search.SearchBar
+import com.google.android.material.search.SearchView
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayout.Tab
-import kotlin.math.max
+import java.text.Normalizer
 
 class ChooseCourseActivity : BaseActivity() {
     private lateinit var viewModel: ChooseCourseViewModel
@@ -58,6 +59,9 @@ class ChooseCourseActivity : BaseActivity() {
     lateinit var container: ViewPager2
     lateinit var tabLayout: TabLayout
     lateinit var backBtn: Button
+    lateinit var searchBar: SearchBar
+    lateinit var searchView: SearchView
+    lateinit var searchRecyclerView: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -74,6 +78,84 @@ class ChooseCourseActivity : BaseActivity() {
         container = findViewById(R.id.choose_course_act_container)
         tabLayout = findViewById(R.id.choose_course_tablayout)
         backBtn = findViewById(R.id.choose_course_back_btn)
+        searchBar = findViewById(R.id.choose_course_act_search_bar)
+        searchView = findViewById(R.id.choose_course_act_search_view)
+        searchRecyclerView = findViewById(R.id.choose_course_search_recycler)
+
+        val startChooseClassActivity: (Course, String) -> Unit = { course, status ->
+            val _intent = Intent(this, ChooseClassActivity::class.java)
+            _intent.putExtra("COURSE_ID", course.Id)
+            _intent.putExtra("PERIOD_ID", viewModel.periodId)
+            _intent.putExtra("COURSE_NAME", course.Name)
+            _intent.putExtra("STATUS", status)
+            startActivity(_intent)
+        }
+
+        val clickUnregisteredCourse: (Course) -> Unit = { item ->
+            if (viewModel.info.value?.RegisteredCredits!! + item.Credits > viewModel.info.value?.MaxCredits!!) {
+                Toast.makeText(this, getString(R.string.choose_course_alert), Toast.LENGTH_SHORT).show()
+            }
+            else {
+                startChooseClassActivity.invoke(item, getString(R.string.choose_couse_status_unregistered))
+            }
+        }
+
+        val clickStudiedCourse: (Course) -> Unit = {item ->
+            if (viewModel.info.value?.RegisteredCredits!! + item.Credits > viewModel.info.value?.MaxCredits!!) {
+                Toast.makeText(this, getString(R.string.choose_course_alert), Toast.LENGTH_SHORT).show()
+            }
+            else {
+                startChooseClassActivity.invoke(item, getString(R.string.choose_couse_status_studied))
+            }
+        }
+
+        val clickRegisteredCourse: (Course) -> Unit = { item ->
+            startChooseClassActivity.invoke(item, getString(R.string.choose_couse_status_registered))
+        }
+
+        searchView.setupWithSearchBar(searchBar)
+        searchRecyclerView.layoutManager = GridLayoutManager(this, 2)
+        var originalSearchCourses: List<Course> = listOf()
+        searchBar.setOnClickListener {
+            val clickable = viewModel.info.value?.RegisteredCredits!! < viewModel.info.value?.MaxCredits!!
+            when (container.currentItem) {
+                0 -> {
+                    originalSearchCourses = viewModel.info.value?.UnregisteredCourses!!
+                    val adapter = CourseItemAdapter(originalSearchCourses, this, clickable = clickable)
+                    adapter.onItemClick = { item -> clickUnregisteredCourse.invoke(item) }
+                    searchRecyclerView.adapter = adapter
+                }
+                1 -> {
+                    originalSearchCourses = viewModel.info.value?.StudiedCourses!!
+                    val adapter = CourseItemAdapter(originalSearchCourses, this, clickable = clickable)
+                    adapter.onItemClick = { item -> clickStudiedCourse.invoke(item) }
+                    searchRecyclerView.adapter = adapter
+                }
+                2 -> {
+                    originalSearchCourses = viewModel.info.value?.RegisteredCourses!!
+                    val adapter = CourseItemAdapter(originalSearchCourses, this, true)
+                    adapter.onItemClick = { item -> clickRegisteredCourse.invoke(item) }
+                    searchRecyclerView.adapter = adapter
+                }
+            }
+            searchView.show()
+        }
+        searchView.editText.doOnTextChanged { text, start, before, count ->
+            if (text.toString().isEmpty()) {
+                (searchRecyclerView.adapter as CourseItemAdapter).resetSource(originalSearchCourses)
+            }
+            else {
+                val normalizedQuery = text.toString().removeAccents()
+                val tokens = normalizedQuery.split(" ")
+                val filteredCourses = originalSearchCourses.filter { course ->
+                    tokens.all { token ->
+                        course.Name.removeAccents().contains(token) ||
+                                course.Id.removeAccents().contains(token)
+                    }
+                }
+                (searchRecyclerView.adapter as CourseItemAdapter).resetSource(filteredCourses)
+            }
+        }
 
         viewModel.reset {
             val clickable = viewModel.info.value?.RegisteredCredits!! < viewModel.info.value?.MaxCredits!!
@@ -98,36 +180,9 @@ class ChooseCourseActivity : BaseActivity() {
                 RegisteredFragment(registeredAdapter))
             container.adapter = adapter
 
-            val startChooseClassActivity: (Course, String) -> Unit = { course, status ->
-                val _intent = Intent(this, ChooseClassActivity::class.java)
-                _intent.putExtra("COURSE_ID", course.Id)
-                _intent.putExtra("PERIOD_ID", viewModel.periodId)
-                _intent.putExtra("COURSE_NAME", course.Name)
-                _intent.putExtra("STATUS", status)
-                startActivity(_intent)
-            }
-
-            unregisteredAdapter.onItemClick = { item ->
-                if (viewModel.info.value?.RegisteredCredits!! + item.Credits > viewModel.info.value?.MaxCredits!!) {
-                    Toast.makeText(this, getString(R.string.choose_course_alert), Toast.LENGTH_SHORT).show()
-                }
-                else {
-                    startChooseClassActivity.invoke(item, getString(R.string.choose_couse_status_unregistered))
-                }
-            }
-
-            registeredAdapter.onItemClick = { item ->
-                startChooseClassActivity.invoke(item, getString(R.string.choose_couse_status_registered))
-            }
-
-            studiedAdapter.onItemClick = { item ->
-                if (viewModel.info.value?.RegisteredCredits!! + item.Credits > viewModel.info.value?.MaxCredits!!) {
-                    Toast.makeText(this, getString(R.string.choose_course_alert), Toast.LENGTH_SHORT).show()
-                }
-                else {
-                    startChooseClassActivity.invoke(item, getString(R.string.choose_couse_status_studied))
-                }
-            }
+            unregisteredAdapter.onItemClick = { item -> clickUnregisteredCourse.invoke(item) }
+            registeredAdapter.onItemClick = { item -> clickRegisteredCourse.invoke(item) }
+            studiedAdapter.onItemClick = { item -> clickStudiedCourse.invoke(item) }
         }
 
         container.registerOnPageChangeCallback(object: OnPageChangeCallback() {
@@ -150,10 +205,12 @@ class ChooseCourseActivity : BaseActivity() {
         })
 
         backBtn.setOnClickListener { finish() }
+
     }
 
     override fun onResume() {
         super.onResume()
+        searchView.hide()
         viewModel.reset { }
     }
 }

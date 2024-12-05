@@ -35,15 +35,15 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        app:forceDefaultNavigationOnClickListener="true"
         app:strokeColor="@color/item_dark_overlay"
-        android:focusable="true"
-        android:focusableInTouchMode="true"
-        android:clickable="true"
+        android:inputType="text"
         app:strokeWidth="1dp"
         android:hint="@string/choose_course_search"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+        app:layout_constraintTop_toBottomOf="@+id/textView7" >
+    </com.google.android.material.search.SearchBar>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingActionButton"
@@ -188,6 +188,23 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/choose_course_general_frame" />
+
+    <com.google.android.material.search.SearchView
+        android:id="@+id/choose_course_act_search_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:hint="@string/choose_course_search"
+        app:autoShowKeyboard="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" >
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/choose_course_search_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </com.google.android.material.search.SearchView>
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/choose_course_tablayout"
