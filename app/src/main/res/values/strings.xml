@@ -55,6 +55,32 @@
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
 
+    <string name="request_reExaminationTitle">ReExamination</string>
+    <string name="request_requestForTranscriptTitle">Request for transcript</string>
+    <string name="statistics">Statistics</string>
+    <string name="gpa">GPA</string>
+    <string name="view">View</string>
+    <string name="semester">Semester</string>
+    <string name="school_year">School Year</string>
+    <string name="score_filter">Score Filter</string>
+    <string name="username_empty">Please enter username</string>
+    <string name="password_empty">Please enter password</string>
+    <string name="login_successful">Login successful</string>
+    <string name="login_failed">Login failed. Please check your credentials.</string>
+
+
+    <string name="year">Year</string>
+    <string name="course_code">Course Code</string>
+    <string name="subject">Subject</string>
+    <string name="credits">Credits</string>
+    <string name="class_code">Class Code</string>
+    <string name="score10">10-Point</string>
+    <string name="score4">4-Point</string>
+    <string name="notes">Notes</string>
+
+    <string name="num_credit">Credits</string>
+    <string name="num_course">Courses</string>"
+
 
 
 \

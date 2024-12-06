@@ -55,4 +55,31 @@
     <string name="menu_setting">Cài đặt</string>
     <string name="menu_payment">Lịch sử thanh toán</string>
 
+    <string name="request_reExaminationTitle">Xin phúc khảo</string>
+    <string name="request_requestForTranscriptTitle">Xin bảng điểm</string>
+
+    <string name="statistics">Thống kê</string>
+    <string name="gpa">GPA</string>
+
+    <string name="view">Tìm</string>
+    <string name="semester">Học kì</string>
+    <string name="school_year">Năm học</string>
+    <string name="score_filter">Tìm kiếm thông tin</string>
+    <string name="username_empty">Nhập vào tên đăng nhập</string>
+    <string name="password_empty">Nhập vào mật khẩu</string>
+    <string name="login_successful">Đăng nhập thành công</string>
+    <string name="login_failed">Đăng nhập không thành công. Vui lòng kiểm tra lại thông tin đăng nhập.</string>
+
+    <string name="year">Năm học</string>
+    <string name="course_code">Mã môn học</string>
+    <string name="subject">Môn học</string>
+    <string name="credits">Số tín chỉ</string>
+    <string name="class_code">Mã lớp</string>
+    <string name="score10">Điểm hệ 10</string>
+    <string name="score4">Điểm hệ 4</string>
+    <string name="notes">Ghi chú</string>
+    <string name="num_credit">Số tín chỉ</string>
+    <string name="num_course">Số môn học</string>"
+
+
 </resources>

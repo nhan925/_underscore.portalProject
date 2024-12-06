@@ -52,7 +52,23 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
     implementation("com.google.android.material:material:1.9.0") // Update the version as needed
     implementation("androidx.fragment:fragment-ktx:1.5.7") // For Fragment transactions
     implementation("androidx.security:security-crypto:1.1.0-alpha06")
+
+    implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
+
+    implementation("com.github.kittinunf.fuel:fuel:2.3.1")
+    implementation("com.github.kittinunf.fuel:fuel-gson:2.3.1")
+
+    implementation("com.airbnb.android:lottie:3.4.0")
+
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation("com.google.code.gson:gson:2.10.1")
+
+
+
+
+
 }
