@@ -43,6 +43,7 @@
 
     <string name="menu_dash">Dashboard</string>
 
+    <!--For information_student_page-->
     <string name="menu_infor">Thông tin sinh viên</string>
     <string name="infor_student_frag_student_role">Sinh viên</string>
     <string name="infor_student_frag_information_general">Thông tin chung</string>
@@ -74,7 +75,23 @@
 
     <string name="menu_Noti">Thông báo</string>
     <string name="menu_score">Điểm số</string>
+
+    <!--For schedule_student_page-->
     <string name="menu_schedule">Lịch học</string>
+    <string name="schedule_page_choose_semester">Chọn học kỳ</string>
+    <string name="schedule_page_session">Buổi</string>
+    <string name="schedule_page_period">Tiết</string>
+    <string name="schedule_page_monday">Thứ Hai</string>
+    <string name="schedule_page_tuesday">Thứ Ba</string>
+    <string name="schedule_page_wednesday">Thứ Tư</string>
+    <string name="schedule_page_thursday">Thứ Năm</string>
+    <string name="schedule_page_friday">Thứ Sáu</string>
+    <string name="schedule_page_saturday">Thứ Bảy</string>
+    <string name="schedule_page_sunday">Chủ Nhật</string>
+    <string name="schedule_page_morning">Sáng</string>
+    <string name="schedule_page_afternoon">Chiều</string>
+    <string name="schedule_page_room">Phòng</string>
+
     <string name="menu_register">Đăng kí học phần</string>
     <string name="menu_tuition">Học phí</string>
     <string name="menu_scholarship">Học bổng</string>

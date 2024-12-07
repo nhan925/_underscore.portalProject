@@ -70,4 +70,5 @@ dependencies {
     implementation(libs.glide)
     implementation(libs.fuel)
     implementation(libs.fuel.gson)
+    implementation(libs.androidx.gridlayout)
 }

@@ -9,4 +9,6 @@
     <color name="blue" > #6EACD6</color>
     <color name="red"> #FF0000</color>
     <color name="grey">#A7A7A7</color>
+    <color name="table_row_even">#FFFFFF</color>
+    <color name="table_row_odd">#F5F5F5</color>
 </resources>

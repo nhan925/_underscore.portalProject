@@ -83,6 +83,19 @@
     <string name="infor_student_frag_remove_avatar">Remove Avatar</string>
     <string name="infor_student_frag_already_default">The image has reverted to the default.</string>
     <string name="infor_student_frag_change_avatar">Change Avatar</string>
+    <string name="schedule_page_choose_semester">Semester</string>
+    <string name="schedule_page_session">Session</string>
+    <string name="schedule_page_monday">Monday</string>
+    <string name="schedule_page_tuesday">Tuesday</string>
+    <string name="schedule_page_wednesday">Wednesday</string>
+    <string name="schedule_page_thursday">Thursday</string>
+    <string name="schedule_page_friday">Friday</string>
+    <string name="schedule_page_saturday">Saturday</string>
+    <string name="schedule_page_sunday">Sunday</string>
+    <string name="schedule_page_period">Period</string>
+    <string name="schedule_page_morning">Morning</string>
+    <string name="schedule_page_afternoon">Afternoon</string>
+    <string name="schedule_page_room">Room</string>
 
 
     \
