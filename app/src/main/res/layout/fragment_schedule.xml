@@ -23,7 +23,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-
         >
 
         <AutoCompleteTextView
@@ -47,6 +46,18 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/schedule_page_semesterSpinnerLayout">
 
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TableLayout
+                android:id="@+id/schedule_page_backgroundGrid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:clipToPadding="false">
+            </TableLayout>
+
         <HorizontalScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -57,10 +68,21 @@
                 android:layout_height="wrap_content"
                 android:padding="16dp"
                 android:clipToPadding="false"
+                android:layout_gravity="fill"
                 android:divider="@drawable/custom_divider_schedule_page"
                 android:showDividers="middle|beginning|end">
             </androidx.gridlayout.widget.GridLayout>
         </HorizontalScrollView>
+
+            <TableLayout
+                android:id="@+id/schedule_page_foregroundGrid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:clipToPadding="false"
+                android:background="@android:color/transparent">
+            </TableLayout>
+        </FrameLayout>
     </com.google.android.material.card.MaterialCardView>
 
 

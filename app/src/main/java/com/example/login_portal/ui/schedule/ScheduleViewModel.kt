@@ -63,6 +63,6 @@ class ScheduleViewModel : ViewModel() {
     }
 
     fun formattedCourseForCell(course : Course) : String{
-        return "${course.CourseId}-${course.CourseName} \n ${course.ClassId}-P.${course.Room}"
+        return "${course.CourseName} \n ${course.ClassId}-P.${course.Room}"
     }
 }
