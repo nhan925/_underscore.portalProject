@@ -18,12 +18,32 @@ object ApiServiceHelper {
         Fuel.post("$BASE_URL/rpc/login")
             .jsonBody(loginData)
             .responseString { _, response, result ->
-                if (response.statusCode == 200) {
-                    jwtToken = result.get().trim('"')
-                    callback(true)
-                } else {
-                    callback(false)
-                }
+                result.fold(
+                    success= { data ->
+                        if (data.isBlank() || data == "null") {
+                            Handler(Looper.getMainLooper()).post {
+                                callback(false)
+                            }
+                            return@fold
+                        }
+                        try {
+                            jwtToken = data.trim('"')
+                            Handler(Looper.getMainLooper()).post {
+                                callback(true)
+                            }
+                        }
+                        catch (e: Exception){
+                            Handler(Looper.getMainLooper()).post {
+                                callback(false)
+                            }
+                        }
+                    },
+                    failure = {
+                        Handler(Looper.getMainLooper()).post {
+                            callback(false)
+                        }
+            }
+                )
             }
     }
 
@@ -34,12 +54,32 @@ object ApiServiceHelper {
         Fuel.post("$BASE_URL/rpc/login_with_outlook")
             .jsonBody(outlookData)
             .responseString { _, response, result ->
-                if (response.statusCode == 200) {
-                    jwtToken = result.get().trim('"')
-                    callback(true)
-                } else {
-                    callback(false)
-                }
+                result.fold(
+                    success= { data ->
+                        if (data.isNullOrBlank() || data == "null") {
+                            Handler(Looper.getMainLooper()).post {
+                                callback(false)
+                            }
+                            return@fold
+                        }
+                        try {
+                            jwtToken = data.trim('"')
+                            Handler(Looper.getMainLooper()).post {
+                                callback(true)
+                            }
+                        }
+                        catch (e: Exception){
+                            Handler(Looper.getMainLooper()).post {
+                                callback(false)
+                            }
+                        }
+                    },
+                    failure = {
+                        Handler(Looper.getMainLooper()).post {
+                            callback(false)
+                        }
+                    }
+                )
             }
     }
 

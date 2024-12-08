@@ -31,9 +31,9 @@ open class BaseActivity : AppCompatActivity() {
             .getString("appLanguage", "en") ?: "en"
         updateConfiguration(languageCode)
 
-        //TODO: hard code login here
-        ApiServiceHelper.login("student1", "1234") { isSuccess ->
-            if (!isSuccess)
+//        //TODO: hard code login here
+        ApiServiceHelper.login("student", "124") { isSuccess ->
+         if (!isSuccess)
                 Log.i("ddd", "Login failed heeeee")
             else{
                 Log.i("ddd", "Login success")

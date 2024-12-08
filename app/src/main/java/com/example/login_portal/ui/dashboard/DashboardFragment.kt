@@ -93,12 +93,12 @@ class DashboardFragment : Fragment() {
     private fun setupPieChart(currentCredit: Int, totalCredit: Int) {
         pieChart.apply {
             description.isEnabled = false
-            isDrawHoleEnabled = true
+            isDrawHoleEnabled = false
             setHoleColor(Color.WHITE)
             holeRadius = 58f
             transparentCircleRadius = 61f
             setDrawCenterText(true)
-            centerText = "Tiến độ học tập"
+            //centerText = "Tiến độ học tập"
             setCenterTextSize(16f)
             setUsePercentValues(true)
             setDrawEntryLabels(false)
@@ -152,16 +152,16 @@ class DashboardFragment : Fragment() {
 
     private fun setupBarChart(semesters: List<DashboardViewModel.Semester>) {
         barChart.apply {
-            description.apply {
-                isEnabled = true
-                text = "GPA"
-                textSize = 12f
-                textColor = Color.rgb(64, 89, 230)
-                yOffset = 15f
-                xOffset = 5f
-                textAlign = Paint.Align.CENTER
-
-            }
+//            description.apply {
+//               isEnabled = true //text = "GPA"
+//              textSize = 12f
+//                textColor = Color.rgb(64, 89, 230)
+//                yOffset = 15f
+//                xOffset = 5f
+//               textAlign = Paint.Align.CENTER
+//
+//           }
+            description.isEnabled = false
 
             setTouchEnabled(true)
             isDragEnabled = true

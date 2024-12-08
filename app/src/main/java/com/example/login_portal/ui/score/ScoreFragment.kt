@@ -25,6 +25,7 @@ class ScoreFragment : Fragment() {
         _binding = FragmentScoreBinding.inflate(inflater, container, false)
         viewModel = ViewModelProvider(this)[ScoreViewModel::class.java]
 
+        viewModel.filterScores("All", "All")
         setupSpinners()
         setupClickListeners()
         setupObservers()

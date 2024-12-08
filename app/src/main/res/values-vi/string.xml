@@ -80,6 +80,7 @@
     <string name="notes">Ghi chú</string>
     <string name="num_credit">Số tín chỉ</string>
     <string name="num_course">Số môn học</string>"
+    <string name="barChart">Biểu đồ hiển thị điểm GPA</string>
 
 
 </resources>

@@ -36,12 +36,9 @@ class MainActivity2 : BaseActivity() {
             navigateHome()
             return
         }
-//        val sharedPreferences = getSharedPreferences("appPreferences", Context.MODE_PRIVATE)
-//        currentLanguage = sharedPreferences.getString("appLanguage", "en") ?: "en"
-//        updateLocale(currentLanguage)
         languageManager = LanguageManager(this)
         currentLanguage = languageManager.getCurrentLanguage()
-        //languageManager.updateLocale(currentLanguage)
+
 
         setContentView(R.layout.activity_main2)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
@@ -72,10 +69,7 @@ class MainActivity2 : BaseActivity() {
         languageManager.updateLanguageUI(languageFlag, languageText, currentLanguage)
 
         languageSwitchLayout.setOnClickListener {
-            //toggleLanguage(this, languageFlag, languageText)
             currentLanguage = languageManager.toggleLanguage(languageFlag, languageText)
-            //recreate()
-            // AppUtils.restartApp(this)
         }
 
         if (savedInstanceState != null) {
@@ -134,19 +128,16 @@ class MainActivity2 : BaseActivity() {
             val username = usernameInput.text?.toString()?.trim() ?: ""
             val password = passwordInput.text?.toString()?.trim() ?: ""
             val isRemembered = rememberMeCheckbox.isChecked
+            Log.d("LoginDebug", "Username: $username, Password: $password, Remembered: $isRemembered")
 
             // Validate input
             if (!validateLoginInput(username, password)) {
                 return@setOnClickListener
             }
 
-            btnLogin.isEnabled = false  // Disable button while processing
 
             // Call API
             ApiServiceHelper.login(username, password) { success ->
-                runOnUiThread {
-                    btnLogin.isEnabled = true
-
                     Log.d("LoginDebug", "Login success: $success, Token: ${ApiServiceHelper.jwtToken}")
 
                     if (success) {
@@ -155,7 +146,7 @@ class MainActivity2 : BaseActivity() {
                         handleFailedLogin()
                         passwordInput.text?.clear()
                     }
-                }
+
             }
         }
     }
@@ -171,9 +162,6 @@ class MainActivity2 : BaseActivity() {
             return false
         }
 
-        // Có thể thêm các validation khác ở đây
-        // Ví dụ: độ dài mật khẩu, format username, etc.
-
         return true
     }
 
@@ -181,7 +169,7 @@ class MainActivity2 : BaseActivity() {
         if (isRemembered) {
             sercurePrefManager.saveUserCredentials(username, password, isRemembered)
         }
-
+//
         Toast.makeText(
             this,
             getString(R.string.login_successful),
@@ -200,15 +188,13 @@ class MainActivity2 : BaseActivity() {
     }
 
     private fun showLoading() {
-        // Hiển thị ProgressBar hoặc loading dialog
-        //  findViewById<View>(R.id.progressBar)?.visibility = View.VISIBLE
-        //  findViewById<View>(R.id.loginContainer)?.alpha = 0.5f
+          findViewById<View>(R.id.progressBar)?.visibility = View.VISIBLE
+          findViewById<View>(R.id.main)?.alpha = 0.5f
     }
 
     private fun hideLoading() {
-        // Ẩn ProgressBar hoặc loading dialog
-        // findViewById<View>(R.id.progressBar)?.visibility = View.GONE
-        //  findViewById<View>(R.id.loginContainer)?.alpha = 1.0f
+         findViewById<View>(R.id.progressBar)?.visibility = View.GONE
+         findViewById<View>(R.id.main)?.alpha = 1.0f
     }
 
     private fun showError(message: String) {
@@ -242,18 +228,15 @@ class MainActivity2 : BaseActivity() {
 
     private fun navigateHome(){
         startActivity(Intent(this, HomePageTest::class.java))
-        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+      //  overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
         finish()
     }
 
     override fun finish() {
         super.finish()
-        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
+      //  overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
     }
 
-//    private fun verifyCredentials(email: String, password: String): Boolean {
-//        return email == "phat1906" && password == "Test123!"
-//    }
 
 
 }
