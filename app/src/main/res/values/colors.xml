@@ -10,6 +10,8 @@
     <color name="red"> #FF0000</color>
     <color name="grey">#A7A7A7</color>
     <color name="yellow">#ffe599</color>
+    <color name="purple">#cd4fcd</color>
+    <color name="light_purple">#e5a8e5</color>
     <color name="table_row_even">#FFFFFF</color>
     <color name="table_row_odd">#F5F5F5</color>
 </resources>

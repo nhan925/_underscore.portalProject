@@ -14,7 +14,7 @@
         android:layout_width="0dp"
         android:layout_weight="1"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="148dp"
+        android:layout_marginEnd="180dp"
         app:boxCornerRadiusTopStart="8dp"
         app:boxCornerRadiusTopEnd="8dp"
         app:boxCornerRadiusBottomStart="8dp"
@@ -35,6 +35,68 @@
             android:padding="16dp"/>
     </com.google.android.material.textfield.TextInputLayout>
 
+    <LinearLayout
+        android:id="@+id/schedule_page_note_color"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/schedule_page_semesterSpinnerLayout"
+        app:layout_constraintTop_toBottomOf="@+id/schedule_page_semesterSpinnerLayout">
+
+        <LinearLayout
+            android:id="@+id/schedule_page_morning_session_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <!-- Color Note -->
+            <View
+                android:id="@+id/schedule_page_morning_session_color"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_margin="8dp"
+                android:background="@color/blue" />
+
+            <!-- Item Content -->
+            <TextView
+                android:id="@+id/schedule_page_morning_session"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="8dp"
+                android:text="Item Name"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/schedule_page_afternoon_session_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp">
+
+            <View
+                android:id="@+id/schedule_page_afternoon_session_color"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_margin="8dp"
+                android:layout_marginStart="20dp"
+                android:background="@color/yellow" />
+
+            <!-- Item Content -->
+            <TextView
+                android:id="@+id/schedule_page_afternoon_session"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="8dp"
+                android:text="Item Name"
+                android:textSize="16sp" />
+        </LinearLayout>
+    </LinearLayout>
+
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -44,7 +106,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/schedule_page_semesterSpinnerLayout">
+        app:layout_constraintVertical_bias="0"
+        app:layout_constraintTop_toBottomOf="@+id/schedule_page_note_color">
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -54,7 +117,6 @@
                 android:id="@+id/schedule_page_backgroundGrid"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="16dp"
                 android:clipToPadding="false">
             </TableLayout>
 
@@ -66,7 +128,6 @@
                 android:id="@+id/schedule_page_scheduleTable"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="16dp"
                 android:clipToPadding="false"
                 android:layout_gravity="fill"
                 android:divider="@drawable/custom_divider_schedule_page"
@@ -78,7 +139,6 @@
                 android:id="@+id/schedule_page_foregroundGrid"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="16dp"
                 android:clipToPadding="false"
                 android:background="@android:color/transparent">
             </TableLayout>

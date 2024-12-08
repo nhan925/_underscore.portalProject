@@ -22,13 +22,13 @@ class ScheduleViewModel : ViewModel() {
     val coursesLiveData: LiveData<List<Course>> get() = _coursesLiveData
 
     val DayOfWeek = mapOf(
-        "Thứ 2" to 2,
-        "Thứ 3" to 3,
-        "Thứ 4" to 4,
-        "Thứ 5" to 5,
-        "Thứ 6" to 6,
-        "Thứ 7" to 7,
-        "Chủ Nhật" to 8
+        "Thứ 2" to 1,
+        "Thứ 3" to 2,
+        "Thứ 4" to 3,
+        "Thứ 5" to 4,
+        "Thứ 6" to 5,
+        "Thứ 7" to 6,
+        "Chủ Nhật" to 7
     )
 
     init {

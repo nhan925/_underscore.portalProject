@@ -35,6 +35,9 @@ open class BaseActivity : AppCompatActivity() {
         ApiServiceHelper.login("student1", "1234") { isSuccess ->
             if (!isSuccess)
                 Log.i("d", "Login failed")
+            else{
+                Log.e("SUCESS","SUCCESS")
+            }
         }
     }
 
