@@ -91,6 +91,16 @@
     <string name="schedule_page_morning">Sáng</string>
     <string name="schedule_page_afternoon">Chiều</string>
     <string name="schedule_page_room">Phòng</string>
+    <string name="schedule_page_course_url">Đề cương</string>
+    <string name="schedule_page_lecturer_label">Giảng viên</string>
+    <string name="schedule_page_course_url_link">Link đến đề cương</string>
+    <string name="schedule_page_lecturer_name">Họ và tên</string>
+    <string name="schedule_page_lecturer_gender">Giới tính</string>
+    <string name="schedule_page_lecturer_phone_number">SĐT</string>
+    <string name="schedule_page_lecturer_email">Email</string>
+    <string name="schedule_page_lecturer_academic_rank">Học hàm</string>
+    <string name="schedule_page_lecturer_academic_degree">Học vị</string>
+    <string name="schedule_page_lecturer_faculty">Khoa</string>
 
     <string name="menu_register">Đăng kí học phần</string>
     <string name="menu_tuition">Học phí</string>

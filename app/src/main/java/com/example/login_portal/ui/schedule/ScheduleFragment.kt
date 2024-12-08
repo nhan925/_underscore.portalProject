@@ -1,10 +1,13 @@
 package com.example.login_portal.ui.schedule
 
+import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.content.res.Resources
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.GradientDrawable
 import android.graphics.drawable.LayerDrawable
+import android.net.Uri
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
@@ -14,6 +17,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams.FILL_PARENT
 import android.widget.ArrayAdapter
+import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.ScrollView
 import android.widget.TableRow
 import android.widget.TextView
@@ -27,6 +32,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.login_portal.R
 import com.example.login_portal.databinding.FragmentScheduleBinding
 import androidx.gridlayout.widget.GridLayout
+import com.google.android.material.bottomsheet.BottomSheetDialog
 
 
 class ScheduleFragment : Fragment() {
@@ -255,7 +261,9 @@ class ScheduleFragment : Fragment() {
             val border = borderCell(newCell.context,ContextCompat.getColor(newCell.context, android.R.color.black))
             val drawable = LayerDrawable(arrayOf(ColorDrawable(backgroundColor), border))
             newCell.background = drawable
-
+            newCell.setOnClickListener{
+                createBottomSheetDialog(newCell.context,course)
+            }
 
             // Thêm ô vào GridLayout
             binding.schedulePageScheduleTable.addView(newCell)
@@ -272,6 +280,34 @@ class ScheduleFragment : Fragment() {
             setStroke(2, color) // Viền
         }
         return border
+    }
+
+    fun createBottomSheetDialog(context: Context, course : Course){
+        val dialog = BottomSheetDialog(context)
+        val view = layoutInflater.inflate(R.layout.bottom_sheet_dialog_schedule, null)
+
+        view.findViewById<TextView>(R.id.bsd_schedule_Lecturername_value).text = course.Lecturer?.FullName?: ""
+        view.findViewById<TextView>(R.id.bsd_schedule_Gender_value).text = course.Lecturer?.Gender ?: ""
+        view.findViewById<TextView>(R.id.bsd_schedule_Phone_value).text = course.Lecturer?.PhoneNumber ?: ""
+        view.findViewById<TextView>(R.id.bsd_schedule_Email_value).text = course.Lecturer?.Email ?: ""
+        view.findViewById<TextView>(R.id.bsd_schedule_AcademicRank_value).text = course.Lecturer?.AcademicRank ?: ""
+        view.findViewById<TextView>(R.id.bsd_schedule_AcademicDegree_value).text = course.Lecturer?.AcademicDegree ?: ""
+        view.findViewById<TextView>(R.id.bsd_schedule_Faculty_value).text = course.Lecturer?.FacultyName ?: ""
+        val textView = view.findViewById<TextView>(R.id.bsd_schedule_course_url_value)
+        textView.setOnClickListener {
+            val url = course.CourseUrl
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+            startActivity(intent)
+        }
+
+        val btnClose = view.findViewById<ImageButton>(R.id.bsd_schedule_btn_close)
+        btnClose.setOnClickListener {
+            dialog.dismiss()
+        }
+        dialog.setCancelable(false)
+
+        dialog.setContentView(view)
+        dialog.show()
     }
 
 
