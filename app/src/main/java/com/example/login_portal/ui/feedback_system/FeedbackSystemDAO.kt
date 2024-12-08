@@ -11,7 +11,11 @@ object FeedbackSystemDAO {
         }
 
         ApiServiceHelper.post("/rpc/add_feedback", data) { response ->
-            callback(response?.string() ?: "")
+            if(response != null) {
+                callback(response)
+            } else {
+                callback("Error")
+            }
         }
     }
 }

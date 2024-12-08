@@ -54,13 +54,16 @@ class FeedbackTeacher : Fragment() {
                 viewModel.updateTotalScore()
                 viewModel.postFeedbackCourseAndTeacher { success ->
                     if (success) {
-                        Toast.makeText(requireContext(),"Đã hoàn thành đánh giá",Toast.LENGTH_SHORT).show()
+                        Toast.makeText(requireContext(),resources.getString(R.string.feedback_course_success),Toast.LENGTH_SHORT).show()
                         requireActivity().finish()
                     } else {
-                        Toast.makeText(requireContext(), "Đã xảy ra lỗi", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(requireContext(), resources.getString(R.string.feedback_course_fail), Toast.LENGTH_SHORT).show()
                     }
 
                 }
+            }
+            else {
+                Toast.makeText(requireContext(), resources.getString(R.string.feddback_course_empty_error), Toast.LENGTH_SHORT).show()
             }
         }
         return view
@@ -81,7 +84,7 @@ class FeedbackTeacher : Fragment() {
 
     private fun getScoreList(): List<Int> {
         val questionList = (recyclerView.adapter as AdapterForListQuestion).questionList
-        return questionList.map { it.rating } // Trả về danh sách các giá trị `rating`
+        return questionList.map { it.rating }
     }
 
 

@@ -1,13 +1,10 @@
 package com.example.login_portal.ui.feedback_course
 
 import android.content.res.Resources
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.login_portal.R
-import com.example.login_portal.utils.ApiServiceHelper
-import com.example.login_portal.utils.Validator
 
 class FeedbackCourseViewModel : ViewModel() {
     private var courseScore: String = ""
@@ -30,12 +27,21 @@ class FeedbackCourseViewModel : ViewModel() {
         }
     }
 
+    fun getTitle(resources: Resources, callback: (String) -> Unit) {
+        FeedbackCourseDAO.getNewestSemester { newestSemester ->
+            val year = newestSemester.year
+            val semester = newestSemester.semester.toString()
+            val title = resources.getString(R.string.feedback_course_year) + " " +  year + " - " + resources.getString(R.string.feedback_course_semester) + " " + semester
+            callback(title)
+        }
+    }
+
     fun getCourseListFromDatabase() {
         FeedbackCourseDAO.getCourseFeedback { response ->
             if (response.isNotEmpty()) {
                 _courseList.postValue(response)
             } else {
-                _courseList.postValue(emptyList()) // Gửi danh sách rỗng nếu không có dữ liệu
+                _courseList.postValue(emptyList())
             }
         }
     }
@@ -68,12 +74,10 @@ class FeedbackCourseViewModel : ViewModel() {
                 courseScore += "$buffer - "
             }
         }
-        Log.d("FeedbackCourseViewModel", courseScore)
     }
 
     fun updateTotalScore() {
         totalScore = "$courseScore - $teacherScore"
-        Log.d("FeedbackCourseViewModel", totalScore)
     }
 
     fun setClassID(classID: String) {
@@ -91,17 +95,14 @@ class FeedbackCourseViewModel : ViewModel() {
                 teacherScore += "$buffer - "
             }
         }
-        Log.d("FeedbackCourseViewModel", teacherScore)
     }
 
     fun postFeedbackCourseAndTeacher(callback: (Boolean) -> Unit) {
-        Log.d("FeedbackCourseViewModel", "totalScore: $totalScore")
-        Log.d("FeedbackCourseViewModel", "classID: $classID")
         FeedbackCourseDAO.postCourseFeedback(classID, totalScore) { response ->
-            if (response.isNotEmpty()) {
-                callback(true) // Success
+            if (response == "Success") {
+                callback(true)
             } else {
-                callback(false) // Failure
+                callback(false)
             }
         }
     }

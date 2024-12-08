@@ -77,9 +77,13 @@ class FeedbackCourseActivity : BaseActivity() {
                 backButton.visibility = View.GONE
                 continueButton.visibility = View.GONE
             } else {
-                // Nếu chưa trả lời hết câu hỏi, yêu cầu người dùng hoàn tất
-                Toast.makeText(this, "Vui lòng trả lời tất cả câu hỏi", Toast.LENGTH_SHORT).show()
+
+                Toast.makeText(this, resources.getString(R.string.feddback_course_empty_error), Toast.LENGTH_SHORT).show()
             }
+        }
+
+        backButton.setOnClickListener {
+            finish()
         }
     }
 

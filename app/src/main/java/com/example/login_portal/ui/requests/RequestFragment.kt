@@ -11,8 +11,6 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.login_portal.R
 import com.example.login_portal.databinding.FragmentNotificationBinding
 import com.example.login_portal.ui.notification.NotificationViewModel
-import com.example.login_portal.utils.ApiService
-import com.example.login_portal.utils.ApiServiceHelper
 
 class RequestFragment : Fragment() {
 

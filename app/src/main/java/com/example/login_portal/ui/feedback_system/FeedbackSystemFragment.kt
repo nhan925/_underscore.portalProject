@@ -54,8 +54,6 @@ class FeedbackSystemFragment : Fragment() {
                 if(isSuccess){
                     Toast.makeText(requireContext(), "Ban đã gửi thành công", Toast.LENGTH_SHORT).show()
                     binding.textInputLayout2.editText?.setText("")
-                    binding.fbSystemCategoryList.setText("")
-
                 }
                 else{
                     Toast.makeText(requireContext(), "Bạn đã gửi thất bại", Toast.LENGTH_SHORT).show()

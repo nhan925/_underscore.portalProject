@@ -1,15 +1,8 @@
 package com.example.login_portal.ui.feedback_system
 
-
-
 import android.content.Context
-import android.content.res.Resources
-import android.util.Log
 import android.widget.Toast
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.login_portal.R
 import com.example.login_portal.utils.Validator
 
 class FeedbackSystemViewModel : ViewModel() {
@@ -39,10 +32,10 @@ class FeedbackSystemViewModel : ViewModel() {
 
     fun postFeedback(callback: (Boolean) -> Unit) {
         FeedbackSystemDAO.postFeedback(content, selectedCategory) { response ->
-            if (response.isNotEmpty()) {
-                callback(true)  // Success
+            if (response == "Error") {
+                callback(false)
             } else {
-                callback(false)  // Failure
+                callback(true)
             }
         }
     }

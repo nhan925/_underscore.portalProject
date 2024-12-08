@@ -82,4 +82,12 @@
         <item>How knowledgeable and well-prepared is the instructor in the subject matter?</item>
         <item>How effectively does the instructor provide feedback on assignments and exams?</item>
     </string-array>
+
+    <string name="feedback_course_year" >Year:</string>
+    <string name="feedback_course_semester" >Semester:</string>
+    <string name="feddback_course_empty_error">Please fill in all fields</string>
+    <string name="feedback_course_success">Feedback successfully</string>
+    <string name="feedback_course_fail">Feedback failed</string>
+    <string name="rated">Rated</string>
+    <string name="not_rated">Not Rate</string>
 </resources>

@@ -9,6 +9,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.login_portal.R
 
+
 // Define the adapter for course list
 class AdapterForListCourse(
     private var courseList: List<Course>,
@@ -36,26 +37,22 @@ class AdapterForListCourse(
         holder.courseNameTextView.text = course.courseName
         holder.courseCodeTextView.text = course.courseID
         holder.teacherNameTextView.text = course.teacherName
-        holder.courseStatusTextView.text = if (course.status) "Đã đánh giá" else "Chưa đánh giá"
+        val reatedString = holder.itemView.context.resources.getString(R.string.rated)
+        val notRatedString = holder.itemView.context.resources.getString(R.string.not_rated)
+        holder.courseStatusTextView.text = if (course.status) reatedString else notRatedString
 
         // Set màu và trạng thái click
         if (course.status) {
             holder.courseStatusTextView.setTextColor(
                 ContextCompat.getColor(holder.itemView.context, R.color.green)
             )
-            holder.itemView.setBackgroundColor(
-                ContextCompat.getColor(holder.itemView.context, com.google.android.material.R.color.material_dynamic_tertiary100)
-            )
+            holder.itemView.alpha = 0.5F
         } else {
             holder.courseStatusTextView.setTextColor(
                 ContextCompat.getColor(holder.itemView.context, R.color.red)
             )
-            holder.itemView.setBackgroundColor(
-                ContextCompat.getColor(holder.itemView.context, R.color.white)
-            )
         }
 
-        // Xử lý sự kiện click
         holder.itemView.setOnClickListener {
             if (!course.status) {
                 onItemClicked(course)

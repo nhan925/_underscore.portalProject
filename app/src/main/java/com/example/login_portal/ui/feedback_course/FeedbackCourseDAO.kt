@@ -10,10 +10,22 @@ object FeedbackCourseDAO {
     fun getCourseFeedback(callback: (List<Course>) -> Unit) {
         ApiServiceHelper.get("/rpc/get_course_for_feedback") { response ->
             if (response != null) {
-                val result: List<Course> = Gson().fromJson(response.string(), object : TypeToken<List<Course>>() {}.type)
+                val result: List<Course> = Gson().fromJson(response, object : TypeToken<List<Course>>() {}.type)
                 callback(result)
             } else {
                 callback(listOf())
+            }
+        }
+    }
+
+    fun getNewestSemester(callback: (NewestSemester) -> Unit) {
+        ApiServiceHelper.get("/rpc/get_newest_semester") { response ->
+            if (response != null) {
+                val result: NewestSemester = Gson().fromJson(response, object : TypeToken<NewestSemester>() {}.type)
+                Log.d("FeedbackCourseDAO", "NewestSemester: $result")
+                callback(result)
+            } else {
+                callback(NewestSemester("", 0))
             }
         }
     }
@@ -24,10 +36,13 @@ object FeedbackCourseDAO {
             val v_feedback = totalScore
         }
 
-
-
         ApiServiceHelper.post("/rpc/add_feedback_course", data) { response ->
-            callback(response?.string() ?: "")
+            if(response != null) {
+                Log.d("FeedbackCourseDAO", "Response: $response")
+                callback(response.toString())
+            } else {
+                callback("Error")
+            }
         }
     }
 }
