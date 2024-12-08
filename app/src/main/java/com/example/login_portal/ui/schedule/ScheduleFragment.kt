@@ -16,6 +16,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams.FILL_PARENT
+import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.widget.ArrayAdapter
 import android.widget.ImageButton
 import android.widget.ImageView
@@ -56,7 +57,7 @@ class ScheduleFragment : Fragment() {
 
         creatNoteForSession()
         setupSemesterSpinner()
-        createBackgroundTable()
+        //createBackgroundTable()
         createForegroundTable()
         initializeTable()
         scheduleViewModel.coursesLiveData.observe(viewLifecycleOwner){
@@ -67,7 +68,6 @@ class ScheduleFragment : Fragment() {
 
     private fun setupSemesterSpinner() {
         scheduleViewModel.semestersLiveData.observe(viewLifecycleOwner) { semesters ->
-            Log.e("SEMESTER", semesters.toString())
             val adapterSemester = ArrayAdapter(
                 requireContext(),
                 android.R.layout.simple_dropdown_item_1line,
@@ -89,7 +89,7 @@ class ScheduleFragment : Fragment() {
         binding.schedulePageAfternoonSession.setText(getString(R.string.schedule_page_afternoon))
     }
 
-    private fun createBackgroundTable(){
+/*    private fun createBackgroundTable(){
         val NUMBER_OF_PERIOD = 10
         val emptyRow = TableRow(context).apply {
             for (index in 0..NUMBER_OF_COLUMN) {
@@ -113,7 +113,7 @@ class ScheduleFragment : Fragment() {
             }
             binding.schedulePageBackgroundGrid.addView(row)
         }
-    }
+    }*/
 
     private fun createForegroundTable(){
         val NUMBER_OF_PERIOD = 10
@@ -123,9 +123,10 @@ class ScheduleFragment : Fragment() {
 
         val headerRow = TableRow(context).apply {
             headers.forEachIndexed { index,headerText ->
-                addView(createTableCell(headerText, 0,index,true,true))
+                val headerCell = createTableCell(headerText, 0,index,true,true)
+                headerCell.setBackgroundColor(ContextCompat.getColor(requireContext(),R.color.purple))
+                addView(headerCell)
             }
-            setBackgroundColor(ContextCompat.getColor(requireContext(),R.color.purple))
         }
 
         binding.schedulePageForegroundGrid .addView(headerRow)
@@ -148,7 +149,6 @@ class ScheduleFragment : Fragment() {
     private fun initializeTable() {
         val NUMBER_OF_PERIOD = 10
         val headers = arrayOf(
-            //getString(R.string.schedule_page_session),
             getString(R.string.schedule_page_period),
             getString(R.string.schedule_page_monday),
             getString(R.string.schedule_page_tuesday),
@@ -159,16 +159,14 @@ class ScheduleFragment : Fragment() {
             getString(R.string.schedule_page_sunday)
         )
 
-        // Đặt số cột cho GridLayout
         binding.schedulePageScheduleTable.columnCount = headers.size
 
-        // Add header cells trực tiếp vào GridLayout
         headers.forEachIndexed { index, headerText ->
             val headerCell = createTableCell(headerText,0, index, isHeader = true)
             binding.schedulePageScheduleTable.addView(headerCell)
         }
 
-        // Add từng ô cho 10 hàng
+
         for (rowIndex in 1..NUMBER_OF_PERIOD) {
             for (colIndex in headers.indices) {
                 val cellText = if (colIndex == 0) {
@@ -178,13 +176,13 @@ class ScheduleFragment : Fragment() {
                 }
 
                 val cell = createTableCell(cellText,rowIndex, colIndex)
-                val params = cell.layoutParams as? GridLayout.LayoutParams ?: GridLayout.LayoutParams()
-                params.apply {
-                    rowSpec = GridLayout.spec(rowIndex)
-                    columnSpec = GridLayout.spec(colIndex)
-                }
-                cell.layoutParams = params
 
+                /*cell.setBackgroundColor(
+                    if (rowIndex % 2 == 0)
+                        ContextCompat.getColor(requireContext(), R.color.table_row_even)
+                    else
+                        ContextCompat.getColor(requireContext(), R.color.table_row_odd)
+                )*/
                 binding.schedulePageScheduleTable.addView(cell)
             }
         }
@@ -195,7 +193,7 @@ class ScheduleFragment : Fragment() {
         rowNum: Int,
         columnNum: Int,
         isHeader: Boolean = false,
-        useTableRowParams: Boolean = false // Thêm tham số để quyết định loại LayoutParams
+        useTableRowParams: Boolean = false
     ): TextView {
         return TextView(context).apply {
             setText(text)
@@ -206,11 +204,8 @@ class ScheduleFragment : Fragment() {
 
             if (isHeader) {
                 setTypeface(null, android.graphics.Typeface.BOLD)
-                setBackgroundColor(ContextCompat.getColor(requireContext(),R.color.light_purple))
-                setGravity(FILL_PARENT)
             }
 
-            // Tùy chọn loại LayoutParams
             layoutParams = if (useTableRowParams) {
                 TableRow.LayoutParams().apply {
                     width = if (columnNum == 0 ) TableRow.LayoutParams.WRAP_CONTENT else WIDTH_OF_OTHER_COL
@@ -222,10 +217,29 @@ class ScheduleFragment : Fragment() {
                     height = 150
                     rowSpec = GridLayout.spec(rowNum, 1)
                     columnSpec = GridLayout.spec(columnNum, 1)
+                    setGravity(MATCH_PARENT)
                 }
             }
-            if (text!= "") {
-                background = borderCell(context,ContextCompat.getColor(context, android.R.color.darker_gray))
+
+            val border = borderCell(context,ContextCompat.getColor(context, android.R.color.darker_gray))
+            if(columnNum != 0){
+                var backgroundColor : Int? =null
+                if(isHeader){
+                    backgroundColor = ContextCompat.getColor(requireContext(),R.color.light_purple)
+                }
+                else{
+                    backgroundColor = if (rowNum % 2 == 0) {
+                        ContextCompat.getColor(requireContext(), R.color.table_row_even)
+                    }
+                    else {
+                        ContextCompat.getColor(requireContext(), R.color.table_row_odd)
+                    }
+                }
+                val drawable = LayerDrawable(arrayOf(ColorDrawable(backgroundColor), border))
+                background = drawable
+            }
+            else{
+                background = border
             }
         }
     }
@@ -238,7 +252,6 @@ class ScheduleFragment : Fragment() {
         Log.e("course3", courses.toString())
 
         courses.forEach { course ->
-            // Tính toán vị trí và phạm vi của đối tượng con
             val dayIndex = scheduleViewModel.DayOfWeek[course.Day!!] ?: return@forEach
             val startPeriod = course.StartPeriod ?: return@forEach
             val endPeriod = course.EndPeriod ?: return@forEach
@@ -252,9 +265,9 @@ class ScheduleFragment : Fragment() {
 
             val params = newCell.layoutParams as? GridLayout.LayoutParams ?: GridLayout.LayoutParams()
             params.apply {
-                rowSpec = GridLayout.spec(startPeriod, endPeriod - startPeriod + 1) // Span nhiều dòng
+                rowSpec = GridLayout.spec(startPeriod, endPeriod - startPeriod + 1)
                 columnSpec = GridLayout.spec(dayIndex, 1)
-                setGravity(FILL_PARENT)
+                setGravity(MATCH_PARENT)
             }
             newCell.layoutParams = params
             val backgroundColor = ContextCompat.getColor(requireContext(), R.color.blue)
@@ -265,7 +278,6 @@ class ScheduleFragment : Fragment() {
                 createBottomSheetDialog(newCell.context,course)
             }
 
-            // Thêm ô vào GridLayout
             binding.schedulePageScheduleTable.addView(newCell)
         }
     }
@@ -275,11 +287,19 @@ class ScheduleFragment : Fragment() {
         return (dp * density).toInt()
     }
 
-    fun borderCell(context: Context, color: Int) : GradientDrawable{
-        val border = GradientDrawable().apply {
-            setStroke(2, color) // Viền
+    fun borderCell(context: Context, color: Int) : LayerDrawable {
+        val bottomBorder = GradientDrawable().apply {
+            setStroke(2, color)
         }
-        return border
+
+        val rightBorder = GradientDrawable().apply {
+            setStroke(2, color)
+        }
+
+        return LayerDrawable(arrayOf(bottomBorder, rightBorder)).apply {
+            setLayerInset(0, 0, 0, 0, 2)
+            setLayerInset(1, 0, 0, 2, 0)
+        }
     }
 
     fun createBottomSheetDialog(context: Context, course : Course){
