@@ -63,7 +63,7 @@ class FeedbackTeacher : Fragment() {
                 }
             }
             else {
-                Toast.makeText(requireContext(), resources.getString(R.string.feddback_course_empty_error), Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), resources.getString(R.string.feedback_course_empty_error), Toast.LENGTH_SHORT).show()
             }
         }
         return view

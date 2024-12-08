@@ -87,10 +87,23 @@
 
     <string name="feedback_course_year" >Năm học:</string>
     <string name="feedback_course_semester" >Học kỳ:</string>
-    <string name="feddback_course_empty_error">Vui lòng điền đầy đủ thông tin</string>
+    <string name="feedback_course_empty_error">Vui lòng điền đầy đủ thông tin</string>
     <string name="feedback_course_success">Đánh giá thành công</string>
     <string name="feedback_course_fail">Đánh giá thất bại</string>
     <string name="rated">Đã đánh giá</string>
     <string name="not_rated">Chưa đánh giá</string>
+    <string name="tuition_title">Danh sách học phí</string>
+    <string name="tuition_status_not_paid">Chưa đóng</string>
+    <string name="tuition_status_paid">Đã đóng</string>
+    <string name="tuition_fee">Học phí:</string>
+    <string name="tuition_number_of_subject">Số lượng môn:</string>
+    <string name="tuition_year">Năm học:</string>
+    <string name="tuition_semester">Kì học:</string>
+    <string name="tuition_detail_title">Chi tiết</string>
+    <string name="tuition_detail_credit">tín chỉ</string>
+    <string name="tuition_detail_unit">VNĐ</string>
+    <string name="tuition_detail_paid_button">Đóng học phí</string>
+    <string name="tuition_detail_student_information">Thông tin</string>
+    <string name="tuition_detail_course_information">Danh sách môn học</string>
 
 </resources>

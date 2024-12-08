@@ -85,9 +85,22 @@
 
     <string name="feedback_course_year" >Year:</string>
     <string name="feedback_course_semester" >Semester:</string>
-    <string name="feddback_course_empty_error">Please fill in all fields</string>
+    <string name="feedback_course_empty_error">Please fill in all fields</string>
     <string name="feedback_course_success">Feedback successfully</string>
     <string name="feedback_course_fail">Feedback failed</string>
     <string name="rated">Rated</string>
     <string name="not_rated">Not Rate</string>
+    <string name="tuition_title">List Tuition</string>
+    <string name="tuition_status_not_paid">Not paid</string>
+    <string name="tuition_status_paid">Paid</string>
+    <string name="tuition_fee">Fee:</string>
+    <string name="tuition_number_of_subject">Number of subject:</string>
+    <string name="tuition_year">Year:</string>
+    <string name="tuition_semester">Semester:</string>
+    <string name="tuition_detail_title">Detail</string>
+    <string name="tuition_detail_credit">credits</string>
+    <string name="tuition_detail_unit">USD</string>
+    <string name="tuition_detail_paid_button">Pay Now</string>
+    <string name="tuition_detail_student_information">Information</string>
+    <string name="tuition_detail_course_information">Course list</string>
 </resources>

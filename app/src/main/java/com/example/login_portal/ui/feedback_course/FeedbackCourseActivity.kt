@@ -78,7 +78,7 @@ class FeedbackCourseActivity : BaseActivity() {
                 continueButton.visibility = View.GONE
             } else {
 
-                Toast.makeText(this, resources.getString(R.string.feddback_course_empty_error), Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, resources.getString(R.string.feedback_course_empty_error), Toast.LENGTH_SHORT).show()
             }
         }
 

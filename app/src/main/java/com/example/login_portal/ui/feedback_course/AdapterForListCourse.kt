@@ -37,9 +37,9 @@ class AdapterForListCourse(
         holder.courseNameTextView.text = course.courseName
         holder.courseCodeTextView.text = course.courseID
         holder.teacherNameTextView.text = course.teacherName
-        val reatedString = holder.itemView.context.resources.getString(R.string.rated)
+        val ratedString = holder.itemView.context.resources.getString(R.string.rated)
         val notRatedString = holder.itemView.context.resources.getString(R.string.not_rated)
-        holder.courseStatusTextView.text = if (course.status) reatedString else notRatedString
+        holder.courseStatusTextView.text = if (course.status) ratedString else notRatedString
 
         // Set màu và trạng thái click
         if (course.status) {
