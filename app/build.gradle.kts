@@ -36,6 +36,7 @@ android {
     buildFeatures {
         viewBinding = true
     }
+
 }
 
 dependencies {
@@ -49,6 +50,7 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
+    implementation(libs.androidx.legacy.support.v4)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -66,6 +68,26 @@ dependencies {
 
     implementation(libs.converter.gson)
     implementation(libs.gson)
+
+    implementation(libs.msal.v510)
+    implementation(libs.volley)
+
+
+
+    implementation(libs.okhttp)
+
+    implementation(libs.opentelemetry.api)
+    implementation(libs.opentelemetry.context)
+
+    // Core library cho Coroutines
+    implementation(libs.kotlinx.coroutines.core)
+
+    // Android-specific library cho Coroutines (Dispatchers.Main)
+    implementation(libs.kotlinx.coroutines.android)
+// Thư viện Lifecycle (bao gồm lifecycleScope)
+    implementation(libs.androidx.lifecycle.runtime.ktx)
+
+
 
 
 

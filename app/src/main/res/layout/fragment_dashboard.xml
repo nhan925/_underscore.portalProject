@@ -18,23 +18,24 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            app:cardCornerRadius="12dp"
-            app:cardElevation="4dp">
+            app:cardCornerRadius="16dp"
+            app:cardElevation="8dp"
+            android:backgroundTint="#FFFFFF">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:padding="16dp">
+                android:padding="20dp">
 
-                <com.google.android.material.imageview.ShapeableImageView
-                    android:id="@+id/avatar"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:layout_marginEnd="16dp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/ic_feedback_24"
-                    app:shapeAppearanceOverlay="@style/CircleImageView"/>
+                <ImageView
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:layout_marginRight="16dp"
+                    android:src="@drawable/ic_dashboard"
+                    android:backgroundTint="#E8EAF6"
+                    android:scaleType="centerInside"
+                    app:tint="#5C6BC0" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -47,8 +48,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Nguyễn Minh Nguyên"
-                        android:textColor="#1A237E"
-                        android:textSize="18sp"
+                        android:textColor="#3949AB"
+                        android:textSize="20sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -108,6 +109,17 @@
                     android:id="@+id/pie_chart"
                     android:layout_width="match_parent"
                     android:layout_height="200dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    android:gravity="center"
+                    android:text="@string/barChart"
+
+                    android:textColor="#1A237E"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
@@ -132,7 +144,7 @@
             <!-- Các CardView cho từng chức năng -->
             <androidx.cardview.widget.CardView
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="120dp"
                 android:layout_columnWeight="1"
                 android:layout_margin="8dp"
                 app:cardCornerRadius="12dp"
@@ -165,7 +177,7 @@
             <!-- Các CardView cho từng chức năng -->
             <androidx.cardview.widget.CardView
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="120dp"
                 android:layout_columnWeight="1"
                 android:layout_margin="8dp"
                 app:cardCornerRadius="12dp"
@@ -188,7 +200,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:text="Thông tin\nsinh viên"
+                        android:text="Điểm số"
                         android:gravity="center"
                         android:textColor="#1A237E"
                         android:textSize="13sp"/>
@@ -221,7 +233,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:text="Thông tin\nsinh viên"
+                        android:text="Đăng kí học phần"
                         android:gravity="center"
                         android:textColor="#1A237E"
                         android:textSize="13sp"/>
@@ -254,7 +266,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:text="Thông tin\nsinh viên"
+                        android:text="Thời khoá biểu"
                         android:gravity="center"
                         android:textColor="#1A237E"
                         android:textSize="13sp"/>
@@ -272,7 +284,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="120dp"
                     android:gravity="center"
                     android:orientation="vertical"
                     android:padding="16dp">
@@ -287,7 +299,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:text="Thông tin\nsinh viên"
+                        android:text="Học phí"
                         android:gravity="center"
                         android:textColor="#1A237E"
                         android:textSize="13sp"/>
@@ -305,7 +317,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="120dp"
                     android:gravity="center"
                     android:orientation="vertical"
                     android:padding="16dp">
@@ -320,7 +332,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:text="Thông tin\nsinh viên"
+                        android:text="Học bổng"
                         android:gravity="center"
                         android:textColor="#1A237E"
                         android:textSize="13sp"/>

@@ -1,0 +1,75 @@
+package com.example.login_portal.ui.setting
+
+import android.content.Intent
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.TextView
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import com.example.login_portal.MainActivity2
+import com.example.login_portal.databinding.FragmentScheduleBinding
+import com.example.login_portal.databinding.FragmentSettingsBinding
+import com.example.login_portal.ui.schedule.ScheduleViewModel
+import com.example.login_portal.utils.ApiServiceHelper
+import com.example.login_portal.utils.CallApiLogin
+import com.example.login_portal.utils.SecurePrefManager
+
+
+class SettingsFragment : Fragment() {
+
+    private var _binding: FragmentSettingsBinding? = null
+    private lateinit var securePrefManager: SecurePrefManager
+
+    // This property is only valid between onCreateView and
+    // onDestroyView.
+    private val binding get() = _binding!!
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?,
+    ): View {
+        val scheduleViewModel =
+            ViewModelProvider(this).get(SettingsViewModel::class.java)
+
+        _binding = FragmentSettingsBinding.inflate(inflater, container, false)
+
+        binding.btnLogout.setOnClickListener {
+            logout()
+        }
+
+
+        return binding.root
+    }
+
+    private fun logout() {
+        CallApiLogin.signOut { msalSignOutSuccess ->
+            // Xóa dữ liệu người dùng trong local
+            securePrefManager.clearUserData()
+
+            // Xóa token
+            ApiServiceHelper.jwtToken = null
+
+            // Chuyển về màn hình đăng nhập
+            activity?.runOnUiThread {
+                val intent = Intent(requireContext(), MainActivity2::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK // Đảm bảo xóa stack trước đó
+                startActivity(intent)
+            }
+        }
+    }
+
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        securePrefManager = SecurePrefManager(requireContext())
+    }
+
+}

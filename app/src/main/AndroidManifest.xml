@@ -25,6 +25,19 @@
             android:label="@string/title_activity_main"
             android:theme="@style/Theme.Login_Portal.NoActionBar" />
         <activity
+            android:name="com.microsoft.identity.client.BrowserTabActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data
+                    android:host="auth"
+                    android:scheme="spaceportal" />
+            </intent-filter>
+        </activity>
+
+        <activity
             android:name=".HomePageTest"
             android:exported="true" />
         <activity
@@ -47,7 +60,11 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+
         </activity>
+
+
     </application>
 
 </manifest>

@@ -38,7 +38,7 @@ class Main : BaseActivity() {
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_Dashboard, R.id.nav_Notification,
+                R.id.nav_Dashboard, R.id.nav_Notification, R.id.nav_Setting,
                 R.id.nav_Score, R.id.nav_Schedule, R.id.nav_Tuition, R.id.nav_InforStudent, R.id.nav_course
             ), drawerLayout
         )

@@ -44,6 +44,12 @@
         android:label="@string/menu_register"
         android:layout="@layout/fragment_course" />
 
+    <fragment
+        android:id="@+id/nav_Setting"
+        android:name="com.example.login_portal.ui.setting.SettingsFragment"
+        android:label="@string/menu_register"
+        android:layout="@layout/fragment_course" />
+
 
 
 

@@ -16,6 +16,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.commit
 
 import com.example.login_portal.utils.ApiServiceHelper
+import com.example.login_portal.utils.CallApiLogin
 import com.example.login_portal.utils.LanguageManager
 import com.example.login_portal.utils.SecurePrefManager
 import com.example.login_portal.utils.Validator
@@ -51,8 +52,15 @@ class MainActivity2 : BaseActivity() {
         val registerButton = findViewById<ExtendedFloatingActionButton>(R.id.forgotButton)
         val fragmentContainer = findViewById<androidx.fragment.app.FragmentContainerView>(R.id.fragmentContainer)
 
+        CallApiLogin.initMSAL(this) { success ->
+            if (!success) {
+                Log.e("Login", "Failed to initialize MSAL")
+            }
+        }
+
         setupLoginButtonListener()
 
+        loginWithOutlook()
         loginButton.setOnClickListener {
             switchToLogin(loginButton, registerButton)
         }
@@ -227,11 +235,29 @@ class MainActivity2 : BaseActivity() {
     }
 
     private fun navigateHome(){
-        startActivity(Intent(this, HomePageTest::class.java))
+        startActivity(Intent(this, Main::class.java))
       //  overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
         finish()
     }
 
+    // Xử lý click button login with Outlook
+    private fun loginWithOutlook() {
+        findViewById<ExtendedFloatingActionButton>(R.id.googleSignInButtonFAB).setOnClickListener {
+            showLoading()
+            CallApiLogin.signIn(this) { token ->
+                hideLoading()
+                if (token != null) {
+                    // Login successful
+                    Toast.makeText(this, getString(R.string.login_successful), Toast.LENGTH_SHORT)
+                        .show()
+                    navigateHome()
+                } else {
+                    // Login failed
+                    Toast.makeText(this, getString(R.string.login_failed), Toast.LENGTH_LONG).show()
+                }
+            }
+        }
+    }
     override fun finish() {
         super.finish()
       //  overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
