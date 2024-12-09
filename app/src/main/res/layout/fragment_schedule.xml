@@ -53,15 +53,13 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <!-- Color Note -->
             <View
                 android:id="@+id/schedule_page_morning_session_color"
                 android:layout_width="16dp"
                 android:layout_height="16dp"
                 android:layout_margin="8dp"
-                android:background="@color/blue" />
+                android:background="@color/light_blue" />
 
-            <!-- Item Content -->
             <TextView
                 android:id="@+id/schedule_page_morning_session"
                 android:layout_width="wrap_content"
@@ -84,9 +82,8 @@
                 android:layout_height="16dp"
                 android:layout_margin="8dp"
                 android:layout_marginStart="20dp"
-                android:background="@color/yellow" />
+                android:background="@color/light_yellow" />
 
-            <!-- Item Content -->
             <TextView
                 android:id="@+id/schedule_page_afternoon_session"
                 android:layout_width="wrap_content"

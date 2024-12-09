@@ -4,20 +4,24 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.content.res.Resources
+import android.graphics.Typeface
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.GradientDrawable
 import android.graphics.drawable.LayerDrawable
+import android.graphics.drawable.StateListDrawable
 import android.net.Uri
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams.FILL_PARENT
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.widget.ArrayAdapter
+import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.ScrollView
@@ -137,9 +141,9 @@ class ScheduleFragment : Fragment() {
                 addView(createTableCell(cellText,rowIndex,0,false,true))
                 setBackgroundColor(
                     if (rowIndex in 1..5)
-                        ContextCompat.getColor(requireContext(), R.color.polygon_4_color)
+                        ContextCompat.getColor(requireContext(), R.color.light_blue)
                     else
-                        ContextCompat.getColor(requireContext(), R.color.yellow)
+                        ContextCompat.getColor(requireContext(), R.color.light_yellow)
                 )
             }
             binding.schedulePageForegroundGrid.addView(row)
@@ -244,6 +248,41 @@ class ScheduleFragment : Fragment() {
         }
     }
 
+    fun createTableButtonCell(
+        text: String,
+        rowNum: Int,
+        columnNum: Int,
+    ) : Button{
+        return Button(context).apply{
+            setText(text)
+            setPadding(16,16,16,16)
+            setTextColor(ContextCompat.getColor(requireContext(), R.color.black))
+            gravity = Gravity.CENTER
+            textSize = 16f
+            setTypeface(typeface, Typeface.NORMAL)
+            isAllCaps = false
+
+            layoutParams = GridLayout.LayoutParams().apply {
+                width = WIDTH_OF_OTHER_COL
+                height = 150
+                rowSpec = GridLayout.spec(rowNum, 1)
+                columnSpec = GridLayout.spec(columnNum, 1)
+                setGravity(MATCH_PARENT)
+            }
+            val normalColor = ContextCompat.getColor(context, R.color.light_green)
+            val pressedColor = ContextCompat.getColor(context, R.color.green)
+
+             var backgroundColor = StateListDrawable().apply {
+                addState(intArrayOf(android.R.attr.state_pressed), ColorDrawable(pressedColor))
+                addState(intArrayOf(), ColorDrawable(normalColor))
+            }
+
+            val border = borderCell(context, ContextCompat.getColor(context, android.R.color.darker_gray))
+            val borderDrawable = LayerDrawable(arrayOf(backgroundColor, border))
+            background = borderDrawable
+        }
+    }
+
 
 
     private fun updateTable(courses: List<Course>) {
@@ -257,7 +296,7 @@ class ScheduleFragment : Fragment() {
             val endPeriod = course.EndPeriod ?: return@forEach
             Log.e("GridLayoutDebug", "startPeriod: $startPeriod, endPeriod: $endPeriod, dayIndex: $dayIndex")
 
-            val newCell = createTableCell(
+            val newCell = createTableButtonCell(
                 text = scheduleViewModel.formattedCourseForCell(course),
                 rowNum = startPeriod,
                 columnNum = dayIndex
@@ -270,10 +309,11 @@ class ScheduleFragment : Fragment() {
                 setGravity(MATCH_PARENT)
             }
             newCell.layoutParams = params
-            val backgroundColor = ContextCompat.getColor(requireContext(), R.color.blue)
-            val border = borderCell(newCell.context,ContextCompat.getColor(newCell.context, android.R.color.black))
+            /*val backgroundColor = ContextCompat.getColor(requireContext(), R.color.light_green)
+            val border = borderCell(newCell.context,ContextCompat.getColor(newCell.context, android.R.color.darker_gray))
             val drawable = LayerDrawable(arrayOf(ColorDrawable(backgroundColor), border))
-            newCell.background = drawable
+            newCell.background = drawable*/
+
             newCell.setOnClickListener{
                 createBottomSheetDialog(newCell.context,course)
             }
@@ -289,16 +329,16 @@ class ScheduleFragment : Fragment() {
 
     fun borderCell(context: Context, color: Int) : LayerDrawable {
         val bottomBorder = GradientDrawable().apply {
-            setStroke(2, color)
+            setStroke(1, color)
         }
 
         val rightBorder = GradientDrawable().apply {
-            setStroke(2, color)
+            setStroke(1, color)
         }
 
         return LayerDrawable(arrayOf(bottomBorder, rightBorder)).apply {
-            setLayerInset(0, 0, 0, 0, 2)
-            setLayerInset(1, 0, 0, 2, 0)
+            setLayerInset(0, 0, 0, 0, 1)
+            setLayerInset(1, 0, 0, 1, 0)
         }
     }
 

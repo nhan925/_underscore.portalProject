@@ -98,14 +98,14 @@
     <string name="schedule_page_room">Room</string>
     <string name="schedule_page_course_url">Course Outline</string>
     <string name="schedule_page_course_url_link">Link to course outline</string>
-    <string name="schedule_page_lecturer_name">Full Name</string>
-    <string name="schedule_page_lecturer_gender">Gender</string>
-    <string name="schedule_page_lecturer_phone_number">Phone Number</string>
-    <string name="schedule_page_lecturer_email">Email</string>
-    <string name="schedule_page_lecturer_academic_rank">Academic Rank</string>
-    <string name="schedule_page_lecturer_academic_degree">Academic Degree</string>
-    <string name="schedule_page_lecturer_faculty">Faculty</string>
-    <string name="schedule_page_lecturer_label">Lecturer</string>
+    <string name="schedule_page_lecturer_name">Full Name:</string>
+    <string name="schedule_page_lecturer_gender">Gender:</string>
+    <string name="schedule_page_lecturer_phone_number">Phone Number:</string>
+    <string name="schedule_page_lecturer_email">Email:</string>
+    <string name="schedule_page_lecturer_academic_rank">Academic Rank:</string>
+    <string name="schedule_page_lecturer_academic_degree">Academic Degree:</string>
+    <string name="schedule_page_lecturer_faculty">Faculty:</string>
+    <string name="schedule_page_lecturer_label">Lecturer:</string>
 
 
     \
