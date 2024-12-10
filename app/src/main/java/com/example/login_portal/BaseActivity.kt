@@ -33,7 +33,7 @@ open class BaseActivity : AppCompatActivity() {
 
 
         //TODO: hard code login here
-        ApiServiceHelper.login("student1", "Nhan123$") { isSuccess ->
+        ApiServiceHelper.login("student1", "1234") { isSuccess ->
             if (!isSuccess)
                 Log.i("d", "Login failed")
         }

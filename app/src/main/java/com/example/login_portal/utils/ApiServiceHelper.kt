@@ -20,8 +20,13 @@ object ApiServiceHelper {
             .jsonBody(loginData)
             .responseString { _, response, result ->
                 if (response.statusCode == 200) {
-                    jwtToken = result.get().trim('"')
-                    callback(true)
+                    val resultString = result.get().trim('"')
+                    if (resultString == "null")
+                        callback(false)
+                    else {
+                        jwtToken = resultString
+                        callback(true)
+                    }
                 } else {
                     callback(false)
                 }
@@ -36,8 +41,13 @@ object ApiServiceHelper {
             .jsonBody(outlookData)
             .responseString { _, response, result ->
                 if (response.statusCode == 200) {
-                    jwtToken = result.get().trim('"')
-                    callback(true)
+                    val resultString = result.get().trim('"')
+                    if (resultString == "null")
+                        callback(false)
+                    else {
+                        jwtToken = resultString
+                        callback(true)
+                    }
                 } else {
                     callback(false)
                 }
@@ -53,7 +63,11 @@ object ApiServiceHelper {
                     if (response.statusCode == 200) {
                         // Switch to the main thread for UI update
                         Handler(Looper.getMainLooper()).post {
-                            callback(result.get().trim('"'))
+                            val resultString = result.get().trim('"')
+                            if (resultString == "null")
+                                callback(null)
+                            else
+                                callback(resultString)
                         }
                     } else {
                         // Handle error response
@@ -79,7 +93,11 @@ object ApiServiceHelper {
                     if (response.statusCode == 200) {
                         // Switch to the main thread for UI update
                         Handler(Looper.getMainLooper()).post {
-                            callback(result.get().trim('"'))
+                            val resultString = result.get().trim('"')
+                            if (resultString == "null")
+                                callback(null)
+                            else
+                                callback(resultString)
                         }
                     } else {
                         // Handle error response
