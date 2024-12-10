@@ -3,14 +3,21 @@ package com.example.login_portal.ui.score
 import android.os.Bundle
 import android.view.*
 import android.widget.ArrayAdapter
+import android.widget.LinearLayout
 import android.widget.TableRow
 import android.widget.TextView
 import androidx.core.content.ContextCompat
+import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.example.login_portal.R
 import com.example.login_portal.databinding.FragmentScoreBinding
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.snackbar.Snackbar
+import com.leinardi.android.speeddial.SpeedDialActionItem
+import com.leinardi.android.speeddial.SpeedDialView
 
 class ScoreFragment : Fragment() {
     private var _binding: FragmentScoreBinding? = null
@@ -29,10 +36,72 @@ class ScoreFragment : Fragment() {
         setupSpinners()
         setupClickListeners()
         setupObservers()
+        setupSpeedDialMenu()
         initializeTable()
 
         return binding.root
     }
+
+    private fun setupSpeedDialMenu() {
+        val speedDial = binding.speedDial
+        val overlay = binding.overlay
+
+
+        // Lắng nghe sự kiện thay đổi trạng thái của SpeedDial
+        speedDial.setOnChangeListener(object : SpeedDialView.OnChangeListener {
+            override fun onMainActionSelected(): Boolean {
+                // Không thực hiện hành động gì khi nhấn nút chính
+                return false
+            }
+
+            override fun onToggleChanged(isOpen: Boolean) {
+                // Hiển thị hoặc ẩn lớp phủ dựa trên trạng thái SpeedDial
+                if (isOpen) {
+                    overlay.visibility = View.VISIBLE
+                } else {
+                    overlay.visibility = View.GONE
+                }
+            }
+        })
+
+        // Thêm các hành động vào SpeedDial
+        speedDial.addActionItem(
+            SpeedDialActionItem.Builder(R.id.action_review, R.drawable.ic_score)
+                .setLabel("Review")
+                .create()
+        )
+        speedDial.addActionItem(
+            SpeedDialActionItem.Builder(R.id.action_request, R.drawable.ic_lock)
+                .setLabel("Request")
+                .create()
+        )
+
+        // Xử lý sự kiện khi người dùng chọn menu
+        speedDial.setOnActionSelectedListener { actionItem ->
+            when (actionItem.id) {
+                R.id.action_review -> {
+                    // Điều hướng đến giao diện Add Person
+                    findNavController().navigate(R.id.action_nav_Score_to_nav_ReviewScore)
+                    overlay.visibility = View.GONE
+                    true
+                }
+                R.id.action_request -> {
+                    // Điều hướng đến giao diện Add Alarm
+                    findNavController().navigate(R.id.action_nav_Score_to_nav_RequestScore)
+                    overlay.visibility = View.GONE
+                    true
+                }
+                else -> false
+            }
+        }
+
+        // Xử lý sự kiện khi người dùng nhấp vào lớp phủ
+        overlay.setOnClickListener {
+            speedDial.close()
+            overlay.visibility = View.GONE
+        }
+    }
+
 
     private fun setupSpinners() {
         viewModel.availableYears.observe(viewLifecycleOwner) { years ->
@@ -76,6 +145,29 @@ class ScoreFragment : Fragment() {
             }
 
         }
+
+//        // Bên trong ScoreFragment hoặc Activity chứa layout trên
+//        binding.fab.setOnClickListener {
+//            val bottomSheetDialog = BottomSheetDialog(requireContext())
+//            val bottomSheetView = layoutInflater.inflate(R.layout.fab_menu, null)
+//
+//            bottomSheetDialog.setContentView(bottomSheetView)
+//            bottomSheetDialog.show()
+//
+//            // Xử lý sự kiện khi chọn các menu
+//            bottomSheetView.findViewById<LinearLayout>(R.id.optionRecheck)?.setOnClickListener {
+//                bottomSheetDialog.dismiss()
+//                // Chuyển đến giao diện Phúc khảo
+//                findNavController().navigate(R.id.action_nav_Score_to_nav_RequestScore)
+//            }
+//
+//            bottomSheetView.findViewById<LinearLayout>(R.id.optionTranscript)?.setOnClickListener {
+//                bottomSheetDialog.dismiss()
+//                // Chuyển đến giao diện Xin bảng điểm
+//               findNavController().navigate(R.id.action_nav_Score_to_nav_ReviewScore)
+//            }
+//        }
+
     }
 
     private fun setupClickListeners() {
@@ -197,10 +289,6 @@ class ScoreFragment : Fragment() {
     }
 
     private fun updateStatistics(stats: Statistics) {
-//        binding.gpa4Scale.text = String.format("4.0 Scale: %.2f", stats.gpa4Scale)
-//        binding.gpa10Scale.text = String.format("10.0 Scale: %.2f", stats.gpa10Scale)
-//        binding.totalCredits.text = "Credits: ${stats.totalCredits}"
-//        binding.totalCourses.text = "Courses: ${stats.totalCourses}"
         binding.gpa4Scale.text = getString(R.string.score4)+ ": %.2f".format(stats.gpa4Scale)
         binding.gpa10Scale.text = getString(R.string.score10)+ ": %.2f".format(stats.gpa10Scale)
         binding.totalCredits.text =getString(R.string.num_credit)+ ": ${stats.totalCredits}"

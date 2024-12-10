@@ -240,12 +240,22 @@
                 android:visibility="gone" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
+    <com.leinardi.android.speeddial.SpeedDialView
+        android:id="@+id/speedDial"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
-        android:layout_marginEnd="@dimen/fab_margin"
-        android:layout_marginBottom="16dp"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
+        android:layout_margin="16dp"
+        app:sdMainFabClosedBackgroundColor="@color/blue"
+        app:sdMainFabOpenedBackgroundColor="#ACD8F6" />
+
+    <!-- Lớp phủ -->
+    <View
+        android:id="@+id/overlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#80000000"
+        android:visibility="gone" />
+
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

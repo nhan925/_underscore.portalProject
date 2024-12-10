@@ -26,12 +26,23 @@
         android:id="@+id/nav_Score"
         android:name="com.example.login_portal.ui.score.ScoreFragment"
         android:label="@string/menu_score"
-        android:layout="@layout/fragment_score" />
+        android:layout="@layout/fragment_score">
+        <action
+            android:id="@+id/action_nav_Score_to_nav_ReviewScore"
+            app:destination="@id/nav_ReviewScore" />
+        <action
+            android:id="@+id/action_nav_Score_to_nav_RequestScore"
+            app:destination="@id/nav_RequestScore" />
+
+    </fragment>
+
+
     <fragment
         android:id="@+id/nav_Schedule"
         android:name="com.example.login_portal.ui.schedule.ScheduleFragment"
         android:label="@string/menu_schedule"
-        android:layout="@layout/fragment_schedule" />
+        android:layout="@layout/fragment_schedule"/>
+
     <fragment
         android:id="@+id/nav_Tuition"
         android:name="com.example.login_portal.ui.tuition.TuitionFragment"
@@ -49,6 +60,17 @@
         android:name="com.example.login_portal.ui.setting.SettingsFragment"
         android:label="@string/menu_register"
         android:layout="@layout/fragment_course" />
+
+
+    <fragment
+        android:id="@+id/nav_ReviewScore"
+        android:name="com.example.login_portal.ui.score.ReviewScoreFragment"
+        android:layout="@layout/fragment_review_score" />
+
+    <fragment
+        android:id="@+id/nav_RequestScore"
+        android:name="com.example.login_portal.ui.score.RequestScoreFragment"
+        android:layout="@layout/fragment_request_score" />
 
 
 

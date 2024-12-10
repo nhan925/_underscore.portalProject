@@ -12,6 +12,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.airbnb.lottie.LottieAnimationView
 import com.example.login_portal.R
 import com.example.login_portal.databinding.FragmentDashboardBinding
 import com.github.mikephil.charting.charts.BarChart
@@ -58,6 +59,7 @@ class DashboardFragment : Fragment() {
     private lateinit var viewModel: DashboardViewModel
     private lateinit var pieChart: PieChart
     private lateinit var barChart: BarChart
+    private lateinit var animationView: LottieAnimationView
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -72,9 +74,14 @@ class DashboardFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.animationView.setAnimation(R.raw.ani_user)
+      //  animationView.setAnimation(R.raw.)
+        binding.animationView.playAnimation()
+
         pieChart = binding.pieChart
         barChart = binding.barChart
-        
+
+
         // Loading state
         binding.loadingProgressBar.visibility = View.VISIBLE
         //binding.contentLayout.visibility = View.GONE
@@ -88,6 +95,8 @@ class DashboardFragment : Fragment() {
             setupPieChart(data.currentCredit, data.totalCredit)
             setupBarChart(data.semesters)
         }
+
+
     }
 
     private fun setupPieChart(currentCredit: Int, totalCredit: Int) {

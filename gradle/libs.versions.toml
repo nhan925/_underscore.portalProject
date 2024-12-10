@@ -27,6 +27,8 @@ navigationUiKtx = "2.8.1"
 okhttp = "4.9.1"
 opentelemetryApi = "1.18.0"
 securityCrypto = "1.1.0-alpha06"
+speedDial = "3.1.1"
+speedDialVersion = "3.3.0"
 volley = "1.2.1"
 legacySupportV4 = "1.0.0"
 
@@ -64,6 +66,8 @@ opentelemetry-context = { module = "io.opentelemetry:opentelemetry-context", ver
 opentelemetry-exporter-common = { module = "io.opentelemetry:opentelemetry-exporter-common", version.ref = "opentelemetryApi" }
 opentelemetry-sdk-common = { module = "io.opentelemetry:opentelemetry-sdk-common", version.ref = "opentelemetryApi" }
 opentelemetry-sdk-trace = { module = "io.opentelemetry:opentelemetry-sdk-trace", version.ref = "opentelemetryApi" }
+speed-dial = { module = "com.leinardi.android:speed-dial", version.ref = "speedDial" }
+speed-dial-v330 = { module = "com.leinardi.android:speed-dial", version.ref = "speedDialVersion" }
 volley = { module = "com.android.volley:volley", version.ref = "volley" }
 androidx-legacy-support-v4 = { group = "androidx.legacy", name = "legacy-support-v4", version.ref = "legacySupportV4" }
 

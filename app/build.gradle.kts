@@ -87,6 +87,10 @@ dependencies {
 // Thư viện Lifecycle (bao gồm lifecycleScope)
     implementation(libs.androidx.lifecycle.runtime.ktx)
 
+    //Thư viện Action Button
+    implementation(libs.speed.dial.v330)
+
+
 
 
 

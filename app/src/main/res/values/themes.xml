@@ -15,4 +15,6 @@
     <style name="Theme.Login_Portal.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.Login_Portal.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+
 </resources>

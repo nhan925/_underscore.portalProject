@@ -10,4 +10,5 @@
     <color name="red"> #FF0000</color>
     <color name="table_row_even">#FFFFFF</color>
     <color name="table_row_odd">#F5F5F5</color>
+
 </resources>
