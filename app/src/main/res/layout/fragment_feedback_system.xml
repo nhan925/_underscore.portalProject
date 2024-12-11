@@ -38,7 +38,7 @@
             android:inputType="none"
             android:paddingTop="16dp"
             android:paddingBottom="16dp"
-            android:text="Chọn loại" />
+            android:text="@string/feedback_system_selection" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -47,7 +47,7 @@
         android:layout_width="363dp"
         android:layout_height="207dp"
         android:background="@color/material_dynamic_tertiary100"
-        android:hint="Nhập nội dung phản hồi"
+        android:hint="@string/feedback_system_content_hint"
         app:layout_constraintBottom_toTopOf="@+id/imageView3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

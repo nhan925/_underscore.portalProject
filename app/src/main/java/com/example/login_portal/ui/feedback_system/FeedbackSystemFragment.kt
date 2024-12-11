@@ -38,7 +38,6 @@ class FeedbackSystemFragment : Fragment() {
         val arrayAdapter = ArrayAdapter(requireContext(), R.layout.dropdown_feedback_system_categories, categories)
         binding.fbSystemCategoryList.setAdapter(arrayAdapter)
 
-
         binding.submitBtn.setOnClickListener {
             val selectedCategory = binding.fbSystemCategoryList.text.toString()
             val content = binding.textInputLayout2.editText?.text.toString()
@@ -46,26 +45,39 @@ class FeedbackSystemFragment : Fragment() {
             feedbackSystemViewModel.updatedSelectedCategory(selectedCategory)
             feedbackSystemViewModel.updateFeedbackContent(content)
 
-            if(!feedbackSystemViewModel.validateFeedbackContent(requireContext())){
+            if(!validateInformation()){
                 return@setOnClickListener
             }
 
             feedbackSystemViewModel.postFeedback { isSuccess ->
                 if(isSuccess){
-                    Toast.makeText(requireContext(), "Ban đã gửi thành công", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), resources.getString(R.string.feedback_system_send_success), Toast.LENGTH_SHORT).show()
                     binding.textInputLayout2.editText?.setText("")
                 }
                 else{
-                    Toast.makeText(requireContext(), "Bạn đã gửi thất bại", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), resources.getString(R.string.feedback_system_send_failed), Toast.LENGTH_SHORT).show()
                 }
             }
         }
         return root
     }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    
+    private fun validateInformation(): Boolean {
+        var result = true
+        val content = binding.textInputLayout2.editText?.text.toString()
+        if(content.isEmpty()){
+            Toast.makeText(requireContext(), resources.getString(R.string.feedback_system_empty_field_error), Toast.LENGTH_SHORT).show()
+            result = false
+        }
+        else if (content.length < 10) {
+            Toast.makeText(requireContext(), resources.getString(R.string.feedback_system_length_error), Toast.LENGTH_SHORT).show()
+            result = false
+        }
+        else if (content.length > 500) {
+            Toast.makeText(requireContext(), resources.getString(R.string.feedback_system_length_error_02), Toast.LENGTH_SHORT).show()
+            result = false
+        }
+        return result
     }
 
 

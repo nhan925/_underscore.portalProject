@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.login_portal.R
-
+import java.text.DecimalFormat
 class AdapterForTuitionDetail(
     private var courseList: List<TuitionDetail>
 ) : RecyclerView.Adapter<AdapterForTuitionDetail.TuitionDetailViewHolder>() {
@@ -34,14 +34,19 @@ class AdapterForTuitionDetail(
         holder.courseNameTextView.text = course.courseName
 
         holder.courseCodeTextView.text = course.courseID
-
-        holder.courseFeeTextView.text = course.courseFee.toString()
+        val formatedCourseFee = formatTuitionFee(course.courseFee)
+        holder.courseFeeTextView.text = formatedCourseFee
 
         holder.courseCreditTextView.text = course.courseCredit.toString()
     }
 
     // Return the size of your dataset
     override fun getItemCount() = courseList.size
+
+    fun formatTuitionFee(tuitionFee: Int): String {
+        val formatter = DecimalFormat("#,###")
+        return formatter.format(tuitionFee)
+    }
 
     @SuppressLint("NotifyDataSetChanged")
     fun updateData(newCourseList: List<TuitionDetail>) {

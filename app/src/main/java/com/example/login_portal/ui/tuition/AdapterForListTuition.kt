@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.login_portal.R
-
+import java.text.DecimalFormat
 
 class AdapterForListTuition(
     private var tuitionList: List<Tuition>,
@@ -41,8 +41,9 @@ class AdapterForListTuition(
         val courseCountTitle = holder.itemView.context.resources.getString(R.string.tuition_number_of_subject)
         holder.courseCountTextView.text = "$courseCountTitle ${tuition.totalCourse}"
 
+        val formattedTuitionFee = formatTuitionFee(tuition.totalTuitionFee)
         val feeTitle = holder.itemView.context.resources.getString(R.string.tuition_fee)
-        holder.feeTextView.text = "$feeTitle ${tuition.totalTuitionFee} VND"
+        holder.feeTextView.text = "$feeTitle ${formattedTuitionFee} VND"
 
         val paidTitle = holder.itemView.context.resources.getString(R.string.tuition_status_paid)
         val notPaidTitle = holder.itemView.context.resources.getString(R.string.tuition_status_not_paid)
@@ -65,6 +66,11 @@ class AdapterForListTuition(
                 onItemClicked(tuition)
             }
         }
+    }
+
+    fun formatTuitionFee(tuitionFee: Int): String {
+        val formatter = DecimalFormat("#,###")
+        return formatter.format(tuitionFee)
     }
 
     // Return the size of your dataset

@@ -17,7 +17,7 @@ import vn.zalopay.sdk.Environment
 import vn.zalopay.sdk.ZaloPayError
 import vn.zalopay.sdk.ZaloPaySDK
 import vn.zalopay.sdk.listeners.PayOrderListener
-
+import java.text.DecimalFormat
 
 class TuitionDetailActivity : BaseActivity() {
 
@@ -49,7 +49,7 @@ class TuitionDetailActivity : BaseActivity() {
         semesterTV.text = intent.getIntExtra("semester", 0).toString()
         numberOfSubjectTV.text = intent.getIntExtra("totalCourse", 0).toString()
         val totalFee = intent.getIntExtra("totalFee", 0)
-        totalFeeTV.text = totalFee.toString()
+        totalFeeTV.text = formatTuitionFee(totalFee)
 
         val adapter = AdapterForTuitionDetail(emptyList())
         recyclerView = findViewById(R.id.tuition_detail_recycler)
@@ -115,5 +115,9 @@ class TuitionDetailActivity : BaseActivity() {
     }
 
 
+    fun formatTuitionFee(tuitionFee: Int): String {
+        val formatter = DecimalFormat("#,###")
+        return formatter.format(tuitionFee)
+    }
 
 }

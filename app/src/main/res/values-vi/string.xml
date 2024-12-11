@@ -105,5 +105,19 @@
     <string name="tuition_detail_paid_button">Đóng học phí</string>
     <string name="tuition_detail_student_information">Thông tin</string>
     <string name="tuition_detail_course_information">Danh sách môn học</string>
+    <string name="feedback_course_question">Câu hỏi</string>
+    <string name="feedback_course_complete">Hoàn thành</string>
+    <string name="feedback_course_continue">Tiếp tục</string>
+    <string name="feedback_course_back">Quay lại</string>
+    <string name="feedback_course_guide_title">Hướng dẫn đánh giá</string>
+    <string name="feedback_course_rate_title">Bảng đánh giá môn học</string>
+    <string name="feedback_course_list_title">Danh sách đánh giá</string>
+    <string name="feedback_system_empty_field_error">"Vui lòng điền thông tin "</string>
+    <string name="feedback_system_length_error">Chiều dài phải lớn hơn 10 kí tự</string>
+    <string name="feedback_system_send_success">Gửi thành công</string>
+    <string name="feedback_system_send_failed">Gửi thất bại</string>
+    <string name="feedback_system_length_error_02">Chiều dài thông tin không được vượt quá 500 kí tự</string>
+    <string name="feedback_system_selection">Chọn loại</string>
+    <string name="feedback_system_content_hint">Vui lòng điền thông tin</string>
 
 </resources>

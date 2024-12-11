@@ -141,11 +141,11 @@
             app:layout_constraintTop_toBottomOf="@+id/tuition_detail_semester" />
 
         <TextView
-            android:id="@+id/choose_class_status"
+            android:id="@+id/tuition_detail_unit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="@string/tuition_detail_unit"
+            android:text="VNĐ"
             app:layout_constraintStart_toEndOf="@+id/tuition_detail_total_fee"
             app:layout_constraintTop_toTopOf="@+id/tuition_detail_total_fee" />
 
@@ -162,7 +162,7 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/choose_class_general_frame_recycler"
+        android:id="@+id/tuition_detail_frame_recycler"
         android:layout_width="367dp"
         android:layout_height="562dp"
         android:layout_marginStart="16dp"
@@ -202,10 +202,10 @@
         android:layout_marginTop="24dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/choose_class_general_frame_recycler"
-        app:layout_constraintEnd_toEndOf="@+id/choose_class_general_frame_recycler"
-        app:layout_constraintStart_toStartOf="@+id/choose_class_general_frame_recycler"
-        app:layout_constraintTop_toTopOf="@+id/choose_class_general_frame_recycler" />
+        app:layout_constraintBottom_toBottomOf="@+id/tuition_detail_frame_recycler"
+        app:layout_constraintEnd_toEndOf="@+id/tuition_detail_frame_recycler"
+        app:layout_constraintStart_toStartOf="@+id/tuition_detail_frame_recycler"
+        app:layout_constraintTop_toTopOf="@+id/tuition_detail_frame_recycler" />
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/tuition_detail_pay_button"
@@ -222,7 +222,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/choose_class_general_frame_recycler"
+        app:layout_constraintTop_toBottomOf="@+id/tuition_detail_frame_recycler"
         app:layout_constraintVertical_bias="0.446"
         app:rippleColor="#BBDEFB" />
 

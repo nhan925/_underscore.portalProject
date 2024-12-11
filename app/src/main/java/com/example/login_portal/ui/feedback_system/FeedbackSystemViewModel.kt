@@ -19,16 +19,6 @@ class FeedbackSystemViewModel : ViewModel() {
        content = value
     }
 
-    fun validateFeedbackContent(context: Context): Boolean {
-        val result = Validator.validateFeedbackContent(content)
-        if(result.isValid){
-            return true
-        }
-        else{
-            Toast.makeText(context, result.errorMessage, Toast.LENGTH_SHORT).show()
-            return false
-        }
-    }
 
     fun postFeedback(callback: (Boolean) -> Unit) {
         FeedbackSystemDAO.postFeedback(content, selectedCategory) { response ->
@@ -39,4 +29,5 @@ class FeedbackSystemViewModel : ViewModel() {
             }
         }
     }
+
 }

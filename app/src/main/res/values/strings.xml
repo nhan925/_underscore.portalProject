@@ -63,7 +63,6 @@
         <item>Give feedback</item>
     </string-array>
 
-    <string name="feedback_system_complete_button">Complete</string>
 
     <string name="feedback_course_guide">Please rate your level of satisfaction with this course using the following scale: 1 (very dissatisfied), 2 (dissatisfied), 3 (neutral), 4 (satisfied), 5 (very satisfied). Your feedback will help improve the course.</string>
     <string-array name="feedback_course_question">
@@ -103,4 +102,19 @@
     <string name="tuition_detail_paid_button">Pay Now</string>
     <string name="tuition_detail_student_information">Information</string>
     <string name="tuition_detail_course_information">Course list</string>
+    <string name="feedback_course_question">Question</string>
+    <string name="feedback_course_complete">Complete</string>
+    <string name="feedback_course_continue">Continue</string>
+    <string name="feedback_course_back">Back</string>
+    <string name="feedback_system_complete_button">Complete</string>
+    <string name="feedback_course_guide_title">Instruction</string>
+    <string name="feedback_course_rate_title">Question For Rate</string>
+    <string name="feedback_course_list_title">List rate</string>
+    <string name="feedback_system_empty_field_error">Please fill information</string>
+    <string name="feedback_system_length_error">The length of the information must be greater than 10 characters</string>
+    <string name="feedback_system_send_success">Send successfully</string>
+    <string name="feedback_system_send_failed">Send failed</string>
+    <string name="feedback_system_length_error_02">The length of the information must not exceed 500 characters</string>
+    <string name="feedback_system_selection">Select</string>
+    <string name="feedback_system_content_hint">Please fill the form</string>
 </resources>
