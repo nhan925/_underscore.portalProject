@@ -39,7 +39,7 @@ class TuitionFragment : Fragment() {
             intent.putExtra("semester", tuition.semester)
             intent.putExtra("totalFee", tuition.totalTuitionFee)
             intent.putExtra("totalCourse", tuition.totalCourse)
-            startActivity(intent)
+            startActivityForResult(intent, 1)
         }
 
         val recyclerView: RecyclerView = binding.tuitionListRecycler

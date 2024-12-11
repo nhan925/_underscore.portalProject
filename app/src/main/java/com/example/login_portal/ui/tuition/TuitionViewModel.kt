@@ -48,4 +48,14 @@ class TuitionViewModel : ViewModel() {
             }
         }
     }
+
+    fun updatePaymentTuition(amount: Int, callback: (Boolean) -> Unit) {
+        TuitionDAO.updatePaymentTuition(amount) { response ->
+            if(response) {
+                callback(true)
+            } else {
+                callback(false)
+            }
+        }
+    }
 }

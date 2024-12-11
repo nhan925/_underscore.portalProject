@@ -31,4 +31,18 @@ object TuitionDAO {
             }
         }
     }
+
+    fun updatePaymentTuition(amount: Int, callback: (Boolean) -> Unit) {
+        val data = object {
+            val v_amount = amount
+        }
+
+        ApiServiceHelper.post("/rpc/add_new_tuition_fee_for_payment_history", data) { response ->
+            if (response != null) {
+                callback(true)
+            } else {
+                callback(false)
+            }
+        }
+    }
 }
