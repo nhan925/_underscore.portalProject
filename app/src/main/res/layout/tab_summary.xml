@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Thông tin "
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:layout_marginBottom="16dp"/>
+
+
+    <!-- Tổng kết -->
+    <LinearLayout
+        android:id="@+id/totalLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility = "gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tổng kết"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp"/>
+
+
+        <TextView
+            android:id="@+id/tvTotalVN"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="- Số lượng bản Tiếng Việt: 0"
+            android:layout_marginStart="16dp"/>
+
+
+        <TextView
+            android:id="@+id/tvTotalEN"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="- Số lượng bản Tiếng Anh: 0"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="16dp"/>
+    </LinearLayout>
+
+
+    <!-- Học kỳ -->
+    <LinearLayout
+        android:id="@+id/semesterLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility = "gone">
+
+        <TextView
+            android:id="@+id/tvSemesterTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text ="Học kì"
+            android:layout_marginBottom="8dp"/>
+
+
+        <TextView
+            android:id="@+id/tvSemesterVN"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="- Số lượng bản Tiếng Việt: 0"
+            android:layout_marginStart="16dp"/>
+
+
+        <TextView
+            android:id="@+id/tvSemesterEN"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="- Số lượng bản Tiếng Anh: 0"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="16dp"/>
+    </LinearLayout>
+
+
+    <!-- Năm học -->
+    <LinearLayout
+        android:id="@+id/yearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility = "gone">
+
+        <TextView
+            android:id="@+id/tvYearTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text ="Năm học"
+            android:layout_marginBottom="8dp"/>
+
+
+        <TextView
+            android:id="@+id/tvYearVN"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="- Số lượng bản Tiếng Việt: 0"
+            android:layout_marginStart="16dp"/>
+
+
+        <TextView
+            android:id="@+id/tvYearEN"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="- Số lượng bản Tiếng Anh: 0"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="16dp"/>
+    </LinearLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tổng số lượng:"
+        android:textStyle="bold"/>
+
+
+    <TextView
+        android:id="@+id/tvTotalCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:layout_marginStart="16dp"/>
+
+
+</LinearLayout>
+

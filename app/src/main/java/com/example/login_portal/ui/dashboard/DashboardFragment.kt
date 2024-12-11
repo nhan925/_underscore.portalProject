@@ -140,11 +140,11 @@ class DashboardFragment : Fragment() {
         Log.e("DashboardFragment", "Current credits: $currentCredit")
 
         val pieEntries = ArrayList<PieEntry>().apply {
-            add(PieEntry(currentCredit.toFloat(), "Đã học"))
-            add(PieEntry(remainingCredits.toFloat(), "Còn lại"))
+            add(PieEntry(currentCredit.toFloat(), "Da hoc"))
+            add(PieEntry(remainingCredits.toFloat(), "Con lai"))
         }
 
-        val pieDataSet = PieDataSet(pieEntries, "Tín chỉ").apply {
+        val pieDataSet = PieDataSet(pieEntries,"").apply {
             colors = listOf(
                 Color.rgb(64, 89, 230),
                 Color.rgb(149, 165, 244)

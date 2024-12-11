@@ -146,27 +146,6 @@ class ScoreFragment : Fragment() {
 
         }
 
-//        // Bên trong ScoreFragment hoặc Activity chứa layout trên
-//        binding.fab.setOnClickListener {
-//            val bottomSheetDialog = BottomSheetDialog(requireContext())
-//            val bottomSheetView = layoutInflater.inflate(R.layout.fab_menu, null)
-//
-//            bottomSheetDialog.setContentView(bottomSheetView)
-//            bottomSheetDialog.show()
-//
-//            // Xử lý sự kiện khi chọn các menu
-//            bottomSheetView.findViewById<LinearLayout>(R.id.optionRecheck)?.setOnClickListener {
-//                bottomSheetDialog.dismiss()
-//                // Chuyển đến giao diện Phúc khảo
-//                findNavController().navigate(R.id.action_nav_Score_to_nav_RequestScore)
-//            }
-//
-//            bottomSheetView.findViewById<LinearLayout>(R.id.optionTranscript)?.setOnClickListener {
-//                bottomSheetDialog.dismiss()
-//                // Chuyển đến giao diện Xin bảng điểm
-//               findNavController().navigate(R.id.action_nav_Score_to_nav_ReviewScore)
-//            }
-//        }
 
     }
 

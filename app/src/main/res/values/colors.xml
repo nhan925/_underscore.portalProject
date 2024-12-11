@@ -11,4 +11,15 @@
     <color name="table_row_even">#FFFFFF</color>
     <color name="table_row_odd">#F5F5F5</color>
 
+    <color name="tab_selected_color">#6200EE</color>
+    <color name="tab_unselected_color">#757575</color>
+    <color name="radio_button_color">#6200EE</color>
+    <color name="button_positive">#4CAF50</color>
+    <color name="button_negative">#757575</color>
+    <color name="background_light">#F9F9F9</color>
+    <color name="primary">#6200EE</color>
+
+    <color name="text_primary">#212121</color>
+    <color name="text_secondary">#757575</color>
+
 </resources>

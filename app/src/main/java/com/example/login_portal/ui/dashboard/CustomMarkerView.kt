@@ -19,8 +19,8 @@ class CustomMarkerView(
     override fun refreshContent(e: Entry?, highlight: Highlight?) {
         tvContent.text = """
             ${semester.name}
-            GPA: ${String.format("%.2f", semester.gpa)}
-            Xếp loại: $rank
+            ${context.getString(R.string.market_gpa, semester.gpa)}
+            ${context.getString(R.string.market_rank, rank)}
         """.trimIndent()
         super.refreshContent(e, highlight)
     }

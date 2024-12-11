@@ -49,8 +49,8 @@ class SettingsFragment : Fragment() {
             // Xóa dữ liệu người dùng trong local
             securePrefManager.clearUserData()
 
-            // Xóa token
-            ApiServiceHelper.jwtToken = null
+
+
 
             // Chuyển về màn hình đăng nhập
             activity?.runOnUiThread {
