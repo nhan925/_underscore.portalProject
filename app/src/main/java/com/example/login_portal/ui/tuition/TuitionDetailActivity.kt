@@ -68,10 +68,8 @@ class TuitionDetailActivity : BaseActivity() {
             try {
                 val data: JSONObject = orderApi.createOrder(totalFee.toString())
                 val code = data.getString("return_code")
-                Toast.makeText(applicationContext, "return_code: $code", Toast.LENGTH_LONG).show()
                 if (code == "1") {
                     val token = data.getString("zp_trans_token")
-                    Toast.makeText(applicationContext, "zp_trans_token: $token", Toast.LENGTH_LONG).show()
                     ZaloPaySDK.getInstance().payOrder(this, token, "demozpdk://app", object : PayOrderListener {
                         override fun onPaymentSucceeded(p0: String?, p1: String?, p2: String?) {
                             Toast.makeText(applicationContext, "Payment Succeeded", Toast.LENGTH_LONG).show()
