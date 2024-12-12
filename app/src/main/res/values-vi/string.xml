@@ -42,10 +42,66 @@
     <string name="menu_slideshow">Slideshow</string>
 
     <string name="menu_dash">Dashboard</string>
+
+    <!--For information_student_page-->
     <string name="menu_infor">Thông tin sinh viên</string>
+    <string name="infor_student_frag_student_role">Sinh viên</string>
+    <string name="infor_student_frag_information_general">Thông tin chung</string>
+    <string name='infor_student_frag_information_detail'>Chi tiết</string>
+    <string name="infor_student_frag_information_contact">Liên lạc</string>
+    <string name="infor_student_frag_full_name">Họ và tên</string>
+    <string name="infor_student_frag_id_student">MSSV</string>
+    <string name="infor_student_frag_major">Ngành</string>
+    <string name="infor_student_frag_year_of_admission">Khóa</string>
+    <string name="infor_student_frag_academic_program">Hệ đào tạo</string>
+    <string name="infor_student_frag_gender">Giới tính</string>
+    <string name="infor_student_frag_date_of_birth">Ngày sinh</string>
+    <string name="infor_student_frag_nationality">Quốc tịch</string>
+    <string name="infor_student_frag_ethnicity">Dân tộc</string>
+    <string name="infor_student_frag_identity_card_number">CCCD/ CMND</string>
+    <string name="infor_student_frag_email">Email sinh viên</string>
+    <string name="infor_student_frag_personal_email">Email cá nhân</string>
+    <string name="infor_student_frag_phone_number">SĐT</string>
+    <string name="infor_student_frag_address">Địa chỉ</string>
+    <string name="infor_student_frag_error_mail">Mail không hợp lệ</string>
+    <string name="infor_student_frag_notEmpty">Các trường không được để trống</string>
+    <string name="infor_student_frag_error_phoneNumber">Số điện thoại phải có đúng 10 chữ số và không được chứa chữ cái.</string>
+    <string name="infor_student_frag_error_alert_dialog">Lỗi</string>
+    <string name="infor_student_frag_close_dialog">Đóng</string>
+    <string name="infor_student_frag_upload_avatar">Tải ảnh lên</string>
+    <string name="infor_student_frag_remove_avatar">Loại bỏ ảnh</string>
+    <string name="infor_student_frag_already_default">Ảnh đã quay về mặc định</string>
+    <string name="infor_student_frag_change_avatar">Thay đổi Avatar</string>
+
     <string name="menu_Noti">Thông báo</string>
     <string name="menu_score">Điểm số</string>
+
+    <!--For schedule_student_page-->
     <string name="menu_schedule">Lịch học</string>
+    <string name="schedule_page_choose_semester">Chọn học kỳ</string>
+    <string name="schedule_page_session">Buổi</string>
+    <string name="schedule_page_period">Tiết</string>
+    <string name="schedule_page_monday">Thứ Hai</string>
+    <string name="schedule_page_tuesday">Thứ Ba</string>
+    <string name="schedule_page_wednesday">Thứ Tư</string>
+    <string name="schedule_page_thursday">Thứ Năm</string>
+    <string name="schedule_page_friday">Thứ Sáu</string>
+    <string name="schedule_page_saturday">Thứ Bảy</string>
+    <string name="schedule_page_sunday">Chủ Nhật</string>
+    <string name="schedule_page_morning">Sáng</string>
+    <string name="schedule_page_afternoon">Chiều</string>
+    <string name="schedule_page_room">Phòng</string>
+    <string name="schedule_page_course_url">Đề cương</string>
+    <string name="schedule_page_lecturer_label">Giảng viên</string>
+    <string name="schedule_page_course_url_link">Link đến đề cương</string>
+    <string name="schedule_page_lecturer_name">Họ và tên:</string>
+    <string name="schedule_page_lecturer_gender">Giới tính:</string>
+    <string name="schedule_page_lecturer_phone_number">SĐT:</string>
+    <string name="schedule_page_lecturer_email">Email:</string>
+    <string name="schedule_page_lecturer_academic_rank">Học hàm:</string>
+    <string name="schedule_page_lecturer_academic_degree">Học vị:</string>
+    <string name="schedule_page_lecturer_faculty">Khoa:</string>
+
     <string name="menu_register">Đăng kí học phần</string>
     <string name="menu_tuition">Học phí</string>
     <string name="menu_scholarship">Học bổng</string>

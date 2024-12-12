@@ -83,7 +83,7 @@ object ApiServiceHelper {
     fun post(endpoint: String, data: Any, callback: (String?) -> Unit) {
         jwtToken?.let { token ->
             val jsonData = GsonBuilder()
-                .serializeNulls() // Enable null serialization
+                .serializeNulls()
                 .create()
                 .toJson(data)
             Fuel.post("$BASE_URL$endpoint")

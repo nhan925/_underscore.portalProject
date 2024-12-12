@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    id("com.google.devtools.ksp")
+    id("kotlin-kapt")
 }
 
 android {
@@ -35,10 +37,15 @@ android {
     }
     buildFeatures {
         viewBinding = true
+        dataBinding = true
     }
 }
 
 dependencies {
+    val room_version = "2.6.1"
+    implementation("androidx.room:room-runtime:$room_version")
+    ksp("androidx.room:room-compiler:$room_version")
+    implementation("androidx.room:room-ktx:$room_version")
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
@@ -49,6 +56,7 @@ dependencies {
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
     implementation(libs.androidx.legacy.support.v4)
+    implementation(libs.androidx.ui.desktop)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -59,7 +67,12 @@ dependencies {
     implementation(libs.material.v190) // Update the version as needed
     implementation(libs.androidx.fragment.ktx.v157) // For Fragment transactions
     implementation(libs.androidx.security.crypto)
+    implementation(libs.converter.gson)
     implementation(libs.gson)
+    implementation(libs.okhttp)
+    implementation(libs.dotenv.kotlin)
+    implementation(libs.glide)
     implementation(libs.fuel)
     implementation(libs.fuel.gson)
+    implementation(libs.androidx.gridlayout)
 }

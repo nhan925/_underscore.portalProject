@@ -59,6 +59,56 @@
 
     <string name="request_reExaminationTitle">ReExamination</string>
     <string name="request_requestForTranscriptTitle">Request for transcript</string>
+    <string name="infor_student_frag_student_role">Student</string>
+    <string name="infor_student_frag_information_general">General</string>
+    <string name="infor_student_frag_information_detail">Detail</string>
+    <string name="infor_student_frag_information_contact">Contact</string>
+    <string name="infor_student_frag_full_name">Full Name</string>
+    <string name="infor_student_frag_id_student">ID Student</string>
+    <string name="infor_student_frag_major">Major</string>
+    <string name="infor_student_frag_year_of_admission">Year Of Admission</string>
+    <string name="infor_student_frag_academic_program">Academic Program</string>
+    <string name="infor_student_frag_gender">Gender</string>
+    <string name="infor_student_frag_date_of_birth">Date Of Birth</string>
+    <string name="infor_student_frag_nationality">Nationality</string>
+    <string name="infor_student_frag_ethnicity">Ethnicity</string>
+    <string name="infor_student_frag_identity_card_number">Identity Card Number</string>
+    <string name="infor_student_frag_email">School Email</string>
+    <string name="infor_student_frag_personal_email">Personal Email</string>
+    <string name="infor_student_frag_phone_number">Phone Number</string>
+    <string name="infor_student_frag_address">Address</string>
+    <string name="infor_student_frag_error_mail">Invalid email</string>
+    <string name="infor_student_frag_notEmpty">Fields cannot be empty</string>
+    <string name="infor_student_frag_error_phoneNumber">Phone number must have exactly 10 digits and cannot contain letters.</string>
+    <string name="infor_student_frag_error_alert_dialog">Error</string>
+    <string name="infor_student_frag_close_dialog">Close</string>
+    <string name="infor_student_frag_upload_avatar">Upload Avatar</string>
+    <string name="infor_student_frag_remove_avatar">Remove Avatar</string>
+    <string name="infor_student_frag_already_default">The image has reverted to the default.</string>
+    <string name="infor_student_frag_change_avatar">Change Avatar</string>
+    <string name="schedule_page_choose_semester">Semester</string>
+    <string name="schedule_page_session">Session</string>
+    <string name="schedule_page_monday">Monday</string>
+    <string name="schedule_page_tuesday">Tuesday</string>
+    <string name="schedule_page_wednesday">Wednesday</string>
+    <string name="schedule_page_thursday">Thursday</string>
+    <string name="schedule_page_friday">Friday</string>
+    <string name="schedule_page_saturday">Saturday</string>
+    <string name="schedule_page_sunday">Sunday</string>
+    <string name="schedule_page_period">Period</string>
+    <string name="schedule_page_morning">Morning</string>
+    <string name="schedule_page_afternoon">Afternoon</string>
+    <string name="schedule_page_room">Room</string>
+    <string name="schedule_page_course_url">Course Outline</string>
+    <string name="schedule_page_course_url_link">Link to course outline</string>
+    <string name="schedule_page_lecturer_name">Full Name:</string>
+    <string name="schedule_page_lecturer_gender">Gender:</string>
+    <string name="schedule_page_lecturer_phone_number">Phone Number:</string>
+    <string name="schedule_page_lecturer_email">Email:</string>
+    <string name="schedule_page_lecturer_academic_rank">Academic Rank:</string>
+    <string name="schedule_page_lecturer_academic_degree">Academic Degree:</string>
+    <string name="schedule_page_lecturer_faculty">Faculty:</string>
+    <string name="schedule_page_lecturer_label">Lecturer:</string>
     <string name="request_status_all">All</string>
     <string name="request_detail_detail_tab">Detail</string>
     <string name="request_detail_answer_tab">Response</string>
@@ -129,6 +179,7 @@
 
 
    
+
 
 
   
