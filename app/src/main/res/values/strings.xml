@@ -55,7 +55,102 @@
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
 
-   
+    <string name="request_reExaminationTitle">ReExamination</string>
+    <string name="request_requestForTranscriptTitle">Request for transcript</string>
+    <string name="statistics">Statistics</string>
+    <string name="gpa">GPA</string>
+    <string name="view">View</string>
+    <string name="semester">Semester</string>
+    <string name="school_year">School Year</string>
+    <string name="score_filter">Score Filter</string>
+    <string name="username_empty">Please enter username</string>
+    <string name="password_empty">Please enter password</string>
+    <string name="login_successful">Login successful</string>
+    <string name="login_failed">Login failed. Please check your credentials.</string>
+
+
+    <string name="year">Year</string>
+    <string name="course_code">Course Code</string>
+    <string name="subject">Subject</string>
+    <string name="credits">Credits</string>
+    <string name="class_code">Class Code</string>
+    <string name="score10">10-Point</string>
+    <string name="score4">4-Point</string>
+    <string name="notes">Notes</string>
+
+    <string name="num_credit">Credits</string>
+    <string name="num_course">Courses</string>"
+
+    <string name="barChart">Chart displaying GPA</string>
+    <string name="pieChart">Chart displaying Credits </string>
+
+
+    <string name="market_rank">Rank: %s</string>
+    <string name="market_gpa">GPA: %.2f</string>
+
+    <string name="inf1">Overview Chart</string>
+    <string name="inf2">Function Categories</string>
+    <string name="inf3">Students</string>
+    <string name="inf4">Request Transcript</string>
+    <string name="inf5">Request Reassessment</string>
+    <string name="inf6">Transcript Reassessment</string>
+    <string name="inf7">Class Code</string>
+    <string name="inf8">Current Grades</string>
+    <string name="inf9">Notes</string>
+    <string name="inf10">Submit</string>
+    <string name="inf11">Exit</string>
+    <string name="inf12">Semester</string>
+    <string name="inf13">Please select a subject</string>
+    <string name="inf14">Please enter the reason for reassessment</string>
+    <string name="inf15">Confirm Request</string>
+    <string name="inf16">Are you sure you want to submit the grade reassessment request?</string>
+    <string name="inf17">Cancel</string>
+    <string name="inf18">Confirm</string>
+    <string name="inf19">Grade reassessment request submitted successfully</string>
+    <string name="inf20">Request Transcript</string>
+    <string name="inf21">General Information</string>
+    <string name="inf22">Summary</string>
+    <string name="inf23">Semester</string>
+    <string name="inf24">Academic Year</string>
+    <string name="inf25">Year/Semester</string>
+    <string name="inf26">Number of Vietnamese copies</string>
+    <string name="inf27">Number of English copies</string>
+    <string name="inf28">Total Copies</string>
+    <string name="inf29">Request Transcript</string>
+    <string name="menu_infor1">Student\nInformation</string>
+    <string name="menu_register1">Register\nCourses</string>
+    <string name="menu_payment1">Payment\nHistory</string>
+    <string name="inf30">Timetable</string>
+    <string name="inf31">Class Schedule</string>
+    <string name="inf32">Semester Transcript</string>
+    <string name="inf33">Academic Year Transcript</string>
+    <string name="inf34">Overall Transcript</string>
+    <string name="inf35">Number of Copies</string>
+    <string name="inf36">Vietnamese</string>
+    <string name="inf37">English</string>
+    <string name="inf38">Total Credits</string>
+    <string name="inf39">Ratio</string>
+    <string name="inf40">Reassessment request submitted successfully</string>
+    <string name="inf41">Failed to submit reassessment request</string>
+    <string name="inf42">Please select an academic year</string>
+    <string name="inf43">Please select an academic year and semester</string>
+    <string name="inf44">Please enter the number of transcripts</string>
+    <string name="inf45">Transcript request submitted successfully</string>
+    <string name="inf46">Failed to submit transcript request</string>
+    <string name="total_vn"> Number of Vietnamese transcripts: %1$s</string>
+    <string name="total_en"> Number of English transcripts: %1$s</string>
+    <string name="semester_title">Semester/Year: %1$s/%2$s</string>
+    <string name="year_title">Academic Year: %1$s</string>
+
+    <string name="inf47">Request</string>
+    <string name="inf48">Review</string>
+    <string name="inf49">Studied</string>
+    <string name="inf50">Remaining</string>
+    <string name="inf51">Very Good</string>
+    <string name="inf52">Good</string>
+    <string name="inf53">Average</string>
+    <string name="inf54">Weak</string>
+    <string name="inf55">Excellent</string>
 
     <string name="request_reExaminationTitle">ReExamination</string>
     <string name="request_requestForTranscriptTitle">Request for transcript</string>
@@ -176,12 +271,5 @@
     <string name="choose_class_register_success">Register successfully !</string>
     <string name="choose_class_cancel_success">Cancel successfully !</string>
     <string name="choose_class_cancel_failed">Cancel failed !</string>
-
-
-   
-
-
-
-  
 
 </resources>

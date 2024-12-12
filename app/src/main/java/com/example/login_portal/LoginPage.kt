@@ -14,6 +14,9 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.commit
+
+import com.example.login_portal.utils.ApiServiceHelper
+import com.example.login_portal.utils.CallApiLogin
 import com.example.login_portal.utils.LanguageManager
 import com.example.login_portal.utils.SecurePrefManager
 import com.example.login_portal.utils.Validator
@@ -34,12 +37,9 @@ class MainActivity2 : BaseActivity() {
             navigateHome()
             return
         }
-//        val sharedPreferences = getSharedPreferences("appPreferences", Context.MODE_PRIVATE)
-//        currentLanguage = sharedPreferences.getString("appLanguage", "en") ?: "en"
-//        updateLocale(currentLanguage)
         languageManager = LanguageManager(this)
         currentLanguage = languageManager.getCurrentLanguage()
-        //languageManager.updateLocale(currentLanguage)
+
 
         setContentView(R.layout.activity_main2)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
@@ -52,8 +52,15 @@ class MainActivity2 : BaseActivity() {
         val registerButton = findViewById<ExtendedFloatingActionButton>(R.id.forgotButton)
         val fragmentContainer = findViewById<androidx.fragment.app.FragmentContainerView>(R.id.fragmentContainer)
 
+        CallApiLogin.initMSAL(this) { success ->
+            if (!success) {
+                Log.e("Login", "Failed to initialize MSAL")
+            }
+        }
+
         setupLoginButtonListener()
 
+        loginWithOutlook()
         loginButton.setOnClickListener {
             switchToLogin(loginButton, registerButton)
         }
@@ -70,10 +77,7 @@ class MainActivity2 : BaseActivity() {
         languageManager.updateLanguageUI(languageFlag, languageText, currentLanguage)
 
         languageSwitchLayout.setOnClickListener {
-            //toggleLanguage(this, languageFlag, languageText)
             currentLanguage = languageManager.toggleLanguage(languageFlag, languageText)
-            //recreate()
-           // AppUtils.restartApp(this)
         }
 
         if (savedInstanceState != null) {
@@ -129,35 +133,80 @@ class MainActivity2 : BaseActivity() {
         val passwordInput = findViewById<TextInputEditText>(R.id.textPasswordInput)
 
         btnLogin.setOnClickListener {
-            val email = usernameInput.text.toString()
-            val password = passwordInput.text.toString()
+            val username = usernameInput.text?.toString()?.trim() ?: ""
+            val password = passwordInput.text?.toString()?.trim() ?: ""
             val isRemembered = rememberMeCheckbox.isChecked
+            Log.d("LoginDebug", "Username: $username, Password: $password, Remembered: $isRemembered")
 
-            val emailValidation = Validator.validateEmail(email)
-            val passwordValidation = Validator.validatePassword(password)
+            // Validate input
+            if (!validateLoginInput(username, password)) {
+                return@setOnClickListener
+            }
 
-            when {
-                !emailValidation.isValid -> {
-                    Toast.makeText(this, emailValidation.errorMessage, Toast.LENGTH_SHORT).show()
-                    usernameInput.error = emailValidation.errorMessage
-                }
-                !passwordValidation.isValid -> {
-                    Toast.makeText(this, passwordValidation.errorMessage, Toast.LENGTH_SHORT).show()
-                    passwordInput.error = passwordValidation.errorMessage
-                }
-                else -> {
-                    if (verifyCredentials(email, password)) {
-                        if (isRemembered) {
-                            sercurePrefManager.saveUserCredentials(email, password, true)
-                        }
-                        Toast.makeText(this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show()
-                        navigateHome()
+
+            // Call API
+            ApiServiceHelper.login(username, password) { success ->
+                    Log.d("LoginDebug", "Login success: $success, Token: ${ApiServiceHelper.jwtToken}")
+
+                    if (success) {
+                        handleSuccessfulLogin(username, password, isRemembered)
                     } else {
-                        Toast.makeText(this, "Sai email hoặc mật khẩu", Toast.LENGTH_SHORT).show()
+                        handleFailedLogin()
+                        passwordInput.text?.clear()
                     }
-                }
+
             }
         }
+    }
+
+    private fun validateLoginInput(username: String, password: String): Boolean {
+        if (username.isEmpty()) {
+            showError(getString(R.string.username_empty))
+            return false
+        }
+
+        if (password.isEmpty()) {
+            showError(getString(R.string.password_empty))
+            return false
+        }
+
+        return true
+    }
+
+    private fun handleSuccessfulLogin(username: String, password: String, isRemembered: Boolean) {
+        if (isRemembered) {
+            sercurePrefManager.saveUserCredentials(username, password, isRemembered)
+        }
+//
+        Toast.makeText(
+            this,
+            getString(R.string.login_successful),
+            Toast.LENGTH_SHORT
+        ).show()
+
+        navigateHome()
+    }
+
+    private fun handleFailedLogin() {
+        Toast.makeText(
+            this,
+            getString(R.string.login_failed),
+            Toast.LENGTH_LONG
+        ).show()
+    }
+
+    private fun showLoading() {
+          findViewById<View>(R.id.progressBar)?.visibility = View.VISIBLE
+          findViewById<View>(R.id.main)?.alpha = 0.5f
+    }
+
+    private fun hideLoading() {
+         findViewById<View>(R.id.progressBar)?.visibility = View.GONE
+         findViewById<View>(R.id.main)?.alpha = 1.0f
+    }
+
+    private fun showError(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
     private fun switchToRegister(loginButton: ExtendedFloatingActionButton, registerButton: ExtendedFloatingActionButton) {
@@ -186,19 +235,34 @@ class MainActivity2 : BaseActivity() {
     }
 
     private fun navigateHome(){
-        startActivity(Intent(this, HomePageTest::class.java))
-        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+        startActivity(Intent(this, Main::class.java))
+      //  overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
         finish()
     }
 
+    // Xử lý click button login with Outlook
+    private fun loginWithOutlook() {
+        findViewById<ExtendedFloatingActionButton>(R.id.googleSignInButtonFAB).setOnClickListener {
+            showLoading()
+            CallApiLogin.signIn(this) { token ->
+                hideLoading()
+                if (token != null) {
+                    // Login successful
+                    Toast.makeText(this, getString(R.string.login_successful), Toast.LENGTH_SHORT)
+                        .show()
+                    navigateHome()
+                } else {
+                    // Login failed
+                    Toast.makeText(this, getString(R.string.login_failed), Toast.LENGTH_LONG).show()
+                }
+            }
+        }
+    }
     override fun finish() {
         super.finish()
-        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
+      //  overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
     }
 
-    private fun verifyCredentials(email: String, password: String): Boolean {
-        return email == "phat@gmail.com" && password == "Test123!"
-    }
 
 
 }

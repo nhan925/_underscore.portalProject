@@ -39,6 +39,7 @@ android {
         viewBinding = true
         dataBinding = true
     }
+
 }
 
 dependencies {
@@ -60,19 +61,42 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-
-  
-    implementation("com.airbnb.android:lottie:3.4.0")
-
+    
     implementation(libs.material.v190) // Update the version as needed
-    implementation(libs.androidx.fragment.ktx.v157) // For Fragment transactions
+    implementation(libs.androidx.fragment.ktx) // For Fragment transactions
     implementation(libs.androidx.security.crypto)
-    implementation(libs.converter.gson)
-    implementation(libs.gson)
-    implementation(libs.okhttp)
-    implementation(libs.dotenv.kotlin)
-    implementation(libs.glide)
+
+    implementation(libs.mpandroidchart)
+
     implementation(libs.fuel)
     implementation(libs.fuel.gson)
+
+    implementation(libs.lottie)
+
+    implementation(libs.converter.gson)
+    implementation(libs.gson)
+
+    implementation(libs.msal.v510)
+    implementation(libs.volley)
+
+
+
+    implementation(libs.okhttp)
+
+    implementation(libs.opentelemetry.api)
+    implementation(libs.opentelemetry.context)
+
+    // Core library cho Coroutines
+    implementation(libs.kotlinx.coroutines.core)
+
+    // Android-specific library cho Coroutines (Dispatchers.Main)
+    implementation(libs.kotlinx.coroutines.android)
+// Thư viện Lifecycle (bao gồm lifecycleScope)
+    implementation(libs.androidx.lifecycle.runtime.ktx)
+
+    //Thư viện Action Button
+    implementation(libs.speed.dial.v330)
+    implementation(libs.dotenv.kotlin)
+    implementation(libs.glide)
     implementation(libs.androidx.gridlayout)
 }
