@@ -39,7 +39,6 @@ android {
 }
 
 dependencies {
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
@@ -60,8 +59,7 @@ dependencies {
     implementation(libs.material.v190) // Update the version as needed
     implementation(libs.androidx.fragment.ktx.v157) // For Fragment transactions
     implementation(libs.androidx.security.crypto)
-    implementation(libs.retrofit)
-    implementation(libs.converter.gson)
     implementation(libs.gson)
-
+    implementation(libs.fuel)
+    implementation(libs.fuel.gson)
 }
