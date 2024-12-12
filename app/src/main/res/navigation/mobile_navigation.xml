@@ -61,7 +61,6 @@
         android:label="@string/menu_register"
         android:layout="@layout/fragment_course" />
 
-
     <fragment
         android:id="@+id/nav_ReviewScore"
         android:name="com.example.login_portal.ui.score.ReviewScoreFragment"
@@ -72,9 +71,10 @@
         android:name="com.example.login_portal.ui.score.RequestScoreFragment"
         android:layout="@layout/fragment_request_score" />
 
-
-
-
-
+    <fragment
+        android:id="@+id/nav_Request"
+        android:name="com.example.login_portal.ui.requests.RequestFragment"
+        android:label="@string/menu_request"
+        tools:layout="@layout/fragment_request" />
 
 </navigation>

@@ -231,6 +231,7 @@ object ApiServiceHelper {
 
 
 
+
     // Example GET request with Authorization
     fun get(endpoint: String, callback: (String?) -> Unit) {
         jwtToken?.let { token ->
@@ -240,7 +241,11 @@ object ApiServiceHelper {
                     if (response.statusCode == 200) {
                         // Switch to the main thread for UI update
                         Handler(Looper.getMainLooper()).post {
-                            callback(result.get().trim('"'))
+                            val resultString = result.get().trim('"')
+                            if (resultString == "null")
+                                callback(null)
+                            else
+                                callback(resultString)
                         }
                     } else {
                         // Handle error response
@@ -266,7 +271,11 @@ object ApiServiceHelper {
                     if (response.statusCode == 200) {
                         // Switch to the main thread for UI update
                         Handler(Looper.getMainLooper()).post {
-                            callback(result.get().trim('"'))
+                            val resultString = result.get().trim('"')
+                            if (resultString == "null")
+                                callback(null)
+                            else
+                                callback(resultString)
                         }
                     } else {
                         // Handle error response

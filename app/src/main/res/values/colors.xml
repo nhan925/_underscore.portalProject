@@ -32,4 +32,16 @@
     <color name="section_background">#F5F5F5</color>
     <color name="section_border">#E0E0E0</color>
 
+    <color name="grey">#A7A7A7</color>
+    <color name="light_yellow">#ffebb2</color>
+    <color name="purple">#cd4fcd</color>
+    <color name="light_purple">#e5a8e5</color>
+    <color name="light_green">#d2eae5</color>
+    <color name="green">#81C784</color>
+    <color name="light_gray">#eeeeee</color>
+    <color name="light_blue">#afd0ed</color>
+    <color name="table_row_even">#FFFFFF</color>
+    <color name="table_row_odd">#F5F5F5</color>
+    <color name="item_dark_overlay">#33000000</color>
+    <color name="orange">#FF5733</color>
 </resources>

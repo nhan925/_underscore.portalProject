@@ -30,8 +30,6 @@ open class BaseActivity : AppCompatActivity() {
         val languageCode = getSharedPreferences("appPreferences", Context.MODE_PRIVATE)
             .getString("appLanguage", "en") ?: "en"
         updateConfiguration(languageCode)
-
-
     }
 
     private fun updateConfiguration(languageCode: String) {

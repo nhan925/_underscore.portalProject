@@ -7,16 +7,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- Welcome Text -->
-
-
-    <!-- Login and Register Buttons -->
-
-    <!-- Description Text -->
-
-    <!-- Username Input Field -->
-
-
     <ProgressBar
         android:id="@+id/progressBar"
         android:layout_width="129dp"
@@ -26,32 +16,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <!-- Password Input Field -->
-
-    <!-- Remember Me Checkbox -->
-
-    <!-- Login Button -->
-
-
-    <!-- Google Sign-In Button -->
 
 
     <TextView
