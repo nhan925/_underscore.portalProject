@@ -134,10 +134,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:layout_marginStart="30dp"
+            android:layout_marginStart="16dp"
             android:alpha="0.8"
             android:text="@string/tuition_fee"
-            app:layout_constraintStart_toStartOf="@+id/textView13"
+            app:layout_constraintStart_toEndOf="@+id/tuition_detail_number_of_subject"
             app:layout_constraintTop_toBottomOf="@+id/tuition_detail_semester" />
 
         <TextView

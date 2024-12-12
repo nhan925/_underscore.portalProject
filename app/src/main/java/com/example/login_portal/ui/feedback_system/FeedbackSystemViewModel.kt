@@ -7,9 +7,9 @@ import com.example.login_portal.utils.Validator
 
 class FeedbackSystemViewModel : ViewModel() {
 
-    private lateinit var selectedCategory: String
+    private var selectedCategory: String = ""
 
-    private lateinit var content: String
+    private var content: String = ""
 
     fun updatedSelectedCategory(value: String) {
         selectedCategory = value

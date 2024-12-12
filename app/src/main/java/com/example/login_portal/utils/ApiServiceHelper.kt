@@ -17,17 +17,18 @@ object ApiServiceHelper {
     // Login using username and password
     fun login(username: String, password: String, callback: (Boolean) -> Unit) {
         val loginData = Gson().toJson(mapOf("username" to username, "password" to password))
-        Log.d("ApiServiceHelper", "Login with data: $loginData")
-        Log.d("ApiServiceHelper", "Login with url: $BASE_URL/rpc/login")
+
         Fuel.post("$BASE_URL/rpc/login")
             .jsonBody(loginData)
             .responseString { _, response, result ->
-                Log.d("ApiServiceHelper", "Login response: $response")
-                Log.d("ApiServiceHelper", "Login response 2 : ${response.responseMessage}")
                 if (response.statusCode == 200) {
-                    jwtToken = result.get().trim('"')
-                    Log.d("ApiServiceHelper", "Login success with token: $jwtToken")
-                    callback(true)
+                    val resultString = result.get().trim('"')
+                    if (resultString == "null")
+                        callback(false)
+                    else {
+                        jwtToken = resultString
+                        callback(true)
+                    }
                 } else {
                     callback(false)
                 }
@@ -42,8 +43,13 @@ object ApiServiceHelper {
             .jsonBody(outlookData)
             .responseString { _, response, result ->
                 if (response.statusCode == 200) {
-                    jwtToken = result.get().trim('"')
-                    callback(true)
+                    val resultString = result.get().trim('"')
+                    if (resultString == "null")
+                        callback(false)
+                    else {
+                        jwtToken = resultString
+                        callback(true)
+                    }
                 } else {
                     callback(false)
                 }
@@ -59,7 +65,11 @@ object ApiServiceHelper {
                     if (response.statusCode == 200) {
                         // Switch to the main thread for UI update
                         Handler(Looper.getMainLooper()).post {
-                            callback(result.get().trim('"'))
+                            val resultString = result.get().trim('"')
+                            if (resultString == "null")
+                                callback(null)
+                            else
+                                callback(resultString)
                         }
                     } else {
                         // Handle error response
@@ -85,7 +95,11 @@ object ApiServiceHelper {
                     if (response.statusCode == 200) {
                         // Switch to the main thread for UI update
                         Handler(Looper.getMainLooper()).post {
-                            callback(result.get().trim('"'))
+                            val resultString = result.get().trim('"')
+                            if (resultString == "null")
+                                callback(null)
+                            else
+                                callback(resultString)
                         }
                     } else {
                         // Handle error response

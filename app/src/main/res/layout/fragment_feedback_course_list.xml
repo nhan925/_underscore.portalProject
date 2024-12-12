@@ -17,18 +17,18 @@
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.468"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout3"
-        android:layout_width="378dp"
-        android:layout_height="734dp"
+        android:id="@+id/feedback_course_frame_recycler"
+        android:layout_width="367dp"
+        android:layout_height="600dp"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="36dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
-        android:hint="@string/tuition_title"
+        android:hint="@string/feedback_course_list_title"
         app:boxCornerRadiusBottomEnd="10dp"
         app:boxCornerRadiusBottomStart="10dp"
         app:boxCornerRadiusTopEnd="10dp"
@@ -37,12 +37,14 @@
         app:hintTextAppearance="@style/hintTextStyle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.444"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fb_course_title">
+        app:layout_constraintTop_toBottomOf="@+id/fb_course_title"
+        app:layout_constraintVertical_bias="0.047">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
-            android:layout_height="726dp"
+            android:layout_height="match_parent"
             android:cursorVisible="false"
             android:focusable="false"
             android:gravity="top"
@@ -53,13 +55,16 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/fb_course_list"
-        android:layout_width="358dp"
-        android:layout_height="670dp"
+        android:layout_width="341dp"
+        android:layout_height="520dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="0dp"
         android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.476"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fb_course_title" />
+        app:layout_constraintTop_toTopOf="@+id/feedback_course_frame_recycler"
+        app:layout_constraintVertical_bias="0.128" />
 </androidx.constraintlayout.widget.ConstraintLayout>

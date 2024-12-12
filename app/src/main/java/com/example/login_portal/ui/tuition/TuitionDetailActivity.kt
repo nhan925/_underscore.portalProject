@@ -66,7 +66,7 @@ class TuitionDetailActivity : BaseActivity() {
             val orderApi: CreateOrder = CreateOrder()
 
             try {
-                val data: JSONObject = orderApi.createOrder(totalFeeTV.text.toString())
+                val data: JSONObject = orderApi.createOrder(totalFee.toString())
                 val code = data.getString("return_code")
                 Toast.makeText(applicationContext, "return_code: $code", Toast.LENGTH_LONG).show()
                 if (code == "1") {
@@ -87,12 +87,12 @@ class TuitionDetailActivity : BaseActivity() {
 
                         override fun onPaymentCanceled(p0: String?, p1: String?) {
                             Toast.makeText(applicationContext, "Payment Canceled", Toast.LENGTH_LONG).show()
-                            TODO("Not yet implemented")
+                            finish()
                         }
 
                         override fun onPaymentError(p0: ZaloPayError?, p1: String?, p2: String?) {
                             Toast.makeText(applicationContext, "Payment Error", Toast.LENGTH_LONG).show()
-                            TODO("Not yet implemented")
+                            finish()
                         }
                     }
                     )
