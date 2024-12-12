@@ -142,12 +142,12 @@ class RequestScoreFragment : Fragment() {
 
     private fun validateForm(): Boolean {
         if (selectedScore == null) {
-            showError("Vui lòng chọn môn học")
+            showError(getString(R.string.inf13))
             return false
         }
 
         if (binding.noteInput.text.isNullOrBlank()) {
-            showError("Vui lòng nhập lý do phúc khảo")
+            showError(getString(R.string.inf14))
             return false
         }
 
@@ -180,10 +180,10 @@ class RequestScoreFragment : Fragment() {
 
                 val success = respone?.contains("Request submitted successfully") == true
                 if (success) {
-                    showSuccess("Gửi yêu cầu phuc khao thành công")
+                    showSuccess(getString(R.string.inf40))
                     findNavController().navigateUp()
                 } else {
-                    showError("Gửi yêu cầu phuc khao điểm thất bại")
+                    showError(getString(R.string.inf41))
                 }
             }
         }
@@ -193,12 +193,12 @@ class RequestScoreFragment : Fragment() {
 
     private fun showDialog(){
         AlertDialog.Builder(requireContext())
-            .setTitle("Xác nhận yêu cầu")
-            .setMessage("Bạn có chắc chắn muốn gửi yêu cầu phúc khảo điểm")
-            .setPositiveButton("Xác nhận") { _, _ ->
+            .setTitle(getString(R.string.inf15))
+            .setMessage(getString(R.string.inf16))
+            .setPositiveButton(getString(R.string.inf18)) { _, _ ->
                 submitRequest()
             }
-            .setNegativeButton("Hủy", null)
+            .setNegativeButton(getString(R.string.inf17), null)
             .show()
     }
 

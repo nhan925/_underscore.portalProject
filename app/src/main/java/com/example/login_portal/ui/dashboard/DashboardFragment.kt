@@ -140,8 +140,8 @@ class DashboardFragment : Fragment() {
         Log.e("DashboardFragment", "Current credits: $currentCredit")
 
         val pieEntries = ArrayList<PieEntry>().apply {
-            add(PieEntry(currentCredit.toFloat(), "Da hoc"))
-            add(PieEntry(remainingCredits.toFloat(), "Con lai"))
+            add(PieEntry(currentCredit.toFloat(), getString(R.string.inf49)))
+            add(PieEntry(remainingCredits.toFloat(), getString(R.string.inf49)))
         }
 
         val pieDataSet = PieDataSet(pieEntries,"").apply {

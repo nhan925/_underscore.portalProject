@@ -67,10 +67,10 @@ class ReviewScoreFragment : Fragment() {
     private fun setupTabLayout() {
         TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
             tab.text = when (position) {
-                0 -> "Thông tin chung"
-                1 -> "Tổng kết"
-                2 -> "Học kỳ"
-                3 -> "Năm học"
+                0 -> getString(R.string.inf21)
+                1 -> getString(R.string.inf22)
+                2 -> getString(R.string.inf23)
+                3 -> getString(R.string.inf24)
                 else -> ""
             }
         }.attach()
@@ -148,7 +148,7 @@ class ReviewScoreFragment : Fragment() {
                 val semesterFragment = pagerAdapter.getFragment(2) as? SemesterFragment ?: return false
                 val info = semesterFragment.getTranscriptInfo()
                 if (info == null) {
-                    showError("Vui lòng chọn năm học và học kỳ")
+                    showError(getString(R.string.inf43))
                     false
                 } else {
                     validateCounts(info.third.first, info.third.second)
@@ -158,7 +158,7 @@ class ReviewScoreFragment : Fragment() {
                 val yearFragment = pagerAdapter.getFragment(3) as? YearFragment ?: return false
                 val info = yearFragment.getTranscriptInfo()
                 if (info == null) {
-                    showError("Vui lòng chọn năm học")
+                    showError(getString(R.string.inf42))
                     false
                 } else {
                     validateCounts(info.second.first, info.second.second)
@@ -170,7 +170,7 @@ class ReviewScoreFragment : Fragment() {
 
     private fun validateCounts(vnCount: Int, enCount: Int): Boolean {
         if (vnCount == 0 && enCount == 0) {
-            showError("Vui lòng nhập số lượng bảng điểm")
+            showError(getString(R.string.inf44))
             return false
         }
         return true
@@ -180,13 +180,12 @@ class ReviewScoreFragment : Fragment() {
         //val summaryFragment = pagerAdapter.getFragment(0) as? SummaryFragment ?: return
 
         AlertDialog.Builder(requireContext())
-            .setTitle("Xác nhận yêu cầu")
-            .setMessage("Bạn có chắc chắn muốn xin bảng điểm " )
-
-            .setPositiveButton("Xác nhận") { _, _ ->
+            .setTitle(getString(R.string.inf15))
+            .setMessage(getString(R.string.inf16))
+            .setPositiveButton(getString(R.string.inf18)) { _, _ ->
                 submitRequest()
             }
-            .setNegativeButton("Hủy", null)
+            .setNegativeButton(getString(R.string.inf17), null)
             .show()
     }
 
@@ -215,10 +214,10 @@ class ReviewScoreFragment : Fragment() {
 
                 val success = respone?.contains("Request submitted successfully") == true
                 if (success) {
-                    showSuccess("Gửi yêu cầu xin bảng điểm thành công")
+                    showSuccess(getString(R.string.inf45))
                     findNavController().navigateUp()
                 } else {
-                    showError("Gửi yêu cầu xin bảng điểm thất bại")
+                    showError(getString(R.string.inf46))
                 }
             }
         }

@@ -67,12 +67,12 @@ class ScoreFragment : Fragment() {
         // Thêm các hành động vào SpeedDial
         speedDial.addActionItem(
             SpeedDialActionItem.Builder(R.id.action_review, R.drawable.ic_score)
-                .setLabel("Review")
+                .setLabel(getString(R.string.inf47))
                 .create()
         )
         speedDial.addActionItem(
             SpeedDialActionItem.Builder(R.id.action_request, R.drawable.ic_lock)
-                .setLabel("Request")
+                .setLabel(R.string.inf48)
                 .create()
         )
 
@@ -225,7 +225,7 @@ class ScoreFragment : Fragment() {
             minimumWidth = when {
                 text == getString(R.string.year) || text.matches(Regex("\\d{4}-\\d{4}")) -> 120
                 text == getString(R.string.semester) || text.matches(Regex("\\d")) -> 80
-                text == getString(R.string.course_code) || text.matches(Regex("CSC\\d{5}")) -> 100
+                text == getString(R.string.course_code)  -> 100
                 text == getString(R.string.subject) || text.matches(Regex("[A-Za-z\\s]+")) -> 150
                 text == getString(R.string.credits) || text.matches(Regex("\\d+")) -> 70
                 text == getString(R.string.class_code) -> 100

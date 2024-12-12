@@ -1,16 +1,12 @@
 package com.example.login_portal.ui.score.fragments
 
-import android.R
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
-import com.example.login_portal.databinding.TabSemesterBinding
+import com.example.login_portal.R
 import com.example.login_portal.databinding.TabSummaryBinding
-import com.example.login_portal.ui.score.ScoreViewModel
 
 class SummaryFragment : Fragment() {
     private var _binding: TabSummaryBinding? = null
@@ -75,35 +71,89 @@ class SummaryFragment : Fragment() {
     }
 
 
+//    private fun updateUI() {
+//        binding.totalLayout.visibility = if (totalState.isVisible) View.VISIBLE else View.GONE
+//        if (totalState.isVisible) {
+//            binding.tvTotalVN.text = "- Số lượng bản Tiếng Việt: ${totalState.vnCount.toString().padStart(2, '0')}"
+//            //binding.tvTotalVN.text = "${context?.getString(R.string., totalState.vnCount.toString().padStart(2, '0'))}"
+//            binding.tvTotalEN.text = "- Số lượng bản Tiếng Anh: ${totalState.enCount.toString().padStart(2, '0')}"
+//        }
+//
+//
+//        binding.semesterLayout.visibility = if (semesterState.isVisible) View.VISIBLE else View.GONE
+//        if (semesterState.isVisible) {
+//            binding.tvSemesterTitle.text = "NH/HK: ${semesterState.year}/${semesterState.semester}"
+//            binding.tvSemesterVN.text = "- Số lượng bản Tiếng Việt: ${semesterState.vnCount.toString().padStart(2, '0')}"
+//            binding.tvSemesterEN.text = "- Số lượng bản Tiếng Anh: ${semesterState.enCount.toString().padStart(2, '0')}"
+//        }
+//
+//
+//        binding.yearLayout.visibility = if (yearState.isVisible) View.VISIBLE else View.GONE
+//        if (yearState.isVisible) {
+//            binding.tvYearTitle.text = "Năm học: ${yearState.year}"
+//            binding.tvYearVN.text = "- Số lượng bản Tiếng Việt: ${yearState.vnCount.toString().padStart(2, '0')}"
+//            binding.tvYearEN.text = "- Số lượng bản Tiếng Anh: ${yearState.enCount.toString().padStart(2, '0')}"
+//        }
+//
+//
+//        totalCount = (if (totalState.isVisible) totalState.vnCount + totalState.enCount else 0) +
+//                (if (semesterState.isVisible) semesterState.vnCount + semesterState.enCount else 0) +
+//                (if (yearState.isVisible) yearState.vnCount + yearState.enCount else 0)
+//        binding.tvTotalCount.text = totalCount.toString()
+//    }
+
     private fun updateUI() {
         binding.totalLayout.visibility = if (totalState.isVisible) View.VISIBLE else View.GONE
         if (totalState.isVisible) {
-            binding.tvTotalVN.text = "- Số lượng bản Tiếng Việt: ${totalState.vnCount.toString().padStart(2, '0')}"
-            binding.tvTotalEN.text = "- Số lượng bản Tiếng Anh: ${totalState.enCount.toString().padStart(2, '0')}"
+            binding.tvTotalVN.text = context?.getString(
+                R.string.total_vn,
+                totalState.vnCount.toString().padStart(2, '0')
+            )
+            binding.tvTotalEN.text = context?.getString(
+                R.string.total_en,
+                totalState.enCount.toString().padStart(2, '0')
+            )
         }
-
 
         binding.semesterLayout.visibility = if (semesterState.isVisible) View.VISIBLE else View.GONE
         if (semesterState.isVisible) {
-            binding.tvSemesterTitle.text = "NH/HK: ${semesterState.year}/${semesterState.semester}"
-            binding.tvSemesterVN.text = "- Số lượng bản Tiếng Việt: ${semesterState.vnCount.toString().padStart(2, '0')}"
-            binding.tvSemesterEN.text = "- Số lượng bản Tiếng Anh: ${semesterState.enCount.toString().padStart(2, '0')}"
+            binding.tvSemesterTitle.text = context?.getString(
+                R.string.semester_title,
+                semesterState.year,
+                semesterState.semester
+            )
+            binding.tvSemesterVN.text = context?.getString(
+                R.string.total_vn,
+                semesterState.vnCount.toString().padStart(2, '0')
+            )
+            binding.tvSemesterEN.text = context?.getString(
+                R.string.total_en,
+                semesterState.enCount.toString().padStart(2, '0')
+            )
         }
-
 
         binding.yearLayout.visibility = if (yearState.isVisible) View.VISIBLE else View.GONE
         if (yearState.isVisible) {
-            binding.tvYearTitle.text = "Năm học: ${yearState.year}"
-            binding.tvYearVN.text = "- Số lượng bản Tiếng Việt: ${yearState.vnCount.toString().padStart(2, '0')}"
-            binding.tvYearEN.text = "- Số lượng bản Tiếng Anh: ${yearState.enCount.toString().padStart(2, '0')}"
+            binding.tvYearTitle.text = context?.getString(
+                R.string.year_title,
+                yearState.year
+            )
+            binding.tvYearVN.text = context?.getString(
+                R.string.total_vn,
+                yearState.vnCount.toString().padStart(2, '0')
+            )
+            binding.tvYearEN.text = context?.getString(
+                R.string.total_en,
+                yearState.enCount.toString().padStart(2, '0')
+            )
         }
-
 
         totalCount = (if (totalState.isVisible) totalState.vnCount + totalState.enCount else 0) +
                 (if (semesterState.isVisible) semesterState.vnCount + semesterState.enCount else 0) +
                 (if (yearState.isVisible) yearState.vnCount + yearState.enCount else 0)
         binding.tvTotalCount.text = totalCount.toString()
     }
+
 
 
     fun getRequestContent(): String {

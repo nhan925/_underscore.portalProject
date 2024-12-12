@@ -12,7 +12,7 @@
         android:id="@+id/titleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Xin bảng điểm"
+        android:text="@string/inf4"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -36,22 +36,22 @@
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Thông tin chung" />
+            android:text="@string/inf21" />
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Tổng kết" />
+            android:text="@string/inf22" />
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Học kỳ" />
+            android:text="@string/inf23" />
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Năm học" />
+            android:text="@string/inf24" />
     </com.google.android.material.tabs.TabLayout>
 
 
@@ -85,7 +85,7 @@
             android:backgroundTint="@color/button_positive"
             android:elevation="4dp"
             android:stateListAnimator="@animator/button_states_list_anim"
-            android:text="Gửi" />
+            android:text="@string/inf10" />
 
 
         <Button
@@ -97,7 +97,7 @@
             android:backgroundTint="@color/button_negative"
             android:elevation="4dp"
             android:stateListAnimator="@animator/button_states_list_anim"
-            android:text="Thoát" />
+            android:text="@string/inf11" />
     </LinearLayout>
 
     <ProgressBar

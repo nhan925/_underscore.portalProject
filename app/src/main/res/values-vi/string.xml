@@ -95,7 +95,7 @@
     <string name="inf3"> Sinh viên</string>
     <string name="inf4">Xin bảng điểm</string>
     <string name="inf5">Xin phúc khảo</string>
-    <string name="ìnf6">Phúc khảo bảng điểm</string>
+    <string name="inf6">Phúc khảo bảng điểm</string>
     <string name="inf7">Mã lớp</string>
     <string name="inf8"> Điểm hiện tại</string>
     <string name="inf9"> Ghi chú</string>
@@ -128,6 +128,28 @@
     <string name="inf35">Số lượng bản sao</string>
     <string name="inf36">Tiếng Việt</string>
     <string name="inf37">Tiếng Anh</string>
+    <string name="inf38">Tổng tín chỉ</string>
+    <string name="inf39">Tỉ lệ</string>
+    <string name="inf40">Gửi yêu cầu phuc khao thành công</string>
+    <string name="inf41">Gửi yêu cầu phuc khao điểm thất bại</string>
+    <string name="inf42">Vui lòng chọn năm học</string>
+    <string name="inf43">Vui lòng chọn năm học và học kì</string>
+    <string name="inf44">Vui lòng nhập số lượng bảng điểm</string>
+    <string name="inf45">Gửi yêu cầu xin bảng điểm thành công</string>
+    <string name="inf46">Gửi yêu cầu xin bảng điểm thất bại</string>
+    <string name="total_vn"> Số lượng bản Tiếng Việt: %1$s</string>
+    <string name="total_en"> Số lượng bản Tiếng Anh: %1$s</string>
+    <string name="semester_title">NH/HK: %1$s/%2$s</string>
+    <string name="year_title">Năm học: %1$s</string>
+    <string name="inf47">Phúc khảo</string>
+    <string name="inf48">Xin bảng điểm</string>
+    <string name="inf49">Đã học</string>
+    <string name="inf50">Còn lại</string>
+    <string name="inf51">Giỏi</string>
+    <string name="inf52">Khá</string>
+    <string name="inf53">Trung bình</string>
+    <string name="inf54">Kém</string>
+    <string name="inf55">Xuất sắc</string>
 
 
 

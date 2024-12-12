@@ -9,7 +9,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Bảng điểm năm học"
+        android:text="@string/inf33"
         android:textStyle="bold"
         android:textSize="18sp"
         android:layout_marginBottom="16dp"/>
@@ -33,7 +33,7 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Năm học">
+                android:hint="@string/inf24">
 
 
                 <AutoCompleteTextView
@@ -47,7 +47,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Số lượng bản sao"
+                android:text="@string/inf35"
                 android:textStyle="bold"
                 android:layout_marginTop="16dp"/>
 
@@ -62,7 +62,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Tiếng Việt"/>
+                    android:text="@string/inf36"/>
 
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -92,7 +92,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Tiếng Anh"/>
+                    android:text="@string/inf37"/>
 
 
                 <com.google.android.material.textfield.TextInputLayout
