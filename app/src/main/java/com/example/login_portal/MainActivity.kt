@@ -28,6 +28,7 @@ class MainActivity : BaseActivity() {
         loginButtonFAB.setOnClickListener {
             val intent = Intent(this, MainActivity2::class.java)
             startActivity(intent)
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
         }
 
     }

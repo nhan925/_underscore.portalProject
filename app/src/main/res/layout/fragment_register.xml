@@ -6,50 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- Welcome Text -->
-
-
-    <!-- Login and Register Buttons -->
-
-    <!-- Description Text -->
-
-    <!-- Username Input Field -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <!-- Password Input Field -->
-
-    <!-- Remember Me Checkbox -->
-
-    <!-- Login Button -->
-
-
-    <!-- Google Sign-In Button -->
 
 
     <TextView
