@@ -52,9 +52,13 @@
             android:icon="@drawable/ic_menu_slideshow"
             android:title="@string/menu_chatbox" />
         <item
-            android:id="@+id/nav_Feedback"
+            android:id="@+id/nav_Feedback_Course"
             android:icon="@drawable/ic_feedback_24"
-            android:title="@string/menu_feedback" />
+            android:title="Course Feedback" />
+        <item
+            android:id="@+id/nav_Feedback_System"
+            android:icon="@drawable/ic_feedback_24"
+            android:title="App Feedback" />
         <item
             android:id="@+id/nav_Setting"
             android:icon="@drawable/ic_setting"

@@ -82,6 +82,11 @@
     <string name="barChart">Chart displaying GPA</string>
     <string name="pieChart">Chart displaying Credits </string>
 
+    <string name="feedback_system_category_title">Category</string>
+    <string-array name="feedback_system_category_items">
+        <item>Error Report</item>
+        <item>Give feedback</item>
+    </string-array>
 
     <string name="market_rank">Rank: %s</string>
     <string name="market_gpa">GPA: %.2f</string>
@@ -271,4 +276,57 @@
     <string name="choose_class_cancel_failed">Cancel failed !</string>
     <string name="login_outlook_fail_message">Login failed !</string>
 
+    <string name="feedback_course_guide">Please rate your level of satisfaction with this course using the following scale: 1 (very dissatisfied), 2 (dissatisfied), 3 (neutral), 4 (satisfied), 5 (very satisfied). Your feedback will help improve the course.</string>
+    <string-array name="feedback_course_question">
+        <item>How difficult do you find this course?</item>
+        <item>Do you feel that the lectures and study materials are clear and easy to understand?</item>
+        <item>How satisfied are you with the support provided by the instructor throughout the course?</item>
+        <item>Do you feel that the knowledge gained in this course is applicable to real-life situations?</item>
+        <item> How difficult do you find the quizzes and assignments in this course?</item>
+    </string-array>
+
+    <string name="feedback_teacher_guide">Please rate your level of satisfaction with this instructor using the following scale: 1 (very dissatisfied), 2 (dissatisfied), 3 (neutral), 4 (satisfied), 5 (very satisfied). Your feedback will contribute to improving the learning process.</string>
+    <string-array name="feedback_teacher_question">
+        <item>Does the instructor explain concepts in a way that is easy to understand?</item>
+        <item>How approachable and available is the instructor for questions and assistance?</item>
+        <item>How well does the instructor engage students and encourage participation?</item>
+        <item>How knowledgeable and well-prepared is the instructor in the subject matter?</item>
+        <item>How effectively does the instructor provide feedback on assignments and exams?</item>
+    </string-array>
+
+    <string name="feedback_course_year" >Year:</string>
+    <string name="feedback_course_semester" >Semester:</string>
+    <string name="feedback_course_empty_error">Please fill in all fields</string>
+    <string name="feedback_course_success">Feedback successfully</string>
+    <string name="feedback_course_fail">Feedback failed</string>
+    <string name="rated">Rated</string>
+    <string name="not_rated">Not Rate</string>
+    <string name="tuition_title">List Tuition</string>
+    <string name="tuition_status_not_paid">Not paid</string>
+    <string name="tuition_status_paid">Paid</string>
+    <string name="tuition_fee">Fee:</string>
+    <string name="tuition_number_of_subject">Number of subject:</string>
+    <string name="tuition_year">Year:</string>
+    <string name="tuition_semester">Semester:</string>
+    <string name="tuition_detail_title">Detail</string>
+    <string name="tuition_detail_credit">credits</string>
+    <string name="tuition_detail_unit">USD</string>
+    <string name="tuition_detail_paid_button">Pay Now</string>
+    <string name="tuition_detail_student_information">Information</string>
+    <string name="tuition_detail_course_information">Course list</string>
+    <string name="feedback_course_question">Question</string>
+    <string name="feedback_course_complete">Complete</string>
+    <string name="feedback_course_continue">Continue</string>
+    <string name="feedback_course_back">Back</string>
+    <string name="feedback_system_complete_button">Complete</string>
+    <string name="feedback_course_guide_title">Instruction</string>
+    <string name="feedback_course_rate_title">Question For Rate</string>
+    <string name="feedback_course_list_title">List rate</string>
+    <string name="feedback_system_empty_field_error">Please fill information</string>
+    <string name="feedback_system_length_error">The length of the information must be greater than 10 characters</string>
+    <string name="feedback_system_send_success">Send successfully</string>
+    <string name="feedback_system_send_failed">Send failed</string>
+    <string name="feedback_system_length_error_02">The length of the information must not exceed 500 characters</string>
+    <string name="feedback_system_selection">Select</string>
+    <string name="feedback_system_content_hint">Please fill the form</string>
 </resources>

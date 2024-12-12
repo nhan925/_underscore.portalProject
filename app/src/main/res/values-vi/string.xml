@@ -274,4 +274,67 @@
     <string name="login_outlook_fail_message">Đăng nhập thất bại !</string>
 
 
+
+    <string name="feedback_system_category_title">Phân loại</string>
+    <string-array name="feedback_system_category_items">
+        <item>Báo lỗi</item>
+        <item>Góp ý</item>
+    </string-array>
+
+    <string name="feedback_system_complete_button">Xác nhận</string>
+
+    <string name="feedback_course_guide">Anh/Chị hãy đánh giá mức độ hài lòng của mình đối với môn học này. Với than điểm, 1 (không hài lòng), 2 (tạm hài lòng), 3 (hơi hài lòng), 4 (hài lòng), 5 (rất hài lòng) . Những đóng góp của anh/chị sẽ góp phần cải thiện môn học.</string>
+    <string-array name="feedback_course_question">
+        <item>Mức độ khó của môn học này như thế nào đối với bạn?</item>
+        <item>Bạn có cảm thấy rằng các bài giảng và tài liệu học tập là đủ rõ ràng và dễ hiểu không?</item>
+        <item>Bạn đánh giá như thế nào về sự hỗ trợ từ giảng viên trong suốt quá trình học?</item>
+        <item>Bạn cảm thấy lượng kiến thức mà bạn học được từ môn học này có áp dụng được vào thực tế không?</item>
+        <item>Mức độ khó của các bài kiểm tra và bài tập trong môn học này như thế nào?</item>
+    </string-array>
+
+    <string name="feedback_teacher_guide">Anh/Chị hãy đánh giá mức độ hài lòng của mình đối với giảng viên này Với than điểm, 1 (không hài lòng), 2 (tạm hài lòng), 3 (hơi hài lòng), 4 (hài lòng), 5 (rất hài lòng) . Những đóng góp của anh chị sẽ góp phần cải thiện quá trình học</string>
+
+    <string-array name="feedback_teacher_question">
+        <item>Giảng viên giải thích các khái niệm theo cách dễ hiểu không?</item>
+        <item>Giảng viên có dễ tiếp cận và sẵn sàng giúp đỡ khi có câu hỏi không?</item>
+        <item>Giảng viên thu hút học sinh và khuyến khích sự tham gia của học sinh như thế nào?</item>
+        <item>Giảng viên có hiểu biết và chuẩn bị tốt về môn học không?</item>
+        <item>Giảng viên cung cấp phản hồi về bài tập và kỳ thi một cách hiệu quả như thế nào?</item>
+    </string-array>
+
+    <string name="feedback_course_year" >Năm học:</string>
+    <string name="feedback_course_semester" >Học kỳ:</string>
+    <string name="feedback_course_empty_error">Vui lòng điền đầy đủ thông tin</string>
+    <string name="feedback_course_success">Đánh giá thành công</string>
+    <string name="feedback_course_fail">Đánh giá thất bại</string>
+    <string name="rated">Đã đánh giá</string>
+    <string name="not_rated">Chưa đánh giá</string>
+    <string name="tuition_title">Danh sách học phí</string>
+    <string name="tuition_status_not_paid">Chưa đóng</string>
+    <string name="tuition_status_paid">Đã đóng</string>
+    <string name="tuition_fee">Học phí:</string>
+    <string name="tuition_number_of_subject">Số lượng môn:</string>
+    <string name="tuition_year">Năm học:</string>
+    <string name="tuition_semester">Kì học:</string>
+    <string name="tuition_detail_title">Chi tiết</string>
+    <string name="tuition_detail_credit">tín chỉ</string>
+    <string name="tuition_detail_unit">VNĐ</string>
+    <string name="tuition_detail_paid_button">Đóng học phí</string>
+    <string name="tuition_detail_student_information">Thông tin</string>
+    <string name="tuition_detail_course_information">Danh sách môn học</string>
+    <string name="feedback_course_question">Câu hỏi</string>
+    <string name="feedback_course_complete">Hoàn thành</string>
+    <string name="feedback_course_continue">Tiếp tục</string>
+    <string name="feedback_course_back">Quay lại</string>
+    <string name="feedback_course_guide_title">Hướng dẫn đánh giá</string>
+    <string name="feedback_course_rate_title">Bảng đánh giá môn học</string>
+    <string name="feedback_course_list_title">Danh sách đánh giá</string>
+    <string name="feedback_system_empty_field_error">"Vui lòng điền thông tin "</string>
+    <string name="feedback_system_length_error">Chiều dài phải lớn hơn 10 kí tự</string>
+    <string name="feedback_system_send_success">Gửi thành công</string>
+    <string name="feedback_system_send_failed">Gửi thất bại</string>
+    <string name="feedback_system_length_error_02">Chiều dài thông tin không được vượt quá 500 kí tự</string>
+    <string name="feedback_system_selection">Chọn loại</string>
+    <string name="feedback_system_content_hint">Vui lòng điền thông tin</string>
+
 </resources>

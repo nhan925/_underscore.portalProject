@@ -57,6 +57,11 @@ dependencies {
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
     implementation(libs.androidx.legacy.support.v4)
+    implementation(fileTree(mapOf(
+        "dir" to "E:\\ZaloPayAPI",
+        "include" to listOf("*.aar", "*.jar"),
+        "exclude" to listOf("")
+    )))
     implementation(libs.androidx.ui.desktop)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
@@ -65,6 +70,9 @@ dependencies {
     implementation(libs.material.v190) // Update the version as needed
     implementation(libs.androidx.fragment.ktx) // For Fragment transactions
     implementation(libs.androidx.security.crypto)
+
+    implementation("com.squareup.okhttp3:okhttp:4.6.0")
+    implementation("commons-codec:commons-codec:1.14")
 
     implementation(libs.mpandroidchart)
 
@@ -90,7 +98,7 @@ dependencies {
 
     // Android-specific library cho Coroutines (Dispatchers.Main)
     implementation(libs.kotlinx.coroutines.android)
-// Thư viện Lifecycle (bao gồm lifecycleScope)
+    // Thư viện Lifecycle (bao gồm lifecycleScope)
     implementation(libs.androidx.lifecycle.runtime.ktx)
 
     //Thư viện Action Button

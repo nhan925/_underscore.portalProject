@@ -8,6 +8,9 @@
     <color name="background_color">#FFFFFF</color>
     <color name="blue" > #6EACD6</color>
     <color name="red"> #FF0000</color>
+
+    <color name="green"> #00FF00</color>
+
     <color name="table_row_even">#FFFFFF</color>
     <color name="table_row_odd">#F5F5F5</color>
 
@@ -42,4 +45,5 @@
     <color name="light_blue">#afd0ed</color>
     <color name="item_dark_overlay">#33000000</color>
     <color name="orange">#FF5733</color>
+
 </resources>

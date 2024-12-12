@@ -193,14 +193,6 @@ object ApiServiceHelper {
         }
     }
 
-
-
-
-
-
-
-
-
     // Example GET request with Authorization
     fun get(endpoint: String, callback: (String?) -> Unit) {
         jwtToken?.let { token ->

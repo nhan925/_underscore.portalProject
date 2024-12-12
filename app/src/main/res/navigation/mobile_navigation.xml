@@ -76,5 +76,17 @@
         android:name="com.example.login_portal.ui.requests.RequestFragment"
         android:label="@string/menu_request"
         tools:layout="@layout/fragment_request" />
+  
+    <fragment
+        android:id="@+id/nav_Feedback_System"
+        android:name="com.example.login_portal.ui.feedback_system.FeedbackSystemFragment"
+        android:label="@string/menu_feedback"
+        tools:layout="@layout/fragment_feedback_system" />
+
+    <fragment
+        android:id="@+id/nav_Feedback_Course"
+        android:name="com.example.login_portal.ui.feedback_course.FeedbackCourseFragment"
+        android:label="Course Feedback"
+        tools:layout="@layout/fragment_feedback_course_list" />
 
 </navigation>
