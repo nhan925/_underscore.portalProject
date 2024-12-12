@@ -97,7 +97,7 @@
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginTop="8dp"
         app:cardCornerRadius="12dp"
         app:cardElevation="4dp"
@@ -106,34 +106,37 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintVertical_bias="0"
         app:layout_constraintTop_toBottomOf="@+id/schedule_page_note_color">
-
-        <FrameLayout
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-        <HorizontalScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-            <androidx.gridlayout.widget.GridLayout
-                android:id="@+id/schedule_page_scheduleTable"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:clipToPadding="false"
-                android:layout_gravity="fill"
-                android:divider="@drawable/custom_divider_schedule_page"
-                android:showDividers="middle|beginning|end">
-            </androidx.gridlayout.widget.GridLayout>
-        </HorizontalScrollView>
+                <androidx.gridlayout.widget.GridLayout
+                    android:id="@+id/schedule_page_scheduleTable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:layout_gravity="fill"
+                    android:divider="@drawable/custom_divider_schedule_page"
+                    android:showDividers="middle|beginning|end">
+                </androidx.gridlayout.widget.GridLayout>
+            </HorizontalScrollView>
 
-            <TableLayout
-                android:id="@+id/schedule_page_foregroundGrid"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:clipToPadding="false"
-                android:background="@android:color/transparent">
-            </TableLayout>
-        </FrameLayout>
+                <TableLayout
+                    android:id="@+id/schedule_page_foregroundGrid"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:background="@android:color/transparent">
+                </TableLayout>
+            </FrameLayout>
+        </ScrollView>
     </com.google.android.material.card.MaterialCardView>
 
 

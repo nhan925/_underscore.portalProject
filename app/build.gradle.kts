@@ -39,10 +39,14 @@ android {
         viewBinding = true
         dataBinding = true
     }
-
 }
 
 dependencies {
+    implementation(fileTree(mapOf(
+        "dir" to "./libs",
+        "include" to listOf("*.aar", "*.jar"),
+        "exclude" to listOf("")
+    )))
     val room_version = "2.6.1"
     implementation("androidx.room:room-runtime:$room_version")
     ksp("androidx.room:room-compiler:$room_version")
@@ -57,11 +61,6 @@ dependencies {
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
     implementation(libs.androidx.legacy.support.v4)
-    implementation(fileTree(mapOf(
-        "dir" to "E:\\ZaloPayAPI",
-        "include" to listOf("*.aar", "*.jar"),
-        "exclude" to listOf("")
-    )))
     implementation(libs.androidx.ui.desktop)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
@@ -103,7 +102,6 @@ dependencies {
 
     //Thư viện Action Button
     implementation(libs.speed.dial.v330)
-    implementation(libs.dotenv.kotlin)
     implementation(libs.glide)
     implementation(libs.androidx.gridlayout)
 }

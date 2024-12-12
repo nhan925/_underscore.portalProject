@@ -7,13 +7,9 @@ import com.github.kittinunf.fuel.Fuel
 import com.github.kittinunf.fuel.core.extensions.jsonBody
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
-import io.github.cdimascio.dotenv.dotenv
 
 object ApiServiceHelper {
-    private val dotenv = dotenv {
-        directory = "/assets"
-        filename = "env" // instead of '.env', use 'env'
-    }
+    private val dotenv = EnvLoader.loadEnv()
 
     val BASE_URL = dotenv["API_URL"]
     var jwtToken: String? = null

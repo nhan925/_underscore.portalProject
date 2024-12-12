@@ -10,8 +10,6 @@ import okhttp3.*
 import okhttp3.MediaType.Companion.toMediaType
 import java.io.File
 import java.io.IOException
-import io.github.cdimascio.dotenv.Dotenv
-import io.github.cdimascio.dotenv.dotenv
 import kotlinx.coroutines.Dispatchers
 import java.io.InputStream
 import java.nio.file.Path
@@ -21,10 +19,7 @@ import kotlin.io.path.pathString
 import android.os.Environment;
 
 object ImgurService {
-    val dotenv = dotenv {
-        directory = "/assets"
-        filename = "env" // instead of '.env', use 'env'
-    }
+    val dotenv = EnvLoader.loadEnv()
 
     private val httpClient: OkHttpClient = OkHttpClient()
     private val clientId: String by lazy { dotenv["IMGUR_CLIENT_ID"] ?: throw IllegalStateException("CLIENT_ID not found") }

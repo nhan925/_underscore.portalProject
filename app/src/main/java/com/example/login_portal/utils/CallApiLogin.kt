@@ -11,7 +11,6 @@ import com.microsoft.identity.client.exception.MsalClientException
 import com.microsoft.identity.client.exception.MsalServiceException
 import com.microsoft.identity.client.exception.MsalUiRequiredException
 import com.microsoft.identity.common.java.ui.AuthorizationAgent
-import io.github.cdimascio.dotenv.dotenv
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -19,10 +18,7 @@ import kotlinx.coroutines.withContext
 
 
 object CallApiLogin {
-    val dotenv = dotenv {
-        directory = "/assets"
-        filename = "env" // instead of '.env', use 'env'
-    }
+    val dotenv = EnvLoader.loadEnv()
 
     private var mSingleAccountApp: ISingleAccountPublicClientApplication? = null
     private val SCOPE = dotenv["AZURE_SCOPE"]

@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.example.login_portal.utils.ApiServiceHelper
+import com.example.login_portal.utils.EnvLoader
 import java.util.Locale
 
 open class BaseActivity : AppCompatActivity() {
@@ -29,6 +30,7 @@ open class BaseActivity : AppCompatActivity() {
         // Đảm bảo cập nhật ngôn ngữ khi Activity được tạo
         val languageCode = getSharedPreferences("appPreferences", Context.MODE_PRIVATE)
             .getString("appLanguage", "en") ?: "en"
+        EnvLoader.init(this)
         updateConfiguration(languageCode)
         Log.i("BaseActivity", "Before Login")
         ApiServiceHelper.login("student1", "1234") { isSuccess ->

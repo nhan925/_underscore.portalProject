@@ -11,24 +11,20 @@
         android:id="@+id/fb_system_category_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="16dp"
         android:text="@string/feedback_system_category_title"
         android:textSize="20sp"
-        app:layout_constraintEnd_toStartOf="@+id/textInputLayout"
-        app:layout_constraintHorizontal_bias="0.424"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/textInputLayout2"
+        app:layout_constraintTop_toTopOf="@+id/textInputLayout" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout"
-        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         android:layout_width="172dp"
-        android:layout_height="51dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:background="@color/material_dynamic_tertiary100"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.86"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/textInputLayout2"
         app:layout_constraintTop_toTopOf="parent">
 
         <AutoCompleteTextView
@@ -43,10 +39,9 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout2"
-        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="363dp"
         android:layout_height="207dp"
-        android:background="@color/material_dynamic_tertiary100"
         android:hint="@string/feedback_system_content_hint"
         app:layout_constraintBottom_toTopOf="@+id/imageView3"
         app:layout_constraintEnd_toEndOf="parent"
