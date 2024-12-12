@@ -73,7 +73,6 @@ dependencies {
 
     implementation(libs.lottie)
 
-    implementation(libs.converter.gson)
     implementation(libs.gson)
 
     implementation(libs.msal.v510)

@@ -178,8 +178,6 @@
     <string name="choose_class_cancel_success">Hùy thành công !</string>
     <string name="choose_class_cancel_failed">Hủy thất bại !</string>
 
-    <string name="request_reExaminationTitle">Xin phúc khảo</string>
-    <string name="request_requestForTranscriptTitle">Xin bảng điểm</string>
 
     <string name="statistics">Thống kê</string>
     <string name="gpa">GPA</string>

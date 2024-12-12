@@ -44,7 +44,6 @@ speedDial = "3.2.0"
 speedDialVersion = "3.3.0"
 volley = "1.2.1"
 legacySupportV4 = "1.0.0"
-fragmentKtx = "1.5.6"
 uiDesktop = "1.7.0"
 cardviewV7 = "28.0.0"
 
@@ -55,7 +54,6 @@ androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = 
 androidx-fragment-ktx-v157 = { module = "androidx.fragment:fragment-ktx", version.ref = "fragmentKtxVersion" }
 androidx-gridlayout = { module = "androidx.gridlayout:gridlayout", version.ref = "gridlayout" }
 androidx-security-crypto = { module = "androidx.security:security-crypto", version.ref = "securityCrypto" }
-converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
 dotenv-kotlin = { module = "io.github.cdimascio:dotenv-kotlin", version.ref = "dotenvKotlin" }
 fuel = { module = "com.github.kittinunf.fuel:fuel", version.ref = "fuelCoroutines" }
 fuel-coroutines = { module = "com.github.kittinunf.fuel:fuel-coroutines", version.ref = "fuelCoroutines" }
@@ -110,7 +108,6 @@ speed-dial = { module = "com.leinardi.android:speed-dial", version.ref = "speedD
 speed-dial-v330 = { module = "com.leinardi.android:speed-dial", version.ref = "speedDialVersion" }
 volley = { module = "com.android.volley:volley", version.ref = "volley" }
 androidx-legacy-support-v4 = { group = "androidx.legacy", name = "legacy-support-v4", version.ref = "legacySupportV4" }
-androidx-fragment-ktx = { group = "androidx.fragment", name = "fragment-ktx", version.ref = "fragmentKtx" }
 androidx-ui-desktop = { group = "androidx.compose.ui", name = "ui-desktop", version.ref = "uiDesktop" }
 cardview-v7 = { group = "com.android.support", name = "cardview-v7", version.ref = "cardviewV7" }
 
