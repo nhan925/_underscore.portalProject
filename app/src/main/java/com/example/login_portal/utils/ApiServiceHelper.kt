@@ -10,7 +10,7 @@ import com.google.gson.GsonBuilder
 
 object ApiServiceHelper {
     const val BASE_URL = "http://10.0.2.2:3001"
-    //const val BASE_URL = "http://10.0.142.29:3001"
+    //const val BASE_URL = "http://172.28.81.222:3001"
     //const val BASE_URL = "https://fictional-computing-machine-7qw979wwpr52wq7p-3001.app.github.dev"
     var jwtToken: String? = null
 
