@@ -271,13 +271,7 @@
     <string name="inf53">Trung bình</string>
     <string name="inf54">Kém</string>
     <string name="inf55">Xuất sắc</string>
-
-
-
-
-
-
-
+    <string name="login_outlook_fail_message">Đăng nhập thất bại !</string>
 
 
 </resources>

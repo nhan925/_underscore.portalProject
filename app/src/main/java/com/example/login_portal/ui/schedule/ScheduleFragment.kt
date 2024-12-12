@@ -78,6 +78,14 @@ class ScheduleFragment : Fragment() {
                 semesters?.toList() ?: emptyList()
             )
             binding.schedulePageSemesterSpinner.setAdapter(adapterSemester)
+
+            if (!semesters.isNullOrEmpty()) {
+                val defaultPosition = semesters.size - 1
+                binding.schedulePageSemesterSpinner.setText(
+                    adapterSemester.getItem(defaultPosition), false
+                )
+                scheduleViewModel.getSchedulePage(semesters[defaultPosition])
+            }
         }
 
         binding.schedulePageSemesterSpinner.setOnItemClickListener { parent, view, position, id ->
@@ -92,32 +100,6 @@ class ScheduleFragment : Fragment() {
         binding.schedulePageMorningSession.setText(getString(R.string.schedule_page_morning))
         binding.schedulePageAfternoonSession.setText(getString(R.string.schedule_page_afternoon))
     }
-
-/*    private fun createBackgroundTable(){
-        val NUMBER_OF_PERIOD = 10
-        val emptyRow = TableRow(context).apply {
-            for (index in 0..NUMBER_OF_COLUMN) {
-                addView(createTableCell("", 0, index, true, true))
-            }
-        }
-        binding.schedulePageBackgroundGrid.addView(emptyRow)
-
-        for (rowIndex in 1..NUMBER_OF_PERIOD) {
-            val row = TableRow(context).apply {
-            for (colIndex in 0..NUMBER_OF_COLUMN) {
-                val cellText = ""
-                addView(createTableCell(cellText,rowIndex,colIndex,false,true))
-            }
-                setBackgroundColor(
-                    if (rowIndex % 2 == 0)
-                        ContextCompat.getColor(requireContext(), R.color.table_row_even)
-                    else
-                        ContextCompat.getColor(requireContext(), R.color.table_row_odd)
-                )
-            }
-            binding.schedulePageBackgroundGrid.addView(row)
-        }
-    }*/
 
     private fun createForegroundTable(){
         val NUMBER_OF_PERIOD = 10
@@ -181,12 +163,6 @@ class ScheduleFragment : Fragment() {
 
                 val cell = createTableCell(cellText,rowIndex, colIndex)
 
-                /*cell.setBackgroundColor(
-                    if (rowIndex % 2 == 0)
-                        ContextCompat.getColor(requireContext(), R.color.table_row_even)
-                    else
-                        ContextCompat.getColor(requireContext(), R.color.table_row_odd)
-                )*/
                 binding.schedulePageScheduleTable.addView(cell)
             }
         }
@@ -309,10 +285,6 @@ class ScheduleFragment : Fragment() {
                 setGravity(MATCH_PARENT)
             }
             newCell.layoutParams = params
-            /*val backgroundColor = ContextCompat.getColor(requireContext(), R.color.light_green)
-            val border = borderCell(newCell.context,ContextCompat.getColor(newCell.context, android.R.color.darker_gray))
-            val drawable = LayerDrawable(arrayOf(ColorDrawable(backgroundColor), border))
-            newCell.background = drawable*/
 
             newCell.setOnClickListener{
                 createBottomSheetDialog(newCell.context,course)
@@ -320,11 +292,6 @@ class ScheduleFragment : Fragment() {
 
             binding.schedulePageScheduleTable.addView(newCell)
         }
-    }
-
-    fun dpToPx(dp: Int): Int {
-        val density = Resources.getSystem().displayMetrics.density
-        return (dp * density).toInt()
     }
 
     fun borderCell(context: Context, color: Int) : LayerDrawable {

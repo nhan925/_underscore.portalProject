@@ -11,6 +11,7 @@ import com.microsoft.identity.client.exception.MsalClientException
 import com.microsoft.identity.client.exception.MsalServiceException
 import com.microsoft.identity.client.exception.MsalUiRequiredException
 import com.microsoft.identity.common.java.ui.AuthorizationAgent
+import io.github.cdimascio.dotenv.dotenv
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -18,9 +19,14 @@ import kotlinx.coroutines.withContext
 
 
 object CallApiLogin {
+    val dotenv = dotenv {
+        directory = "/assets"
+        filename = "env" // instead of '.env', use 'env'
+    }
+
     private var mSingleAccountApp: ISingleAccountPublicClientApplication? = null
-    private const val SCOPE = "api://3e554bca-8316-4cbe-9532-d906633b298a/space_portal"
-    private const val AUTHORITY = "https://login.microsoftonline.com/40127cd4-45f3-49a3-b05d-315a43a9f033"
+    private val SCOPE = dotenv["AZURE_SCOPE"]
+    private val AUTHORITY = "https://login.microsoftonline.com/${dotenv["AZURE_TENANT_ID"]}"
 
     fun initMSAL(activity: Activity, callback: (Boolean) -> Unit) {
         PublicClientApplication.createSingleAccountPublicClientApplication(
@@ -149,26 +155,4 @@ object CallApiLogin {
             }
         } ?: callback(false)
     }
-
-//    fun signOut(callback: (Boolean) -> Unit) {
-//        mSingleAccountApp?.let { app ->
-//            val account = app.currentAccount?.currentAccount
-//            if (account != null) {
-//                app.signOut(
-//                    object : ISingleAccountPublicClientApplication.SignOutCallback {
-//                        override fun onSignOut() {
-//                            callback(true)
-//                        }
-//
-//
-//                        override fun onError(exception: MsalException) {
-//                            Log.e("MSAL", "Error signing out", exception)
-//                            callback(false)
-//                        }
-//                    })
-//            } else {
-//                callback(true)
-//            }
-//        } ?: callback(false)
-//    }
 }

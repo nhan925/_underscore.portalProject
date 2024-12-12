@@ -168,7 +168,7 @@ class RequestScoreFragment : Fragment() {
         // Data goi API
         val data = mapOf(
             "content" to content,
-            "status" to "Pending"
+            "status" to getString(R.string.request_status_processing)
         )
 
         // Call API
@@ -203,41 +203,37 @@ class RequestScoreFragment : Fragment() {
     }
 
     private fun buildRequestContent(): String {
-        val contentBuilder = StringBuilder("Xin phúc khảo điểm.")
+        val contentBuilder = StringBuilder("Phúc khảo bảng điểm\r\n")
 
         val year = binding.yearSpinner.text.toString()
         if ( year.isNotEmpty()) {
-            contentBuilder.append(" Năm học: ${formatYear(year)}.")
+            contentBuilder.append("Năm học: ${formatYear(year)}\r\n")
         }
         val semester = binding.semesterSpinner.text.toString()
         if (semester.isNotEmpty()) {
-            contentBuilder.append(" Học kỳ: $semester.")
+            contentBuilder.append("Học kỳ: $semester\r\n")
         }
         val courseCode = binding.courseSpinner.text.toString()
         if (courseCode.isNotEmpty()) {
-           // contentBuilder.append(" Môn học: ${courseCode.split(" - ")[1]}.")
-            contentBuilder.append(" Môn học: ${courseCode}.")
+            contentBuilder.append("Môn học: ${courseCode.split(" - ")[1]}\r\n")
+            //contentBuilder.append("Môn học: ${courseCode}\r\n")
         }
         val currentScore = binding.currentScoreInput.text.toString()
         if (currentScore.isNotEmpty()) {
-            contentBuilder.append(" Điểm hiện tại: $currentScore.")
+            contentBuilder.append("Điểm hiện tại: $currentScore\r\n")
         }
 
         val classCode = binding.classCodeInput.text.toString()
         if (classCode.isNotEmpty()) {
-            contentBuilder.append(" Lớp: $classCode.")
+            contentBuilder.append("Mã lớp: $classCode\r\n")
         }
 
         val note = binding.noteInput.text.toString()
         if (note.isNotEmpty()) {
-            contentBuilder.append(" Ghi chu: $note.")
+            contentBuilder.append("Ghi chú: $note")
         }
 
         return contentBuilder.toString()
-
-
-
-
     }
 
     private fun formatYear(shortYear: String): String {

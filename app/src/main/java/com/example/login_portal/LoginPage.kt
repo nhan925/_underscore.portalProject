@@ -247,10 +247,17 @@ class MainActivity2 : BaseActivity() {
             CallApiLogin.signIn(this) { token ->
                 hideLoading()
                 if (token != null) {
-                    // Login successful
-                    Toast.makeText(this, getString(R.string.login_successful), Toast.LENGTH_SHORT)
-                        .show()
-                    navigateHome()
+                    ApiServiceHelper.loginWithOutlook(token) { response ->
+                        if (!response) {
+                            Toast.makeText(this, getString(R.string.login_outlook_fail_message), Toast.LENGTH_LONG).show()
+                        }
+                        else {
+                            // Login successful
+                            Toast.makeText(this, getString(R.string.login_successful), Toast.LENGTH_SHORT)
+                                .show()
+                            navigateHome()
+                        }
+                    }
                 } else {
                     // Login failed
                     Toast.makeText(this, getString(R.string.login_failed), Toast.LENGTH_LONG).show()

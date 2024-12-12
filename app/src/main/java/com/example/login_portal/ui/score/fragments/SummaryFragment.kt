@@ -70,38 +70,6 @@ class SummaryFragment : Fragment() {
         updateUI()
     }
 
-
-//    private fun updateUI() {
-//        binding.totalLayout.visibility = if (totalState.isVisible) View.VISIBLE else View.GONE
-//        if (totalState.isVisible) {
-//            binding.tvTotalVN.text = "- Số lượng bản Tiếng Việt: ${totalState.vnCount.toString().padStart(2, '0')}"
-//            //binding.tvTotalVN.text = "${context?.getString(R.string., totalState.vnCount.toString().padStart(2, '0'))}"
-//            binding.tvTotalEN.text = "- Số lượng bản Tiếng Anh: ${totalState.enCount.toString().padStart(2, '0')}"
-//        }
-//
-//
-//        binding.semesterLayout.visibility = if (semesterState.isVisible) View.VISIBLE else View.GONE
-//        if (semesterState.isVisible) {
-//            binding.tvSemesterTitle.text = "NH/HK: ${semesterState.year}/${semesterState.semester}"
-//            binding.tvSemesterVN.text = "- Số lượng bản Tiếng Việt: ${semesterState.vnCount.toString().padStart(2, '0')}"
-//            binding.tvSemesterEN.text = "- Số lượng bản Tiếng Anh: ${semesterState.enCount.toString().padStart(2, '0')}"
-//        }
-//
-//
-//        binding.yearLayout.visibility = if (yearState.isVisible) View.VISIBLE else View.GONE
-//        if (yearState.isVisible) {
-//            binding.tvYearTitle.text = "Năm học: ${yearState.year}"
-//            binding.tvYearVN.text = "- Số lượng bản Tiếng Việt: ${yearState.vnCount.toString().padStart(2, '0')}"
-//            binding.tvYearEN.text = "- Số lượng bản Tiếng Anh: ${yearState.enCount.toString().padStart(2, '0')}"
-//        }
-//
-//
-//        totalCount = (if (totalState.isVisible) totalState.vnCount + totalState.enCount else 0) +
-//                (if (semesterState.isVisible) semesterState.vnCount + semesterState.enCount else 0) +
-//                (if (yearState.isVisible) yearState.vnCount + yearState.enCount else 0)
-//        binding.tvTotalCount.text = totalCount.toString()
-//    }
-
     private fun updateUI() {
         binding.totalLayout.visibility = if (totalState.isVisible) View.VISIBLE else View.GONE
         if (totalState.isVisible) {
@@ -157,43 +125,46 @@ class SummaryFragment : Fragment() {
 
 
     fun getRequestContent(): String {
-        val contentBuilder = StringBuilder("Xin bảng điểm.")
+        val contentBuilder = StringBuilder("Xin bảng điểm\r\n")
 
         // Thêm thông tin Tổng kết nếu có
         if (binding.totalLayout.visibility == View.VISIBLE) {
-            contentBuilder.append(" Tổng kết, ")
+            contentBuilder.append("Tổng kết,")
+                .append("Tiếng Việt: ")
                 .append(binding.tvTotalVN.text.toString().substringAfter(": "))
-                .append(", ")
+                .append(",")
+                .append("Tiếng Anh: ")
                 .append(binding.tvTotalEN.text.toString().substringAfter(": "))
-                .append(".")
+                .append("\r\n")
         }
 
         // Thêm thông tin Học kỳ nếu có
         if (binding.semesterLayout.visibility == View.VISIBLE) {
-            contentBuilder.append(" ")
+            contentBuilder
                 .append(binding.tvSemesterTitle.text.toString())
                 .append(", ")
+                .append("Tiếng Việt: ")
                 .append(binding.tvSemesterVN.text.toString().substringAfter(": "))
-                .append(", ")
+                .append(",")
+                .append("Tiếng Anh: ")
                 .append(binding.tvSemesterEN.text.toString().substringAfter(": "))
-                .append(".")
+                .append("\r\n")
         }
 
         // Thêm thông tin Năm học nếu có
         if (binding.yearLayout.visibility == View.VISIBLE) {
-            contentBuilder.append(" ")
+            contentBuilder
                 .append(binding.tvYearTitle.text.toString())
                 .append(", ")
-                .append(binding.tvYearVN.text.toString().substringAfter(": "))
+                .append(binding.tvYearVN.text.toString().substringAfter(":"))
                 .append(", ")
-                .append(binding.tvYearEN.text.toString().substringAfter(": "))
-                .append(".")
+                .append(binding.tvYearEN.text.toString().substringAfter(":"))
+                .append("\r\n")
         }
 
         // Thêm tổng số bảng điểm
-        contentBuilder.append(" Tổng số bảng điểm: ")
+        contentBuilder.append("Tổng số bảng điểm: ")
             .append(binding.tvTotalCount.text)
-            .append(".")
 
         return contentBuilder.toString()
     }

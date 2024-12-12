@@ -1,6 +1,7 @@
 package com.example.login_portal
 
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.widget.ImageView
 import android.widget.TextView
@@ -15,6 +16,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import com.bumptech.glide.Glide
 import com.example.login_portal.databinding.ActivityMain3Binding
 import com.example.login_portal.ui.information.InformationsForInformationDao
+import kotlinx.coroutines.*
 
 class Main : BaseActivity() {
 
@@ -23,7 +25,7 @@ class Main : BaseActivity() {
     var imgAvatar :ImageView? = null
     var txtUserName :TextView? = null
     var txtSchoolEmail :TextView? = null
-
+    private var job: Job? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,6 +56,13 @@ class Main : BaseActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+        job = CoroutineScope(Dispatchers.Main).launch {
+            while (isActive) {
+                setHeaderInformation() // Call the method
+                delay(10000L) // Wait 10 seconds
+            }
+        }
     }
 
     override fun onResume() {
@@ -79,8 +88,13 @@ class Main : BaseActivity() {
                 .placeholder(R.drawable.baseline_person_24)
                 .error(R.drawable.baseline_person_24)
                 .into(imgAvatar!!)
-            txtUserName!!.setText(data.FullName)
-            txtSchoolEmail!!.setText(data.SchoolEmail)
+            txtUserName!!.text = data.FullName
+            txtSchoolEmail!!.text = data.SchoolEmail
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        job?.cancel()
     }
 }

@@ -269,5 +269,6 @@
     <string name="choose_class_register_success">Register successfully !</string>
     <string name="choose_class_cancel_success">Cancel successfully !</string>
     <string name="choose_class_cancel_failed">Cancel failed !</string>
+    <string name="login_outlook_fail_message">Login failed !</string>
 
 </resources>

@@ -15,9 +15,6 @@ class ScheduleViewModel : ViewModel() {
     private val _semestersLiveData = MutableLiveData<List<String>>()
     val semestersLiveData: LiveData<List<String>> get() = _semestersLiveData
 
-    private val _latestSemester = MutableLiveData<String>()
-    val latestSemester: LiveData<String> get() = _latestSemester
-
     private val _coursesLiveData = MutableLiveData<List<Course>>()
     val coursesLiveData: LiveData<List<Course>> get() = _coursesLiveData
 
@@ -48,7 +45,6 @@ class ScheduleViewModel : ViewModel() {
         withContext(Dispatchers.IO) {
             SchedulePageDao.getSemester { semesters ->
                 _semestersLiveData.value = semesters
-                _latestSemester.value = semesters[semesters.size - 1]
             }
         }
     }

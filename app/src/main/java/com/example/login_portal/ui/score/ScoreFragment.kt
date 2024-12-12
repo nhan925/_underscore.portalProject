@@ -67,12 +67,12 @@ class ScoreFragment : Fragment() {
         // Thêm các hành động vào SpeedDial
         speedDial.addActionItem(
             SpeedDialActionItem.Builder(R.id.action_review, R.drawable.ic_score)
-                .setLabel(getString(R.string.inf47))
+                .setLabel(getString(R.string.inf48))
                 .create()
         )
         speedDial.addActionItem(
             SpeedDialActionItem.Builder(R.id.action_request, R.drawable.ic_lock)
-                .setLabel(R.string.inf48)
+                .setLabel(getString(R.string.inf47))
                 .create()
         )
 
@@ -281,5 +281,11 @@ class ScoreFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        binding.speedDial.close()
     }
 }

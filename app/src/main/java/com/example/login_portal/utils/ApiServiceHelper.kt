@@ -7,9 +7,15 @@ import com.github.kittinunf.fuel.Fuel
 import com.github.kittinunf.fuel.core.extensions.jsonBody
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import io.github.cdimascio.dotenv.dotenv
 
 object ApiServiceHelper {
-    const val BASE_URL = "http://10.0.2.2:3001"
+    private val dotenv = dotenv {
+        directory = "/assets"
+        filename = "env" // instead of '.env', use 'env'
+    }
+
+    val BASE_URL = dotenv["API_URL"]
     var jwtToken: String? = null
 
     // Login using username and password
@@ -57,7 +63,8 @@ object ApiServiceHelper {
             .responseString { _, response, result ->
                 result.fold(
                     success= { data ->
-                        if (data.isNullOrBlank() || data == "null") {
+                        Log.i("asdsadsadsad", data)
+                        if (data.isBlank() || data == "null" || data == "\"\"") {
                             Handler(Looper.getMainLooper()).post {
                                 callback(false)
                             }
@@ -83,44 +90,6 @@ object ApiServiceHelper {
                 )
             }
     }
-
-//    fun checkUsernameAndSendOTP(username: String, callback: (Boolean) -> Unit) {
-//        val userData = Gson().toJson(mapOf("v_user_name" to username))
-//
-//        Log.d("ApiServiceHelper", "Sending request to check username and send OTP: $userData")
-//
-//        Fuel.post("$BASE_URL/rpc/check_username_and_send_otp")
-//            .jsonBody(userData)
-//            .responseString { request, response, result ->
-//                Log.d("ApiServiceHelper", "Request URL: ${request.url}")
-//                Log.d("ApiServiceHelper", "Response Status: ${response.statusCode}")
-//                Log.d("ApiServiceHelper", "Response Headers: ${response.headers}")
-//
-//                result.fold(
-//                    success = { data ->
-//                        Log.d("ApiServiceHelper", "Raw Response: $data")
-//                        try {
-//                            val success = data.toBoolean()
-//                            Log.d("ApiServiceHelper", "Parsed success value: $success")
-//                            Handler(Looper.getMainLooper()).post {
-//                                callback(success)
-//                            }
-//                        } catch (e: Exception) {
-//                            Log.e("ApiServiceHelper", "Error parsing response", e)
-//                            Handler(Looper.getMainLooper()).post {
-//                                callback(false)
-//                            }
-//                        }
-//                    },
-//                    failure = { error ->
-//                        Log.e("ApiServiceHelper", "API call failed. Error: ${error.message}", error)
-//                        Handler(Looper.getMainLooper()).post {
-//                            callback(false)
-//                        }
-//                    }
-//                )
-//            }
-//    }
 
     // Add this function for public POST requests (no token required)
     private fun publicPost(endpoint: String, data: Any, callback: (String?) -> Unit) {

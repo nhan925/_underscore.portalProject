@@ -202,7 +202,7 @@ class ReviewScoreFragment : Fragment() {
         // Data goi API
         val data = mapOf(
             "content" to content,
-            "status" to "Pending"
+            "status" to getString(R.string.request_status_processing)
         )
 
         // Call API

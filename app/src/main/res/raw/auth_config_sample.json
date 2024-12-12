@@ -1,0 +1,20 @@
+{
+  "client_id": "<add here>",
+  "authorization_user_agent": "DEFAULT",
+  "redirect_uri": "<add here>",
+  "account_mode": "SINGLE",
+  "broker_redirect_uri_registered": true,
+  "authorities": [
+    {
+      "type": "AAD",
+      "audience": {
+        "type": "AzureADMyOrg",
+        "tenant_id": "<add here>"
+      }
+    }
+  ],
+  "http": {
+    "connect_timeout": 10000,
+    "read_timeout": 30000
+  }
+}
