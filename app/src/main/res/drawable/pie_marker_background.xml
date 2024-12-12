@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Hình nền chính -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#E3F2FD"/>
+            <corners android:radius="4dp"/>
+            <stroke
+                android:width="1dp"
+                android:color="#1A237E"/>
+        </shape>
+    </item>
+    <!-- Mũi tên chỉ vào chart -->
+    <item
+        android:bottom="-10dp"
+        android:left="10dp"
+        android:right="10dp">
+        <rotate
+            android:fromDegrees="45"
+            android:pivotX="50%"
+            android:pivotY="100%">
+            <shape android:shape="rectangle">
+                <size
+                    android:width="10dp"
+                    android:height="10dp"/>
+                <solid android:color="#E3F2FD"/>
+                <stroke
+                    android:width="1dp"
+                    android:color="#1A237E"/>
+            </shape>
+        </rotate>
+    </item>
+</layer-list> 

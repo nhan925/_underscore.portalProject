@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    id("com.google.devtools.ksp")
+    id("kotlin-kapt")
 }
 
 android {
@@ -35,10 +37,16 @@ android {
     }
     buildFeatures {
         viewBinding = true
+        dataBinding = true
     }
+
 }
 
 dependencies {
+    val room_version = "2.6.1"
+    implementation("androidx.room:room-runtime:$room_version")
+    ksp("androidx.room:room-compiler:$room_version")
+    implementation("androidx.room:room-ktx:$room_version")
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
@@ -54,17 +62,48 @@ dependencies {
         "include" to listOf("*.aar", "*.jar"),
         "exclude" to listOf("")
     )))
+    implementation(libs.androidx.ui.desktop)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    
     implementation(libs.material.v190) // Update the version as needed
-    implementation(libs.androidx.fragment.ktx.v157) // For Fragment transactions
+    implementation(libs.androidx.fragment.ktx) // For Fragment transactions
     implementation(libs.androidx.security.crypto)
-    implementation(libs.gson)
-    implementation(libs.fuel)
-    implementation(libs.github.fuel.gson)
 
-    //Zalo pay
     implementation("com.squareup.okhttp3:okhttp:4.6.0")
     implementation("commons-codec:commons-codec:1.14")
+
+    implementation(libs.mpandroidchart)
+
+    implementation(libs.fuel)
+    implementation(libs.fuel.gson)
+
+    implementation(libs.lottie)
+
+    implementation(libs.gson)
+
+    implementation(libs.msal.v510)
+    implementation(libs.volley)
+
+
+
+    implementation(libs.okhttp)
+
+    implementation(libs.opentelemetry.api)
+    implementation(libs.opentelemetry.context)
+
+    // Core library cho Coroutines
+    implementation(libs.kotlinx.coroutines.core)
+
+    // Android-specific library cho Coroutines (Dispatchers.Main)
+    implementation(libs.kotlinx.coroutines.android)
+    // Thư viện Lifecycle (bao gồm lifecycleScope)
+    implementation(libs.androidx.lifecycle.runtime.ktx)
+
+    //Thư viện Action Button
+    implementation(libs.speed.dial.v330)
+    implementation(libs.dotenv.kotlin)
+    implementation(libs.glide)
+    implementation(libs.androidx.gridlayout)
 }

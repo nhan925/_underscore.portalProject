@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <import type="android.view.View" />
+        <variable
+        name="viewModel"
+        type="com.example.login_portal.ui.information.InformationViewModel" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.information.Information_Contact">
+
+    <ImageButton
+        android:id="@+id/info_contact_frag_switchToEditMode"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:backgroundTint="@android:color/transparent"
+        android:scaleType="fitCenter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_edit_mode" />
+
+    <TextView
+        android:id="@+id/info_contact_frag_tv_email_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/info_student_frag_icon_margin_top"
+        android:layout_marginStart="0dp"
+        android:text="@string/infor_student_frag_personal_email"
+        android:textColor="@color/grey"
+        android:textSize="@dimen/info_student_frag_label_text_size"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/info_contact_frag_viewSwitcherEmail"
+        app:layout_constraintStart_toStartOf="@+id/info_contact_frag_viewSwitcherEmail" />
+
+    <ViewSwitcher
+        android:id="@+id/info_contact_frag_viewSwitcherEmail"
+        android:layout_width="@dimen/info_student_frag_viewswitcher_width"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/info_student_frag_text_margin_start"
+        app:layout_constraintBottom_toBottomOf="@+id/info_contact_frag_iv_user"
+        app:layout_constraintStart_toEndOf="@+id/info_contact_frag_iv_user">
+
+        <TextView
+            android:id="@+id/info_contact_frag_tv_personal_email"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center|start"
+            android:text="@={viewModel.editPersonalEmail}"
+            android:textSize="@dimen/info_student_frag_value_text_size"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/info_contact_frag_et_personal_email"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="bottom|start"
+            android:text="@={viewModel.editPersonalEmail}"
+            android:textSize="@dimen/info_student_frag_value_text_size" />
+    </ViewSwitcher>
+
+    <ImageView
+        android:id="@+id/info_contact_frag_iv_user"
+        android:layout_width="@dimen/info_student_frag_icon_size"
+        android:layout_height="@dimen/info_student_frag_icon_size"
+        android:layout_marginStart="35dp"
+        android:contentDescription="User"
+        android:src="@drawable/ic_user"
+        app:layout_constraintBottom_toBottomOf="@+id/info_contact_frag_viewSwitcherEmail"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/info_contact_frag_tv_email_label"
+        app:layout_constraintVertical_bias="0.5" />
+
+
+    <!-- Phone Number Section -->
+    <TextView
+        android:id="@+id/info_contact_frag_tv_phone_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/info_student_frag_icon_margin_top"
+        android:layout_marginStart="0dp"
+        android:text="@string/infor_student_frag_phone_number"
+        android:textColor="@color/grey"
+        android:textSize="@dimen/info_student_frag_label_text_size"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/info_contact_frag_viewSwitcherEmail"
+        app:layout_constraintBottom_toTopOf="@+id/info_contact_frag_viewSwitcherPhone"
+        app:layout_constraintStart_toStartOf="@+id/info_contact_frag_viewSwitcherPhone" />
+
+    <ViewSwitcher
+        android:id="@+id/info_contact_frag_viewSwitcherPhone"
+        android:layout_width="@dimen/info_student_frag_viewswitcher_width"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/info_student_frag_text_margin_start"
+        app:layout_constraintBottom_toBottomOf="@+id/info_contact_frag_iv_phone"
+        app:layout_constraintStart_toEndOf="@+id/info_contact_frag_iv_phone">
+
+        <TextView
+            android:id="@+id/info_contact_frag_tv_phone_number"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center|start"
+            android:text="@={viewModel.editPhoneNumber}"
+            android:textSize="@dimen/info_student_frag_value_text_size"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/info_contact_frag_et_phone_number"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="bottom|start"
+            android:text="@={viewModel.editPhoneNumber}"
+            android:textSize="@dimen/info_student_frag_value_text_size" />
+    </ViewSwitcher>
+
+    <ImageView
+        android:id="@+id/info_contact_frag_iv_phone"
+        android:layout_width="@dimen/info_student_frag_icon_size"
+        android:layout_height="@dimen/info_student_frag_icon_size"
+        android:contentDescription="Phone"
+        android:src="@drawable/ic_phone"
+        app:layout_constraintStart_toStartOf="@id/info_contact_frag_iv_user"
+        app:layout_constraintTop_toBottomOf="@id/info_contact_frag_iv_user"
+        app:layout_constraintTop_toTopOf="@+id/info_contact_frag_tv_phone_label"
+        app:layout_constraintBottom_toBottomOf="@+id/info_contact_frag_viewSwitcherPhone"/>
+
+
+    <!-- Address Section -->
+    <TextView
+        android:id="@+id/info_contact_frag_tv_address_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/info_student_frag_icon_margin_top"
+        android:layout_marginStart="0dp"
+        android:text="@string/infor_student_frag_address"
+        android:textColor="@color/grey"
+        android:textSize="@dimen/info_student_frag_label_text_size"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/info_contact_frag_viewSwitcherPhone"
+        app:layout_constraintBottom_toTopOf="@+id/info_contact_frag_viewSwitcherAddress"
+        app:layout_constraintStart_toStartOf="@+id/info_contact_frag_viewSwitcherAddress" />
+
+    <ViewSwitcher
+        android:id="@+id/info_contact_frag_viewSwitcherAddress"
+        android:layout_width="@dimen/info_student_frag_viewswitcher_width"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/info_student_frag_text_margin_start"
+        app:layout_constraintBottom_toBottomOf="@+id/info_contact_frag_iv_address"
+        app:layout_constraintStart_toEndOf="@+id/info_contact_frag_iv_address">
+
+        <TextView
+            android:id="@+id/info_contact_frag_tv_address"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center|start"
+            android:text="@={viewModel.editAddress}"
+            android:textSize="@dimen/info_student_frag_value_text_size"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/info_contact_frag_et_address"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="bottom|start"
+            android:text="@={viewModel.editAddress}"
+            android:textSize="@dimen/info_student_frag_value_text_size" />
+    </ViewSwitcher>
+
+    <ImageView
+        android:id="@+id/info_contact_frag_iv_address"
+        android:layout_width="@dimen/info_student_frag_icon_size"
+        android:layout_height="@dimen/info_student_frag_icon_size"
+        android:contentDescription="Address"
+        android:src="@drawable/ic_location_info_student"
+        app:layout_constraintStart_toStartOf="@id/info_contact_frag_iv_phone"
+        app:layout_constraintTop_toBottomOf="@id/info_contact_frag_iv_phone"
+        app:layout_constraintTop_toTopOf="@+id/info_contact_frag_tv_address_label"
+        app:layout_constraintBottom_toBottomOf="@+id/info_contact_frag_viewSwitcherAddress"/>
+
+    <ImageButton
+        android:id="@+id/info_contact_frag_cancelChanges"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:backgroundTint="@android:color/transparent"
+        android:scaleType="fitCenter"
+        android:visibility="@{viewModel.isEditing ? View.VISIBLE : View.GONE}"
+        android:contentDescription="button_cancel_change"
+        app:srcCompat="@drawable/ic_cancelchange_info_student"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/info_contact_frag_viewSwitcherAddress"/>
+
+    <ImageButton
+        android:id="@+id/info_contact_frag_acceptChanges"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:backgroundTint="@android:color/transparent"
+        android:scaleType="fitCenter"
+        android:visibility="@{viewModel.isEditing ? View.VISIBLE : View.GONE}"
+        android:contentDescription="button_accept_change"
+        app:srcCompat="@drawable/ic_checkmark"
+        app:layout_constraintTop_toBottomOf="@+id/info_contact_frag_viewSwitcherAddress"
+        app:layout_constraintEnd_toStartOf="@+id/info_contact_frag_cancelChanges"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -4,6 +4,8 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32" />
 
     <application
         android:name=".MyApplication"
@@ -36,10 +38,32 @@
 
 
         <activity
+            android:name=".ui.course.ChooseClassActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.course.ChooseCourseActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.requests.RequestDetail"
+            android:exported="false" />
+        <activity
             android:name=".Main"
             android:exported="false"
             android:label="@string/title_activity_main"
             android:theme="@style/Theme.Login_Portal.NoActionBar" />
+        <activity
+            android:name="com.microsoft.identity.client.BrowserTabActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data
+                    android:host="auth"
+                    android:scheme="spaceportal" />
+            </intent-filter>
+        </activity>
+
         <activity
             android:name=".HomePageTest"
             android:exported="true" />
@@ -59,10 +83,11 @@
             android:name=".MainActivity"
             android:exported="true" >
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+
+
         </activity>
         <activity
             android:name=".ui.feedback_course.FeedbackCourseActivity"

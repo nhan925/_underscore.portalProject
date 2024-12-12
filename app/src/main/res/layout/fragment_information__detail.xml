@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.information.Information_Detail">
+
+        <!-- Ngày sinh -->
+    <ImageView
+        android:id="@+id/info_detail_frag_iv_dob"
+        android:layout_width="@dimen/info_student_frag_icon_size"
+        android:layout_height="@dimen/info_student_frag_icon_size"
+        android:layout_marginTop="@dimen/info_student_frag_icon_margin_top"
+        android:layout_marginStart="30dp"
+        android:contentDescription="Date of Birth"
+        android:src="@drawable/ic_calendar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/info_detail_frag_tv_dob_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/info_student_frag_text_margin_start"
+        android:text="@string/infor_student_frag_date_of_birth"
+        android:textColor="@color/grey"
+        android:textSize="@dimen/info_student_frag_label_text_size"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/info_detail_frag_iv_dob"
+        app:layout_constraintTop_toTopOf="@+id/info_detail_frag_iv_dob" />
+
+    <TextView
+        android:id="@+id/info_detail_frag_tv_dob"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/infor_student_frag_date_of_birth"
+        android:textSize="@dimen/info_student_frag_value_text_size"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/info_detail_frag_tv_dob_label"
+        app:layout_constraintTop_toBottomOf="@+id/info_detail_frag_tv_dob_label"
+        app:layout_constraintBottom_toBottomOf="@+id/info_detail_frag_iv_dob"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <!-- Quốc tịch -->
+    <ImageView
+        android:id="@+id/info_detail_frag_iv_nationality"
+        android:layout_width="@dimen/info_student_frag_icon_size"
+        android:layout_height="@dimen/info_student_frag_icon_size"
+        android:layout_marginTop="@dimen/info_student_frag_icon_margin_top"
+        android:contentDescription="Nationality"
+        android:src="@drawable/ic_id_user"
+        app:layout_constraintStart_toStartOf="@+id/info_detail_frag_iv_dob"
+        app:layout_constraintTop_toBottomOf="@+id/info_detail_frag_iv_dob" />
+
+    <TextView
+        android:id="@+id/info_detail_frag_tv_nationality_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/info_student_frag_text_margin_start"
+        android:text="@string/infor_student_frag_nationality"
+        android:textColor="@color/grey"
+        android:textSize="@dimen/info_student_frag_label_text_size"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/info_detail_frag_iv_nationality"
+        app:layout_constraintTop_toTopOf="@+id/info_detail_frag_iv_nationality" />
+
+    <TextView
+        android:id="@+id/info_detail_frag_tv_nationality"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/infor_student_frag_nationality"
+        android:textSize="@dimen/info_student_frag_value_text_size"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/info_detail_frag_tv_nationality_label"
+        app:layout_constraintTop_toBottomOf="@+id/info_detail_frag_tv_nationality_label"
+        app:layout_constraintBottom_toBottomOf="@+id/info_detail_frag_iv_nationality"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <!-- Dân tộc -->
+    <ImageView
+        android:id="@+id/info_detail_frag_iv_ethnicity"
+        android:layout_width="@dimen/info_student_frag_icon_size"
+        android:layout_height="@dimen/info_student_frag_icon_size"
+        android:layout_marginTop="@dimen/info_student_frag_icon_margin_top"
+        android:contentDescription="Ethnicity"
+        android:src="@drawable/ic_id_user"
+        app:layout_constraintStart_toStartOf="@+id/info_detail_frag_iv_nationality"
+        app:layout_constraintTop_toBottomOf="@+id/info_detail_frag_iv_nationality" />
+
+    <TextView
+        android:id="@+id/info_detail_frag_tv_ethnicity_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/info_student_frag_text_margin_start"
+        android:text="@string/infor_student_frag_ethnicity"
+        android:textColor="@color/grey"
+        android:textSize="@dimen/info_student_frag_label_text_size"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/info_detail_frag_iv_ethnicity"
+        app:layout_constraintTop_toTopOf="@+id/info_detail_frag_iv_ethnicity" />
+
+    <TextView
+        android:id="@+id/info_detail_frag_tv_ethnicity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/infor_student_frag_ethnicity"
+        android:textSize="@dimen/info_student_frag_value_text_size"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/info_detail_frag_tv_ethnicity_label"
+        app:layout_constraintTop_toBottomOf="@+id/info_detail_frag_tv_ethnicity_label"
+        app:layout_constraintBottom_toBottomOf="@+id/info_detail_frag_iv_ethnicity"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <!-- CCCD -->
+    <ImageView
+        android:id="@+id/info_detail_frag_iv_idCard"
+        android:layout_width="@dimen/info_student_frag_icon_size"
+        android:layout_height="@dimen/info_student_frag_icon_size"
+        android:layout_marginTop="@dimen/info_student_frag_icon_margin_top"
+        android:contentDescription="CCCD"
+        android:src="@drawable/ic_id_user"
+        app:layout_constraintStart_toStartOf="@+id/info_detail_frag_iv_ethnicity"
+        app:layout_constraintTop_toBottomOf="@+id/info_detail_frag_iv_ethnicity" />
+
+    <TextView
+        android:id="@+id/info_detail_frag_tv_idCard_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/info_student_frag_text_margin_start"
+        android:text="@string/infor_student_frag_identity_card_number"
+        android:textColor="@color/grey"
+        android:textSize="@dimen/info_student_frag_label_text_size"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/info_detail_frag_iv_idCard"
+        app:layout_constraintTop_toTopOf="@+id/info_detail_frag_iv_idCard" />
+
+    <TextView
+        android:id="@+id/info_detail_frag_tv_idCard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/infor_student_frag_identity_card_number"
+        android:textSize="@dimen/info_student_frag_value_text_size"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/info_detail_frag_tv_idCard_label"
+        app:layout_constraintTop_toBottomOf="@+id/info_detail_frag_tv_idCard_label"
+        app:layout_constraintBottom_toBottomOf="@+id/info_detail_frag_iv_idCard"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <!-- Email -->
+    <ImageView
+        android:id="@+id/info_contact_frag_iv_user"
+        android:layout_width="@dimen/info_student_frag_icon_size"
+        android:layout_height="@dimen/info_student_frag_icon_size"
+        android:layout_marginTop="@dimen/info_student_frag_icon_margin_top"
+        android:contentDescription="Email"
+        android:src="@drawable/ic_email"
+        app:layout_constraintStart_toStartOf="@+id/info_detail_frag_iv_idCard"
+        app:layout_constraintTop_toBottomOf="@+id/info_detail_frag_iv_idCard" />
+
+    <TextView
+        android:id="@+id/info_detail_frag_tv_email_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/info_student_frag_text_margin_start"
+        android:text="@string/infor_student_frag_email"
+        android:textColor="@color/grey"
+        android:textSize="@dimen/info_student_frag_label_text_size"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/info_contact_frag_iv_user"
+        app:layout_constraintTop_toTopOf="@+id/info_contact_frag_iv_user" />
+
+    <TextView
+        android:id="@+id/info_detail_frag_tv_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/infor_student_frag_email"
+        android:textSize="@dimen/info_student_frag_value_text_size"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/info_detail_frag_tv_email_label"
+        app:layout_constraintTop_toBottomOf="@+id/info_detail_frag_tv_email_label"
+        app:layout_constraintBottom_toBottomOf="@+id/info_contact_frag_iv_user"
+        app:layout_constraintVertical_bias="1.0" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
