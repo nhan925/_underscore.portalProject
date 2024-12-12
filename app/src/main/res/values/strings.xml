@@ -54,6 +54,9 @@
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
+
+   
+
     <string name="request_reExaminationTitle">ReExamination</string>
     <string name="request_requestForTranscriptTitle">Request for transcript</string>
     <string name="request_status_all">All</string>
@@ -125,6 +128,9 @@
     <string name="choose_class_cancel_failed">Cancel failed !</string>
 
 
-    \
+   
+
+
+  
 
 </resources>

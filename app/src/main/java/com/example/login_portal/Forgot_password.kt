@@ -3,6 +3,7 @@ package com.example.login_portal
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -18,6 +19,12 @@ class Forgot_password : BaseActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        val email = intent.getStringExtra("email")
+
+        val emailTextView = findViewById<TextView>(R.id.tvEmail)
+        emailTextView.text = email
+
         val btnSubmit = findViewById<Button>(R.id.btnSubmit)
 
         btnSubmit.setOnClickListener {
