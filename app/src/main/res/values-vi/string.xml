@@ -336,5 +336,6 @@
     <string name="feedback_system_length_error_02">Chiều dài thông tin không được vượt quá 500 kí tự</string>
     <string name="feedback_system_selection">Chọn loại</string>
     <string name="feedback_system_content_hint">Vui lòng điền thông tin</string>
-
+    <string name="tuition_detail_payment_success">Thanh toán thành công</string>
+    <string name="tuition_detail_payment_fail">Thanh toán thất bại</string>
 </resources>
