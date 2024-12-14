@@ -1,6 +1,9 @@
 package com.example.login_portal.ui.tuition
 
+import android.content.ActivityNotFoundException
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Bundle
 import android.os.StrictMode
 import android.os.StrictMode.ThreadPolicy
@@ -63,6 +66,8 @@ class TuitionDetailActivity : BaseActivity() {
         viewModel.getTuitionDetailListFromDatabase(yearTV.text.toString(), semesterTV.text.toString().toInt())
 
         payButton.setOnClickListener {
+            if (!checkZaloPayInstalledAndRedirect())
+                return@setOnClickListener
             val orderApi: CreateOrder = CreateOrder()
 
             try {
@@ -118,4 +123,25 @@ class TuitionDetailActivity : BaseActivity() {
         return formatter.format(tuitionFee)
     }
 
+    fun checkZaloPayInstalledAndRedirect(): Boolean {
+        val zaloPayPackageName = "vn.com.vng.zalopay"
+        val packageManager: PackageManager = packageManager
+        try {
+            // Check if the app is installed
+            packageManager.getPackageInfo(zaloPayPackageName, 0)
+            return true
+        } catch (e: PackageManager.NameNotFoundException) {
+            // Redirect to Google Play if not installed
+            try {
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=$zaloPayPackageName"))
+                startActivity(intent)
+                return false
+            } catch (activityNotFoundException: ActivityNotFoundException) {
+                // Fallback if Play Store is not available
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=$zaloPayPackageName"))
+                startActivity(intent)
+                return false
+            }
+        }
+    }
 }
