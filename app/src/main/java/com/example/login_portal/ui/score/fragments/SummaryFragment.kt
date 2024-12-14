@@ -139,9 +139,11 @@ class SummaryFragment : Fragment() {
         }
 
         // Thêm thông tin Học kỳ nếu có
+        val yearSemester = binding.tvSemesterTitle.text.toString().substringAfter(": ")
         if (binding.semesterLayout.visibility == View.VISIBLE) {
             contentBuilder
-                .append(binding.tvSemesterTitle.text.toString())
+                .append("NH/HK: ")
+                .append(yearSemester)
                 .append(", ")
                 .append("Tiếng Việt: ")
                 .append(binding.tvSemesterVN.text.toString().substringAfter(": "))
@@ -152,12 +154,16 @@ class SummaryFragment : Fragment() {
         }
 
         // Thêm thông tin Năm học nếu có
+        val year = binding.tvYearTitle.text.toString().substringAfter(": ")
         if (binding.yearLayout.visibility == View.VISIBLE) {
             contentBuilder
-                .append(binding.tvYearTitle.text.toString())
+                .append("Năm học: ")
+                .append(year)
                 .append(", ")
+                .append("Tiếng Việt: ")
                 .append(binding.tvYearVN.text.toString().substringAfter(":"))
                 .append(", ")
+                .append("Tiếng Anh: ")
                 .append(binding.tvYearEN.text.toString().substringAfter(":"))
                 .append("\r\n")
         }

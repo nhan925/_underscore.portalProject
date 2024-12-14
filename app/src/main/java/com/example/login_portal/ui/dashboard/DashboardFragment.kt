@@ -2,6 +2,7 @@ package com.example.login_portal.ui.dashboard
 
 import CustomMarkerView
 import PieChartMarkerView
+import android.content.Context
 import android.graphics.Color
 import android.graphics.Paint
 import android.os.Bundle
@@ -37,13 +38,14 @@ import com.github.mikephil.charting.highlight.Highlight
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener
 
 
-private fun Float.toAcademicRank(): String = when {
-    this >= 9.0f -> "Xuất sắc"
-    this >= 8.0f -> "Giỏi"
-    this >= 7.0f -> "Khá"
-    this >= 5.0f -> "Trung bình"
-    else -> "Kém"
+private fun Float.toAcademicRank(context: Context): String = when {
+    this >= 9.0f -> context.getString(R.string.inf55)
+    this >= 8.0f -> context.getString(R.string.inf51)
+    this >= 7.0f -> context.getString(R.string.inf52)
+    this >= 5.0f -> context.getString(R.string.inf53)
+    else -> context.getString(R.string.inf54)
 }
+
 
 private fun Float.toGPAColor(): Int = when {
     this >= 9.0f -> Color.rgb(0, 150, 136)    // Xanh lá - Xuất sắc
@@ -144,7 +146,7 @@ class DashboardFragment : Fragment() {
 
         val pieEntries = ArrayList<PieEntry>().apply {
             add(PieEntry(currentCredit.toFloat(), getString(R.string.inf49)))
-            add(PieEntry(remainingCredits.toFloat(), getString(R.string.inf49)))
+            add(PieEntry(remainingCredits.toFloat(), getString(R.string.inf50)))
         }
 
         val pieDataSet = PieDataSet(pieEntries,"").apply {
@@ -211,7 +213,7 @@ class DashboardFragment : Fragment() {
                     e?.let { entry ->
                         val index = entry.x.toInt()
                         val semester = semesters[index]
-                        val rank = semester.gpa.toAcademicRank()
+                        val rank = semester.gpa.toAcademicRank(requireContext())
                         // Hiển thị tooltip với GPA và xếp loại
                         val markerView = CustomMarkerView(
                             context = requireContext(),
@@ -222,7 +224,9 @@ class DashboardFragment : Fragment() {
                         marker = markerView
                         highlightValue(h)
                     }
-                }
+
+
+            }
 
                 override fun onNothingSelected() {
                     highlightValue(null)

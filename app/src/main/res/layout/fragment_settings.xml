@@ -56,7 +56,7 @@
                     android:orientation="horizontal"
                     android:gravity="center_vertical"
                     android:paddingVertical="8dp"
-                    android:onClick="onProfileClicked">
+                    >
 
                     <ImageView
                         android:layout_width="24dp"

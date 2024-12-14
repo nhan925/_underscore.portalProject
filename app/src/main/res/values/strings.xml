@@ -359,4 +359,9 @@
     <string name="tuition_detail_payment_success">Payment successful</string>
     <string name="tuition_detail_payment_fail">Payment failed</string>
     <string name="reset_password_error">Username not found or error sending OTP !</string>
+
+    <string name="pie_label_value">%1$s: %2$d</string>
+    <string name="total_credit">Total Credits: %1$d</string>
+    <string name="percentage">Percentage: %1$.1f%%</string>
+
 </resources>

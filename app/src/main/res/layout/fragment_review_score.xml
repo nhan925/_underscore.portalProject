@@ -83,7 +83,6 @@
             android:layout_marginEnd="8dp"
             android:layout_weight="1"
             android:backgroundTint="@color/button_positive"
-            android:elevation="4dp"
             android:stateListAnimator="@animator/button_states_list_anim"
             android:text="@string/inf10" />
 
@@ -95,7 +94,6 @@
             android:layout_marginStart="8dp"
             android:layout_weight="1"
             android:backgroundTint="@color/button_negative"
-            android:elevation="4dp"
             android:stateListAnimator="@animator/button_states_list_anim"
             android:text="@string/inf11" />
     </LinearLayout>
