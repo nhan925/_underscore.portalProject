@@ -106,7 +106,6 @@ class MainActivity2 : BaseActivity() {
 
             findViewById<View>(R.id.textView3).visibility = View.VISIBLE
             findViewById<View>(R.id.textView4).visibility = View.VISIBLE
-            findViewById<View>(R.id.textView5).visibility = View.VISIBLE
             rememberMeCheckbox.visibility = View.VISIBLE
             findViewById<View>(R.id.passwordInput).visibility = View.VISIBLE
             findViewById<View>(R.id.usernameInput).visibility = View.VISIBLE
@@ -219,7 +218,6 @@ class MainActivity2 : BaseActivity() {
         // Hide login-related
         findViewById<View>(R.id.textView3).visibility = View.GONE
         findViewById<View>(R.id.textView4).visibility = View.GONE
-        findViewById<View>(R.id.textView5).visibility = View.GONE
         findViewById<View>(R.id.rememberMeCheckbox).visibility = View.GONE
         findViewById<View>(R.id.passwordInput).visibility = View.GONE
         findViewById<View>(R.id.usernameInput).visibility = View.GONE
