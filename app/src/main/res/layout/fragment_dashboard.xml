@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            app:cardCornerRadius="16dp"
+            app:cardCornerRadius="8dp"
             app:cardElevation="8dp"
             android:backgroundTint="#FFFFFF">
 
@@ -142,6 +142,7 @@
 
             <!-- Các CardView cho từng chức năng -->
             <androidx.cardview.widget.CardView
+                android:id="@+id/CV_dashboard"
                 android:layout_width="0dp"
                 android:layout_height="120dp"
                 android:layout_columnWeight="1"
@@ -155,12 +156,11 @@
                     android:gravity="center"
                     android:orientation="vertical"
                     android:padding="16dp">
-
                     <ImageView
-                        android:layout_width="48dp"
+                        android:layout_width="88dp"
                         android:layout_height="48dp"
-                        android:src="@drawable/ic_dashboard"
-                        app:tint="#1A237E" />
+                        android:src="@drawable/infor"
+                        />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -175,6 +175,7 @@
 
             <!-- Các CardView cho từng chức năng -->
             <androidx.cardview.widget.CardView
+                android:id ="@+id/CV_score"
                 android:layout_width="0dp"
                 android:layout_height="120dp"
                 android:layout_columnWeight="1"
@@ -189,11 +190,13 @@
                     android:orientation="vertical"
                     android:padding="16dp">
 
+
+
                     <ImageView
                         android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        android:src="@drawable/ic_dashboard"
-                        app:tint="#1A237E" />
+                        android:layout_height="58dp"
+                        android:src="@drawable/score_ic"
+                         />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -208,6 +211,7 @@
 
             <!-- Các CardView cho từng chức năng -->
             <androidx.cardview.widget.CardView
+                android:id="@+id/CV_courses"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
@@ -225,8 +229,8 @@
                     <ImageView
                         android:layout_width="48dp"
                         android:layout_height="48dp"
-                        android:src="@drawable/ic_dashboard"
-                        app:tint="#1A237E" />
+                        android:src="@drawable/register"
+                        />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -241,6 +245,7 @@
 
             <!-- Các CardView cho từng chức năng -->
             <androidx.cardview.widget.CardView
+                android:id = "@+id/CV_timeline"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
@@ -258,8 +263,8 @@
                     <ImageView
                         android:layout_width="48dp"
                         android:layout_height="48dp"
-                        android:src="@drawable/ic_dashboard"
-                        app:tint="#1A237E" />
+                        android:src="@drawable/timeline"
+                        />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -274,6 +279,7 @@
 
             <!-- Các CardView cho từng chức năng -->
             <androidx.cardview.widget.CardView
+                android:id="@+id/CV_tuition"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
@@ -291,8 +297,8 @@
                     <ImageView
                         android:layout_width="48dp"
                         android:layout_height="48dp"
-                        android:src="@drawable/ic_dashboard"
-                        app:tint="#1A237E" />
+                        android:src="@drawable/tuition"
+                         />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -324,8 +330,8 @@
                     <ImageView
                         android:layout_width="48dp"
                         android:layout_height="48dp"
-                        android:src="@drawable/ic_dashboard"
-                        app:tint="#1A237E" />
+                        android:src="@drawable/shoolarship"
+                        />
 
                     <TextView
                         android:layout_width="wrap_content"

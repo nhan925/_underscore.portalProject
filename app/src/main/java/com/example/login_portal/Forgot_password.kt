@@ -62,14 +62,14 @@ class Forgot_password : BaseActivity() {
 
                 } else{
                     Snackbar.make(findViewById(android.R.id.content),
-                    "User not found", Snackbar.LENGTH_LONG).show()
+                    getString(R.string.inf56), Snackbar.LENGTH_LONG).show()
                     finish()
 
                 }
             }
         }?: run {
             Snackbar.make(findViewById(android.R.id.content),
-                "Username not provided", Snackbar.LENGTH_LONG).show()
+                getString(R.string.inf57), Snackbar.LENGTH_LONG).show()
             finish()
         }
 
@@ -101,7 +101,7 @@ class Forgot_password : BaseActivity() {
                             }
                             else{
                                 Snackbar.make(findViewById(android.R.id.content),
-                                    "Invalid OTP", Snackbar.LENGTH_LONG).show()
+                                    getString(R.string.inf59), Snackbar.LENGTH_LONG).show()
 
                                 //clear
                                 otpEditTexts.forEach { it.text.clear() }
@@ -113,7 +113,7 @@ class Forgot_password : BaseActivity() {
             }
             else {
                 Snackbar.make(findViewById(android.R.id.content),
-                    "Nhap vao", Snackbar.LENGTH_LONG).show()
+                    getString(R.string.inf60), Snackbar.LENGTH_LONG).show()
             }
         }
 
@@ -126,7 +126,7 @@ class Forgot_password : BaseActivity() {
                     if (success) {
                         Snackbar.make(
                             findViewById(android.R.id.content),
-                            "OTP sent", Snackbar.LENGTH_LONG
+                            getString(R.string.inf61), Snackbar.LENGTH_LONG
                         ).show()
                         // clear OTP
                         otpEditTexts.forEach { it.text.clear() }
@@ -137,7 +137,7 @@ class Forgot_password : BaseActivity() {
                     } else {
                         Snackbar.make(
                             findViewById(android.R.id.content),
-                            "Error sending OTP", Snackbar.LENGTH_LONG
+                            getString(R.string.inf62), Snackbar.LENGTH_LONG
                         ).show()
                     }
                 }
@@ -251,11 +251,11 @@ class Forgot_password : BaseActivity() {
         countDownTimer = object : CountDownTimer(OTP_TIMEOUT * 1000, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 val secondsRemaining = millisUntilFinished / 1000
-                tvTimer.text = "Time remaining: $secondsRemaining s"
+                tvTimer.text = getString(R.string.inf63) + "$secondsRemaining s"
             }
 
             override fun onFinish() {
-                tvTimer.text = "OTP expired"
+                tvTimer.text = getString(R.string.inf58)
                 btnSubmit.isEnabled = false
                 otpEditTexts.forEach { it.text.clear() }
             }

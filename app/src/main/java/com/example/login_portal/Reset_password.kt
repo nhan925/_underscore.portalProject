@@ -39,7 +39,7 @@ class Reset_password : BaseActivity() {
 
         if(username == null || resetToken == null){
             Snackbar.make(findViewById(android.R.id.content),
-                "Username or reset token not provided", Snackbar.LENGTH_LONG).show()
+                getString(R.string.inf64), Snackbar.LENGTH_LONG).show()
             finish()
             return
         }
@@ -145,11 +145,11 @@ class Reset_password : BaseActivity() {
     private fun validateNewPassword(password: String?): Boolean {
         return when {
             password.isNullOrEmpty() -> {
-                etNewPasswordLayout.error = "Password cannot be empty"
+                etNewPasswordLayout.error = getString(R.string.inf65)
                 false
             }
             !password.matches(PASSWORD_PATTERN) -> {
-                etNewPasswordLayout.error = "Password must contain at least 8 characters, including uppercase, lowercase and number"
+                etNewPasswordLayout.error = getString(R.string.inf66)
                 false
             }
             else -> {
@@ -164,7 +164,7 @@ class Reset_password : BaseActivity() {
         val confirmPassword = etConfirmPassword.text?.toString()
 
         if ( !newPassword.isNullOrEmpty() && newPassword != confirmPassword) {
-                etConfirmPasswordLayout.error = "Passwords do not match"
+                etConfirmPasswordLayout.error = getString(R.string.inf67)
                 return false
         } else{
             etConfirmPasswordLayout.error = null
@@ -194,7 +194,7 @@ class Reset_password : BaseActivity() {
                     else{
                         btnResetPassword.isEnabled = true
                         Snackbar.make(findViewById(android.R.id.content),
-                            "Reset password failed", Snackbar.LENGTH_LONG).show()
+                            getString(R.string.inf68), Snackbar.LENGTH_LONG).show()
                     }
                     }
 

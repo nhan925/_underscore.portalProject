@@ -12,6 +12,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.airbnb.lottie.LottieAnimationView
 import com.example.login_portal.R
 import com.example.login_portal.databinding.FragmentDashboardBinding
@@ -75,8 +76,8 @@ class DashboardFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.animationView.setAnimation(R.raw.ani_user)
-      //  animationView.setAnimation(R.raw.)
         binding.animationView.playAnimation()
+
 
         pieChart = binding.pieChart
         barChart = binding.barChart
@@ -95,6 +96,8 @@ class DashboardFragment : Fragment() {
             setupPieChart(data.currentCredit, data.totalCredit)
             setupBarChart(data.semesters)
         }
+
+        navigateFragment()
 
 
     }
@@ -243,6 +246,35 @@ class DashboardFragment : Fragment() {
 
         barChart.data = barData
         barChart.invalidate()
+    }
+
+    private fun navigateFragment()
+    {
+        binding.CVDashboard.setOnClickListener()
+        {
+            findNavController().navigate(R.id.action_nav_Dashboard_to_nav_InforStudent)
+        }
+
+        binding.CVScore.setOnClickListener(){
+            findNavController().navigate(R.id.action_nav_Dashboard_to_nav_Score)
+        }
+
+
+
+        binding.CVCourses.setOnClickListener(){
+            findNavController().navigate(R.id.action_nav_Dashboard_to_nav_course)
+        }
+
+        binding.CVTimeline.setOnClickListener(){
+            findNavController().navigate(R.id.action_nav_Dashboard_to_nav_Schedule)
+        }
+
+        binding.CVTuition.setOnClickListener(){
+            findNavController().navigate(R.id.action_nav_Dashboard_to_nav_Tuition)
+
+        }
+
+
     }
 
     override fun onDestroyView() {

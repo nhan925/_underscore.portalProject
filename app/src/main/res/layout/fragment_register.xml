@@ -5,6 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id ="@+id/forgotPassword"
     android:layout_width="match_parent"
+    android:fillViewport="true"
+    android:windowSoftInputMode = "adjustResize"
     android:layout_height="match_parent">
 
     <ProgressBar
