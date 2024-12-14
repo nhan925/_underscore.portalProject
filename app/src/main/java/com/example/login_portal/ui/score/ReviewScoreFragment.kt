@@ -191,6 +191,16 @@ class ReviewScoreFragment : Fragment() {
 
     private fun submitRequest() {
         // TODO: Implement API call to submit transcript request
+
+        val summaryFragment = pagerAdapter.getFragment(0) as? SummaryFragment
+        val checkSum = summaryFragment?.checkValidateRequest() ?: "ERROR"
+
+
+        if (checkSum == false){
+            showError(getString(R.string.inf44))
+            return
+        }
+
         //loading
         binding.progressBar.visibility = View.VISIBLE
         binding.root.alpha = 0.5f

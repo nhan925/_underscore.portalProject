@@ -46,10 +46,10 @@ class RequestScoreFragment : Fragment() {
             val yearAdapter = ArrayAdapter(
                 requireContext(),
                 android.R.layout.simple_dropdown_item_1line,
-                years
+                years.filter { it != "All" }
             )
             binding.yearSpinner.setAdapter(yearAdapter)
-            binding.yearSpinner.setText("All", false)
+            //binding.yearSpinner.setText("All", false)
         }
 
         // Setup Semester Spinner
@@ -57,10 +57,11 @@ class RequestScoreFragment : Fragment() {
             val semesterAdapter = ArrayAdapter(
                 requireContext(),
                 android.R.layout.simple_dropdown_item_1line,
-                semesters
+                semesters.filter { it != "All" }
+
             )
             binding.semesterSpinner.setAdapter(semesterAdapter)
-            binding.semesterSpinner.setText("All", false)
+            //binding.semesterSpinner.setText("All", false)
         }
 
         // Setup Course Spinner based on filtered scores
@@ -77,17 +78,20 @@ class RequestScoreFragment : Fragment() {
 
     private fun setupListeners() {
         // Year Spinner Change Listener
+        binding.courseSpinner.isEnabled =false
         binding.yearSpinner.setOnItemClickListener { _, _, _, _ ->
             val selectedYear = binding.yearSpinner.text.toString()
             viewModel.updateAvailableSemesters(selectedYear)
             updateCourseList()
             clearCourseDetails()
+            toggleCourseSpinnerVisibility()
         }
 
         // Semester Spinner Change Listener
         binding.semesterSpinner.setOnItemClickListener { _, _, _, _ ->
             updateCourseList()
             clearCourseDetails()
+            toggleCourseSpinnerVisibility()
         }
 
         // Course Spinner Change Listener
@@ -121,6 +125,19 @@ class RequestScoreFragment : Fragment() {
             })
         }
     }
+
+    private fun toggleCourseSpinnerVisibility(){
+        val yearSelected = binding.yearSpinner.text.toString().isNotEmpty()
+        val semesterSelected = binding.semesterSpinner.text.toString().isNotEmpty()
+
+
+        binding.courseSpinner.isEnabled = yearSelected && semesterSelected
+        if (!binding.courseSpinner.isEnabled){
+            binding.courseSpinner.setText("")
+        }
+    }
+
+
 
     private fun updateCourseList() {
         val year = binding.yearSpinner.text.toString()

@@ -169,6 +169,18 @@ class SummaryFragment : Fragment() {
         return contentBuilder.toString()
     }
 
+    fun checkValidateRequest(): Boolean{
+        if ( binding.tvTotalCount.text.toString() == "0"){
+            return false
+        }
+        return true
+
+
+
+
+    }
+
+
 
 
     override fun onDestroyView() {

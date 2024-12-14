@@ -5,60 +5,71 @@
 
     <group android:checkableBehavior="single">
 
-
-
         <item
             android:id="@+id/nav_Dashboard"
             android:icon="@drawable/ic_dashboard"
             android:title="@string/menu_dash" />
+
         <item
             android:id="@+id/nav_InforStudent"
             android:icon="@drawable/ic_menu_gallery"
             android:title="@string/menu_infor" />
+
         <item
             android:id="@+id/nav_Notification"
             android:icon="@drawable/ic_noti"
             android:title="@string/menu_Noti" />
+
         <item
             android:id="@+id/nav_Score"
             android:icon="@drawable/ic_score"
             android:title="@string/menu_score" />
+
         <item
             android:id="@+id/nav_Schedule"
             android:icon="@drawable/ic_schedule"
             android:title="@string/menu_schedule" />
+
         <item
             android:id="@+id/nav_course"
             android:icon="@drawable/ic_menu_slideshow"
             android:title="@string/menu_register" />
+
         <item
             android:id="@+id/nav_Tuition"
             android:icon="@drawable/ic_tuititon"
             android:title="@string/menu_tuition" />
+
         <item
             android:id="@+id/nav_Payment"
             android:icon="@drawable/ic_history"
             android:title="@string/menu_payment" />
+
         <item
             android:id="@+id/nav_Scholarship"
             android:icon="@drawable/ic_menu_slideshow"
             android:title="@string/menu_scholarship" />
+
         <item
             android:id="@+id/nav_Request"
             android:icon="@drawable/ic_menu_slideshow"
             android:title="@string/menu_request" />
+
         <item
             android:id="@+id/nav_Chatbox"
             android:icon="@drawable/ic_menu_slideshow"
             android:title="@string/menu_chatbox" />
+
         <item
             android:id="@+id/nav_Feedback_Course"
             android:icon="@drawable/ic_feedback_24"
             android:title="Course Feedback" />
+
         <item
             android:id="@+id/nav_Feedback_System"
             android:icon="@drawable/ic_feedback_24"
             android:title="App Feedback" />
+
         <item
             android:id="@+id/nav_Setting"
             android:icon="@drawable/ic_setting"

@@ -70,8 +70,8 @@ dependencies {
     implementation(libs.androidx.fragment.ktx) // For Fragment transactions
     implementation(libs.androidx.security.crypto)
 
-    implementation("com.squareup.okhttp3:okhttp:4.6.0")
-    implementation("commons-codec:commons-codec:1.14")
+    implementation(libs.okhttp.v460)
+    implementation(libs.commons.codec)
 
     implementation(libs.mpandroidchart)
 
