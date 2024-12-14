@@ -72,24 +72,24 @@ class TuitionDetailActivity : BaseActivity() {
                     val token = data.getString("zp_trans_token")
                     ZaloPaySDK.getInstance().payOrder(this, token, "demozpdk://app", object : PayOrderListener {
                         override fun onPaymentSucceeded(p0: String?, p1: String?, p2: String?) {
-                            Toast.makeText(applicationContext, "Payment Succeeded", Toast.LENGTH_LONG).show()
+                            Toast.makeText(applicationContext, resources.getString(R.string.tuition_detail_payment_success), Toast.LENGTH_LONG).show()
                             viewModel.updatePaymentTuition(totalFee) { isSuccess ->
                                 if (isSuccess) {
-                                    Toast.makeText(this@TuitionDetailActivity, "Load to Database success", Toast.LENGTH_SHORT).show()
+                                    // TODO
                                 } else {
-                                    Toast.makeText(this@TuitionDetailActivity, "Load to Database failed", Toast.LENGTH_SHORT).show()
+                                    // TODO
                                 }
                             }
                             finish()
                         }
 
                         override fun onPaymentCanceled(p0: String?, p1: String?) {
-                            Toast.makeText(applicationContext, "Payment Canceled", Toast.LENGTH_LONG).show()
+                            Toast.makeText(applicationContext, resources.getString(R.string.tuition_detail_payment_fail), Toast.LENGTH_LONG).show()
                             finish()
                         }
 
                         override fun onPaymentError(p0: ZaloPayError?, p1: String?, p2: String?) {
-                            Toast.makeText(applicationContext, "Payment Error", Toast.LENGTH_LONG).show()
+                            Toast.makeText(applicationContext, resources.getString(R.string.tuition_detail_payment_fail), Toast.LENGTH_LONG).show()
                             finish()
                         }
                     }
