@@ -79,12 +79,15 @@ class RequestScoreFragment : Fragment() {
     private fun setupListeners() {
         // Year Spinner Change Listener
         binding.courseSpinner.isEnabled =false
+        binding.semesterSpinner.isEnabled =false
         binding.yearSpinner.setOnItemClickListener { _, _, _, _ ->
             val selectedYear = binding.yearSpinner.text.toString()
             viewModel.updateAvailableSemesters(selectedYear)
             updateCourseList()
             clearCourseDetails()
             toggleCourseSpinnerVisibility()
+            toogleSemesterSpinnerVisibility()
+
         }
 
         // Semester Spinner Change Listener
@@ -134,6 +137,13 @@ class RequestScoreFragment : Fragment() {
         binding.courseSpinner.isEnabled = yearSelected && semesterSelected
         if (!binding.courseSpinner.isEnabled){
             binding.courseSpinner.setText("")
+        }
+    }
+    private fun toogleSemesterSpinnerVisibility(){
+        val yearSelected = binding.yearSpinner.text.toString().isNotEmpty()
+        binding.semesterSpinner.isEnabled = yearSelected
+        if (!binding.semesterSpinner.isEnabled){
+            binding.semesterSpinner.setText("")
         }
     }
 

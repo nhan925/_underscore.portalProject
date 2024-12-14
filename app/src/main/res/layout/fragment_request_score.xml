@@ -146,7 +146,6 @@
         <Button
             android:id="@+id/submitButton"
             android:backgroundTint="@color/button_positive"
-            android:elevation="4dp"
             android:stateListAnimator="@animator/button_states_list_anim"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -157,7 +156,7 @@
         <Button
             android:id="@+id/cancelButton"
 
-            android:elevation="4dp"
+
             android:stateListAnimator="@animator/button_states_list_anim"
 
             android:layout_width="0dp"

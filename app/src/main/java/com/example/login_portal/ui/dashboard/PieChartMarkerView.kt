@@ -23,15 +23,25 @@ class PieChartMarkerView(
             val value = e.value.toInt()
             val label = e.label
             val percentage = (value.toFloat() / totalCredit * 100)
-            
+
+
+            // Sử dụng context để lấy chuỗi từ strings.xml
+            val context = tvContent.context
+            val labelValueText = context.getString(R.string.pie_label_value, label, value)
+            val totalCreditText = context.getString(R.string.total_credit, totalCredit)
+            val percentageText = context.getString(R.string.percentage, percentage)
+
+
+            // Hiển thị nội dung lên TextView
             tvContent.text = """
-                $label: $value
-                Tổng tín chỉ: $totalCredit
-                Tỷ lệ: ${String.format("%.1f", percentage)}%
-            """.trimIndent()
+       $labelValueText
+       $totalCreditText
+       $percentageText
+   """.trimIndent()
         }
         super.refreshContent(e, highlight)
     }
+
 
     override fun getOffset(): MPPointF {
         return if (this.chartView is PieChart) {
