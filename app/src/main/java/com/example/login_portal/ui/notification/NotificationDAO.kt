@@ -36,4 +36,55 @@ class NotificationDAO {
             }
         }
     }
+
+    fun markNotificationAsSeen(notificationId: Int, callback: (Boolean) -> Unit) {
+        Log.d("NotificationDAO", "Marking notification as seen: $notificationId")
+
+        ApiServiceHelper.post(
+            "/rpc/update_notification_status",
+            mapOf("notification_id_input" to notificationId.toString(), "action" to "mark_seen")
+        ) { response ->
+            if (response != null) {
+                Log.d("NotificationDAO", "Notification $notificationId marked as seen successfully.")
+                callback(true)
+            } else {
+                Log.e("NotificationDAO", "Failed to mark notification $notificationId as seen.")
+                callback(false)
+            }
+        }
+    }
+
+    fun markNotificationAsImportant(notificationId: Int, callback: (Boolean) -> Unit) {
+        Log.d("NotificationDAO", "Marking notification as important: $notificationId")
+
+        ApiServiceHelper.post(
+            "/rpc/update_notification_status",
+            mapOf("notification_id_input" to notificationId.toString(), "action" to "mark_important")
+        ) { response ->
+            if (response != null) {
+                Log.d("NotificationDAO", "Notification $notificationId marked as important successfully.")
+                callback(true)
+            } else {
+                Log.e("NotificationDAO", "Failed to mark notification $notificationId as important.")
+                callback(false)
+            }
+        }
+    }
+
+    fun deleteNotification(notificationId: Int, callback: (Boolean) -> Unit) {
+        Log.d("NotificationDAO", "Deleting notification: $notificationId")
+
+        ApiServiceHelper.post(
+            "/rpc/update_notification_status",
+            mapOf("notification_id_input" to notificationId.toString(), "action" to "delete")
+        ) { response ->
+            if (response != null) {
+                Log.d("NotificationDAO", "Notification $notificationId deleted successfully.")
+                callback(true)
+            } else {
+                Log.e("NotificationDAO", "Failed to delete notification $notificationId.")
+                callback(false)
+            }
+        }
+    }
 }

@@ -52,23 +52,41 @@ class NotificationViewModel : ViewModel() {
         }
     }
 
-    fun setSelectedTab(tab: String) {
-        _selectedTab.value = tab
-    }
-
     fun markAsSeen(notificationId: Int) {
-        _notifications.value = _notifications.value?.map { notification ->
-            if (notification.id == notificationId) notification.copy(isSeen = true) else notification
+        viewModelScope.launch {
+            notificationDAO.markNotificationAsSeen(notificationId) { success ->
+                if (success) {
+                    _notifications.value = _notifications.value?.map { notification ->
+                        if (notification.id == notificationId) notification.copy(isSeen = true) else notification
+                    }
+                }
+            }
         }
     }
 
     fun markAsImportant(notificationId: Int) {
-        _notifications.value = _notifications.value?.map { notification ->
-            if (notification.id == notificationId) notification.copy(isImportant = true, isSeen = true) else notification
+        viewModelScope.launch {
+            notificationDAO.markNotificationAsImportant(notificationId) { success ->
+                if (success) {
+                    _notifications.value = _notifications.value?.map { notification ->
+                        if (notification.id == notificationId) notification.copy(isImportant = true, isSeen = true) else notification
+                    }
+                }
+            }
         }
     }
 
     fun deleteNotification(notificationId: Int) {
-        _notifications.value = _notifications.value?.filter { it.id != notificationId }
+        viewModelScope.launch {
+            notificationDAO.deleteNotification(notificationId) { success ->
+                if (success) {
+                    _notifications.value = _notifications.value?.filter { it.id != notificationId }
+                }
+            }
+        }
+    }
+
+    fun setSelectedTab(tab: String) {
+        _selectedTab.value = tab
     }
 }
