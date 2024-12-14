@@ -36,7 +36,7 @@ class Fragment_register : Fragment() {
             val username = usernameInput.text?.toString()
 
             if (username.isNullOrEmpty()) {
-                Snackbar.make(view, "Please enter your username", Snackbar.LENGTH_SHORT).show()
+                Snackbar.make(view, getString(R.string.username_empty), Snackbar.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
@@ -61,7 +61,7 @@ class Fragment_register : Fragment() {
                             Snackbar.make(view, "Error navigating to next screen", Snackbar.LENGTH_LONG).show()
                         }
                     } else {
-                        Snackbar.make(view, "Username not found or error sending OTP", Snackbar.LENGTH_LONG).show()
+                        Snackbar.make(view, getString(R.string.reset_password_error), Snackbar.LENGTH_LONG).show()
                     }
                 }
             }

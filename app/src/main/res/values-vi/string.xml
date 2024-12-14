@@ -211,9 +211,9 @@
 
     <string name="market_rank">Rank: %s</string>
     <string name="market_gpa">GPA: %.2f</string>
-    <string name="inf1"> Biểu đồ tổng quan</string>
-    <string name="inf2"> Danh mục chức năng</string>
-    <string name="inf3"> Sinh viên</string>
+    <string name="inf1">Biểu đồ tổng quan</string>
+    <string name="inf2">Danh mục chức năng</string>
+    <string name="inf3">Sinh viên</string>
     <string name="inf4">Xin bảng điểm</string>
     <string name="inf5">Xin phúc khảo</string>
     <string name="inf6">Phúc khảo bảng điểm</string>
@@ -228,7 +228,7 @@
     <string name="inf15"> Xác nhận yêu cầu</string>
     <string name="inf16"> Bạn có chắc chắn muốn gửi yêu cầu phúc/n khảo điểm</string>
     <string name="inf17">Huỷ</string>
-    <string name="inf18"> Xác nhận</string>
+    <string name="inf18">Xác nhận</string>
     <string name="inf19">Gửi yêu cầu phúc khảo thành công</string>
     <string name="inf20">Xin bảng điểm</string>
     <string name="inf21">Thông tin chung</string>
@@ -251,15 +251,15 @@
     <string name="inf37">Tiếng Anh</string>
     <string name="inf38">Tổng tín chỉ</string>
     <string name="inf39">Tỉ lệ</string>
-    <string name="inf40">Gửi yêu cầu phuc khao thành công</string>
-    <string name="inf41">Gửi yêu cầu phuc khao điểm thất bại</string>
+    <string name="inf40">Gửi yêu cầu phúc khảo thành công</string>
+    <string name="inf41">Gửi yêu cầu phúc phảo điểm thất bại</string>
     <string name="inf42">Vui lòng chọn năm học</string>
     <string name="inf43">Vui lòng chọn năm học và học kì</string>
     <string name="inf44">Vui lòng nhập số lượng bảng điểm</string>
     <string name="inf45">Gửi yêu cầu xin bảng điểm thành công</string>
     <string name="inf46">Gửi yêu cầu xin bảng điểm thất bại</string>
-    <string name="total_vn"> Số lượng bản Tiếng Việt: %1$s</string>
-    <string name="total_en"> Số lượng bản Tiếng Anh: %1$s</string>
+    <string name="total_vn">Số lượng bản Tiếng Việt: %1$s</string>
+    <string name="total_en">Số lượng bản Tiếng Anh: %1$s</string>
     <string name="semester_title">NH/HK: %1$s/%2$s</string>
     <string name="year_title">Năm học: %1$s</string>
     <string name="inf47">Phúc khảo</string>
@@ -360,4 +360,5 @@
     <string name="logout">Logout</string>
     <string name="tuition_detail_payment_success">Thanh toán thành công</string>
     <string name="tuition_detail_payment_fail">Thanh toán thất bại</string>
+    <string name="reset_password_error">Không tìm thấy username hoặc gửi OTP lỗi !</string>
 </resources>

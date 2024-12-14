@@ -251,7 +251,7 @@ class Forgot_password : BaseActivity() {
         countDownTimer = object : CountDownTimer(OTP_TIMEOUT * 1000, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 val secondsRemaining = millisUntilFinished / 1000
-                tvTimer.text = getString(R.string.inf63) + "$secondsRemaining s"
+                tvTimer.text = "${getString(R.string.inf63)} ${secondsRemaining} s"
             }
 
             override fun onFinish() {
@@ -266,8 +266,4 @@ class Forgot_password : BaseActivity() {
         super.onDestroy()
         countDownTimer?.cancel()
     }
-
-
-
-
 }

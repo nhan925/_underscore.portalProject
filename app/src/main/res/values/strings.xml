@@ -5,7 +5,7 @@
 
     <string name="login_button_text">Login</string>
     <string name="register_button_text">Forgot Password</string>
-    <string name="username_hint">    Enter your username</string>
+    <string name="username_hint">Enter your username</string>
     <string name="password_hint">Enter your password</string>
     <string name="remember_me">Remember me</string>
     <string name="forgot_password">Forgot password?</string>
@@ -61,8 +61,8 @@
     <string name="semester">Semester</string>
     <string name="school_year">School Year</string>
     <string name="score_filter">Score Filter</string>
-    <string name="username_empty">Please enter username</string>
-    <string name="password_empty">Please enter password</string>
+    <string name="username_empty">Please enter your username</string>
+    <string name="password_empty">Please enter your password</string>
     <string name="login_successful">Login successful</string>
     <string name="login_failed">Login failed. Please check your credentials.</string>
 
@@ -140,8 +140,8 @@
     <string name="inf44">Please enter the number of transcripts</string>
     <string name="inf45">Transcript request submitted successfully</string>
     <string name="inf46">Failed to submit transcript request</string>
-    <string name="total_vn"> Number of Vietnamese transcripts: %1$s</string>
-    <string name="total_en"> Number of English transcripts: %1$s</string>
+    <string name="total_vn">Number of Vietnamese transcripts: %1$s</string>
+    <string name="total_en">Number of English transcripts: %1$s</string>
     <string name="semester_title">Semester/Year: %1$s/%2$s</string>
     <string name="year_title">Academic Year: %1$s</string>
 
@@ -358,4 +358,5 @@
     <string name="logout">Logout</string>
     <string name="tuition_detail_payment_success">Payment successful</string>
     <string name="tuition_detail_payment_fail">Payment failed</string>
+    <string name="reset_password_error">Username not found or error sending OTP !</string>
 </resources>
