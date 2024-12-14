@@ -6,18 +6,76 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ui.notification.NotificationFragment">
 
+    <!-- Tab for All -->
     <TextView
-        android:id="@+id/text_notification"
-        android:layout_width="match_parent"
+        android:id="@+id/tab_all"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_margin="8dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/tab_selected_bg"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="@string/tab_all"
         android:textAlignment="center"
-        android:textSize="20sp"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/tab_important"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.028" />
+
+    <!-- Tab for Important -->
+    <TextView
+        android:id="@+id/tab_important"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:background="@drawable/tab_unselected_bg"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="@string/tab_important"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/tab_unread"
+        app:layout_constraintStart_toEndOf="@id/tab_all"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.028" />
+
+    <!-- Tab for Unread -->
+    <TextView
+        android:id="@+id/tab_unread"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:background="@drawable/tab_unselected_bg"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="@string/tab_unread"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toEndOf="@id/tab_important"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.028" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_notifications"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tab_all"
+        app:layout_constraintVertical_bias="1.0"
+        tools:layout_editor_absoluteX="8dp"
+        tools:listitem="@layout/notification_item" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
