@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    id("com.google.devtools.ksp")
+    id("kotlin-kapt")
 }
 
 android {
@@ -35,11 +37,20 @@ android {
     }
     buildFeatures {
         viewBinding = true
+        dataBinding = true
     }
 }
 
 dependencies {
-
+    implementation(fileTree(mapOf(
+        "dir" to "./libs",
+        "include" to listOf("*.aar", "*.jar"),
+        "exclude" to listOf("")
+    )))
+    val room_version = "2.6.1"
+    implementation("androidx.room:room-runtime:$room_version")
+    ksp("androidx.room:room-compiler:$room_version")
+    implementation("androidx.room:room-ktx:$room_version")
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
@@ -49,10 +60,48 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
+    implementation(libs.androidx.legacy.support.v4)
+    implementation(libs.androidx.ui.desktop)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-    implementation("com.google.android.material:material:1.9.0") // Update the version as needed
-    implementation("androidx.fragment:fragment-ktx:1.5.7") // For Fragment transactions
-    implementation("androidx.security:security-crypto:1.1.0-alpha06")
+    
+    implementation(libs.material.v190) // Update the version as needed
+    implementation(libs.androidx.fragment.ktx) // For Fragment transactions
+    implementation(libs.androidx.security.crypto)
+
+    implementation(libs.okhttp.v460)
+    implementation(libs.commons.codec)
+
+    implementation(libs.mpandroidchart)
+
+    implementation(libs.fuel)
+    implementation(libs.fuel.gson)
+
+    implementation(libs.lottie)
+
+    implementation(libs.gson)
+
+    implementation(libs.msal.v510)
+    implementation(libs.volley)
+
+
+
+    implementation(libs.okhttp)
+
+    implementation(libs.opentelemetry.api)
+    implementation(libs.opentelemetry.context)
+
+    // Core library cho Coroutines
+    implementation(libs.kotlinx.coroutines.core)
+
+    // Android-specific library cho Coroutines (Dispatchers.Main)
+    implementation(libs.kotlinx.coroutines.android)
+    // Thư viện Lifecycle (bao gồm lifecycleScope)
+    implementation(libs.androidx.lifecycle.runtime.ktx)
+
+    //Thư viện Action Button
+    implementation(libs.speed.dial.v330)
+    implementation(libs.glide)
+    implementation(libs.androidx.gridlayout)
 }

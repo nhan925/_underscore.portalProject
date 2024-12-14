@@ -20,7 +20,9 @@ object Validator {
             else -> ValidationResult(true)
         }
     }
+
 }
+
 
 data class ValidationResult(
     val isValid: Boolean,

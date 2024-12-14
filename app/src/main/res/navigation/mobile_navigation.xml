@@ -10,7 +10,44 @@
         android:id="@+id/nav_Dashboard"
         android:name="com.example.login_portal.ui.dashboard.DashboardFragment"
         android:label="@string/menu_dash"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_dashboard">
+        <action
+            android:id="@+id/action_nav_Dashboard_to_nav_InforStudent"
+            app:destination="@id/nav_InforStudent"
+            app:popUpTo="@id/nav_Dashboard"
+            app:popUpToInclusive="true"/>
+
+        <action
+            android:id="@+id/action_nav_Dashboard_to_nav_Schedule"
+            app:destination="@id/nav_Schedule"
+            app:popUpTo="@id/nav_Dashboard"
+            app:popUpToInclusive="true"/>
+
+        <action
+            android:id="@+id/action_nav_Dashboard_to_nav_Tuition"
+            app:destination="@id/nav_Tuition"
+            app:popUpTo="@id/nav_Dashboard"
+            app:popUpToInclusive="true"/>
+
+
+        <action
+            android:id="@+id/action_nav_Dashboard_to_nav_course"
+            app:destination="@id/nav_course"
+            app:popUpTo="@id/nav_Dashboard"
+            app:popUpToInclusive="true"/>
+
+
+
+        <action
+            android:id="@+id/action_nav_Dashboard_to_nav_Score"
+            app:destination="@id/nav_Score"
+            app:popUpTo="@id/nav_Dashboard"
+            app:popUpToInclusive="true"/>
+
+
+
+
+    </fragment>
     <fragment
         android:id="@+id/nav_Notification"
         android:name="com.example.login_portal.ui.notification.NotificationFragment"
@@ -20,18 +57,37 @@
         android:id="@+id/nav_InforStudent"
         android:name="com.example.login_portal.ui.information.InformationFragment"
         android:label="@string/menu_infor"
-        tools:layout="@layout/fragment_information" />
+        tools:layout="@layout/fragment_information" >
+        <action
+            android:id="@+id/action_nav_InforStudent_to_nav_Dashboard"
+            app:destination="@id/nav_Dashboard" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_Score"
         android:name="com.example.login_portal.ui.score.ScoreFragment"
         android:label="@string/menu_score"
-        android:layout="@layout/fragment_score" />
+        android:layout="@layout/fragment_score">
+        <action
+            android:id="@+id/action_nav_Score_to_nav_ReviewScore"
+            app:destination="@id/nav_ReviewScore" />
+        <action
+            android:id="@+id/action_nav_Score_to_nav_RequestScore"
+            app:destination="@id/nav_RequestScore" />
+
+    </fragment>
+
+
     <fragment
         android:id="@+id/nav_Schedule"
         android:name="com.example.login_portal.ui.schedule.ScheduleFragment"
         android:label="@string/menu_schedule"
-        android:layout="@layout/fragment_schedule" />
+        android:layout="@layout/fragment_schedule">
+        <action
+            android:id="@+id/action_nav_Schedule_to_nav_Dashboard"
+            app:destination="@id/nav_Dashboard" />
+    </fragment>
+
     <fragment
         android:id="@+id/nav_Tuition"
         android:name="com.example.login_portal.ui.tuition.TuitionFragment"
@@ -42,11 +98,44 @@
         android:id="@+id/nav_course"
         android:name="com.example.login_portal.ui.course.CourseFragment"
         android:label="@string/menu_register"
+        android:layout="@layout/fragment_course" >
+        <action
+            android:id="@+id/action_nav_course_to_nav_Dashboard"
+            app:destination="@id/nav_Dashboard" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_Setting"
+        android:name="com.example.login_portal.ui.setting.SettingsFragment"
+        android:label="@string/menu_setting"
         android:layout="@layout/fragment_course" />
 
+    <fragment
+        android:id="@+id/nav_ReviewScore"
+        android:name="com.example.login_portal.ui.score.ReviewScoreFragment"
+        android:layout="@layout/fragment_review_score" />
 
+    <fragment
+        android:id="@+id/nav_RequestScore"
+        android:name="com.example.login_portal.ui.score.RequestScoreFragment"
+        android:layout="@layout/fragment_request_score" />
 
+    <fragment
+        android:id="@+id/nav_Request"
+        android:name="com.example.login_portal.ui.requests.RequestFragment"
+        android:label="@string/menu_request"
+        tools:layout="@layout/fragment_request" />
+  
+    <fragment
+        android:id="@+id/nav_Feedback_System"
+        android:name="com.example.login_portal.ui.feedback_system.FeedbackSystemFragment"
+        android:label="@string/menu_feedback"
+        tools:layout="@layout/fragment_feedback_system" />
 
-
+    <fragment
+        android:id="@+id/nav_Feedback_Course"
+        android:name="com.example.login_portal.ui.feedback_course.FeedbackCourseFragment"
+        android:label="Course Feedback"
+        tools:layout="@layout/fragment_feedback_course_list" />
 
 </navigation>

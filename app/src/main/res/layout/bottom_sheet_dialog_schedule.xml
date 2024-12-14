@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageButton
+        android:id="@+id/bsd_schedule_btn_close"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:backgroundTint="@android:color/transparent"
+        android:scaleType="fitCenter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_cancelchange_info_student" />
+
+    <TextView
+        android:id="@+id/bsd_schedule_LecturerLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/schedule_page_lecturer_label"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <LinearLayout
+        android:id="@+id/bsd_schedule_NameLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginStart="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="@+id/bsd_schedule_LecturerLabel"
+        app:layout_constraintTop_toBottomOf="@+id/bsd_schedule_LecturerLabel">
+        <TextView
+            android:id="@+id/bsd_schedule_Lecturername_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:text="@string/schedule_page_lecturer_name"/>
+
+        <TextView
+            android:id="@+id/bsd_schedule_Lecturername_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:text="@string/schedule_page_lecturer_name"
+            android:textSize="16sp"/>
+    </LinearLayout>
+
+    <!-- Gender -->
+    <LinearLayout
+        android:id="@+id/bsd_schedule_GenderLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="@+id/bsd_schedule_NameLayout"
+        app:layout_constraintTop_toBottomOf="@id/bsd_schedule_NameLayout">
+
+        <TextView
+            android:id="@+id/bsd_schedule_Gender_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:text="@string/schedule_page_lecturer_gender" />
+
+        <TextView
+            android:id="@+id/bsd_schedule_Gender_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:text="@string/schedule_page_lecturer_gender"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <!-- Phone Number -->
+    <LinearLayout
+        android:id="@+id/bsd_schedule_PhoneLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="@+id/bsd_schedule_GenderLayout"
+        app:layout_constraintTop_toBottomOf="@id/bsd_schedule_GenderLayout">
+
+        <TextView
+            android:id="@+id/bsd_schedule_Phone_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:text="@string/schedule_page_lecturer_phone_number" />
+
+        <TextView
+            android:id="@+id/bsd_schedule_Phone_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:text="@string/schedule_page_lecturer_phone_number"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <!-- Email -->
+    <LinearLayout
+        android:id="@+id/bsd_schedule_EmailLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="@+id/bsd_schedule_PhoneLayout"
+        app:layout_constraintTop_toBottomOf="@id/bsd_schedule_PhoneLayout">
+
+        <TextView
+            android:id="@+id/bsd_schedule_Email_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:text="@string/schedule_page_lecturer_email" />
+
+        <TextView
+            android:id="@+id/bsd_schedule_Email_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:text="@string/schedule_page_lecturer_email"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <!-- Academic Rank -->
+    <LinearLayout
+        android:id="@+id/bsd_schedule_AcademicRankLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="@+id/bsd_schedule_EmailLayout"
+        app:layout_constraintTop_toBottomOf="@id/bsd_schedule_EmailLayout">
+
+        <TextView
+            android:id="@+id/bsd_schedule_AcademicRank_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:text="@string/schedule_page_lecturer_academic_rank" />
+
+        <TextView
+            android:id="@+id/bsd_schedule_AcademicRank_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:text="@string/schedule_page_lecturer_academic_rank"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <!-- Academic Degree -->
+    <LinearLayout
+        android:id="@+id/bsd_schedule_AcademicDegreeLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="@+id/bsd_schedule_AcademicRankLayout"
+        app:layout_constraintTop_toBottomOf="@id/bsd_schedule_AcademicRankLayout">
+
+        <TextView
+            android:id="@+id/bsd_schedule_AcademicDegree_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:text="@string/schedule_page_lecturer_academic_degree" />
+
+        <TextView
+            android:id="@+id/bsd_schedule_AcademicDegree_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:text="@string/schedule_page_lecturer_academic_degree"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <!-- Faculty Name -->
+    <LinearLayout
+        android:id="@+id/bsd_schedule_FacultyLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="@+id/bsd_schedule_AcademicDegreeLayout"
+        app:layout_constraintTop_toBottomOf="@id/bsd_schedule_AcademicDegreeLayout">
+
+        <TextView
+            android:id="@+id/bsd_schedule_Faculty_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:text="@string/schedule_page_lecturer_faculty" />
+
+        <TextView
+            android:id="@+id/bsd_schedule_Faculty_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:text="@string/schedule_page_lecturer_faculty"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/bsd_schedule_courseOutlineLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/schedule_page_course_url"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginTop="40dp"
+        app:layout_constraintTop_toBottomOf="@+id/bsd_schedule_FacultyLayout"
+        app:layout_constraintStart_toStartOf="@+id/bsd_schedule_FacultyLayout"/>
+
+    <TextView
+        android:id="@+id/bsd_schedule_course_url_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="24dp"
+        android:autoLink="web"
+        android:clickable="true"
+        android:focusable="true"
+        android:text="@string/schedule_page_course_url_link"
+        android:textColor="@android:color/holo_blue_dark"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/bsd_schedule_courseOutlineLabel"
+        app:layout_constraintTop_toBottomOf="@+id/bsd_schedule_courseOutlineLabel" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
