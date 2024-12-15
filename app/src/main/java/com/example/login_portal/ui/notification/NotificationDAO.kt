@@ -8,18 +8,12 @@ import com.google.gson.reflect.TypeToken
 
 class NotificationDAO {
 
-    fun getStudentNotifications(studentId: String, callback: (List<Notification>?) -> Unit) {
-        // Log the API request
-        Log.d("NotificationDAO", "Fetching notifications for studentId: $studentId")
+    fun getStudentNotifications(callback: (List<Notification>?) -> Unit) {
+        Log.d("NotificationDAO", "Fetching notifications using GET request")
 
-        // API Call
-        ApiServiceHelper.post(
-            "/rpc/get_student_notifications",
-            mapOf("student_id_input" to studentId)
-        ) { response ->
+        ApiServiceHelper.get("/rpc/get_student_notifications") { response ->
             if (response != null) {
                 try {
-                    // Parse JSON response to Notification objects
                     val gson = Gson()
                     val type = object : TypeToken<List<Notification>>() {}.type
                     val notifications: List<Notification> = gson.fromJson(response, type)

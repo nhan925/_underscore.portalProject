@@ -7,10 +7,10 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
+import com.example.login_portal.BaseActivity
 import com.example.login_portal.R
 
-class NotificationDetailActivity : AppCompatActivity() {
+class NotificationDetailActivity : BaseActivity() {
 
     private lateinit var tvNotificationTitle: TextView
     private lateinit var tvSender: TextView
@@ -46,8 +46,8 @@ class NotificationDetailActivity : AppCompatActivity() {
 
         // Set data to UI
         tvNotificationTitle.text = title
-        tvSender.text = getString(R.string.notification_sender)
-        tvTime.text = getString(R.string.notification_time)
+        tvSender.text = sender
+        tvTime.text = time
         tvContent.text = detail
         tvHeader.text = getString(R.string.notification)
 

@@ -44,13 +44,15 @@ class NotificationViewModel : ViewModel() {
                 }
 
                 Log.d("NotificationViewModel", "Fetching notifications for studentId: $studentId")
-                notificationDAO.getStudentNotifications(studentId) { notificationList ->
-                    if (notificationList != null) {
-                        Log.d("NotificationViewModel", "Fetched ${notificationList.size} notifications.")
-                        _notifications.postValue(notificationList ?: emptyList())
+                val notificationDAO = NotificationDAO()
+                notificationDAO.getStudentNotifications { notifications ->
+                    if (notifications != null) {
+                        for (notification in notifications) {
+                            Log.d("TestNotifications", "Title: ${notification.title}, Content: ${notification.detail}, Sender: ${notification.sender}, Time: ${notification.time}, isSeen: ${notification.isSeen}, isImportant: ${notification.isImportant}")
+                            _notifications.postValue(notifications ?: emptyList())
+                        }
                     } else {
-                        Log.e("NotificationViewModel", "No notifications fetched.")
-                        _notifications.postValue(emptyList())
+                        Log.e("TestNotifications", "Failed to fetch notifications")
                     }
                 }
             }
