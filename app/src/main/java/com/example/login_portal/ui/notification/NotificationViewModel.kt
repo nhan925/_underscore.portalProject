@@ -9,6 +9,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import android.util.Log
+import kotlinx.coroutines.*
 
 class NotificationViewModel : ViewModel() {
     private val notificationDAO = NotificationDAO()
@@ -19,9 +20,13 @@ class NotificationViewModel : ViewModel() {
     private val _selectedTab = MutableLiveData<String>()
     val selectedTab: LiveData<String> get() = _selectedTab
 
+    private var pollingJob: Job? = null
+
+
     init {
         _selectedTab.value = "All"
         fetchNotifications()
+        startPolling()
     }
 
 
@@ -48,6 +53,15 @@ class NotificationViewModel : ViewModel() {
                         _notifications.postValue(emptyList())
                     }
                 }
+            }
+        }
+    }
+
+    private fun startPolling() {
+        pollingJob = viewModelScope.launch {
+            while (isActive) {
+                delay(10000L)
+                fetchNotifications()
             }
         }
     }
