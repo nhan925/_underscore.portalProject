@@ -33,17 +33,7 @@ class NotificationViewModel : ViewModel() {
     private fun fetchNotifications() {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-                // Fetch and update user info
-                val studentInfo = StudentInfo.fetchAndUpdateUserInfo()
-                val studentId = studentInfo?.StudentId
 
-                if (studentId.isNullOrEmpty()) {
-                    Log.e("NotificationViewModel", "Student ID is null or empty!")
-                    _notifications.postValue(emptyList())
-                    return@withContext
-                }
-
-                Log.d("NotificationViewModel", "Fetching notifications for studentId: $studentId")
                 val notificationDAO = NotificationDAO()
                 notificationDAO.getStudentNotifications { notifications ->
                     if (notifications != null) {
