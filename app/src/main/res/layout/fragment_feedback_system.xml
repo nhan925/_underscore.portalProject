@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:windowSoftInputMode="adjustResize"
     android:background="@drawable/fragment_background">
 
 
@@ -11,10 +12,10 @@
         android:id="@+id/fb_system_category_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:text="@string/feedback_system_category_title"
         android:textSize="20sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/textInputLayout"
         app:layout_constraintStart_toStartOf="@+id/textInputLayout2"
         app:layout_constraintTop_toTopOf="@+id/textInputLayout" />
 
@@ -42,8 +43,8 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="363dp"
         android:layout_height="207dp"
+        android:layout_marginTop="16dp"
         android:hint="@string/feedback_system_content_hint"
-        app:layout_constraintBottom_toTopOf="@+id/imageView3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
@@ -67,17 +68,18 @@
         android:id="@+id/imageView3"
         android:layout_width="340dp"
         android:layout_height="294dp"
-        android:layout_marginBottom="28dp"
-        app:layout_constraintBottom_toTopOf="@+id/submit_btn"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout2"
         app:srcCompat="@drawable/feedback_system_element" />
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/submit_btn"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="51dp"
         android:layout_marginBottom="16dp"
         android:backgroundTint="#6EACD6"
         android:text="@string/feedback_system_complete_button"
@@ -87,5 +89,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3"
         app:rippleColor="#BBDEFB" />
 </androidx.constraintlayout.widget.ConstraintLayout>
