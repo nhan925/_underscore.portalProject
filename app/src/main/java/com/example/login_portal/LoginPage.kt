@@ -32,9 +32,18 @@ class MainActivity2 : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         sercurePrefManager = SecurePrefManager(this)
-        if (sercurePrefManager.getUserData() != null) {
+        val userData = sercurePrefManager.getUserData()
+        if (userData != null) {
             // move to homepage
-            navigateHome()
+            ApiServiceHelper.login(userData.email, userData.password) { success ->
+                Log.d("LoginDebug", "Login success: $success, Token: ${ApiServiceHelper.jwtToken}")
+
+                if (success) {
+                    navigateHome()
+                } else {
+                    handleFailedLogin()
+                }
+            }
             return
         }
         languageManager = LanguageManager(this)
