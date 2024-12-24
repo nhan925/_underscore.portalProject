@@ -366,4 +366,26 @@
     <string name="total_credit">Tổng tín chỉ: %1$d</string>
     <string name="percentage">Tỷ lệ: %1$.1f%%</string>
 
+    <string name="error_old_password_required">Vui lòng nhập mật khẩu hiện tại</string>
+    <string name="error_new_password_required">Vui lòng nhập mật khẩu mới</string>
+    <string name="error_confirm_password_required">Vui lòng xác nhận mật khẩu mới</string>
+    <string name="error_passwords_not_match">Mật khẩu xác nhận không khớp</string>
+    <string name="error_wrong_password">Mật khẩu hiện tại không đúng</string>
+    <string name="error_same_password">Mật khẩu mới phải khác mật khẩu cũ</string>
+    <string name="error_change_password">Có lỗi xảy ra khi đổi mật khẩu</string>
+    <string name="password_change_success">Đổi mật khẩu thành công</string>
+    <string name="error_password_too_short">Mật khẩu phải có ít nhất 8 ký tự</string>
+    <string name="error_password_weak">Mật khẩu yếu (thêm chữ hoa, chữ thường, số hoặc ký tự đặc biệt)</string>
+    <string name="error_password_medium">Mật khẩu trung bình (thêm chữ hoa, số hoặc ký tự đặc biệt)</string>
+    <string name="error_password_strong">Mật khẩu mạnh</string>
+    <string name="error_password_very_strong">Mật khẩu rất mạnh</string>
+    <string name="create_new_password">Tạo mật khẩu mới</string>
+    <string name="old_password">Mật khẩu cũ</string>
+    <string name="new_password">Mật khẩu mới</string>
+    <string name="check_password">Xác nhận mật khẩu </string>
+    <string name="submit">Gửi</string>
+
+
+
+
 </resources>

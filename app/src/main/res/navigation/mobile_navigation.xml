@@ -108,7 +108,11 @@
         android:id="@+id/nav_Setting"
         android:name="com.example.login_portal.ui.setting.SettingsFragment"
         android:label="@string/menu_setting"
-        android:layout="@layout/fragment_course" />
+        android:layout="@layout/fragment_course">
+        <action
+            android:id="@+id/action_nav_Setting_to_nav_setupPassword"
+            app:destination="@id/nav_SetupPassword" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_ReviewScore"
@@ -119,6 +123,10 @@
         android:id="@+id/nav_RequestScore"
         android:name="com.example.login_portal.ui.score.RequestScoreFragment"
         android:layout="@layout/fragment_request_score" />
+    <fragment
+        android:id="@+id/nav_SetupPassword"
+        android:name="com.example.login_portal.ui.setting.SetupPassword"
+        android:layout="@layout/fragment_setup_password" />
 
     <fragment
         android:id="@+id/nav_Request"
