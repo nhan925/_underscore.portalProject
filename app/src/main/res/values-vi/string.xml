@@ -365,5 +365,11 @@
     <string name="pie_label_value">%1$s: %2$d</string>
     <string name="total_credit">Tổng tín chỉ: %1$d</string>
     <string name="percentage">Tỷ lệ: %1$.1f%%</string>
+    <string name="payment_history_tuition_title">Học phí</string>
+    <string name="payment_history_amount_title">Số tiền:</string>
+    <string name="payment_history_date_title">Ngày thực hiện:</string>
+    <string name="payment_history_list_title">Lịch sử thanh toán</string>
+    <string name="payment_history_success_status">Thành công</string>
+    <string name="payment_history_failed_status">Thất bại</string>
 
 </resources>

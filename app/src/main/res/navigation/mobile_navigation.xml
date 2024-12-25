@@ -138,4 +138,11 @@
         android:label="Course Feedback"
         tools:layout="@layout/fragment_feedback_course_list" />
 
+
+    <fragment
+        android:id="@+id/nav_Payment_History"
+        android:name="com.example.login_portal.ui.payment_history.PaymentHistoryFragment"
+        android:label="Payment History"
+        tools:layout="@layout/fragment_payment_history" />
+
 </navigation>
