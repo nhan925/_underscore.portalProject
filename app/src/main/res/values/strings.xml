@@ -369,5 +369,8 @@
     <string name="payment_history_list_title">Payment History</string>
     <string name="payment_history_success_status">Successs</string>
     <string name="payment_history_failed_status">Failed</string>
+    <string name="course_feedback_not_yet_status">Not yet</string>
+    <string name="tuition_status_not_yet">Not yet</string>
+    <string name="tuition_status_overdue">Overdue</string>
 
 </resources>

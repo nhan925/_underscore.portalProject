@@ -47,22 +47,50 @@ class AdapterForListTuition(
 
         val paidTitle = holder.itemView.context.resources.getString(R.string.tuition_status_paid)
         val notPaidTitle = holder.itemView.context.resources.getString(R.string.tuition_status_not_paid)
-        holder.statusTextView.text = if (tuition.status) paidTitle else notPaidTitle
+        val notYetTitle = holder.itemView.context.resources.getString(R.string.tuition_status_not_yet)
+        val overdueTitle = holder.itemView.context.resources.getString(R.string.tuition_status_overdue)
+
+        if(tuition.status == "PAID"){
+            holder.statusTextView.text = paidTitle
+        }
+        else if(tuition.status == "NOT_PAID"){
+            holder.statusTextView.text = notPaidTitle
+        }
+        else if (tuition.status == "NOT_YET"){
+            holder.statusTextView.text = notYetTitle
+        }
+        else if (tuition.status == "OVERDUE"){
+            holder.statusTextView.text = overdueTitle
+        }
 
         // Set màu và trạng thái click
-        if (tuition.status) {
+        if (tuition.status == "PAID") {
             holder.statusTextView.setTextColor(
                 ContextCompat.getColor(holder.itemView.context, R.color.green)
             )
             holder.itemView.alpha = 0.5F
-        } else {
+        }
+        else if (tuition.status == "NOT_PAID") {
             holder.statusTextView.setTextColor(
                 ContextCompat.getColor(holder.itemView.context, R.color.red)
             )
+            holder.itemView.alpha = 1.0F
+        }
+        else if (tuition.status == "NOT_YET") {
+            holder.statusTextView.setTextColor(
+                ContextCompat.getColor(holder.itemView.context, R.color.item_dark_overlay)
+            )
+            holder.itemView.alpha = 0.5F
+        }
+        else if (tuition.status == "OVERDUE") {
+            holder.statusTextView.setTextColor(
+                ContextCompat.getColor(holder.itemView.context, R.color.orange)
+            )
+            holder.itemView.alpha = 0.5F
         }
 
         holder.itemView.setOnClickListener {
-            if (!tuition.status) {
+            if (tuition.status == "NOT_PAID") {
                 onItemClicked(tuition)
             }
         }

@@ -5,5 +5,5 @@ class Tuition (
     val semester: Int,
     val totalCourse: Int,
     val totalTuitionFee: Int,
-    val status: Boolean
+    val status: String
 )
