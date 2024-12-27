@@ -363,5 +363,14 @@
     <string name="pie_label_value">%1$s: %2$d</string>
     <string name="total_credit">Total Credits: %1$d</string>
     <string name="percentage">Percentage: %1$.1f%%</string>
+    <string name="payment_history_tuition_title">Tuition</string>
+    <string name="payment_history_amount_title">Amount:</string>
+    <string name="payment_history_date_title">Date:</string>
+    <string name="payment_history_list_title">Payment History</string>
+    <string name="payment_history_success_status">Successs</string>
+    <string name="payment_history_failed_status">Failed</string>
+    <string name="course_feedback_not_yet_status">Not yet</string>
+    <string name="tuition_status_not_yet">Not yet</string>
+    <string name="tuition_status_overdue">Overdue</string>
 
 </resources>

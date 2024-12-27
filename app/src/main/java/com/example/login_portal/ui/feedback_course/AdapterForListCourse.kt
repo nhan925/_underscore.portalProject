@@ -39,22 +39,37 @@ class AdapterForListCourse(
         holder.teacherNameTextView.text = course.teacherName
         val ratedString = holder.itemView.context.resources.getString(R.string.rated)
         val notRatedString = holder.itemView.context.resources.getString(R.string.not_rated)
-        holder.courseStatusTextView.text = if (course.status) ratedString else notRatedString
+        val notYetString = holder.itemView.context.resources.getString(R.string.course_feedback_not_yet_status)
+
+        if(course.status == "DONE"){
+            holder.courseStatusTextView.text = ratedString
+        } else if(course.status == "NOT_FEEDBACK"){
+            holder.courseStatusTextView.text = notRatedString
+        } else if (course.status == "NOT_YET"){
+            holder.courseStatusTextView.text = notYetString
+        } else {
+            holder.courseStatusTextView.text = course.status
+        }
 
         // Set màu và trạng thái click
-        if (course.status) {
+        if (course.status == "DONE") {
             holder.courseStatusTextView.setTextColor(
                 ContextCompat.getColor(holder.itemView.context, R.color.green)
             )
             holder.itemView.alpha = 0.5F
-        } else {
+        } else if (course.status == "NOT_FEEDBACK") {
             holder.courseStatusTextView.setTextColor(
                 ContextCompat.getColor(holder.itemView.context, R.color.red)
             )
+        } else if (course.status == "NOT_YET") {
+            holder.courseStatusTextView.setTextColor(
+                ContextCompat.getColor(holder.itemView.context, R.color.item_dark_overlay)
+            )
+            holder.itemView.alpha = 0.5F
         }
 
         holder.itemView.setOnClickListener {
-            if (!course.status) {
+            if (course.status == "NOT_FEEDBACK") {
                 onItemClicked(course)
             }
         }
