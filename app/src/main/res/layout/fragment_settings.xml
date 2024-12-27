@@ -201,7 +201,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Bảo mật"
+                    android:text="@string/setting_security"
                     android:textSize="18sp"
                     />
 
@@ -232,7 +232,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:layout_marginStart="16dp"
-                        android:text="Reset Password"
+                        android:text="@string/setting_change_password"
                         android:textSize="16sp"
                         android:textColor="@color/text_primary" />
 

@@ -393,8 +393,8 @@
     <string name="new_password">Mật khẩu mới</string>
     <string name="check_password">Xác nhận mật khẩu </string>
     <string name="submit">Gửi</string>
-
-
+    <string name="setting_change_password">Đổi mật khẩu</string>
+    <string name="setting_security">Bảo mật</string>
 
 
 </resources>

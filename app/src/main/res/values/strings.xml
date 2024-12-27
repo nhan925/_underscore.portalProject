@@ -391,6 +391,8 @@
     <string name="new_password">New password</string>
     <string name="check_password">Confirm password</string>
     <string name="submit">Submit</string>
+    <string name="setting_change_password">Change password</string>
+    <string name="setting_security">Security</string>
 
 
 </resources>
