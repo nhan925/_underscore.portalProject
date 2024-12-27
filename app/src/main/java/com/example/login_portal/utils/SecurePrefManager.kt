@@ -41,8 +41,21 @@ class SecurePrefManager(context: Context)  {
         } else null
     }
 
+    fun updatePassword(newPassword: String) {
+        if (sharedPreferences.getBoolean("isRemembered", false)){
+            val email= sharedPreferences.getString("email", null)
+            if(email != null)
+            {
+                sharedPreferences.edit()
+                    .putString("password", newPassword)
+                    .apply()
+            }
+        }
+    }
+
     fun clearUserData() {
         sharedPreferences.edit().clear().apply()
     }
 
 }
+

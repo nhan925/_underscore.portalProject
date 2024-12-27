@@ -45,4 +45,12 @@
     <color name="item_dark_overlay">#33000000</color>
     <color name="orange">#FF5733</color>
 
+    <color name="error">#F44336</color>
+    <color name="warning">#FFA000</color>
+    <color name="success">#4CAF50</color>
+    <color name="success_dark">#388E3C</color>
+
+
+
+
 </resources>

@@ -42,6 +42,8 @@ class MainActivity2 : BaseActivity() {
                     navigateHome()
                 } else {
                     handleFailedLogin()
+                        //tesst
+                    navigateHome()
                 }
             }
             return
