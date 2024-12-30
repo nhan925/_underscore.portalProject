@@ -393,6 +393,14 @@
     <string name="submit">Submit</string>
     <string name="setting_change_password">Change password</string>
     <string name="setting_security">Security</string>
+    <string name="menu_course_feedback">Course Feedback</string>
+    <string name="scholarship_seachbar">Search for scholarships</string>
+    <string name="scholarship_title">Scholarships</string>
+    <string name="scholarship_item_sponsor">Sponsor:</string>
+    <string name="scholarship_expired">Expired</string>
+    <string name="scholarship_applied">Applied</string>
+    <string name="scholarship_not_applied">Not applied</string>
+    <string name="sholarship_all_years">All</string>
 
 
 </resources>

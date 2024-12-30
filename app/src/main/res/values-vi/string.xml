@@ -105,7 +105,7 @@
     <string name="menu_scholarship">Học bổng</string>
     <string name="menu_request">Yêu cầu</string>
     <string name="menu_chatbox">Chatbox</string>
-    <string name="menu_feedback">Phản hồi</string>
+    <string name="menu_feedback">Phản hồi app</string>
     <string name="menu_setting">Cài đặt</string>
     <string name="menu_payment">Lịch sử thanh toán</string>
     <string name="request_reExaminationTitle">Xin phúc khảo</string>
@@ -395,6 +395,14 @@
     <string name="submit">Gửi</string>
     <string name="setting_change_password">Đổi mật khẩu</string>
     <string name="setting_security">Bảo mật</string>
+    <string name="menu_course_feedback">Đánh giá môn học</string>
+    <string name="scholarship_seachbar">Tìm học bổng</string>
+    <string name="scholarship_title">Học bổng</string>
+    <string name="scholarship_item_sponsor">Nhà tài trợ:</string>
+    <string name="scholarship_expired">Đã hết hạn</string>
+    <string name="scholarship_applied">Đã đăng ký</string>
+    <string name="scholarship_not_applied">Chưa đăng ký</string>
+    <string name="sholarship_all_years">Tất cả</string>
 
 
 </resources>
