@@ -33,7 +33,7 @@ data class Scholarship (
         }
 
     val requiredDocumentsString: String
-        get() = RequiredDocuments.joinToString("\n") { "- $it" }
+        get() = RequiredDocuments.joinToString("\n") { "    - $it" }
 
     fun statusWithItsColor(context: Context): Pair<String, Int> {
         return when {

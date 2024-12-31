@@ -401,6 +401,18 @@
     <string name="scholarship_applied">Applied</string>
     <string name="scholarship_not_applied">Not applied</string>
     <string name="sholarship_all_years">All</string>
+    <string name="scholarship_detail_title">Details</string>
+    <string name="scholarship_detail_apply_button">Apply</string>
+    <string name="scholarship_detail_value">Amount:</string>
+    <string name="scholarship_detail_slot">Slot:</string>
+    <string name="scholarship_detail_criteria">Criteria to apply:</string>
+    <string name="scholarship_detail_deadline">Deadline:</string>
+    <string name="scholarship_detail_papers">Required papers:</string>
+    <string name="scholarship_detail_note">All required papers must be merge into 1 PDF !</string>
+    <string name="scholarship_detail_attachment">Attached file:</string>
+    <string name="scholarship_detail_submitted_date">Applied at:</string>
+    <string name="scholarship_detail_status">Status:</string>
+    <string name="scholarship_detail_click_url">view file</string>
 
 
 </resources>

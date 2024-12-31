@@ -29,11 +29,11 @@ class ScholarshipViewModel(val context: Context) : ViewModel() {
         }
 
     init {
-        reset { }
+        reset("") { }
     }
 
-    fun reset(callback: (Unit?) -> Unit) {
-        ScholarshipDao.getScholarships("") { data ->
+    fun reset(year: String, callback: (Unit?) -> Unit) {
+        ScholarshipDao.getScholarships(year) { data ->
             _scholarships.value = data
             callback(null)
         }

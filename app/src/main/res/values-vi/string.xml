@@ -403,6 +403,18 @@
     <string name="scholarship_applied">Đã đăng ký</string>
     <string name="scholarship_not_applied">Chưa đăng ký</string>
     <string name="sholarship_all_years">Tất cả</string>
+    <string name="scholarship_detail_title">Chi tiết</string>
+    <string name="scholarship_detail_apply_button">Đăng ký</string>
+    <string name="scholarship_detail_value">Giá trị:</string>
+    <string name="scholarship_detail_slot">Số suất:</string>
+    <string name="scholarship_detail_criteria">Điều kiện xét tuyển:</string>
+    <string name="scholarship_detail_deadline">Hạn chót nhận hồ sơ:</string>
+    <string name="scholarship_detail_papers">Hồ sơ yêu cầu:</string>
+    <string name="scholarship_detail_note">Tất cả hồ sơ phải gộp thành 1 file PDF duy nhất !</string>
+    <string name="scholarship_detail_attachment">File hồ sơ:</string>
+    <string name="scholarship_detail_submitted_date">Ngày đăng ký:</string>
+    <string name="scholarship_detail_status">Trạng thái:</string>
+    <string name="scholarship_detail_click_url">xem file</string>
 
 
 </resources>

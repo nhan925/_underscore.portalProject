@@ -91,4 +91,21 @@
         app:layout_constraintEnd_toEndOf="@+id/scholarship_recyclerViewFrame"
         app:layout_constraintStart_toStartOf="@+id/scholarship_recyclerViewFrame"
         app:layout_constraintTop_toTopOf="@+id/scholarship_recyclerViewFrame" />
+
+    <com.google.android.material.search.SearchView
+        android:id="@+id/scholarship_searchview"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:hint="@string/scholarship_seachbar"
+        app:autoShowKeyboard="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" >
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/scholarship_search_recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </com.google.android.material.search.SearchView>
 </androidx.constraintlayout.widget.ConstraintLayout>
