@@ -94,6 +94,11 @@
         <activity
             android:name=".ui.feedback_course.FeedbackCourseActivity"
             android:exported="true" />
+
+        <activity
+            android:name=".ui.notification.NotificationDetailActivity"
+            android:exported="true" />
+
     </application>
 
 </manifest>

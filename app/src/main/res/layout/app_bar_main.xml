@@ -11,14 +11,51 @@
         android:layout_height="wrap_content"
         android:theme="@style/Theme.Login_Portal.AppBarOverlay">
 
+        <!-- Toolbar -->
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="#1B76A1"
-            app:popupTheme="@style/Theme.Login_Portal.PopupOverlay" />
+            app:popupTheme="@style/Theme.Login_Portal.PopupOverlay">
 
+            <!-- Notification Layout -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="end|center_vertical"
+                android:layout_marginEnd="16dp">
+
+                <!-- Notification Bell -->
+                <ImageView
+                    android:id="@+id/notification_bell"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:contentDescription="Notification Bell"
+                    android:src="@drawable/ic_noti"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <!-- Red Dot Positioned Closer to the Bell -->
+                <View
+                    android:id="@+id/redDot"
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:background="@drawable/notification_dot"
+                    android:visibility="visible"
+                    app:layout_constraintBottom_toTopOf="@id/notification_bell"
+                    app:layout_constraintEnd_toEndOf="@id/notification_bell"
+                    app:layout_constraintTop_toTopOf="@id/notification_bell"
+                    app:layout_constraintStart_toEndOf="@id/notification_bell"
+                    android:layout_marginStart="-5dp"
+                    android:layout_marginTop="2dp"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
 
     <include layout="@layout/content_main" />
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

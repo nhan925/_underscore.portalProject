@@ -422,4 +422,18 @@
     <string name="scholarship_bsheet_error">There is some error happened !</string>
 
 
+
+    <string name="tab_all">All</string>
+    <string name="tab_important">Important</string>
+    <string name="tab_unread">Unread</string>
+    <string name="notification_title">Notification Title</string>
+    <string name="notification_sender">Sender:</string>
+    <string name="notification_time">Time:</string>
+    <string name="notification_content">Notification Content</string>
+    <string name="notification_delete">Delete</string>
+
+    <string name="notification">Notification</string>"
+    <string name="view_all">View All</string>
+    <string name="mark_as_important">Important</string>
+
 </resources>
