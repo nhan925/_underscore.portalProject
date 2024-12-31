@@ -63,12 +63,12 @@
         <item
             android:id="@+id/nav_Feedback_Course"
             android:icon="@drawable/ic_feedback_24"
-            android:title="Course Feedback" />
+            android:title="@string/menu_course_feedback" />
 
         <item
             android:id="@+id/nav_Feedback_System"
             android:icon="@drawable/ic_feedback_24"
-            android:title="App Feedback" />
+            android:title="@string/menu_feedback" />
 
         <item
             android:id="@+id/nav_Setting"

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.scholarship.ScholarshipBottomSheetFragment">
+    <!-- Overlay for the loading state covering the entire screen -->
+
+    <LinearLayout
+        android:id="@+id/scholarship_bsheet_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="16dp"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+        <com.google.android.material.bottomsheet.BottomSheetDragHandleView
+            android:id="@+id/scholarship_bsheet_drag_handle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/scholarship_bsheet_hint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingBottom="16dp"
+            android:text="@string/scholarship_bsheet_hint"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <!-- TextView to display the selected file name -->
+        <TextView
+            android:id="@+id/scholarship_bsheet_fileName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingBottom="16dp"
+            android:text="@string/scholarship_bsheet_noFile"
+            android:textColor="@color/red"
+            android:textSize="16sp"
+            android:textStyle="italic" />
+
+        <!-- Button to trigger file selection -->
+        <Button
+            android:id="@+id/scholarship_bsheet_chooseFile"
+            style="@style/Widget.Material3.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/scholarship_bsheet_chooseFile" />
+
+        <!-- Button to submit the chosen file -->
+        <Button
+            android:id="@+id/scholarship_bsheet_apply"
+            style="@style/Widget.Material3.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:enabled="false"
+            android:text="@string/scholarship_detail_apply_button" />
+
+    </LinearLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>

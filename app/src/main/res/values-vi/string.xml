@@ -105,7 +105,7 @@
     <string name="menu_scholarship">Học bổng</string>
     <string name="menu_request">Yêu cầu</string>
     <string name="menu_chatbox">Chatbox</string>
-    <string name="menu_feedback">Phản hồi</string>
+    <string name="menu_feedback">Phản hồi app</string>
     <string name="menu_setting">Cài đặt</string>
     <string name="menu_payment">Lịch sử thanh toán</string>
     <string name="request_reExaminationTitle">Xin phúc khảo</string>
@@ -395,6 +395,33 @@
     <string name="submit">Gửi</string>
     <string name="setting_change_password">Đổi mật khẩu</string>
     <string name="setting_security">Bảo mật</string>
+    <string name="menu_course_feedback">Đánh giá môn học</string>
+    <string name="scholarship_seachbar">Tìm học bổng</string>
+    <string name="scholarship_title">Học bổng</string>
+    <string name="scholarship_item_sponsor">Nhà tài trợ:</string>
+    <string name="scholarship_expired">Đã hết hạn</string>
+    <string name="scholarship_applied">Đã đăng ký</string>
+    <string name="scholarship_not_applied">Chưa đăng ký</string>
+    <string name="sholarship_all_years">Tất cả</string>
+    <string name="scholarship_detail_title">Chi tiết</string>
+    <string name="scholarship_detail_apply_button">Đăng ký</string>
+    <string name="scholarship_detail_value">Giá trị:</string>
+    <string name="scholarship_detail_slot">Số suất:</string>
+    <string name="scholarship_detail_criteria">Điều kiện xét tuyển:</string>
+    <string name="scholarship_detail_deadline">Hạn chót nhận hồ sơ:</string>
+    <string name="scholarship_detail_papers">Hồ sơ yêu cầu:</string>
+    <string name="scholarship_detail_note">Tất cả hồ sơ phải gộp thành 1 file PDF duy nhất !</string>
+    <string name="scholarship_detail_attachment">File hồ sơ:</string>
+    <string name="scholarship_detail_submitted_date">Ngày đăng ký:</string>
+    <string name="scholarship_detail_status">Trạng thái:</string>
+    <string name="scholarship_detail_click_url">xem file</string>
+    <string name="scholarship_bsheet_noFile">Chưa chọn file</string>
+    <string name="scholarship_bsheet_chooseFile">Chọn File</string>
+    <string name="scholarship_bsheet_hint">Vui lòng chọn file hồ sơ để đăng ký !</string>
+    <string name="scholarship_bsheet_fileMax">File phải nhỏ hơn 10MB</string>
+    <string name="scholarship_bsheet_noFileSelected">Vui lòng chọn file</string>
+    <string name="scholarship_bsheet_applySuccess">Đăng ký thành công !</string>
+    <string name="scholarship_bsheet_error">Có lỗi xảy ra trong quá trình đăng ký !</string>
 
 
 </resources>

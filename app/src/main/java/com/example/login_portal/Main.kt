@@ -52,7 +52,7 @@ class Main : BaseActivity() {
                 R.id.nav_Dashboard, R.id.nav_Notification, R.id.nav_Setting,
                 R.id.nav_Score, R.id.nav_Schedule, R.id.nav_Tuition, R.id.nav_InforStudent,
                 R.id.nav_course, R.id.nav_Request, R.id.nav_Feedback_System, R.id.nav_Feedback_Course,
-                R.id.nav_Payment_History
+                R.id.nav_Payment_History, R.id.nav_Scholarship
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)

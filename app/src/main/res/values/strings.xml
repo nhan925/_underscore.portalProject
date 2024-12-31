@@ -393,6 +393,33 @@
     <string name="submit">Submit</string>
     <string name="setting_change_password">Change password</string>
     <string name="setting_security">Security</string>
+    <string name="menu_course_feedback">Course Feedback</string>
+    <string name="scholarship_seachbar">Search for scholarships</string>
+    <string name="scholarship_title">Scholarships</string>
+    <string name="scholarship_item_sponsor">Sponsor:</string>
+    <string name="scholarship_expired">Expired</string>
+    <string name="scholarship_applied">Applied</string>
+    <string name="scholarship_not_applied">Not applied</string>
+    <string name="sholarship_all_years">All</string>
+    <string name="scholarship_detail_title">Details</string>
+    <string name="scholarship_detail_apply_button">Apply</string>
+    <string name="scholarship_detail_value">Amount:</string>
+    <string name="scholarship_detail_slot">Slot:</string>
+    <string name="scholarship_detail_criteria">Criteria to apply:</string>
+    <string name="scholarship_detail_deadline">Deadline:</string>
+    <string name="scholarship_detail_papers">Required papers:</string>
+    <string name="scholarship_detail_note">All required papers must be merge into 1 PDF !</string>
+    <string name="scholarship_detail_attachment">Attached file:</string>
+    <string name="scholarship_detail_submitted_date">Applied at:</string>
+    <string name="scholarship_detail_status">Status:</string>
+    <string name="scholarship_detail_click_url">view file</string>
+    <string name="scholarship_bsheet_noFile">No file chosen</string>
+    <string name="scholarship_bsheet_chooseFile">Choose File</string>
+    <string name="scholarship_bsheet_hint">Please choose the paper file to apply for the scholarship !</string>
+    <string name="scholarship_bsheet_fileMax">File size must be less than 10MB</string>
+    <string name="scholarship_bsheet_noFileSelected">No file selected</string>
+    <string name="scholarship_bsheet_applySuccess">Apply successfully !</string>
+    <string name="scholarship_bsheet_error">There is some error happened !</string>
 
 
 </resources>
