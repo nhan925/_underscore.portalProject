@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <import type="android.view.View" />
@@ -8,7 +9,6 @@
         type="com.example.login_portal.ui.information.InformationViewModel" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ui.information.Information_Contact">
@@ -58,6 +58,9 @@
             android:id="@+id/info_contact_frag_et_personal_email"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:maxLines="1"
+            android:maxLength="45"
+            android:inputType="textEmailAddress"
             android:gravity="bottom|start"
             android:text="@={viewModel.editPersonalEmail}"
             android:textSize="@dimen/info_student_frag_value_text_size" />
@@ -112,6 +115,9 @@
             android:id="@+id/info_contact_frag_et_phone_number"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:maxLines="1"
+            android:maxLength="45"
+            android:inputType="number"
             android:gravity="bottom|start"
             android:text="@={viewModel.editPhoneNumber}"
             android:textSize="@dimen/info_student_frag_value_text_size" />
@@ -144,31 +150,34 @@
         app:layout_constraintBottom_toTopOf="@+id/info_contact_frag_viewSwitcherAddress"
         app:layout_constraintStart_toStartOf="@+id/info_contact_frag_viewSwitcherAddress" />
 
-    <ViewSwitcher
-        android:id="@+id/info_contact_frag_viewSwitcherAddress"
-        android:layout_width="@dimen/info_student_frag_viewswitcher_width"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/info_student_frag_text_margin_start"
-        app:layout_constraintBottom_toBottomOf="@+id/info_contact_frag_iv_address"
-        app:layout_constraintStart_toEndOf="@+id/info_contact_frag_iv_address">
+        <ViewSwitcher
+            android:id="@+id/info_contact_frag_viewSwitcherAddress"
+            android:layout_width="@dimen/info_student_frag_viewswitcher_width"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/info_student_frag_text_margin_start"
+            app:layout_constraintStart_toEndOf="@+id/info_contact_frag_iv_address"
+            app:layout_constraintTop_toBottomOf="@+id/info_contact_frag_tv_address_label"
+            tools:layout_editor_absoluteY="238dp">
 
-        <TextView
-            android:id="@+id/info_contact_frag_tv_address"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center|start"
-            android:text="@={viewModel.editAddress}"
-            android:textSize="@dimen/info_student_frag_value_text_size"
-            android:textStyle="bold" />
+            <TextView
+                android:id="@+id/info_contact_frag_tv_address"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center|start"
+                android:text="@={viewModel.editAddress}"
+                android:textSize="@dimen/info_student_frag_value_text_size"
+                android:textStyle="bold" />
 
-        <EditText
-            android:id="@+id/info_contact_frag_et_address"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="bottom|start"
-            android:text="@={viewModel.editAddress}"
-            android:textSize="@dimen/info_student_frag_value_text_size" />
-    </ViewSwitcher>
+            <EditText
+                android:id="@+id/info_contact_frag_et_address"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="bottom|start"
+                android:inputType="text"
+                android:maxLines="5"
+                android:text="@={viewModel.editAddress}"
+                android:textSize="@dimen/info_student_frag_value_text_size" />
+        </ViewSwitcher>
 
     <ImageView
         android:id="@+id/info_contact_frag_iv_address"

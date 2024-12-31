@@ -32,9 +32,18 @@ class MainActivity2 : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         sercurePrefManager = SecurePrefManager(this)
-        if (sercurePrefManager.getUserData() != null) {
+        val userData = sercurePrefManager.getUserData()
+        if (userData != null) {
             // move to homepage
-            navigateHome()
+            ApiServiceHelper.login(userData.email, userData.password) { success ->
+                Log.d("LoginDebug", "Login success: $success, Token: ${ApiServiceHelper.jwtToken}")
+
+                if (success) {
+                    navigateHome()
+                } else {
+                    handleFailedLogin()
+                }
+            }
             return
         }
         languageManager = LanguageManager(this)
@@ -106,7 +115,6 @@ class MainActivity2 : BaseActivity() {
 
             findViewById<View>(R.id.textView3).visibility = View.VISIBLE
             findViewById<View>(R.id.textView4).visibility = View.VISIBLE
-            findViewById<View>(R.id.textView5).visibility = View.VISIBLE
             rememberMeCheckbox.visibility = View.VISIBLE
             findViewById<View>(R.id.passwordInput).visibility = View.VISIBLE
             findViewById<View>(R.id.usernameInput).visibility = View.VISIBLE
@@ -219,7 +227,6 @@ class MainActivity2 : BaseActivity() {
         // Hide login-related
         findViewById<View>(R.id.textView3).visibility = View.GONE
         findViewById<View>(R.id.textView4).visibility = View.GONE
-        findViewById<View>(R.id.textView5).visibility = View.GONE
         findViewById<View>(R.id.rememberMeCheckbox).visibility = View.GONE
         findViewById<View>(R.id.passwordInput).visibility = View.GONE
         findViewById<View>(R.id.usernameInput).visibility = View.GONE

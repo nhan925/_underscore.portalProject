@@ -198,6 +198,8 @@
             android:id="@+id/textUsernameInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:inputType="text"
             android:maxLength="21" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -230,6 +232,7 @@
             android:inputType="textPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:maxLines="1"
             android:maxLength="21" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -297,20 +300,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.978" />
-
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="104dp"
-        android:layout_marginEnd="35dp"
-        android:text="@string/forgot_password"
-        app:layout_constraintBottom_toTopOf="@+id/btn_login_2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.285"
-        app:layout_constraintStart_toEndOf="@+id/rememberMeCheckbox"
-        app:layout_constraintTop_toBottomOf="@+id/passwordInput"
-        app:layout_constraintVertical_bias="0.342" />
 
     <ImageView
         android:id="@+id/nav_header_main_student_avatar"

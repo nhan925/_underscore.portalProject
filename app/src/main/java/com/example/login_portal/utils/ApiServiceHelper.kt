@@ -189,6 +189,39 @@ object ApiServiceHelper {
         }
     }
 
+    fun changePassword(currentPassword: String, newPassword: String, callback: (String) -> Unit) {
+        val data = mapOf(
+            "current_password" to currentPassword,
+            "new_password" to newPassword
+        )
+
+        jwtToken?.let { token ->
+            Fuel.post("$BASE_URL/rpc/change_password")
+                .header("Authorization", "Bearer $token")
+                .jsonBody(Gson().toJson(data))
+                .responseString { _, response, result ->
+                    result.fold(
+                        success = { responseData ->
+                            Handler(Looper.getMainLooper()).post {
+                                callback(responseData.trim('"'))
+                            }
+                        },
+                        failure = { _ ->
+                            Handler(Looper.getMainLooper()).post {
+                                callback("ERROR")
+                            }
+                        }
+                    )
+                }
+        } ?: run {
+            Handler(Looper.getMainLooper()).post {
+                callback("ERROR")
+            }
+        }
+    }
+
+
+
     // Example GET request with Authorization
     fun get(endpoint: String, callback: (String?) -> Unit) {
         jwtToken?.let { token ->

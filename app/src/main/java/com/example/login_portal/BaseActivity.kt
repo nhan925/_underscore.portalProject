@@ -32,11 +32,6 @@ open class BaseActivity : AppCompatActivity() {
             .getString("appLanguage", "en") ?: "en"
         EnvLoader.init(this)
         updateConfiguration(languageCode)
-        Log.i("BaseActivity", "Before Login")
-        ApiServiceHelper.login("student1", "1234") { isSuccess ->
-            if (!isSuccess)
-                Log.i("BaseActivity", "Login failed")
-        }
     }
 
     private fun updateConfiguration(languageCode: String) {

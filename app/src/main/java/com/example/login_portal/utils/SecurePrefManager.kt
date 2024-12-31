@@ -1,6 +1,7 @@
 package com.example.login_portal.utils
 
 import android.content.Context
+import android.util.Log
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKey
 import com.example.login_portal.UserData
@@ -40,8 +41,21 @@ class SecurePrefManager(context: Context)  {
         } else null
     }
 
+    fun updatePassword(newPassword: String) {
+        if (sharedPreferences.getBoolean("isRemembered", false)){
+            val email= sharedPreferences.getString("email", null)
+            if(email != null)
+            {
+                sharedPreferences.edit()
+                    .putString("password", newPassword)
+                    .apply()
+            }
+        }
+    }
+
     fun clearUserData() {
         sharedPreferences.edit().clear().apply()
     }
 
 }
+
