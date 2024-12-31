@@ -415,6 +415,13 @@
     <string name="scholarship_detail_submitted_date">Ngày đăng ký:</string>
     <string name="scholarship_detail_status">Trạng thái:</string>
     <string name="scholarship_detail_click_url">xem file</string>
+    <string name="scholarship_bsheet_noFile">Chưa chọn file</string>
+    <string name="scholarship_bsheet_chooseFile">Chọn File</string>
+    <string name="scholarship_bsheet_hint">Vui lòng chọn file hồ sơ để đăng ký !</string>
+    <string name="scholarship_bsheet_fileMax">File phải nhỏ hơn 10MB</string>
+    <string name="scholarship_bsheet_noFileSelected">Vui lòng chọn file</string>
+    <string name="scholarship_bsheet_applySuccess">Đăng ký thành công !</string>
+    <string name="scholarship_bsheet_error">Có lỗi xảy ra trong quá trình đăng ký !</string>
 
 
 </resources>

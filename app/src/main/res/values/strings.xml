@@ -413,6 +413,13 @@
     <string name="scholarship_detail_submitted_date">Applied at:</string>
     <string name="scholarship_detail_status">Status:</string>
     <string name="scholarship_detail_click_url">view file</string>
+    <string name="scholarship_bsheet_noFile">No file chosen</string>
+    <string name="scholarship_bsheet_chooseFile">Choose File</string>
+    <string name="scholarship_bsheet_hint">Please choose the paper file to apply for the scholarship !</string>
+    <string name="scholarship_bsheet_fileMax">File size must be less than 10MB</string>
+    <string name="scholarship_bsheet_noFileSelected">No file selected</string>
+    <string name="scholarship_bsheet_applySuccess">Apply successfully !</string>
+    <string name="scholarship_bsheet_error">There is some error happened !</string>
 
 
 </resources>

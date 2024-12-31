@@ -9,6 +9,25 @@
     android:fitsSystemWindows="true"
     tools:context=".ui.scholarship.ScholarshipDetailActivity">
 
+    <FrameLayout
+        android:id="@+id/scholarship_loading_overlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!-- Progress bar positioned at the center of the screen -->
+        <ProgressBar
+            android:id="@+id/scholarship_progress_ring"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" /> <!-- Centered horizontally and vertically -->
+    </FrameLayout>
+
     <Button
         android:id="@+id/scholarship_detail_backBtn"
         style="?attr/materialIconButtonStyle"

@@ -12,12 +12,14 @@ import android.text.style.ForegroundColorSpan
 import android.text.style.StyleSpan
 import android.view.View
 import android.widget.Button
+import android.widget.FrameLayout
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.login_portal.BaseActivity
 import com.example.login_portal.R
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import com.google.android.material.textfield.TextInputEditText
 import com.google.gson.Gson
@@ -29,6 +31,7 @@ class ScholarshipDetailActivity : BaseActivity() {
     lateinit var detailText: TextInputEditText
     lateinit var scholarship_detail_backBtn: Button
     lateinit var applyFab: ExtendedFloatingActionButton
+    lateinit var loadingOverlay: FrameLayout
 
     private fun formatCurrencyWithoutSymbol(amount: Double, locale: Locale = resources.configuration.locales[0]): String {
         val formatter = NumberFormat.getCurrencyInstance(locale)
@@ -130,6 +133,8 @@ class ScholarshipDetailActivity : BaseActivity() {
 
         scholarship = Gson().fromJson(intent.getStringExtra("SCHOLARSHIP_DETAIL"), Scholarship::class.java)
 
+        loadingOverlay = findViewById(R.id.scholarship_loading_overlay)
+
         detailText = findViewById(R.id.scholarship_detailTV)
         detailText.setText(formatScholarshipDetails(scholarship))
         detailText.movementMethod = LinkMovementMethod.getInstance()
@@ -141,6 +146,11 @@ class ScholarshipDetailActivity : BaseActivity() {
         when (scholarship.canApply) {
             false -> applyFab.visibility = View.GONE
             else -> applyFab.visibility = View.VISIBLE
+        }
+
+        applyFab.setOnClickListener {
+            val bottomSheet = ScholarshipBottomSheetFragment(scholarship)
+            bottomSheet.show(supportFragmentManager, ScholarshipBottomSheetFragment.TAG)
         }
     }
 }
