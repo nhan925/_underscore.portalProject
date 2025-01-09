@@ -34,14 +34,14 @@ class NotificationFragment : Fragment() {
 
         val recyclerView = binding.rvNotifications
         recyclerView.layoutManager = LinearLayoutManager(context)
-        adapter = NotificationAdapter(mutableListOf()) { notification ->
+        adapter = NotificationAdapter(mutableListOf()) { notification -> // Gán vào thuộc tính adapter của lớp
             val intent = Intent(requireContext(), NotificationDetailActivity::class.java).apply {
                 putExtra("notification_id", notification.id)
                 putExtra("notification_title", notification.title)
                 putExtra("notification_sender", notification.sender)
                 putExtra("notification_time", notification.time)
                 putExtra("notification_detail", notification.detail)
-                putExtra("is_important", notification.isMarkedAsImportant)
+                putExtra("is_marked_as_important", notification.isMarkedAsImportant)
             }
             startActivityForResult(intent, REQUEST_NOTIFICATION_DETAIL)
         }

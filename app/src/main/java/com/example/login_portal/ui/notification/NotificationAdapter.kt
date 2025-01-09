@@ -31,6 +31,7 @@ class NotificationAdapter(
         holder.sender.text = notification.sender
         holder.time.text = notification.time
 
+
         // Apply bold style for unseen notifications
         holder.title.setTypeface(
             null,

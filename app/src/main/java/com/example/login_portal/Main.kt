@@ -129,8 +129,7 @@ class Main : BaseActivity() {
                 putExtra("notification_sender", notification.sender)
                 putExtra("notification_time", notification.time)
                 putExtra("notification_detail", notification.detail)
-                putExtra("notification_is_important", notification.isImportant)
-                putExtra("notification_is_seen", notification.isSeen)
+                putExtra("is_marked_as_important", notification.isMarkedAsImportant) // Truyền trạng thái
             }
             detailActivityLauncher.launch(intent)
         }

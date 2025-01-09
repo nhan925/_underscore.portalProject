@@ -38,11 +38,13 @@ class NotificationDetailActivity : BaseActivity() {
 
         notificationId = intent.getIntExtra("notification_id", -1)
 
+
         // Extract data from Intent
         val title = intent.getStringExtra("notification_title") ?: getString(R.string.notification_title)
         val sender = intent.getStringExtra("notification_sender") ?: getString(R.string.notification_sender)
         val time = intent.getStringExtra("notification_time") ?: getString(R.string.notification_time)
         val detail = intent.getStringExtra("notification_detail") ?: getString(R.string.notification_content)
+        val isMarkedAsImportant = intent.getBooleanExtra("is_marked_as_important", false) // Lấy giá trị
 
         // Set data to UI
         tvNotificationTitle.text = title
@@ -51,20 +53,13 @@ class NotificationDetailActivity : BaseActivity() {
         tvContent.text = detail
         tvHeader.text = getString(R.string.notification)
 
-        // Set localized text for buttons
+        // Set button text based on the importance
         btnImportant.setText(
-            if (intent.getBooleanExtra("is_important", false))
-                R.string.unmark_as_important
-            else
-                R.string.mark_as_important
+            if (isMarkedAsImportant) R.string.unmark_as_important else R.string.mark_as_important
         )
 
-        btnDelete.text = getString(R.string.notification_delete)
-
-        // Button actions
         btnImportant.setOnClickListener {
-            val isImportant = intent.getBooleanExtra("is_important", false)
-            val action = if (isImportant) "unmark_important" else "mark_important"
+            val action = if (isMarkedAsImportant) "unmark_important" else "mark_important"
 
             val resultIntent = Intent().apply {
                 putExtra("notification_id", notificationId)
@@ -72,7 +67,7 @@ class NotificationDetailActivity : BaseActivity() {
             }
             setResult(Activity.RESULT_OK, resultIntent)
 
-            val message = if (isImportant) {
+            val message = if (isMarkedAsImportant) {
                 getString(R.string.notification_removed_from_important)
             } else {
                 getString(R.string.notification_added_to_important)
@@ -81,7 +76,6 @@ class NotificationDetailActivity : BaseActivity() {
             Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
             finish()
         }
-
 
         btnDelete.setOnClickListener {
             val resultIntent = Intent().apply {
