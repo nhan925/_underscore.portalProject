@@ -1,11 +1,13 @@
 package com.example.login_portal.ui.notification
 
+import android.text.format.DateUtils.formatDateTime
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.login_portal.R
+import com.example.login_portal.utils.formatDateTime
 
 class NotificationAdapter(
     private var notifications: List<Notification>,
@@ -29,8 +31,7 @@ class NotificationAdapter(
         // Set data
         holder.title.text = notification.title
         holder.sender.text = notification.sender
-        holder.time.text = notification.time
-
+        holder.time.text = formatDateTime(notification.time)
 
         // Apply bold style for unseen notifications
         holder.title.setTypeface(
