@@ -83,7 +83,7 @@ class NotificationDetailActivity : BaseActivity() {
                 putExtra("action", "delete")
             }
             setResult(Activity.RESULT_OK, resultIntent)
-            Toast.makeText(this, getString(R.string.notification_delete), Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.notification_delete_message), Toast.LENGTH_SHORT).show()
             finish()
         }
 

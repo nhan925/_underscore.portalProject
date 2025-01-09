@@ -50,6 +50,7 @@ class Main : BaseActivity() {
 
                 when (action) {
                     "mark_seen" -> notificationViewModel.markAsSeen(notificationId)
+                    "unmark_important" -> notificationViewModel.unmarkAsImportant(notificationId)
                     "mark_important" -> notificationViewModel.markAsImportant(notificationId)
                     "delete" -> notificationViewModel.deleteNotification(notificationId)
                 }
