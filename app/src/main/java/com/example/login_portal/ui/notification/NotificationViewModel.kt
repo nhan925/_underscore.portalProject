@@ -1,20 +1,28 @@
 package com.example.login_portal.ui.notification
 
+import android.app.Application
+import android.content.Context
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.login_portal.data.NotificationDAO
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import android.util.Log
-import kotlinx.coroutines.*
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.isActive
 
-class NotificationViewModel : ViewModel() {
+
+class NotificationViewModel(application: Application) : AndroidViewModel(application) {
+
+    private val context: Context = application.applicationContext
 
     private val _notifications = MutableLiveData<List<Notification>>()
     val notifications: LiveData<List<Notification>> get() = _notifications
+    private val notifiedNotifications = mutableSetOf<Int>()
 
     private val _selectedTab = MutableLiveData<String>()
     val selectedTab: LiveData<String> get() = _selectedTab
@@ -31,15 +39,26 @@ class NotificationViewModel : ViewModel() {
         viewModelScope.launch(Dispatchers.IO) {
             try {
                 NotificationDAO.getStudentNotifications { notifications ->
-                    notifications?.let {
-                        _notifications.postValue(it)
-                        Log.d("NotificationViewModel", "Fetched ${it.size} notifications successfully")
-                    } ?: run {
-                        Log.e("NotificationViewModel", "Failed to fetch notifications: response is null")
+                    val fetchedNotifications = notifications ?: emptyList()
+
+                    // Filter new and unseen notifications only
+                    val newNotification = fetchedNotifications.firstOrNull { notification ->
+                        !notification.isSeen && notification.id !in notifiedNotifications
                     }
+
+                    if (newNotification != null) {
+                        Log.d("NotificationUtils", "New notification detected: ${newNotification.title}")
+                        detectNewNotification(newNotification)
+                        notifiedNotifications.add(newNotification.id)
+                    } else {
+                        Log.d("NotificationUtils", "No new notifications detected")
+                    }
+
+                    // Update the notification list but skip showing read notifications
+                    _notifications.postValue(fetchedNotifications)
                 }
             } catch (e: Exception) {
-                Log.e("NotificationViewModel", "Error while fetching notifications: ${e.message}", e)
+                Log.e("NotificationUtils", "Error while fetching notifications: ${e.message}", e)
             }
         }
     }
@@ -47,8 +66,8 @@ class NotificationViewModel : ViewModel() {
     private fun startPolling() {
         pollingJob = viewModelScope.launch(Dispatchers.IO) {
             while (isActive) {
-                delay(10000L)
-                fetchNotifications()
+                delay(5000L) // Poll every 10 seconds
+                fetchNotifications() // Fetch notifications
             }
         }
     }
@@ -135,5 +154,14 @@ class NotificationViewModel : ViewModel() {
 
     private fun removeNotification(notificationId: Int) {
         _notifications.value = _notifications.value?.filter { it.id != notificationId }
+    }
+
+    fun detectNewNotification(newNotification: Notification) {
+        Log.d("NotificationUtils", "Displaying system notification for: ${newNotification.id} ${newNotification.title}")
+        NotificationUtils.showSystemNotification(
+            context,
+            newNotification.title,
+            newNotification.detail
+        )
     }
 }

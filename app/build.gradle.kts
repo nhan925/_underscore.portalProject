@@ -104,4 +104,6 @@ dependencies {
     implementation(libs.speed.dial.v330)
     implementation(libs.glide)
     implementation(libs.androidx.gridlayout)
+
+    implementation ("androidx.work:work-runtime-ktx:2.8.0")
 }

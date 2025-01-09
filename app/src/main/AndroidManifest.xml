@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission
         android:name="android.permission.READ_EXTERNAL_STORAGE"
         android:maxSdkVersion="32" />
@@ -50,7 +51,7 @@
             android:exported="false" />
         <activity
             android:name=".Main"
-            android:exported="false"
+            android:exported="true"
             android:label="@string/title_activity_main"
             android:theme="@style/Theme.Login_Portal.NoActionBar" />
         <activity
