@@ -65,6 +65,23 @@ class NotificationDAO {
         }
     }
 
+    fun unmarkNotificationAsImportant(notificationId: Int, callback: (Boolean) -> Unit) {
+        Log.d("NotificationDAO", "Unmarking notification as important: $notificationId")
+
+        ApiServiceHelper.post(
+            "/rpc/update_notification_status",
+            mapOf("notification_id_input" to notificationId.toString(), "action" to "mark_unimportant")
+        ) { response ->
+            if (response != null) {
+                Log.d("NotificationDAO", "Notification $notificationId unmarked as important successfully.")
+                callback(true)
+            } else {
+                Log.e("NotificationDAO", "Failed to unmark notification $notificationId as important.")
+                callback(false)
+            }
+        }
+    }
+
     fun deleteNotification(notificationId: Int, callback: (Boolean) -> Unit) {
         Log.d("NotificationDAO", "Deleting notification: $notificationId")
 

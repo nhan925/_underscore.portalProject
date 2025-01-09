@@ -41,6 +41,7 @@ class NotificationFragment : Fragment() {
                 putExtra("notification_sender", notification.sender)
                 putExtra("notification_time", notification.time)
                 putExtra("notification_detail", notification.detail)
+                putExtra("is_important", notification.isMarkedAsImportant)
             }
             startActivityForResult(intent, REQUEST_NOTIFICATION_DETAIL)
         }
@@ -95,7 +96,7 @@ class NotificationFragment : Fragment() {
         val selectedTab = notificationViewModel.selectedTab.value ?: "All"
         val filteredNotifications = when (selectedTab) {
             "All" -> notifications
-            "Important" -> notifications.filter { it.isImportant }
+            "Important" -> notifications.filter { it.isMarkedAsImportant }
             "Unread" -> notifications.filter { !it.isSeen }
             else -> emptyList()
         }
@@ -115,6 +116,7 @@ class NotificationFragment : Fragment() {
 
             when (action) {
                 "mark_important" -> notificationViewModel.markAsImportant(notificationId)
+                "unmark_important" -> notificationViewModel.unmarkAsImportant(notificationId)
                 "delete" -> notificationViewModel.deleteNotification(notificationId)
                 "mark_seen" -> notificationViewModel.markAsSeen(notificationId)
             }

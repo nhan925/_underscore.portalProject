@@ -26,9 +26,6 @@ class NotificationAdapter(
 
     override fun onBindViewHolder(holder: NotificationViewHolder, position: Int) {
         val notification = notifications[position]
-
-
-
         // Set data
         holder.title.text = notification.title
         holder.sender.text = notification.sender

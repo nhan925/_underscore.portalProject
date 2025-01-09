@@ -434,4 +434,7 @@
     <string name="scholarship_bsheet_noFileSelected">Vui lòng chọn file</string>
     <string name="scholarship_bsheet_applySuccess">Đăng ký thành công !</string>
     <string name="scholarship_bsheet_error">Có lỗi xảy ra trong quá trình đăng ký !</string>
+    <string name="unmark_as_important">Không Quan Trọng</string>
+    <string name="notification_added_to_important">Thông báo này đã được thêm vào danh sách Quan Trọng.</string>
+    <string name="notification_removed_from_important">Thông báo này đã được xóa khỏi danh sách Quan Trọng.</string>
 </resources>

@@ -52,19 +52,36 @@ class NotificationDetailActivity : BaseActivity() {
         tvHeader.text = getString(R.string.notification)
 
         // Set localized text for buttons
-        btnImportant.text = getString(R.string.mark_as_important)
+        btnImportant.setText(
+            if (intent.getBooleanExtra("is_important", false))
+                R.string.unmark_as_important
+            else
+                R.string.mark_as_important
+        )
+
         btnDelete.text = getString(R.string.notification_delete)
 
         // Button actions
         btnImportant.setOnClickListener {
+            val isImportant = intent.getBooleanExtra("is_important", false)
+            val action = if (isImportant) "unmark_important" else "mark_important"
+
             val resultIntent = Intent().apply {
                 putExtra("notification_id", notificationId)
-                putExtra("action", "mark_important")
+                putExtra("action", action)
             }
             setResult(Activity.RESULT_OK, resultIntent)
-            Toast.makeText(this, getString(R.string.mark_as_important), Toast.LENGTH_SHORT).show()
+
+            val message = if (isImportant) {
+                getString(R.string.notification_removed_from_important)
+            } else {
+                getString(R.string.notification_added_to_important)
+            }
+
+            Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
             finish()
         }
+
 
         btnDelete.setOnClickListener {
             val resultIntent = Intent().apply {

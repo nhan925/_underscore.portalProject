@@ -38,7 +38,7 @@ class NotificationViewModel : ViewModel() {
                 notificationDAO.getStudentNotifications { notifications ->
                     if (notifications != null) {
                         for (notification in notifications) {
-                            Log.d("TestNotifications", "Title: ${notification.title}, Content: ${notification.detail}, Sender: ${notification.sender}, Time: ${notification.time}, isSeen: ${notification.isSeen}, isImportant: ${notification.isImportant}")
+                            Log.d("TestNotifications", "Title: ${notification.title}, Content: ${notification.detail}, Sender: ${notification.sender}, Time: ${notification.time}, isSeen: ${notification.isSeen}, isImportant: ${notification.isImportant}, isMarkedAsImportant: ${notification.isMarkedAsImportant}")
                             _notifications.postValue(notifications ?: emptyList())
                         }
                     } else {
@@ -59,6 +59,9 @@ class NotificationViewModel : ViewModel() {
     }
 
     fun markAsSeen(notificationId: Int) {
+        _notifications.value = _notifications.value?.map { notification ->
+            if (notification.id == notificationId) notification.copy(isSeen = true) else notification
+        }
         viewModelScope.launch {
             notificationDAO.markNotificationAsSeen(notificationId) { success ->
                 if (success) {
@@ -71,11 +74,21 @@ class NotificationViewModel : ViewModel() {
     }
 
     fun markAsImportant(notificationId: Int) {
+        _notifications.value = _notifications.value?.map { notif ->
+            if (notif.id == notificationId) notif.copy(isMarkedAsImportant = true,isSeen = true) else notif
+        }
         viewModelScope.launch {
+            // Kiểm tra trạng thái trước khi gọi API
+            val notification = _notifications.value?.find { it.id == notificationId }
+            if (notification != null && notification.isImportant) {
+                // Nếu đã được đánh dấu quan trọng, không thực hiện gì cả
+                return@launch
+            }
+
             notificationDAO.markNotificationAsImportant(notificationId) { success ->
                 if (success) {
-                    _notifications.value = _notifications.value?.map { notification ->
-                        if (notification.id == notificationId) notification.copy(isImportant = true, isSeen = true) else notification
+                    _notifications.value = _notifications.value?.map { notif ->
+                        if (notif.id == notificationId) notif.copy(isImportant = true, isMarkedAsImportant = true, isSeen = true) else notif
                     }
                 }
             }
@@ -83,11 +96,30 @@ class NotificationViewModel : ViewModel() {
     }
 
     fun deleteNotification(notificationId: Int) {
+        _notifications.value = _notifications.value?.filter { it.id != notificationId }
         viewModelScope.launch {
             notificationDAO.deleteNotification(notificationId) { success ->
                 if (success) {
                     _notifications.value = _notifications.value?.filter { it.id != notificationId }
                 }
+            }
+        }
+    }
+
+    fun unmarkAsImportant(notificationId: Int) {
+        _notifications.value = _notifications.value?.map { notif ->
+            if (notif.id == notificationId) notif.copy(isMarkedAsImportant = false) else notif
+        }
+
+        // Gửi yêu cầu cập nhật đến API
+        viewModelScope.launch {
+            notificationDAO.unmarkNotificationAsImportant(notificationId) { success ->
+                if (!success) {
+                    // Nếu API thất bại, log lỗi
+                    Log.e("NotificationViewModel", "Failed to unmark notification $notificationId as important")
+                }
+                // Đồng bộ hóa dữ liệu sau khi API gọi xong
+                fetchNotifications()
             }
         }
     }
