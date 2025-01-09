@@ -6,7 +6,7 @@ import com.example.login_portal.utils.ApiServiceHelper
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
-class NotificationDAO {
+object NotificationDAO {
 
     fun getStudentNotifications(callback: (List<Notification>?) -> Unit) {
         Log.d("NotificationDAO", "Fetching notifications using GET request")

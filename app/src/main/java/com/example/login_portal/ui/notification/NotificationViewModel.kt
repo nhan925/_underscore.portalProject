@@ -12,7 +12,6 @@ import android.util.Log
 import kotlinx.coroutines.*
 
 class NotificationViewModel : ViewModel() {
-    private val notificationDAO = NotificationDAO()
 
     private val _notifications = MutableLiveData<List<Notification>>()
     val notifications: LiveData<List<Notification>> get() = _notifications
@@ -22,35 +21,31 @@ class NotificationViewModel : ViewModel() {
 
     private var pollingJob: Job? = null
 
-
     init {
         _selectedTab.value = "All"
         fetchNotifications()
         startPolling()
     }
 
-
     private fun fetchNotifications() {
-        viewModelScope.launch {
-            withContext(Dispatchers.IO) {
-
-                val notificationDAO = NotificationDAO()
-                notificationDAO.getStudentNotifications { notifications ->
-                    if (notifications != null) {
-                        for (notification in notifications) {
-                            Log.d("TestNotifications", "Title: ${notification.title}, Content: ${notification.detail}, Sender: ${notification.sender}, Time: ${notification.time}, isSeen: ${notification.isSeen}, isImportant: ${notification.isImportant}, isMarkedAsImportant: ${notification.isMarkedAsImportant}")
-                            _notifications.postValue(notifications ?: emptyList())
-                        }
-                    } else {
-                        Log.e("TestNotifications", "Failed to fetch notifications")
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                NotificationDAO.getStudentNotifications { notifications ->
+                    notifications?.let {
+                        _notifications.postValue(it)
+                        Log.d("NotificationViewModel", "Fetched ${it.size} notifications successfully")
+                    } ?: run {
+                        Log.e("NotificationViewModel", "Failed to fetch notifications: response is null")
                     }
                 }
+            } catch (e: Exception) {
+                Log.e("NotificationViewModel", "Error while fetching notifications: ${e.message}", e)
             }
         }
     }
 
     private fun startPolling() {
-        pollingJob = viewModelScope.launch {
+        pollingJob = viewModelScope.launch(Dispatchers.IO) {
             while (isActive) {
                 delay(10000L)
                 fetchNotifications()
@@ -59,67 +54,86 @@ class NotificationViewModel : ViewModel() {
     }
 
     fun markAsSeen(notificationId: Int) {
-        _notifications.value = _notifications.value?.map { notification ->
-            if (notification.id == notificationId) notification.copy(isSeen = true) else notification
-        }
-        viewModelScope.launch {
-            notificationDAO.markNotificationAsSeen(notificationId) { success ->
-                if (success) {
-                    _notifications.value = _notifications.value?.map { notification ->
-                        if (notification.id == notificationId) notification.copy(isSeen = true) else notification
-                    }
+        updateNotificationState(notificationId, isSeen = true)
+
+        viewModelScope.launch(Dispatchers.IO) {
+            NotificationDAO.markNotificationAsSeen(notificationId) { success ->
+                if (!success) {
+                    Log.e("NotificationViewModel", "Failed to mark notification $notificationId as seen")
                 }
             }
         }
     }
 
     fun markAsImportant(notificationId: Int) {
-        Log.e("NotificationViewModel", "Start to MARK notification $notificationId as important")
-        _notifications.value = _notifications.value?.map { notif ->
-            if (notif.id == notificationId) notif.copy(isMarkedAsImportant = true) else notif
-        }
+        updateNotificationState(notificationId, isMarkedAsImportant = true)
 
-        viewModelScope.launch {
-            notificationDAO.markNotificationAsImportant(notificationId) { success ->
+        viewModelScope.launch(Dispatchers.IO) {
+            NotificationDAO.markNotificationAsImportant(notificationId) { success ->
                 if (!success) {
                     Log.e("NotificationViewModel", "Failed to mark notification $notificationId as important")
-                }
-                fetchNotifications() // Đồng bộ lại dữ liệu
-            }
-        }
-    }
-
-    fun deleteNotification(notificationId: Int) {
-        _notifications.value = _notifications.value?.filter { it.id != notificationId }
-        viewModelScope.launch {
-            notificationDAO.deleteNotification(notificationId) { success ->
-                if (success) {
-                    _notifications.value = _notifications.value?.filter { it.id != notificationId }
+                    revertNotificationState(notificationId, isMarkedAsImportant = false)
                 }
             }
         }
     }
 
     fun unmarkAsImportant(notificationId: Int) {
-        Log.e("NotificationViewModel", "Start to unmark notification $notificationId as important")
-        _notifications.value = _notifications.value?.map { notif ->
-            if (notif.id == notificationId) notif.copy(isMarkedAsImportant = false) else notif
-        }
+        updateNotificationState(notificationId, isMarkedAsImportant = false)
 
-        // Gửi yêu cầu cập nhật đến API
-        viewModelScope.launch {
-            notificationDAO.unmarkNotificationAsImportant(notificationId) { success ->
+        viewModelScope.launch(Dispatchers.IO) {
+            NotificationDAO.unmarkNotificationAsImportant(notificationId) { success ->
                 if (!success) {
-                    // Nếu API thất bại, log lỗi
                     Log.e("NotificationViewModel", "Failed to unmark notification $notificationId as important")
+                    revertNotificationState(notificationId, isMarkedAsImportant = true)
                 }
-                // Đồng bộ hóa dữ liệu sau khi API gọi xong
-                fetchNotifications()
+            }
+        }
+    }
+
+    fun deleteNotification(notificationId: Int) {
+        removeNotification(notificationId)
+
+        viewModelScope.launch(Dispatchers.IO) {
+            NotificationDAO.deleteNotification(notificationId) { success ->
+                if (!success) {
+                    Log.e("NotificationViewModel", "Failed to delete notification $notificationId")
+                }
             }
         }
     }
 
     fun setSelectedTab(tab: String) {
         _selectedTab.value = tab
+    }
+
+    private fun updateNotificationState(notificationId: Int, isSeen: Boolean? = null, isMarkedAsImportant: Boolean? = null) {
+        _notifications.value = _notifications.value?.map { notification ->
+            if (notification.id == notificationId) {
+                notification.copy(
+                    isSeen = isSeen ?: notification.isSeen,
+                    isMarkedAsImportant = isMarkedAsImportant ?: notification.isMarkedAsImportant
+                )
+            } else {
+                notification
+            }
+        }
+    }
+
+    private fun revertNotificationState(notificationId: Int, isSeen: Boolean? = null, isMarkedAsImportant: Boolean? = null) {
+        _notifications.value = _notifications.value?.map { notification ->
+            if (notification.id == notificationId) {
+                notification.copy(
+                    isSeen = isSeen ?: notification.isSeen,
+                    isMarkedAsImportant = isMarkedAsImportant ?: notification.isMarkedAsImportant
+                )
+            } else {
+                notification
+            }
+        }
+    }
+
+    private fun removeNotification(notificationId: Int) {
+        _notifications.value = _notifications.value?.filter { it.id != notificationId }
     }
 }
