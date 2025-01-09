@@ -131,6 +131,7 @@ class Main : BaseActivity() {
                 putExtra("notification_detail", notification.detail)
                 putExtra("is_marked_as_important", notification.isMarkedAsImportant) // Truyền trạng thái
             }
+            popupWindow.dismiss()
             detailActivityLauncher.launch(intent)
         }
         recyclerView.adapter = adapter
