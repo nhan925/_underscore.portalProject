@@ -7,11 +7,13 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
 import com.example.login_portal.BaseActivity
 import com.example.login_portal.R
+import com.example.login_portal.ui.notification.NotificationViewModel
 
 class NotificationDetailActivity : BaseActivity() {
-
+    private lateinit var notificationViewModel: NotificationViewModel
     private lateinit var tvNotificationTitle: TextView
     private lateinit var tvSender: TextView
     private lateinit var tvTime: TextView
@@ -37,7 +39,7 @@ class NotificationDetailActivity : BaseActivity() {
         btnBack = findViewById(R.id.btnBack)
 
         notificationId = intent.getIntExtra("notification_id", -1)
-
+        notificationViewModel = ViewModelProvider(this).get(NotificationViewModel::class.java)
 
         // Extract data from Intent
         val title = intent.getStringExtra("notification_title") ?: getString(R.string.notification_title)
@@ -53,6 +55,12 @@ class NotificationDetailActivity : BaseActivity() {
         tvContent.text = detail
         tvHeader.text = getString(R.string.notification)
 
+        if (notificationId != -1) {
+            notificationViewModel.markAsSeen(notificationId)
+        } else {
+            finish()
+        }
+
         // Set button text based on the importance
         btnImportant.setText(
             if (isMarkedAsImportant) R.string.unmark_as_important else R.string.mark_as_important
@@ -60,6 +68,14 @@ class NotificationDetailActivity : BaseActivity() {
 
         btnImportant.setOnClickListener {
             val action = if (isMarkedAsImportant) "unmark_important" else "mark_important"
+
+            if (notificationId != -1) {
+                if (isMarkedAsImportant) {
+                    notificationViewModel.unmarkAsImportant(notificationId)
+                } else {
+                    notificationViewModel.markAsImportant(notificationId)
+                }
+            }
 
             val resultIntent = Intent().apply {
                 putExtra("notification_id", notificationId)
@@ -78,6 +94,10 @@ class NotificationDetailActivity : BaseActivity() {
         }
 
         btnDelete.setOnClickListener {
+            if (notificationId != -1) {
+                notificationViewModel.deleteNotification(notificationId)
+            }
+
             val resultIntent = Intent().apply {
                 putExtra("notification_id", notificationId)
                 putExtra("action", "delete")

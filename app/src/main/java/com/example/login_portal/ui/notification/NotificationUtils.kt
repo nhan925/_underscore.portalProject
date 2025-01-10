@@ -40,6 +40,8 @@ object NotificationUtils {
             putExtra("notification_detail", notificationDetail)
             putExtra("notification_sender", sender)
             putExtra("notification_time", time)
+            putExtra("is_marked_as_important", false)
+
         }
 
         // PendingIntent với FLAG_ACTIVITY_SINGLE_TOP để giữ nguyên ngăn xếp ứng dụng
