@@ -46,7 +46,6 @@
     <string name="menu_tuition">Tuition Fee</string>
     <string name="menu_scholarship">Scholarship</string>
     <string name="menu_request">Request</string>
-    <string name="menu_chatbox">Chatbox</string>
     <string name="menu_feedback">App Feedback</string>
     <string name="menu_setting">Setting</string>
     <string name="menu_payment">Payment history</string>
@@ -422,7 +421,6 @@
     <string name="scholarship_bsheet_error">There is some error happened !</string>
 
 
-
     <string name="tab_all">All</string>
     <string name="tab_important">Important</string>
     <string name="tab_unread">Unread</string>
@@ -438,7 +436,8 @@
     <string name="unmark_as_important">Unimportant</string>
     <string name="notification_added_to_important">This notification has been added to your Important list.</string>
     <string name="notification_removed_from_important">This notification has been removed from your Important list.</string>
-    <string name= "notification_delete_message">Ths notification has been deleted</string>
+    <string name="notification_delete_message">Ths notification has been deleted</string>
+    <string name="menu_chatbot">Chatbot</string>
 
 
 </resources>
