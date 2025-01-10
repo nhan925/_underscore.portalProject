@@ -23,8 +23,6 @@ class NotificationDetailActivity : BaseActivity() {
     private lateinit var btnDelete: Button
     private lateinit var btnBack: ImageView
     private var notificationId: Int = -1
-    private var isMarkedAsImportant: Boolean = false
-    private var hasBeenViewed = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -99,7 +97,7 @@ class NotificationDetailActivity : BaseActivity() {
             if (notificationId != -1) {
                 notificationViewModel.deleteNotification(notificationId)
             }
-            
+
             val resultIntent = Intent().apply {
                 putExtra("notification_id", notificationId)
                 putExtra("action", "delete")
