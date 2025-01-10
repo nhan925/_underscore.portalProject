@@ -1,53 +1,62 @@
 import android.app.NotificationChannel
 import android.app.NotificationManager
+import android.app.PendingIntent
 import android.content.Context
+import android.content.Intent
 import android.os.Build
-import android.util.Log
 import androidx.core.app.NotificationCompat
 import com.example.login_portal.R
-import java.util.*
-import android.Manifest
-import android.content.pm.PackageManager
-import android.os.Build.VERSION_CODES.TIRAMISU
-
-
+import com.example.login_portal.ui.notification.NotificationDetailActivity
 
 object NotificationUtils {
     private const val CHANNEL_ID = "new_notifications_channel"
     private const val CHANNEL_NAME = "New Notifications"
 
-    // Hiển thị thông báo ngoài ứng dụng
     fun showSystemNotification(
         context: Context,
         title: String,
-        message: String
+        message: String,
+        notificationId: Int,
+        notificationDetail: String
     ) {
-        Log.d("NotificationUtils", "Showing system notification: $title - $message")
         val notificationManager =
             context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            Log.d("NotificationUtils", "Notification channel IS BEING created")
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val channel = NotificationChannel(
                 CHANNEL_ID,
                 CHANNEL_NAME,
                 NotificationManager.IMPORTANCE_HIGH
             )
             notificationManager.createNotificationChannel(channel)
-            Log.d("NotificationUtils", "Notification channel created: $channel")
         }
 
+        // Intent mở NotificationDetailActivity mà không làm mất ngăn xếp ứng dụng chính
+        val intent = Intent(context, NotificationDetailActivity::class.java).apply {
+            putExtra("notification_id", notificationId)
+            putExtra("notification_title", title)
+            putExtra("notification_detail", notificationDetail)
+        }
 
-        Log.d("NotificationUtils", "Started to build notification")
+        // PendingIntent với FLAG_ACTIVITY_SINGLE_TOP để giữ nguyên ngăn xếp ứng dụng
+        val pendingIntent = PendingIntent.getActivity(
+            context,
+            notificationId,
+            intent,
+            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+        )
 
+        // Xây dựng thông báo
         val notification = NotificationCompat.Builder(context, CHANNEL_ID)
             .setContentTitle(title)
             .setContentText(message)
             .setSmallIcon(R.drawable.ic_notification)
-            .setPriority(NotificationCompat.PRIORITY_MAX)
-            .setAutoCancel(true)
+            .setPriority(NotificationCompat.PRIORITY_HIGH)
+            .setAutoCancel(true) // Tự động xóa thông báo sau khi nhấn
+            .setContentIntent(pendingIntent)
             .build()
-        Log.d("NotificationUtils", "Notification pop up NOW")
-        notificationManager.notify(System.currentTimeMillis().toInt(), notification)
-        Log.d("NotificationUtils", "Notification pop up OK")
+
+        // Hiển thị thông báo
+        notificationManager.notify(notificationId, notification)
     }
 }

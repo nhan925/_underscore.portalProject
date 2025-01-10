@@ -11,25 +11,24 @@ import com.example.login_portal.data.NotificationDAO
 
 class NotificationWorker(context: Context, workerParams: WorkerParameters) : Worker(context, workerParams) {
 
-    companion object {
-        private val displayedNotifications = mutableSetOf<Int>() // Để theo dõi các thông báo đã hiển thị
-    }
-
     override fun doWork(): Result {
         Log.d("NotificationWorker", "Worker is running to fetch notifications...")
+
         try {
             NotificationDAO.getStudentNotifications { notifications ->
                 notifications?.let {
                     val unseenNotifications = it.filter { notification ->
-                        !notification.isSeen && !displayedNotifications.contains(notification.id)
+                        !notification.isSeen && !isNotificationDisplayed(notification.id)
                     }
 
                     unseenNotifications.forEach { notification ->
                         Log.d("NotificationWorker", "New notification: ${notification.title}")
-                        displayedNotifications.add(notification.id) // Đánh dấu thông báo đã hiển thị
+                        saveDisplayedNotification(notification.id)
                         NotificationUtils.showSystemNotification(
                             applicationContext,
                             notification.title,
+                            notification.detail,
+                            notification.id,
                             notification.detail
                         )
                     }
@@ -40,7 +39,7 @@ class NotificationWorker(context: Context, workerParams: WorkerParameters) : Wor
             return Result.retry()
         }
 
-        // Lên lịch fetch tiếp theo
+        // Schedule the next fetch
         scheduleNextFetch()
         return Result.success()
     }
@@ -52,5 +51,19 @@ class NotificationWorker(context: Context, workerParams: WorkerParameters) : Wor
 
         WorkManager.getInstance(applicationContext).enqueue(workRequest)
         Log.d("NotificationWorker", "Scheduled next fetch in 5 seconds")
+    }
+
+    // SharedPreferences-based implementation to track displayed notifications
+    private fun saveDisplayedNotification(notificationId: Int) {
+        val sharedPref = applicationContext.getSharedPreferences("notification_prefs", Context.MODE_PRIVATE)
+        val displayedSet = sharedPref.getStringSet("displayed_notifications", mutableSetOf()) ?: mutableSetOf()
+        displayedSet.add(notificationId.toString())
+        sharedPref.edit().putStringSet("displayed_notifications", displayedSet).apply()
+    }
+
+    private fun isNotificationDisplayed(notificationId: Int): Boolean {
+        val sharedPref = applicationContext.getSharedPreferences("notification_prefs", Context.MODE_PRIVATE)
+        val displayedSet = sharedPref.getStringSet("displayed_notifications", mutableSetOf()) ?: mutableSetOf()
+        return displayedSet.contains(notificationId.toString())
     }
 }

@@ -13,9 +13,7 @@ import androidx.work.WorkManager
 import androidx.work.ExistingWorkPolicy
 import androidx.lifecycle.ProcessLifecycleOwner
 import android.util.Log
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleObserver
-import androidx.lifecycle.OnLifecycleEvent
+
 
 
 class MyApplication : Application() {
@@ -27,18 +25,15 @@ class MyApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         instance = this
-        ProcessLifecycleOwner.get().lifecycle.addObserver(AppLifecycleListener())
+        ProcessLifecycleOwner.get().lifecycle.addObserver(AppLifecycleListener(this))
         // Khởi tạo ngôn ngữ khi app khởi động
         val savedLanguage = getSharedPreferences("appPreferences", Context.MODE_PRIVATE)
             .getString("appLanguage", "en") ?: "en"
         updateLocale(savedLanguage)
-        ProcessLifecycleOwner.get().lifecycle.addObserver(object : LifecycleObserver {
-            @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
-            fun onAppBackgrounded() {
-                Log.d("MyApplication", "App transitioned to background")
-                scheduleNotificationFetch()
-            }
-        })
+        if (!AppLifecycleListener.isAppInForeground) {
+            Log.d("NotificationWorker", "App is in background, scheduling notification fetch")
+            scheduleNotificationFetch()
+        }
 
     }
 
@@ -58,7 +53,7 @@ class MyApplication : Application() {
     }
 
     private fun scheduleNotificationFetch() {
-        Log.d("NotificationWorker", "Start fetching notifications...")
+        Log.d("NotificationWorker", "Scheduling notification fetch in 5 seconds")
         val workRequest = OneTimeWorkRequestBuilder<NotificationWorker>()
             .setInitialDelay(5, TimeUnit.SECONDS)
             .build()

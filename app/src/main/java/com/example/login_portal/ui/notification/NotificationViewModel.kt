@@ -15,7 +15,6 @@ import android.util.Log
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
 
-
 class NotificationViewModel(application: Application) : AndroidViewModel(application) {
 
     private val context: Context = application.applicationContext
@@ -43,10 +42,11 @@ class NotificationViewModel(application: Application) : AndroidViewModel(applica
 
                     // Filter new and unseen notifications only
                     val newNotification = fetchedNotifications.firstOrNull { notification ->
-                        !notification.isSeen && notification.id !in notifiedNotifications
+                        !notification.isSeen && !isNotificationDisplayed(notification.id)
                     }
 
                     if (newNotification != null) {
+                        saveDisplayedNotification(newNotification.id)
                         Log.d("NotificationUtils", "New notification detected: ${newNotification.title}")
                         detectNewNotification(newNotification)
                         notifiedNotifications.add(newNotification.id)
@@ -161,7 +161,24 @@ class NotificationViewModel(application: Application) : AndroidViewModel(applica
         NotificationUtils.showSystemNotification(
             context,
             newNotification.title,
+            newNotification.detail,
+            newNotification.id,
             newNotification.detail
         )
+    }
+
+    // Function to check if a notification has been displayed
+    private fun isNotificationDisplayed(notificationId: Int): Boolean {
+        val sharedPref = context.getSharedPreferences("notification_prefs", Context.MODE_PRIVATE)
+        val displayedSet = sharedPref.getStringSet("displayed_notifications", mutableSetOf()) ?: mutableSetOf()
+        return displayedSet.contains(notificationId.toString())
+    }
+
+    // Function to save displayed notifications
+    private fun saveDisplayedNotification(notificationId: Int) {
+        val sharedPref = context.getSharedPreferences("notification_prefs", Context.MODE_PRIVATE)
+        val displayedSet = sharedPref.getStringSet("displayed_notifications", mutableSetOf()) ?: mutableSetOf()
+        displayedSet.add(notificationId.toString())
+        sharedPref.edit().putStringSet("displayed_notifications", displayedSet).apply()
     }
 }
