@@ -50,6 +50,7 @@ class Main : BaseActivity() {
 
                 when (action) {
                     "mark_seen" -> notificationViewModel.markAsSeen(notificationId)
+                    "unmark_important" -> notificationViewModel.unmarkAsImportant(notificationId)
                     "mark_important" -> notificationViewModel.markAsImportant(notificationId)
                     "delete" -> notificationViewModel.deleteNotification(notificationId)
                 }
@@ -129,9 +130,9 @@ class Main : BaseActivity() {
                 putExtra("notification_sender", notification.sender)
                 putExtra("notification_time", notification.time)
                 putExtra("notification_detail", notification.detail)
-                putExtra("notification_is_important", notification.isImportant)
-                putExtra("notification_is_seen", notification.isSeen)
+                putExtra("is_marked_as_important", notification.isMarkedAsImportant) // Truyền trạng thái
             }
+            popupWindow.dismiss()
             detailActivityLauncher.launch(intent)
         }
         recyclerView.adapter = adapter

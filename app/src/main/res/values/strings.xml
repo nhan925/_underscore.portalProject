@@ -435,5 +435,10 @@
     <string name="notification">Notification</string>"
     <string name="view_all">View All</string>
     <string name="mark_as_important">Important</string>
+    <string name="unmark_as_important">Unimportant</string>
+    <string name="notification_added_to_important">This notification has been added to your Important list.</string>
+    <string name="notification_removed_from_important">This notification has been removed from your Important list.</string>
+    <string name= "notification_delete_message">Ths notification has been deleted</string>
+
 
 </resources>

@@ -6,7 +6,7 @@ import com.example.login_portal.utils.ApiServiceHelper
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
-class NotificationDAO {
+object NotificationDAO {
 
     fun getStudentNotifications(callback: (List<Notification>?) -> Unit) {
         Log.d("NotificationDAO", "Fetching notifications using GET request")
@@ -60,6 +60,23 @@ class NotificationDAO {
                 callback(true)
             } else {
                 Log.e("NotificationDAO", "Failed to mark notification $notificationId as important.")
+                callback(false)
+            }
+        }
+    }
+
+    fun unmarkNotificationAsImportant(notificationId: Int, callback: (Boolean) -> Unit) {
+        Log.d("NotificationDAO", "Unmarking notification as important: $notificationId")
+
+        ApiServiceHelper.post(
+            "/rpc/update_notification_status",
+            mapOf("notification_id_input" to notificationId.toString(), "action" to "mark_unimportant")
+        ) { response ->
+            if (response != null) {
+                Log.d("NotificationDAO", "Notification $notificationId unmarked as important successfully.")
+                callback(true)
+            } else {
+                Log.e("NotificationDAO", "Failed to unmark notification $notificationId as important.")
                 callback(false)
             }
         }
