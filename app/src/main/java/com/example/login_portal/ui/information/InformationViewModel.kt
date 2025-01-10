@@ -78,6 +78,8 @@ class InformationViewModel(private val context: Context) : ViewModel() {
         withContext(Dispatchers.IO) {
         InformationsForInformationDao.getInformation { data ->
             _informations.value = data
+
+
             Log.e("INFO",_informations.value.toString())
         }}
     }

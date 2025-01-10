@@ -313,6 +313,7 @@
 
             <!-- Các CardView cho từng chức năng -->
             <androidx.cardview.widget.CardView
+                android:id="@+id/CV_scholarship"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"

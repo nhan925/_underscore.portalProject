@@ -10,6 +10,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.example.login_portal.MainActivity2
 import com.example.login_portal.R
 import com.example.login_portal.databinding.FragmentScheduleBinding
@@ -49,6 +50,9 @@ class SettingsFragment : Fragment() {
         }
 
        setupLanguageSwitch()
+        binding.resetPassword.setOnClickListener {
+            findNavController().navigate(R.id.action_nav_Setting_to_nav_setupPassword)
+        }
 
 
         return binding.root

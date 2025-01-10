@@ -1,7 +1,10 @@
 [versions]
 agp = "8.6.0"
+bom = "1.1.1"
+bomVersion = "VERSION"
 commonsCodec = "1.15"
 converterGson = "2.9.0"
+core = "1.2.0"
 dotenvVaultKotlin = "0.0.2"
 fragmentKtx = "1.8.5"
 dotenvKotlin = "6.4.2"
@@ -20,6 +23,7 @@ junitVersion = "1.2.1"
 espressoCore = "3.6.1"
 appcompat = "1.7.0"
 kotlinxCoroutinesCore = "1.7.3"
+ktorClientEngine_z = "KTOR_VERSION"
 lifecycleRuntimeKtx = "2.8.7"
 lottie = "3.4.0"
 kotlinStdlibJdk8 = "1.9.20"
@@ -44,13 +48,17 @@ navigationUiKtx = "2.8.1"
 okhttp = "4.12.0"
 okhttpVersion = "4.6.0"
 opentelemetryApi = "1.18.0"
+postgrest = "1.2.0"
 securityCrypto = "1.1.0-alpha06"
 speedDial = "3.2.0"
 speedDialVersion = "3.3.0"
+storage = "1.2.0"
+supabaseKt = "0.0.1"
 volley = "1.2.1"
 legacySupportV4 = "1.0.0"
 uiDesktop = "1.7.0"
 cardviewV7 = "28.0.0"
+workRuntimeKtx = "2.10.0"
 
 [libraries]
 androidx-lifecycle-runtime-ktx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
@@ -59,7 +67,12 @@ androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = 
 androidx-fragment-ktx-v157 = { module = "androidx.fragment:fragment-ktx", version.ref = "fragmentKtxVersion" }
 androidx-gridlayout = { module = "androidx.gridlayout:gridlayout", version.ref = "gridlayout" }
 androidx-security-crypto = { module = "androidx.security:security-crypto", version.ref = "securityCrypto" }
+androidx-work-runtime-ktx = { module = "androidx.work:work-runtime-ktx", version.ref = "workRuntimeKtx" }
+auth-kt = { module = "io.github.jan-tennert.supabase:auth-kt" }
+bom = { module = "io.github.jan-tennert.supabase:bom", version.ref = "bom" }
+bom-vversion = { module = "io.github.jan-tennert.supabase:bom", version.ref = "bomVersion" }
 commons-codec = { module = "commons-codec:commons-codec", version.ref = "commonsCodec" }
+core = { module = "io.github.jan-tennert.supabase-kt:core", version.ref = "core" }
 dotenv-kotlin = { module = "io.github.cdimascio:dotenv-kotlin", version.ref = "dotenvKotlin" }
 dotenv-vault-kotlin = { module = "com.github.dotenv-org:dotenv-vault-kotlin", version.ref = "dotenvVaultKotlin" }
 fuel = { module = "com.github.kittinunf.fuel:fuel", version.ref = "fuelCoroutines" }
@@ -80,9 +93,11 @@ ktor-bom = { module = "io.ktor:ktor-bom", version.ref = "ktorBom" }
 ktor-client-android = { module = "io.ktor:ktor-client-android", version.ref = "ktorClientCore" }
 ktor-client-android-v230 = { module = "io.ktor:ktor-client-android", version.ref = "ktorClientAndroid" }
 ktor-client-auth = { module = "io.ktor:ktor-client-auth", version.ref = "ktorClientCore" }
+ktor-client-cio = { module = "io.ktor:ktor-client-cio", version.ref = "ktorClientAndroid" }
 ktor-client-content-negotiation = { module = "io.ktor:ktor-client-content-negotiation" }
 ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktorClientCore" }
 ktor-client-core-v230 = { module = "io.ktor:ktor-client-core", version.ref = "ktorClientCoreVersion" }
+ktor-client-engine_z = { module = "io.ktor:ktor-client-[engine]", version.ref = "ktorClientEngine_z" }
 ktor-client-gson = { module = "io.ktor:ktor-client-gson", version.ref = "ktorClientAndroid" }
 ktor-client-json = { module = "io.ktor:ktor-client-json", version.ref = "ktorClientCore" }
 ktor-client-logging = { module = "io.ktor:ktor-client-logging", version.ref = "ktorClientCore" }
@@ -112,8 +127,14 @@ opentelemetry-context = { module = "io.opentelemetry:opentelemetry-context", ver
 opentelemetry-exporter-common = { module = "io.opentelemetry:opentelemetry-exporter-common", version.ref = "opentelemetryApi" }
 opentelemetry-sdk-common = { module = "io.opentelemetry:opentelemetry-sdk-common", version.ref = "opentelemetryApi" }
 opentelemetry-sdk-trace = { module = "io.opentelemetry:opentelemetry-sdk-trace", version.ref = "opentelemetryApi" }
+postgrest = { module = "io.github.jan-tennert.supabase-kt:postgrest", version.ref = "postgrest" }
+postgrest-kt = { module = "io.github.jan-tennert.supabase:postgrest-kt" }
+realtime-kt = { module = "io.github.jan-tennert.supabase:realtime-kt" }
 speed-dial = { module = "com.leinardi.android:speed-dial", version.ref = "speedDial" }
 speed-dial-v330 = { module = "com.leinardi.android:speed-dial", version.ref = "speedDialVersion" }
+storage = { module = "io.github.jan-tennert.supabase-kt:storage", version.ref = "storage" }
+supabase-kt = { module = "io.supabase:supabase-kt", version.ref = "supabaseKt" }
+supabase-postgrest-kt = { module = "io.github.jan-tennert.supabase:postgrest-kt" }
 volley = { module = "com.android.volley:volley", version.ref = "volley" }
 androidx-legacy-support-v4 = { group = "androidx.legacy", name = "legacy-support-v4", version.ref = "legacySupportV4" }
 androidx-ui-desktop = { group = "androidx.compose.ui", name = "ui-desktop", version.ref = "uiDesktop" }

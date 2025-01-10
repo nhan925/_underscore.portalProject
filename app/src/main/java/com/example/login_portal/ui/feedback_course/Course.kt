@@ -5,5 +5,5 @@ data class Course (
     val courseID: String,
     val teacherName: String,
     val classID: String,
-    val status: Boolean
+    val status: String
 )

@@ -263,7 +263,9 @@ class DashboardFragment : Fragment() {
             findNavController().navigate(R.id.action_nav_Dashboard_to_nav_Score)
         }
 
-
+        binding.CVScholarship.setOnClickListener {
+            findNavController().navigate(R.id.action_nav_Dashboard_to_nav_Scholarship)
+        }
 
         binding.CVCourses.setOnClickListener(){
             findNavController().navigate(R.id.action_nav_Dashboard_to_nav_course)

@@ -54,7 +54,7 @@
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
-    
+
     <string name="statistics">Statistics</string>
     <string name="gpa">GPA</string>
     <string name="view">View</string>
@@ -168,9 +168,6 @@
     <string name="inf66">Password must contain at least 8 characters, including uppercase, lowercase and number</string>
     <string name="inf67">Passwords do not match</string>
     <string name="inf68">New password duplicates old password</string>
-
-
-
 
 
     <string name="request_reExaminationTitle">ReExamination</string>
@@ -312,8 +309,8 @@
         <item>How effectively does the instructor provide feedback on assignments and exams?</item>
     </string-array>
 
-    <string name="feedback_course_year" >Year:</string>
-    <string name="feedback_course_semester" >Semester:</string>
+    <string name="feedback_course_year">Year:</string>
+    <string name="feedback_course_semester">Semester:</string>
     <string name="feedback_course_empty_error">Please fill in all fields</string>
     <string name="feedback_course_success">Feedback successfully</string>
     <string name="feedback_course_fail">Feedback failed</string>
@@ -363,5 +360,85 @@
     <string name="pie_label_value">%1$s: %2$d</string>
     <string name="total_credit">Total Credits: %1$d</string>
     <string name="percentage">Percentage: %1$.1f%%</string>
+    <string name="payment_history_tuition_title">Tuition</string>
+    <string name="payment_history_amount_title">Amount:</string>
+    <string name="payment_history_date_title">Date:</string>
+    <string name="payment_history_list_title">Payment History</string>
+    <string name="payment_history_success_status">Successs</string>
+    <string name="payment_history_failed_status">Failed</string>
+    <string name="course_feedback_not_yet_status">Not yet</string>
+    <string name="tuition_status_not_yet">Not yet</string>
+    <string name="tuition_status_overdue">Overdue</string>
+
+
+    <string name="error_old_password_required">Please enter the current password</string>
+    <string name="error_new_password_required">Please enter the new password</string>
+    <string name="error_confirm_password_required">Please confirm the new password</string>
+    <string name="error_passwords_not_match">The confirmation password does not match</string>
+    <string name="error_wrong_password">The current password is incorrect</string>
+    <string name="error_same_password">The new password must be different from the old password</string>
+    <string name="error_change_password">An error occurred while changing the password</string>
+    <string name="password_change_success">Password changed successfully</string>
+    <string name="error_password_too_short">The password must be at least 8 characters long</string>
+    <string name="error_password_weak">Weak password (add uppercase letters, lowercase letters, numbers, or special characters)</string>
+    <string name="error_password_medium">Medium password (add uppercase letters, numbers, or special characters)</string>
+    <string name="error_password_strong">Strong password</string>
+    <string name="error_password_very_strong">Very strong password</string>
+
+
+    <string name="create_new_password">Create New Password</string>
+    <string name="old_password">Old password</string>
+    <string name="new_password">New password</string>
+    <string name="check_password">Confirm password</string>
+    <string name="submit">Submit</string>
+    <string name="setting_change_password">Change password</string>
+    <string name="setting_security">Security</string>
+    <string name="menu_course_feedback">Course Feedback</string>
+    <string name="scholarship_seachbar">Search for scholarships</string>
+    <string name="scholarship_title">Scholarships</string>
+    <string name="scholarship_item_sponsor">Sponsor:</string>
+    <string name="scholarship_expired">Expired</string>
+    <string name="scholarship_applied">Applied</string>
+    <string name="scholarship_not_applied">Not applied</string>
+    <string name="sholarship_all_years">All</string>
+    <string name="scholarship_detail_title">Details</string>
+    <string name="scholarship_detail_apply_button">Apply</string>
+    <string name="scholarship_detail_value">Amount:</string>
+    <string name="scholarship_detail_slot">Slot:</string>
+    <string name="scholarship_detail_criteria">Criteria to apply:</string>
+    <string name="scholarship_detail_deadline">Deadline:</string>
+    <string name="scholarship_detail_papers">Required papers:</string>
+    <string name="scholarship_detail_note">All required papers must be merge into 1 PDF !</string>
+    <string name="scholarship_detail_attachment">Attached file:</string>
+    <string name="scholarship_detail_submitted_date">Applied at:</string>
+    <string name="scholarship_detail_status">Status:</string>
+    <string name="scholarship_detail_click_url">view file</string>
+    <string name="scholarship_bsheet_noFile">No file chosen</string>
+    <string name="scholarship_bsheet_chooseFile">Choose File</string>
+    <string name="scholarship_bsheet_hint">Please choose the paper file to apply for the scholarship !</string>
+    <string name="scholarship_bsheet_fileMax">File size must be less than 10MB</string>
+    <string name="scholarship_bsheet_noFileSelected">No file selected</string>
+    <string name="scholarship_bsheet_applySuccess">Apply successfully !</string>
+    <string name="scholarship_bsheet_error">There is some error happened !</string>
+
+
+
+    <string name="tab_all">All</string>
+    <string name="tab_important">Important</string>
+    <string name="tab_unread">Unread</string>
+    <string name="notification_title">Notification Title</string>
+    <string name="notification_sender">Sender:</string>
+    <string name="notification_time">Time:</string>
+    <string name="notification_content">Notification Content</string>
+    <string name="notification_delete">Delete</string>
+
+    <string name="notification">Notification</string>"
+    <string name="view_all">View All</string>
+    <string name="mark_as_important">Important</string>
+    <string name="unmark_as_important">Unimportant</string>
+    <string name="notification_added_to_important">This notification has been added to your Important list.</string>
+    <string name="notification_removed_from_important">This notification has been removed from your Important list.</string>
+    <string name= "notification_delete_message">Ths notification has been deleted</string>
+
 
 </resources>
