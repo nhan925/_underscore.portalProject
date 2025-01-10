@@ -29,7 +29,9 @@ class NotificationWorker(context: Context, workerParams: WorkerParameters) : Wor
                             notification.title,
                             notification.detail,
                             notification.id,
-                            notification.detail
+                            notification.detail,
+                            notification.sender,
+                            notification.time
                         )
                     }
                 } ?: Log.e("NotificationWorker", "No notifications found")

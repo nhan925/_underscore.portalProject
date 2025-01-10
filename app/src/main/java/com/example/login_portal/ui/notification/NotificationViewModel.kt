@@ -163,7 +163,9 @@ class NotificationViewModel(application: Application) : AndroidViewModel(applica
             newNotification.title,
             newNotification.detail,
             newNotification.id,
-            newNotification.detail
+            newNotification.detail,
+            newNotification.sender,
+            newNotification.time
         )
     }
 

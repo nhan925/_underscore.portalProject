@@ -17,7 +17,9 @@ object NotificationUtils {
         title: String,
         message: String,
         notificationId: Int,
-        notificationDetail: String
+        notificationDetail: String,
+        sender: String,
+        time: String
     ) {
         val notificationManager =
             context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
@@ -36,6 +38,8 @@ object NotificationUtils {
             putExtra("notification_id", notificationId)
             putExtra("notification_title", title)
             putExtra("notification_detail", notificationDetail)
+            putExtra("notification_sender", sender)
+            putExtra("notification_time", time)
         }
 
         // PendingIntent với FLAG_ACTIVITY_SINGLE_TOP để giữ nguyên ngăn xếp ứng dụng
