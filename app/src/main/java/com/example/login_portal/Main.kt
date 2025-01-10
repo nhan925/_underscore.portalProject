@@ -27,6 +27,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.PopupWindow
 import androidx.core.content.ContextCompat
+import androidx.navigation.NavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.login_portal.ui.notification.NotificationAdapter
@@ -86,6 +87,11 @@ class Main : BaseActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+        navView.setNavigationItemSelectedListener { menuItem ->
+            handleNavigationSelection(menuItem.itemId, navController, drawerLayout)
+            true
+        }
 
         job = CoroutineScope(Dispatchers.Main).launch {
             while (isActive) {
@@ -150,6 +156,13 @@ class Main : BaseActivity() {
 
         popupWindow.setBackgroundDrawable(ContextCompat.getDrawable(context, android.R.color.transparent))
         popupWindow.showAsDropDown(binding.appBarMain.notificationBell, 0, -binding.appBarMain.notificationBell.height)
+    }
+
+    private fun handleNavigationSelection(itemId: Int, navController: NavController, drawerLayout: DrawerLayout) {
+        if (navController.currentDestination?.id != itemId) {
+            navController.navigate(itemId)
+        }
+        drawerLayout.closeDrawers()
     }
 
     override fun onResume() {

@@ -44,7 +44,11 @@
             app:popUpTo="@id/nav_Dashboard"
             app:popUpToInclusive="true"/>
 
-
+        <action
+            android:id="@+id/action_nav_Dashboard_to_nav_Scholarship"
+            app:destination="@id/nav_Scholarship"
+            app:popUpTo="@id/nav_Dashboard"
+            app:popUpToInclusive="true"/>
 
 
     </fragment>
