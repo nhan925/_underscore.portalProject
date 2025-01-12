@@ -450,6 +450,10 @@
     <string name= "Important">Important</string>
     <string name= "notification_create">Create Notification</string>
     <string name="menu_chatbot">Chatbot</string>
+    <string name="notification_create_successfully">Notification created successfully</string>
+    <string name="notification_create_failed">Notification creation failed</string>
+    <string name="empty_title_content">Title and content cannot be empty</string>
+    <string name="send_time">Time sent</string>
 
 
 </resources>

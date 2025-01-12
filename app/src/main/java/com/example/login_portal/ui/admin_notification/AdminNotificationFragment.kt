@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.login_portal.databinding.FragmentAdminNotificationBinding
+import com.example.login_portal.utils.formatDateTimeVer2
 
 class AdminNotificationFragment : Fragment() {
 
@@ -41,7 +42,7 @@ class AdminNotificationFragment : Fragment() {
             val intent = Intent(requireContext(), AdminNotificationDetailActivity::class.java).apply {
                 putExtra("NOTIFICATION_TITLE", notification.title)
                 putExtra("NOTIFICATION_CONTENT", notification.detail)
-                putExtra("NOTIFICATION_TIME", notification.time)
+                putExtra("NOTIFICATION_TIME", formatDateTimeVer2(notification.time))
             }
             startActivity(intent)
         }

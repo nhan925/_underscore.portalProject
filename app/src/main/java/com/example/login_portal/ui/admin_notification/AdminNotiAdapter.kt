@@ -7,6 +7,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.login_portal.R
 import com.example.login_portal.ui.notification.Notification
+import androidx.core.content.ContextCompat
+import com.example.login_portal.utils.formatDateTimeVer2
 
 class AdminNotificationAdapter(
     private var notifications: List<Notification>,
@@ -28,9 +30,17 @@ class AdminNotificationAdapter(
     override fun onBindViewHolder(holder: AdminNotificationViewHolder, position: Int) {
         val notification = notifications[position]
         holder.title.text = notification.title
-        holder.date.text = notification.time
+        val formattedDate = formatDateTimeVer2(notification.time)
+        holder.date.text = formattedDate
 
-        // Thiết lập sự kiện nhấn cho toàn bộ itemView
+        if (notification.isImportant) {
+            holder.important.text = "Quan Trọng"
+            holder.important.setTextColor(ContextCompat.getColor(holder.itemView.context, android.R.color.holo_red_dark))
+            holder.important.visibility = View.VISIBLE
+        } else {
+            holder.important.visibility = View.GONE
+        }
+
         holder.itemView.setOnClickListener {
             onNotificationClicked(notification)
         }

@@ -31,7 +31,7 @@
             android:id="@+id/tvHeader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Notification Details"
+            android:text="@string/notification"
             android:textColor="@android:color/black"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -70,14 +70,29 @@
         app:cardElevation="4dp"
         app:layout_constraintTop_toBottomOf="@id/cardTitle">
 
-        <TextView
-            android:id="@+id/tvNotificationTime"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="16dp"
-            android:text="2024-12-10 10:00 AM"
-            android:textColor="@android:color/darker_gray"
-            android:textSize="14sp" />
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/send_time"
+                android:textColor="@android:color/black"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:layout_marginEnd="8dp" />
+
+            <TextView
+                android:id="@+id/tvNotificationTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2024-12-10 10:00 AM"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="14sp" />
+        </LinearLayout>
     </androidx.cardview.widget.CardView>
 
     <!-- Content Card -->

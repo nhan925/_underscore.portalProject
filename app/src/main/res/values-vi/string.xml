@@ -450,4 +450,8 @@
     <string name="Important">Quan Trọng</string>
     <string name="notification_create">Tạo Thông Báo</string>
     <string name="menu_chatbot">Chatbot</string>
+    <string name="notification_create_successfully">Thông báo đã được tạo thành công</string>
+    <string name="notification_create_failed">Thông báo tạo thất bại</string>
+    <string name="empty_title_content">Tiêu đề và nội dung không được phép trống</string>
+    <string name="send_time">Thời gian gửi</string>
 </resources>

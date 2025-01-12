@@ -4,11 +4,11 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
-import androidx.appcompat.app.AppCompatActivity
 import com.example.login_portal.R
 import com.example.login_portal.databinding.ActivityAdminCreateNotiBinding
+import com.example.login_portal.BaseActivity
 
-class AdminCreateNotiActivity : AppCompatActivity() {
+class AdminCreateNotiActivity : BaseActivity() {
 
     private lateinit var binding: ActivityAdminCreateNotiBinding
     private val adminNotiViewModel: AdminNotiViewModel by viewModels()
@@ -30,10 +30,10 @@ class AdminCreateNotiActivity : AppCompatActivity() {
 
         adminNotiViewModel.createSuccess.observe(this) { success ->
             if (success) {
-                Toast.makeText(this, "Notification created successfully.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.notification_create_successfully), Toast.LENGTH_SHORT).show()
                 finish()
             } else {
-                Toast.makeText(this, "Failed to create notification.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.notification_create_failed), Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -45,7 +45,7 @@ class AdminCreateNotiActivity : AppCompatActivity() {
             val isImportant = binding.cbImportant.isChecked
 
             if (title.isEmpty() || content.isEmpty()) {
-                Toast.makeText(this, "Title and content cannot be empty.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.empty_title_content), Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 

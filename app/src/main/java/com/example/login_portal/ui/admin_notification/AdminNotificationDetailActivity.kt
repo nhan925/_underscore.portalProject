@@ -5,9 +5,10 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.login_portal.R
 import android.widget.ImageView
+import com.example.login_portal.BaseActivity
 
 
-class AdminNotificationDetailActivity : AppCompatActivity() {
+class AdminNotificationDetailActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
