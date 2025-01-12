@@ -5,6 +5,7 @@ bomVersion = "VERSION"
 commonsCodec = "1.15"
 converterGson = "2.9.0"
 core = "1.2.0"
+coreVersion = "4.6.2"
 dotenvVaultKotlin = "0.0.2"
 fragmentKtx = "1.8.5"
 dotenvKotlin = "6.4.2"
@@ -123,6 +124,7 @@ ktor-ktor-client-serialization = { module = "io.ktor:ktor-client-serialization" 
 ktor-serialization-gson = { module = "io.ktor:ktor-serialization-gson", version.ref = "ktorClientAndroid" }
 ktor-serialization-kotlinx-json = { module = "io.ktor:ktor-serialization-kotlinx-json" }
 lottie = { module = "com.airbnb.android:lottie", version.ref = "lottie" }
+markwon-core = { module = "io.noties.markwon:core", version.ref = "coreVersion" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }

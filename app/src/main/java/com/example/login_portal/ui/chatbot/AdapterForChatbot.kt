@@ -1,6 +1,7 @@
 package com.example.login_portal.ui.chatbot
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.view.Gravity
 import android.view.InflateException
 import android.view.LayoutInflater
@@ -11,10 +12,10 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.login_portal.R
-import com.example.login_portal.ui.payment_history.PaymentHistoryItem
+import io.noties.markwon.Markwon
 
 class AdapterForChatbot (
-    private var messageHistoryList : List<Message>
+    private val context: Context, private var messageHistoryList : List<Message>
 ): RecyclerView.Adapter<AdapterForChatbot.MessageHistoryViewHolder>() {
 
     class MessageHistoryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
@@ -29,11 +30,11 @@ class AdapterForChatbot (
     override fun getItemCount() = messageHistoryList.size
 
     override fun onBindViewHolder(holder: MessageHistoryViewHolder, position: Int) {
-        val message = messageHistoryList[position]
+        val content = messageHistoryList[position]
 
-        holder.textMessage.text = message.message
+        //holder.textMessage.text = content.message
 
-        if (message.isUser == true) {
+        if (content.isUser == true) {
             holder.textMessage.setBackgroundDrawable(ContextCompat.getDrawable(holder.itemView.context, R.drawable.send_round_box))
             holder.textMessage.setTextColor(ContextCompat.getColor(holder.itemView.context, android.R.color.white))
             (holder.textMessage.layoutParams as FrameLayout.LayoutParams).gravity = Gravity.END
@@ -42,6 +43,9 @@ class AdapterForChatbot (
             holder.textMessage.setTextColor(ContextCompat.getColor(holder.itemView.context, android.R.color.black))
             (holder.textMessage.layoutParams as FrameLayout.LayoutParams).gravity = Gravity.START
         }
+
+        val markwon = Markwon.create(context)
+        markwon.setMarkdown(holder.textMessage, content.message)
     }
 
     @SuppressLint("NotifyDataSetChanged")

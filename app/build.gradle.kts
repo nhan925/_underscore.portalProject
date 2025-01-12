@@ -109,4 +109,5 @@ dependencies {
 
     // Thư viện cho GeminiService
     implementation(libs.generativeai)
+    implementation(libs.markwon.core)
 }

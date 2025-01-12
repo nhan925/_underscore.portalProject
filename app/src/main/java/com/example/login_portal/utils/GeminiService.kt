@@ -50,7 +50,7 @@ object GeminiService {
     }
 
     suspend fun sendTextWithImages(prompt: String, images: List<Bitmap>): String {
-        if (images.size > 4) throw IllegalArgumentException("Maximum number of images is 4")
+        if (images.size > 3) throw IllegalArgumentException("Maximum number of images is 4")
 
         val inputContent = content {
             images.forEach { image(it) }

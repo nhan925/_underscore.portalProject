@@ -438,6 +438,9 @@
     <string name="notification_removed_from_important">This notification has been removed from your Important list.</string>
     <string name="notification_delete_message">Ths notification has been deleted</string>
     <string name="menu_chatbot">Chatbot</string>
+    <string name="menu_reviewfeedback">Review Feedback</string>
+    <string name="hint_text_chatbox">Type a message...</string>
+    <string name="picture_attach_chatbot">You have attached %1$d image(s)</string>
 
 
 </resources>

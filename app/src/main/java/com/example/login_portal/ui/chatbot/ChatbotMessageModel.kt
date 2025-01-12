@@ -4,6 +4,6 @@ import android.graphics.Bitmap
 
 data class Message (
     var message : String = "",
-    var image : Bitmap? = null,
+    var images : List<Bitmap>? = null,
     var isUser : Boolean? = null,
 )
