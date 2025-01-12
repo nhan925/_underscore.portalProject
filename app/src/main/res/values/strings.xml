@@ -441,6 +441,11 @@
     <string name="menu_reviewfeedback">Review Feedback</string>
     <string name="hint_text_chatbox">Type a message...</string>
     <string name="picture_attach_chatbot">You have attached %1$d image(s)</string>
+    <string name="title_activity_admin">AdminActivity</string>
+    <string name="menu_manage_enrollment_period">Manage Enrollment Period</string>
+    <string name="menu_manage_class">Manage Class</string>
+    <string name="menu_manage_course">Manage Course</string>
+    <string name="menu_manage_semester">Manage Semester</string>
 
 
 </resources>

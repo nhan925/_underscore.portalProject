@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation2"
+    app:startDestination="@+id/nav_Admin_Notification">
+
+    <fragment
+        android:id="@+id/nav_Admin_Notification"
+        android:name="com.example.login_portal.ui.admin_notification.AdminNotificationFragment"
+        android:label="@string/notifications"
+        tools:layout="@layout/fragment_admin_notification" />
+
+    <fragment
+        android:id="@+id/nav_Admin_Manage_Enrollment_Period"
+        android:name="com.example.login_portal.ui.admin_manage_enrollment_period.AdminManageEnrollmentPeriodFragment"
+        android:label="@string/menu_manage_enrollment_period"
+        tools:layout="@layout/fragment_admin_manage_enrollment_period" />
+
+    <fragment
+        android:id="@+id/nav_Admin_Manage_Class"
+        android:name="com.example.login_portal.ui.admin_manage_class.AdminManageClassFragment"
+        android:label="@string/menu_manage_class"
+        tools:layout="@layout/fragment_admin_manage_class" />
+
+    <fragment
+        android:id="@+id/nav_Admin_Manage_Course"
+        android:name="com.example.login_portal.ui.admin_manage_course.AdminManageCourseFragment"
+        android:label="@string/menu_manage_course"
+        tools:layout="@layout/fragment_admin_manage_course" />
+
+    <fragment
+        android:id="@+id/nav_Admin_Manage_Semester"
+        android:name="com.example.login_portal.ui.admin_manage_semester.AdminManageSemesterFragment"
+        android:label="@string/menu_manage_semester"
+        tools:layout="@layout/fragment_admin_manage_semester" />
+
+    <fragment
+        android:id="@+id/nav_Admin_Review_Feedback"
+        android:name="com.example.login_portal.ui.admin_review_feedback.AdminReviewFeedbackFragment"
+        android:label="@string/menu_reviewfeedback"
+        tools:layout="@layout/fragment_admin_review_feedback" />
+
+    <fragment
+        android:id="@+id/nav_Setting"
+        android:name="com.example.login_portal.ui.setting.SettingsFragment"
+        android:label="@string/menu_setting"
+        android:layout="@layout/fragment_course">
+        <action
+            android:id="@+id/action_nav_Setting_to_nav_setupPassword"
+            app:destination="@id/nav_SetupPassword" />
+    </fragment>
+
+</navigation>

@@ -14,7 +14,6 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.commit
-
 import com.example.login_portal.utils.ApiServiceHelper
 import com.example.login_portal.utils.CallApiLogin
 import com.example.login_portal.utils.LanguageManager
@@ -242,8 +241,14 @@ class MainActivity2 : BaseActivity() {
     }
 
     private fun navigateHome(){
-        startActivity(Intent(this, Main::class.java))
-      //  overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+        val role = ApiServiceHelper.getRoleFromJwtToken()
+        if(role == "Student") {
+            startActivity(Intent(this, Main::class.java))
+            //  overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+        }
+        else if(role == "Admin"){
+            startActivity(Intent(this, AdminActivity::class.java))
+        }
         finish()
     }
 

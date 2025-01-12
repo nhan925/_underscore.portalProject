@@ -110,4 +110,7 @@ dependencies {
     // Thư viện cho GeminiService
     implementation(libs.generativeai)
     implementation(libs.markwon.core)
+
+    // Thư viện decode jwt Token
+    implementation(libs.jwtdecode)
 }
