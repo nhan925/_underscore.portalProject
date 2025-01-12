@@ -107,7 +107,12 @@
     <string name="menu_chatbox">Chatbox</string>
     <string name="menu_feedback">Phản hồi app</string>
     <string name="menu_setting">Cài đặt</string>
+    <string name="menu_reviewfeedback">Xem đánh giá</string>
     <string name="menu_payment">Lịch sử thanh toán</string>
+    <string name="menu_manage_enrollment_period">Quản lý đợt ĐKHP</string>
+    <string name="menu_manage_class">Quản lý lớp học</string>
+    <string name="menu_manage_course">Quản lý môn học</string>
+    <string name="menu_manage_semester">Quản lý học kỳ</string>
     <string name="request_reExaminationTitle">Xin phúc khảo</string>
     <string name="request_requestForTranscriptTitle">Xin bảng điểm</string>
     <string name="request_status_all">Tất cả</string>
@@ -438,6 +443,10 @@
     <string name="notification_added_to_important">Thông báo này đã được thêm vào danh sách Quan Trọng.</string>
     <string name="notification_removed_from_important">Thông báo này đã được xóa khỏi danh sách Quan Trọng.</string>
     <string name="notification_delete_message">Thông báo này đã được xóa</string>
+
+    <string name="hint_text_chatbox">Nhập nội dung...</string>
+    <string name="picture_attach_chatbot">Bạn đã đính kèm %1$d hình ảnh</string>
+    <string name="title_activity_admin">AdminActivity</string>
     <string name="Important">Quan Trọng</string>
     <string name="notification_create">Tạo Thông Báo</string>
 </resources>

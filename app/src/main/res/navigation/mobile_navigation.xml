@@ -163,4 +163,10 @@
         android:label="@string/menu_scholarship"
         tools:layout="@layout/fragment_scholarship" />
 
+    <fragment
+        android:id="@+id/nav_Chatbot"
+        android:name="com.example.login_portal.ui.chatbot.ChatbotFragment"
+        android:label="@string/menu_chatbot"
+        tools:layout="@layout/fragment_chatbot" />
+
 </navigation>

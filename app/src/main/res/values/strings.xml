@@ -438,6 +438,14 @@
     <string name="unmark_as_important">Unimportant</string>
     <string name="notification_added_to_important">This notification has been added to your Important list.</string>
     <string name="notification_removed_from_important">This notification has been removed from your Important list.</string>
+    <string name="menu_reviewfeedback">Review Feedback</string>
+    <string name="hint_text_chatbox">Type a message...</string>
+    <string name="picture_attach_chatbot">You have attached %1$d image(s)</string>
+    <string name="title_activity_admin">AdminActivity</string>
+    <string name="menu_manage_enrollment_period">Manage Enrollment Period</string>
+    <string name="menu_manage_class">Manage Class</string>
+    <string name="menu_manage_course">Manage Course</string>
+    <string name="menu_manage_semester">Manage Semester</string>
     <string name= "notification_delete_message">Ths notification has been deleted</string>
     <string name= "Important">Important</string>
     <string name= "notification_create">Create Notification</string>
