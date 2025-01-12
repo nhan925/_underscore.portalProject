@@ -438,4 +438,6 @@
     <string name="notification_added_to_important">Thông báo này đã được thêm vào danh sách Quan Trọng.</string>
     <string name="notification_removed_from_important">Thông báo này đã được xóa khỏi danh sách Quan Trọng.</string>
     <string name="notification_delete_message">Thông báo này đã được xóa</string>
+    <string name="Important">Quan Trọng</string>
+    <string name="notification_create">Tạo Thông Báo</string>
 </resources>
