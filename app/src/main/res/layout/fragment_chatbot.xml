@@ -34,7 +34,10 @@
                     android:id="@+id/image_preview_sendChatbot1"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
-                    android:layout_gravity="center" />
+                    android:layout_gravity="center"
+                    android:scaleType="centerCrop"
+                    android:clipToOutline="true"
+                    android:background="@drawable/imageview_rounded_corner" />
 
                 <ImageButton
                     android:id="@+id/btn_delete_image_chatbot1"
@@ -60,7 +63,10 @@
                     android:id="@+id/image_preview_sendChatbot2"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
-                    android:layout_gravity="center" />
+                    android:layout_gravity="center"
+                    android:scaleType="centerCrop"
+                    android:clipToOutline="true"
+                    android:background="@drawable/imageview_rounded_corner" />
 
                 <ImageButton
                     android:id="@+id/btn_delete_image_chatbot2"
@@ -86,7 +92,10 @@
                     android:id="@+id/image_preview_sendChatbot3"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
-                    android:layout_gravity="center" />
+                    android:layout_gravity="center"
+                    android:scaleType="centerCrop"
+                    android:clipToOutline="true"
+                    android:background="@drawable/imageview_rounded_corner" />
 
                 <ImageButton
                     android:id="@+id/btn_delete_image_chatbot3"
@@ -122,10 +131,19 @@
 
         <ImageButton
             android:id="@+id/btn_attach_image_chatbot"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_margin="10dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="6dp"
             android:src="@drawable/ic_attach_image_chatbot"
+            android:scaleType="center"
+            android:layout_gravity="center"/>
+
+        <ImageButton
+            android:id="@+id/btn_creat_new_chat"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="6dp"
+            android:src="@drawable/ic_new_chat"
             android:scaleType="center"
             android:layout_gravity="center"/>
 
@@ -143,6 +161,19 @@
 
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/tv_no_data_chatbot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/chatbot_message_no_data"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/chatbot_ll_layout_bar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:visibility="visible" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_messages_chatbot"
         android:layout_width="0dp"
@@ -152,7 +183,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/chatbot_ll_layout_bar"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:visibility="gone"/>
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/lottie_typing_chatbot"

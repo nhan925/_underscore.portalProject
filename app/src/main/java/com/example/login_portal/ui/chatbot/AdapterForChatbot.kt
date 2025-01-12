@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
@@ -20,6 +21,7 @@ class AdapterForChatbot (
 
     class MessageHistoryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         val textMessage = itemView.findViewById<TextView>(R.id.tv_message_chatbot)
+        //val iconBot = itemView.findViewById<ImageView>(R.id.iv_icon_chatbot)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MessageHistoryViewHolder {
@@ -32,16 +34,16 @@ class AdapterForChatbot (
     override fun onBindViewHolder(holder: MessageHistoryViewHolder, position: Int) {
         val content = messageHistoryList[position]
 
-        //holder.textMessage.text = content.message
-
         if (content.isUser == true) {
             holder.textMessage.setBackgroundDrawable(ContextCompat.getDrawable(holder.itemView.context, R.drawable.send_round_box))
-            holder.textMessage.setTextColor(ContextCompat.getColor(holder.itemView.context, android.R.color.white))
+            holder.textMessage.setTextColor(ContextCompat.getColor(holder.itemView.context, android.R.color.black))
             (holder.textMessage.layoutParams as FrameLayout.LayoutParams).gravity = Gravity.END
+            //holder.iconBot.visibility = View.GONE
         } else {
             holder.textMessage.setBackgroundDrawable(ContextCompat.getDrawable(holder.itemView.context, R.drawable.receive_round_box))
             holder.textMessage.setTextColor(ContextCompat.getColor(holder.itemView.context, android.R.color.black))
             (holder.textMessage.layoutParams as FrameLayout.LayoutParams).gravity = Gravity.START
+            //holder.iconBot.visibility = View.VISIBLE
         }
 
         val markwon = Markwon.create(context)

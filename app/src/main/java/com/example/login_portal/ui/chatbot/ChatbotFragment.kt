@@ -1,6 +1,9 @@
 package com.example.login_portal.ui.chatbot
 
+import android.annotation.SuppressLint
 import android.app.Activity.RESULT_OK
+import android.app.AlertDialog
+import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.net.Uri
@@ -28,7 +31,10 @@ class ChatbotFragment : Fragment() {
 
     private var imageCount = 0
     private val imageList = mutableListOf<Bitmap>()
+
     private val selectImageRequestCode = 1002
+    private val maxImage = 3 // Phải là số nguyên
+    private val maxSizeOfImage = 5 // Phải là số nguyên
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -47,19 +53,36 @@ class ChatbotFragment : Fragment() {
         recyclerView.layoutManager = layoutManager
 
         chatbotViewModel.messages.observe(viewLifecycleOwner){ messageList ->
-            adapter.updateData(messageList)
-            binding.rvMessagesChatbot.scrollToPosition(messageList.size - 1)
+            if (messageList.isEmpty()) {
+                recyclerView.visibility = View.GONE
+                binding.tvNoDataChatbot.visibility = View.VISIBLE
+            } else {
+                recyclerView.visibility = View.VISIBLE
+                binding.tvNoDataChatbot.visibility = View.GONE
+                adapter.updateData(messageList)
+                binding.rvMessagesChatbot.scrollToPosition(messageList.size - 1)
+            }
         }
         solveEventClick()
 
         return root
     }
 
+    @SuppressLint("StringFormatInvalid")
     private fun solveEventClick(){
         binding.btnSendChatbot.setOnClickListener {
             binding.lottieTypingChatbot.visibility = View.VISIBLE
             lifecycleScope.launch {
-                chatbotViewModel.sendMessage(requireContext(),binding.etMessageChatbot.text.toString(), imageList)
+                try {
+                    chatbotViewModel.sendMessage(requireContext(),binding.etMessageChatbot.text.toString(), imageList)
+                }
+                catch (e: IllegalArgumentException){
+                    showResultDialog(requireContext().getString(R.string.alert_dialog_about_image_chatbot, maxImage, maxSizeOfImage))
+                }
+                catch (e:IllegalStateException){
+                    showResultDialog(requireContext().getString(R.string.chatbot_error_message_exceed_chathistory),true)
+                }
+
                 binding.lottieTypingChatbot.visibility = View.GONE
             }
             binding.etMessageChatbot.text.clear()
@@ -75,6 +98,10 @@ class ChatbotFragment : Fragment() {
 
         binding.btnAttachImageChatbot.setOnClickListener{
             selectImage()
+        }
+
+        binding.btnCreatNewChat.setOnClickListener{
+            chatbotViewModel.creatNewChat()
         }
 
         binding.btnDeleteImageChatbot1.setOnClickListener {
@@ -98,12 +125,28 @@ class ChatbotFragment : Fragment() {
         startActivityForResult(Intent.createChooser(intent, "Select Avatar"), selectImageRequestCode)
     }
 
+    @SuppressLint("StringFormatInvalid")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == selectImageRequestCode && resultCode == RESULT_OK) {
             val imageUri: Uri? = data?.data
             Log.e("URI", "Failed to decode bitmap from URI: ${imageUri!!.isAbsolute}")
             if (imageUri != null) {
+                val contentResolver = requireContext().contentResolver
+                val cursor = contentResolver.query(imageUri, arrayOf(MediaStore.Images.Media.SIZE), null, null, null)
+
+                cursor?.use {
+                    if (it.moveToFirst()) {
+                        val sizeIndex = it.getColumnIndexOrThrow(MediaStore.Images.Media.SIZE)
+                        val fileSize = it.getLong(sizeIndex)
+                        val fileSizeInMB = fileSize / (1024 * 1024)
+
+                        if (fileSizeInMB > maxSizeOfImage) {
+                            showResultDialog(requireContext().getString(R.string.alert_dialog_about_image_chatbot, maxImage, maxSizeOfImage))
+                            return
+                        }
+                    }
+                }
                 try {
                     val bitmap = MediaStore.Images.Media.getBitmap(requireContext().contentResolver, imageUri)
                     imageList.add(bitmap)
@@ -116,6 +159,7 @@ class ChatbotFragment : Fragment() {
                 } catch (e: Exception) {
                     Log.e("URI", "Failed to decode bitmap from URI: $imageUri", e)
                 }
+                Log.e("CHECK","Chưa return")
             }
         }
     }
@@ -158,4 +202,20 @@ class ChatbotFragment : Fragment() {
         }
     }
 
+    fun showResultDialog(message: String, hasBtnRestart: Boolean = false) {
+        val builder = AlertDialog.Builder(requireContext())
+            .setTitle(requireContext().getString(R.string.alert_dialog_title_chatbot))
+            .setMessage(message)
+            .setPositiveButton(requireContext().getString(R.string.alert_dialog_btn_close_chatbot)) { dialog, _ ->
+                dialog.dismiss()
+            }
+
+        if (hasBtnRestart) {
+            builder.setNegativeButton(requireContext().getString(R.string.alert_dialog_btn_restart_chatbot)) { dialog, _ ->
+                chatbotViewModel.creatNewChat()
+                dialog.dismiss()
+            }
+        }
+        builder.show()
+    }
 }

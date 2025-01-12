@@ -33,24 +33,15 @@ object GeminiService {
             modelName = geminiModel,
             apiKey = geminiApiKey
         )
-        chat = generativeModel?.startChat(history = emptyList())
-    }
-
-    @RequiresApi(Build.VERSION_CODES.O)
-    private fun getMimeType(filePath: String): String {
-        val extension = Paths.get(filePath).toFile().extension.lowercase(Locale.ROOT)
-        return when (extension) {
-            "jpg", "jpeg" -> "image/jpeg"
-            "png" -> "image/png"
-            "gif" -> "image/gif"
-            "bmp" -> "image/bmp"
-            "tiff" -> "image/tiff"
-            else -> throw UnsupportedOperationException("Unsupported image format")
-        }
+        creatNewChatHistory()
     }
 
     suspend fun sendTextWithImages(prompt: String, images: List<Bitmap>): String {
         if (images.size > 3) throw IllegalArgumentException("Maximum number of images is 4")
+
+        if ((chat?.history?.size ?: 0) >= maxChatHistoryMessages) {
+            throw IllegalStateException("Chat history exceeds maximum allowed messages")
+        }
 
         val inputContent = content {
             images.forEach { image(it) }
@@ -67,5 +58,13 @@ object GeminiService {
         return fullResponse
     }
 
+    fun creatNewChatHistory(){
+        val history = listOf(
+            content(role = "user") { text(
+                "Dự án tên là 'Ứng dụng mobile giúp quản lý việc học của sinh viên', được phát triển bởi nhóm _underscore. Các thành viên trong nhóm: Mai Nhật Nam, Nguyễn Minh Nguyên, Nguyễn Trọng Nhân, Ma Thanh Nhi, Nguyễn Thành Phát. Ứng dụng này phục vụ cho hai đối tượng người dùng chính: sinh viên và admin.Chức năng cho sinh viên bao gồm: đăng nhập, xem thông tin cá nhân, đăng ký học phần, kiểm tra thời khóa biểu, thanh toán học phí, và đặc biệt tích hợp AI chatbot.Chức năng cho admin bao gồm: quản lý sinh viên, lớp học, nhập điểm, và xử lý các yêu cầu từ sinh viên.")},
+            content(role = "user") { text("I got it")}
+        )
+        chat = generativeModel?.startChat(history = history)
+    }
 }
 
