@@ -449,4 +449,5 @@
     <string name="title_activity_admin">AdminActivity</string>
     <string name="Important">Quan Trọng</string>
     <string name="notification_create">Tạo Thông Báo</string>
+    <string name="menu_chatbot">Chatbot</string>
 </resources>

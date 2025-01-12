@@ -1,4 +1,4 @@
-package com.example.login_portal.ui.admin_noti
+package com.example.login_portal.ui.admin_notification
 
 import android.view.LayoutInflater
 import android.view.View
@@ -30,6 +30,7 @@ class AdminNotificationAdapter(
         holder.title.text = notification.title
         holder.date.text = notification.time
 
+        // Thiết lập sự kiện nhấn cho toàn bộ itemView
         holder.itemView.setOnClickListener {
             onNotificationClicked(notification)
         }

@@ -449,6 +449,7 @@
     <string name= "notification_delete_message">Ths notification has been deleted</string>
     <string name= "Important">Important</string>
     <string name= "notification_create">Create Notification</string>
+    <string name="menu_chatbot">Chatbot</string>
 
 
 </resources>

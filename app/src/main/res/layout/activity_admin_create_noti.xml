@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/fragment_background"
     android:fitsSystemWindows="true"
-    tools:context=".ui.admin_noti.AdminCreateNotiActivity">
+    tools:context=".ui.admin_notification.AdminCreateNotiActivity">
 
 
     <!-- Back Button and Title -->
