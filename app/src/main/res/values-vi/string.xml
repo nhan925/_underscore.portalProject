@@ -64,7 +64,7 @@
     <string name="infor_student_frag_error_mail">Mail không hợp lệ</string>
     <string name="infor_student_frag_notEmpty">Các trường không được để trống</string>
     <string name="infor_student_frag_error_phoneNumber">Số điện thoại phải có đúng 10 chữ số và không được chứa chữ cái.</string>
-    <string name="infor_student_frag_error_alert_dialog">Lỗi</string>
+    <string name="infor_student_frag_error_alert_dialog">Thông báo lỗi</string>
     <string name="infor_student_frag_close_dialog">Đóng</string>
     <string name="infor_student_frag_upload_avatar">Tải ảnh lên</string>
     <string name="infor_student_frag_remove_avatar">Loại bỏ ảnh</string>
@@ -104,9 +104,10 @@
     <string name="menu_tuition">Học phí</string>
     <string name="menu_scholarship">Học bổng</string>
     <string name="menu_request">Yêu cầu</string>
-    <string name="menu_chatbox">Chatbox</string>
+    <string name="menu_chatbot">Chatbot</string>
     <string name="menu_feedback">Phản hồi app</string>
     <string name="menu_setting">Cài đặt</string>
+    <string name="menu_reviewfeedback">Xem đánh giá</string>
     <string name="menu_payment">Lịch sử thanh toán</string>
     <string name="request_reExaminationTitle">Xin phúc khảo</string>
     <string name="request_requestForTranscriptTitle">Xin bảng điểm</string>
@@ -438,4 +439,13 @@
     <string name="notification_added_to_important">Thông báo này đã được thêm vào danh sách Quan Trọng.</string>
     <string name="notification_removed_from_important">Thông báo này đã được xóa khỏi danh sách Quan Trọng.</string>
     <string name="notification_delete_message">Thông báo này đã được xóa</string>
+
+    <string name="hint_text_chatbox">Nhập nội dung...</string>
+    <string name="picture_attach_chatbot">(Bạn đã đính kèm %1$d hình ảnh)</string>
+    <string name="alert_dialog_about_image_chatbot">Bạn chỉ được đính kèm tối đa %1\$d ảnh và mỗi ảnh không vượt quá %2\$dMB.</string>
+    <string name="alert_dialog_title_chatbot">Thông báo lỗi</string>
+    <string name="alert_dialog_btn_close_chatbot">Đóng</string>
+    <string name="alert_dialog_btn_restart_chatbot">Tạo mới chat</string>
+    <string name="chatbot_error_message_exceed_chathistory">Đã vượt quá giới hạn tin nhắn. Vui lòng reset cuộc trò chuyện !</string>
+    <string name="chatbot_message_no_data">Tôi có thể giúp gì cho bạn?</string>
 </resources>

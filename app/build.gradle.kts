@@ -106,4 +106,8 @@ dependencies {
     implementation(libs.androidx.gridlayout)
 
     implementation (libs.androidx.work.runtime.ktx)
+
+    // Thư viện cho GeminiService
+    implementation(libs.generativeai)
+    implementation(libs.markwon.core)
 }
