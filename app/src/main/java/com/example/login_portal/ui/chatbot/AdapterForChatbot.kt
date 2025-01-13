@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
@@ -32,11 +33,9 @@ class AdapterForChatbot (
     override fun onBindViewHolder(holder: MessageHistoryViewHolder, position: Int) {
         val content = messageHistoryList[position]
 
-        //holder.textMessage.text = content.message
-
         if (content.isUser == true) {
             holder.textMessage.setBackgroundDrawable(ContextCompat.getDrawable(holder.itemView.context, R.drawable.send_round_box))
-            holder.textMessage.setTextColor(ContextCompat.getColor(holder.itemView.context, android.R.color.white))
+            holder.textMessage.setTextColor(ContextCompat.getColor(holder.itemView.context, android.R.color.black))
             (holder.textMessage.layoutParams as FrameLayout.LayoutParams).gravity = Gravity.END
         } else {
             holder.textMessage.setBackgroundDrawable(ContextCompat.getDrawable(holder.itemView.context, R.drawable.receive_round_box))

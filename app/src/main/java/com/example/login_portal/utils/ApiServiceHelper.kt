@@ -268,7 +268,6 @@ object ApiServiceHelper {
                 .jsonBody(jsonData)
                 .responseString { _, response, result ->
                     if (response.statusCode == 200) {
-                        // Switch to the main thread for UI update
                         Handler(Looper.getMainLooper()).post {
                             val resultString = result.get().trim('"')
                             if (resultString == "null")
@@ -277,7 +276,6 @@ object ApiServiceHelper {
                                 callback(resultString)
                         }
                     } else {
-                        // Handle error response
                         Handler(Looper.getMainLooper()).post {
                             callback(null)
                         }

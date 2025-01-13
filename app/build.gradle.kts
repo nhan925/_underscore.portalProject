@@ -106,6 +106,7 @@ dependencies {
     implementation(libs.androidx.gridlayout)
 
     implementation (libs.androidx.work.runtime.ktx)
+    implementation ("com.facebook.shimmer:shimmer:0.5.0")
 
     // Thư viện cho GeminiService
     implementation(libs.generativeai)

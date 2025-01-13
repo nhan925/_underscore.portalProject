@@ -19,21 +19,29 @@ class ChatbotViewModel : ViewModel()  {
     suspend fun sendMessage (context: Context, message : String, images : List<Bitmap>){
         val updatedMessage = if (images.isNotEmpty()) {
             val imageCountMessage = context.getString(R.string.picture_attach_chatbot, images.size)
-            "$message\n$imageCountMessage"
+            "$message\n\n$imageCountMessage"
         } else {
             message
         }
         addMessage(Message(updatedMessage, images, true))
-
-        val fullResponse = GeminiService.sendTextWithImages(message, images)
-        addMessage(Message(fullResponse, images, false))
-        Log.e("CHAT BOT", fullResponse)
+        try{
+            val fullResponse = GeminiService.sendTextWithImages(message, images)
+            addMessage(Message(fullResponse, images, false))
+            Log.e("CHAT BOT", fullResponse)
+        }
+        catch (e: Exception){
+            throw e
+        }
     }
 
     fun addMessage(newMessage: Message) {
         val messageList = _messages.value?.toMutableList() ?: mutableListOf()
         messageList.add(newMessage)
         _messages.postValue(messageList)
+    }
 
+    fun creatNewChat(){
+        GeminiService.creatNewChatHistory()
+        _messages.postValue(mutableListOf())
     }
 }
