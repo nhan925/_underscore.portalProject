@@ -446,6 +446,9 @@
     <string name="menu_manage_class">Manage Class</string>
     <string name="menu_manage_course">Manage Course</string>
     <string name="menu_manage_semester">Manage Semester</string>
+    <string name="menu_manage_student">Manage Student</string>
+    <string name="menu_dashboard_admin">Dashboard</string>
+    <string name="menu_noti_admin">Notification</string>
 
 
 </resources>

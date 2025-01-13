@@ -113,6 +113,9 @@
     <string name="menu_manage_class">Quản lý lớp học</string>
     <string name="menu_manage_course">Quản lý môn học</string>
     <string name="menu_manage_semester">Quản lý học kỳ</string>
+    <string name="menu_manage_student">Quản lý sinh viên</string>
+    <string name="menu_dashboard_admin">Trang chủ</string>
+    <string name="menu_noti_admin">Thông báo</string>
     <string name="request_reExaminationTitle">Xin phúc khảo</string>
     <string name="request_requestForTranscriptTitle">Xin bảng điểm</string>
     <string name="request_status_all">Tất cả</string>
