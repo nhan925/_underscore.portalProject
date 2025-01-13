@@ -462,6 +462,7 @@
     <string name="alert_dialog_title_chatbot">Error</string>
     <string name="chatbot_error_message_exceed_chathistory">Message limit exceeded. Please reset the conversation!</string>
     <string name="chatbot_message_no_data">How can I help you?</string>
+    <string name="student_information">Student Info</string>
 
 
 </resources>
