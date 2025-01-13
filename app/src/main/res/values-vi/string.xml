@@ -104,11 +104,15 @@
     <string name="menu_tuition">Học phí</string>
     <string name="menu_scholarship">Học bổng</string>
     <string name="menu_request">Yêu cầu</string>
-    <string name="menu_chatbot">Chatbot</string>
+    <string name="menu_chatbox">Chatbox</string>
     <string name="menu_feedback">Phản hồi app</string>
     <string name="menu_setting">Cài đặt</string>
     <string name="menu_reviewfeedback">Xem đánh giá</string>
     <string name="menu_payment">Lịch sử thanh toán</string>
+    <string name="menu_manage_enrollment_period">Quản lý đợt ĐKHP</string>
+    <string name="menu_manage_class">Quản lý lớp học</string>
+    <string name="menu_manage_course">Quản lý môn học</string>
+    <string name="menu_manage_semester">Quản lý học kỳ</string>
     <string name="request_reExaminationTitle">Xin phúc khảo</string>
     <string name="request_requestForTranscriptTitle">Xin bảng điểm</string>
     <string name="request_status_all">Tất cả</string>
@@ -441,6 +445,14 @@
     <string name="notification_delete_message">Thông báo này đã được xóa</string>
 
     <string name="hint_text_chatbox">Nhập nội dung...</string>
+    <string name="title_activity_admin">AdminActivity</string>
+    <string name="Important">Quan Trọng</string>
+    <string name="notification_create">Tạo Thông Báo</string>
+    <string name="menu_chatbot">Chatbot</string>
+    <string name="notification_create_successfully">Thông báo đã được tạo thành công</string>
+    <string name="notification_create_failed">Thông báo tạo thất bại</string>
+    <string name="empty_title_content">Tiêu đề và nội dung không được phép trống</string>
+    <string name="send_time">Thời gian gửi</string>
     <string name="picture_attach_chatbot">(Bạn đã đính kèm %1$d hình ảnh)</string>
     <string name="alert_dialog_about_image_chatbot">Bạn chỉ được đính kèm tối đa %1\$d ảnh và mỗi ảnh không vượt quá %2\$dMB.</string>
     <string name="alert_dialog_title_chatbot">Thông báo lỗi</string>

@@ -46,6 +46,7 @@
     <string name="menu_tuition">Tuition Fee</string>
     <string name="menu_scholarship">Scholarship</string>
     <string name="menu_request">Request</string>
+    <string name="menu_chatbox">Chatbox</string>
     <string name="menu_feedback">App Feedback</string>
     <string name="menu_setting">Setting</string>
     <string name="menu_payment">Payment history</string>
@@ -421,6 +422,7 @@
     <string name="scholarship_bsheet_error">There is some error happened !</string>
 
 
+
     <string name="tab_all">All</string>
     <string name="tab_important">Important</string>
     <string name="tab_unread">Unread</string>
@@ -436,10 +438,21 @@
     <string name="unmark_as_important">Unimportant</string>
     <string name="notification_added_to_important">This notification has been added to your Important list.</string>
     <string name="notification_removed_from_important">This notification has been removed from your Important list.</string>
-    <string name="notification_delete_message">Ths notification has been deleted</string>
-    <string name="menu_chatbot">Chatbot</string>
     <string name="menu_reviewfeedback">Review Feedback</string>
     <string name="hint_text_chatbox">Type a message...</string>
+    <string name="title_activity_admin">AdminActivity</string>
+    <string name="menu_manage_enrollment_period">Manage Enrollment Period</string>
+    <string name="menu_manage_class">Manage Class</string>
+    <string name="menu_manage_course">Manage Course</string>
+    <string name="menu_manage_semester">Manage Semester</string>
+    <string name= "notification_delete_message">Ths notification has been deleted</string>
+    <string name= "Important">Important</string>
+    <string name= "notification_create">Create Notification</string>
+    <string name="menu_chatbot">Chatbot</string>
+    <string name="notification_create_successfully">Notification created successfully</string>
+    <string name="notification_create_failed">Notification creation failed</string>
+    <string name="empty_title_content">Title and content cannot be empty</string>
+    <string name="send_time">Time sent</string>
     <string name="picture_attach_chatbot">(You have attached %1$d image(s))</string>
     <string name="alert_dialog_about_image_chatbot">You can attach up to %1$d images, and each image must not exceed %2$dMB.</string>
     <string name="alert_dialog_btn_close_chatbot">Close</string>
