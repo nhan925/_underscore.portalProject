@@ -422,7 +422,6 @@
     <string name="scholarship_bsheet_error">There is some error happened !</string>
 
 
-
     <string name="tab_all">All</string>
     <string name="tab_important">Important</string>
     <string name="tab_unread">Unread</string>
@@ -445,9 +444,9 @@
     <string name="menu_manage_class">Manage Class</string>
     <string name="menu_manage_course">Manage Course</string>
     <string name="menu_manage_semester">Manage Semester</string>
-    <string name= "notification_delete_message">Ths notification has been deleted</string>
-    <string name= "Important">Important</string>
-    <string name= "notification_create">Create Notification</string>
+    <string name="notification_delete_message">Ths notification has been deleted</string>
+    <string name="Important">Important</string>
+    <string name="notification_create">Create Notification</string>
     <string name="menu_chatbot">Chatbot</string>
     <string name="notification_create_successfully">Notification created successfully</string>
     <string name="notification_create_failed">Notification creation failed</string>
@@ -460,6 +459,15 @@
     <string name="alert_dialog_title_chatbot">Error</string>
     <string name="chatbot_error_message_exceed_chathistory">Message limit exceeded. Please reset the conversation!</string>
     <string name="chatbot_message_no_data">How can I help you?</string>
+    <string name="review_feedback_app">App Feedback</string>
+    <string name="review_feedback_course">Course Feedback</string>
+    <string name="review_feedback_app_item_summitted_at">Submitted Date:</string>
+    <string name="review_feedback_hint_text_error_border">List of Error Reports</string>
+    <string name="review_feedback_hint_text_feedback_border">List of Feedback</string>
+    <string name="review_feedback_app_hint_text_dropdown">Select</string>
+    <string name="review_feedback_detail_title">Detailed information</string>
+    <string name="review_feedback_detail_category_error">Error Report</string>
+    <string name="review_feedback_detail_category_feedback">Give feedback</string>
 
 
 </resources>

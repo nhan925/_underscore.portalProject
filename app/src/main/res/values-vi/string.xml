@@ -460,4 +460,14 @@
     <string name="alert_dialog_btn_restart_chatbot">Tạo mới chat</string>
     <string name="chatbot_error_message_exceed_chathistory">Đã vượt quá giới hạn tin nhắn. Vui lòng reset cuộc trò chuyện !</string>
     <string name="chatbot_message_no_data">Tôi có thể giúp gì cho bạn?</string>
+
+    <string name="review_feedback_app">Phản hồi app</string>
+    <string name="review_feedback_course">Phản hồi môn học</string>
+    <string name="review_feedback_hint_text_error_border">Danh sách báo lỗi</string>
+    <string name="review_feedback_hint_text_feedback_border">Danh sách góp ý</string>
+    <string name="review_feedback_app_item_summitted_at">Ngày gửi:</string>
+    <string name="review_feedback_app_hint_text_dropdown">Chọn loại</string>
+    <string name="review_feedback_detail_title">Thông tin chi tiết</string>
+    <string name="review_feedback_detail_category_error">Báo lỗi</string>
+    <string name="review_feedback_detail_category_feedback">Góp ý</string>
 </resources>
