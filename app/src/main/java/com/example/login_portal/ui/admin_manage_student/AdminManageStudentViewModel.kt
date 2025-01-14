@@ -26,7 +26,7 @@ class AdminManageStudentViewModel : ViewModel() {
     private val majorIdToNameMap = mutableMapOf<String, String>()
 
     val editFullName = MutableLiveData<String?>()
-    val editStudentId = MutableLiveData<String?>()
+
     val editYearOfAdmissionText = MutableLiveData<String>()  // Changed to String
     val editAcademicProgram = MutableLiveData<String?>()
     val editGender = MutableLiveData<String?>()
@@ -124,8 +124,6 @@ class AdminManageStudentViewModel : ViewModel() {
 
     private fun initializeEditingFields(student: StudentInfo) {
         editFullName.value = student.fullName
-        editStudentId.value = student.studentId
-        selectedMajorId.value = student.majorId
         editYearOfAdmissionText.value = student.yearOfAdmission?.toString() ?: ""  // Changed
         editAcademicProgram.value = student.academicProgram
         editGender.value = student.gender
@@ -156,8 +154,6 @@ class AdminManageStudentViewModel : ViewModel() {
         currentEditingStudent?.let { originalStudent ->
             val updatedStudent = originalStudent.copy(
                 fullName = editFullName.value.orEmpty(),
-                studentId = editStudentId.value.orEmpty(),
-                majorId = selectedMajorId.value ?: originalStudent.majorId,
                 yearOfAdmission = getYearOfAdmissionAsInt() ?: originalStudent.yearOfAdmission,  // Changed
                 academicProgram = editAcademicProgram.value.orEmpty(),
                 gender = editGender.value.orEmpty(),

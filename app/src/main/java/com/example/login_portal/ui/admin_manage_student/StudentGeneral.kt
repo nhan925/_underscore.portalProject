@@ -41,31 +41,7 @@ class StudentGeneral : Fragment() {
                 setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             }
 
-            binding.infoGeneralFragSpinnerMajor.adapter = adapter
 
-            // Set selected item based on current majorId
-            viewModel.selectedMajorId.value?.let { currentMajorId ->
-                val position = majors.indexOfFirst { it.major_id == currentMajorId }
-                if (position != -1) {
-                    binding.infoGeneralFragSpinnerMajor.setSelection(position)
-                }
-            }
-
-            binding.infoGeneralFragSpinnerMajor.onItemSelectedListener =
-                object : AdapterView.OnItemSelectedListener {
-                    override fun onItemSelected(
-                        parent: AdapterView<*>?,
-                        view: View?,
-                        position: Int,
-                        id: Long
-                    ) {
-                        if (viewModel.isEditing.value == true) {
-                            viewModel.selectedMajorId.value = majors[position].major_id
-                        }
-                    }
-
-                    override fun onNothingSelected(parent: AdapterView<*>?) {}
-                }
         }
     }
 
@@ -88,8 +64,6 @@ class StudentGeneral : Fragment() {
 
     private fun toggleEditMode(isEditing: Boolean) {
         binding.infoGeneralFragViewSwitcherFullName.showNext()
-        binding.infoGeneralFragViewSwitcherStudentId.showNext()
-        binding.infoGeneralFragViewSwitcherMajor.showNext()
         binding.infoGeneralFragViewSwitcherAcademicProgram.showNext()
         binding.infoGeneralFragViewSwitcherGender.showNext()
         binding.infoGeneralFragViewSwitcherYearOfAdmission.showNext()

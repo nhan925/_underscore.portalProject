@@ -234,6 +234,7 @@
             app:layout_constraintStart_toStartOf="@+id/info_detail_frag_iv_idCard"
             app:layout_constraintTop_toBottomOf="@+id/info_detail_frag_iv_idCard" />
 
+        <!-- Email Field Layout Fix -->
         <TextView
             android:id="@+id/info_detail_frag_tv_email_label"
             android:layout_width="wrap_content"
@@ -248,11 +249,13 @@
 
         <ViewSwitcher
             android:id="@+id/info_detail_frag_viewSwitcherEmail"
-            android:layout_width="@dimen/info_student_frag_viewswitcher_width"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/info_student_frag_text_margin_start"
-            app:layout_constraintBottom_toBottomOf="@+id/info_contact_frag_iv_user"
-            app:layout_constraintStart_toEndOf="@+id/info_contact_frag_iv_user">
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/info_contact_frag_iv_user"
+            app:layout_constraintBottom_toBottomOf="@+id/info_contact_frag_iv_user">
 
             <TextView
                 android:id="@+id/info_detail_frag_tv_email"
@@ -261,7 +264,10 @@
                 android:gravity="center|start"
                 android:text="@={viewModel.editSchoolEmail}"
                 android:textSize="@dimen/info_student_frag_value_text_size"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:scrollHorizontally="true" />
 
             <EditText
                 android:id="@+id/info_detail_frag_et_email"
@@ -271,7 +277,10 @@
                 android:inputType="textEmailAddress"
                 android:text="@={viewModel.editSchoolEmail}"
                 android:textSize="@dimen/info_student_frag_value_text_size"
-                android:background="@android:color/transparent" />
+                android:background="@android:color/transparent"
+                android:scrollHorizontally="true"
+                android:maxLines="1"
+                android:ellipsize="end" />
         </ViewSwitcher>
 
         <!-- Edit, Accept, and Cancel Buttons -->

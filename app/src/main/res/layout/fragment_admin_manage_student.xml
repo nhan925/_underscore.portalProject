@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -6,31 +7,47 @@
     android:layout_height="match_parent"
     tools:context=".ui.admin_manage_student.AdminManageStudentFragment">
 
-    <!-- Search bar for filtering students -->
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/student_search_view"
+    <!-- Search bar -->
+    <com.google.android.material.search.SearchBar
+        android:id="@+id/student_searchbar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
-        android:queryHint="Search by name or ID"
-        android:focusable="true"
-        android:focusableInTouchMode="true"
-        android:background="@color/white"
+        android:hint="Search students by name or ID"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- RecyclerView for displaying the list of students -->
+    <!-- Main RecyclerView for student list -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/student_list_recycler_view"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="8dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintTop_toBottomOf="@id/student_search_view"
+        app:layout_constraintTop_toBottomOf="@id/student_searchbar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         tools:listitem="@layout/admin_student_item" />
+
+    <!-- Search View with its own RecyclerView -->
+    <com.google.android.material.search.SearchView
+        android:id="@+id/student_searchview"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:hint="@string/search_by_name_id"
+        app:autoShowKeyboard="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/student_search_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </com.google.android.material.search.SearchView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

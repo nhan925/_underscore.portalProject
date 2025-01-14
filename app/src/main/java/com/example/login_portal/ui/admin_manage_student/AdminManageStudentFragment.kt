@@ -12,6 +12,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.login_portal.databinding.FragmentAdminManageStudentBinding
 import androidx.appcompat.widget.SearchView
+import androidx.core.widget.doOnTextChanged
+import java.text.Normalizer
+
 
 class AdminManageStudentFragment : Fragment() {
 
@@ -19,6 +22,8 @@ class AdminManageStudentFragment : Fragment() {
     private val binding get() = _binding!!
     private lateinit var viewModel: AdminManageStudentViewModel
     private lateinit var studentAdapter: StudentAdapter
+    private lateinit var searchAdapter: StudentAdapter
+    private var originalStudents: List<StudentInfo> = listOf()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -28,11 +33,12 @@ class AdminManageStudentFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(AdminManageStudentViewModel::class.java)
         _binding = FragmentAdminManageStudentBinding.inflate(inflater, container, false)
 
-        setupRecyclerView()
+        setupMainRecyclerView()
         setupSearchView()
 
         viewModel.studentList.observe(viewLifecycleOwner) { students ->
             studentAdapter.submitList(students)
+            originalStudents = students
         }
 
         viewModel.fetchStudentList()
@@ -40,56 +46,68 @@ class AdminManageStudentFragment : Fragment() {
         return binding.root
     }
 
-    private fun setupRecyclerView() {
+    private fun setupMainRecyclerView() {
         studentAdapter = StudentAdapter { student ->
             val intent = Intent(requireContext(), EditStudentInfoActivity::class.java).apply {
                 putExtra("STUDENT_ID", student.studentId)
             }
             startActivity(intent)
         }
-        binding.studentListRecyclerView.layoutManager = LinearLayoutManager(requireContext())
-        binding.studentListRecyclerView.adapter = studentAdapter
+        binding.studentListRecyclerView.apply {
+            layoutManager = LinearLayoutManager(requireContext())
+            adapter = studentAdapter
+        }
     }
 
     private fun setupSearchView() {
-        // Ensure the SearchView is not iconified by default
-        binding.studentSearchView.isIconified = false
-        binding.studentSearchView.clearFocus() // Prevent focus at startup
+        val searchBar = binding.studentSearchbar
+        val searchView = binding.studentSearchview
+        val searchRecyclerView = binding.studentSearchRecyclerView
 
-        // Handle search query input
-        binding.studentSearchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                viewModel.searchStudent(query)
-                hideKeyboard() // Hide the keyboard after submission
-                return true
+        // Setup search view with search bar
+        searchView.setupWithSearchBar(searchBar)
+
+        // Setup search recycler view
+        searchRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+        searchAdapter = StudentAdapter { student ->
+            val intent = Intent(requireContext(), EditStudentInfoActivity::class.java).apply {
+                putExtra("STUDENT_ID", student.studentId)
             }
+            startActivity(intent)
+            searchView.hide()
+        }
+        searchRecyclerView.adapter = searchAdapter
 
-            override fun onQueryTextChange(newText: String?): Boolean {
-                viewModel.searchStudent(newText)
-                return true
-            }
-        })
+        // Handle search bar click
+        searchBar.setOnClickListener {
+            originalStudents = viewModel.studentList.value ?: listOf()
+            searchAdapter.submitList(originalStudents)
+            searchView.show()
+        }
 
-        // Ensure the keyboard is shown when the SearchView gains focus
-        binding.studentSearchView.setOnQueryTextFocusChangeListener { _, hasFocus ->
-            if (hasFocus) {
-                showKeyboard()
+        // Handle text changes in search view
+        searchView.editText.doOnTextChanged { text, _, _, _ ->
+            if (text.toString().isEmpty()) {
+                searchAdapter.submitList(originalStudents)
             } else {
-                hideKeyboard()
+                val normalizedQuery = text.toString().removeAccents()
+                val tokens = normalizedQuery.split(" ")
+                val filteredStudents = originalStudents.filter { student ->
+                    tokens.all { token ->
+                        student.fullName.removeAccents().contains(token, ignoreCase = true) ||
+                                student.studentId.contains(token, ignoreCase = true)
+                    }
+                }
+                searchAdapter.submitList(filteredStudents)
             }
         }
     }
 
-    // Helper function to show the keyboard
-    private fun showKeyboard() {
-        val imm = requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        imm.showSoftInput(binding.studentSearchView.findFocus(), InputMethodManager.SHOW_IMPLICIT)
-    }
-
-    // Helper function to hide the keyboard
-    private fun hideKeyboard() {
-        val imm = requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        imm.hideSoftInputFromWindow(binding.root.windowToken, 0)
+    // Extension function to remove accents from text
+    private fun String.removeAccents(): String {
+        return Normalizer.normalize(this, Normalizer.Form.NFD)
+            .replace("\\p{InCombiningDiacriticalMarks}+".toRegex(), "")
+            .lowercase()
     }
 
     override fun onDestroyView() {
