@@ -464,4 +464,5 @@
     <string name="chatbot_error_message_exceed_chathistory">Đã vượt quá giới hạn tin nhắn. Vui lòng reset cuộc trò chuyện !</string>
     <string name="chatbot_message_no_data">Tôi có thể giúp gì cho bạn?</string>
     <string name="student_information">Thông tin sinh viên</string>
+    <string name="search_by_name_id">Tìm kiếm theo tên hay MSSV</string>
 </resources>
