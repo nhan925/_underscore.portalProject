@@ -111,6 +111,10 @@
             android:name=".ui.admin_notification.AdminNotificationDetailActivity"
             android:exported="true"
              />
+        <activity
+            android:name=".ui.admin_manage_student.EditStudentInfoActivity"
+            android:exported="true" />
+
 
     </application>
 

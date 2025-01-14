@@ -113,6 +113,9 @@
     <string name="menu_manage_class">Quản lý lớp học</string>
     <string name="menu_manage_course">Quản lý môn học</string>
     <string name="menu_manage_semester">Quản lý học kỳ</string>
+    <string name="menu_manage_student">Quản lý sinh viên</string>
+    <string name="menu_dashboard_admin">Trang chủ</string>
+    <string name="menu_noti_admin">Thông báo</string>
     <string name="request_reExaminationTitle">Xin phúc khảo</string>
     <string name="request_requestForTranscriptTitle">Xin bảng điểm</string>
     <string name="request_status_all">Tất cả</string>
@@ -460,4 +463,5 @@
     <string name="alert_dialog_btn_restart_chatbot">Tạo mới chat</string>
     <string name="chatbot_error_message_exceed_chathistory">Đã vượt quá giới hạn tin nhắn. Vui lòng reset cuộc trò chuyện !</string>
     <string name="chatbot_message_no_data">Tôi có thể giúp gì cho bạn?</string>
+    <string name="student_information">Thông tin sinh viên</string>
 </resources>
