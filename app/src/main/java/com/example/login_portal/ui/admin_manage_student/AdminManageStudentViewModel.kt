@@ -171,7 +171,7 @@ class AdminManageStudentViewModel : ViewModel() {
             Log.d("acceptChanges", "Updated student object: $updatedStudent")
 
             val updatedFields = mapOf(
-                "student_id_input" to updatedStudent.studentId,
+
                 "full_name_input" to updatedStudent.fullName,
                 "academic_program_input" to updatedStudent.academicProgram,
                 "year_of_admission_input" to getYearOfAdmissionAsInt(),  // Changed
@@ -184,7 +184,6 @@ class AdminManageStudentViewModel : ViewModel() {
                 "personal_email_input" to updatedStudent.personalEmail,
                 "phone_number_input" to updatedStudent.phoneNumber,
                 "address_input" to updatedStudent.address,
-                "major_id_input" to updatedStudent.majorId
             )
 
             updateStudentInfo(updatedStudent) { success ->
@@ -219,7 +218,6 @@ class AdminManageStudentViewModel : ViewModel() {
             "personal_email_input" to updatedStudent.personalEmail,
             "phone_number_input" to updatedStudent.phoneNumber,
             "address_input" to updatedStudent.address,
-            "major_id_input" to updatedStudent.majorId
         )
 
         UpdateStudentInfoDAO.updateStudentInfo(
