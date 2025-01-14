@@ -448,10 +448,8 @@
     <string name="menu_manage_course">Manage Course</string>
     <string name="menu_manage_semester">Manage Semester</string>
 
-    <string name="notification_delete_message">Ths notification has been deleted</string>
     <string name="Important">Important</string>
     <string name="notification_create">Create Notification</string>
-    <string name="menu_chatbot">Chatbot</string>
 
     <string name="menu_manage_student">Manage Student</string>
     <string name="menu_dashboard_admin">Dashboard</string>
