@@ -12,3 +12,4 @@ data class Notification(
     @SerializedName("read_status") var isSeen: Boolean,
     @SerializedName("is_marked_as_important") var isMarkedAsImportant: Boolean // If needed
 )
+

@@ -106,4 +106,14 @@ dependencies {
     implementation(libs.androidx.gridlayout)
 
     implementation (libs.androidx.work.runtime.ktx)
+    implementation ("com.facebook.shimmer:shimmer:0.5.0")
+
+    // Thư viện cho GeminiService
+    implementation(libs.generativeai)
+    implementation(libs.markwon.core)
+
+    // Thư viện decode jwt Token
+    implementation(libs.jwtdecode)
+    implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.6.1") // Check for the latest version
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
 }

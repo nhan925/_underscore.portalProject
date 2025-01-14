@@ -1,0 +1,347 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.login_portal.ui.admin_manage_student.AdminManageStudentViewModel" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.example.login_portal.ui.admin_manage_student.EditStudentInfoActivity">
+
+        <!-- Full Name -->
+        <ImageView
+            android:id="@+id/info_general_frag_iv_user_avatar"
+            android:layout_width="@dimen/info_student_frag_icon_size"
+            android:layout_height="@dimen/info_student_frag_icon_size"
+            android:layout_marginTop="@dimen/info_student_frag_icon_margin_top"
+            android:layout_marginStart="30dp"
+            android:contentDescription="User Avatar"
+            android:src="@drawable/ic_user"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/info_general_frag_tv_full_name_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/infor_student_frag_full_name"
+            android:layout_marginStart="@dimen/info_student_frag_text_margin_start"
+            android:textColor="@color/grey"
+            android:textSize="@dimen/info_student_frag_label_text_size"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/info_general_frag_iv_user_avatar"
+            app:layout_constraintTop_toTopOf="@+id/info_general_frag_iv_user_avatar" />
+
+        <ViewSwitcher
+            android:id="@+id/info_general_frag_viewSwitcherFullName"
+            android:layout_width="@dimen/info_student_frag_viewswitcher_width"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/info_student_frag_text_margin_start"
+            app:layout_constraintStart_toEndOf="@+id/info_general_frag_iv_user_avatar"
+            app:layout_constraintTop_toBottomOf="@+id/info_general_frag_tv_full_name_label">
+
+            <TextView
+                android:id="@+id/info_general_frag_tv_full_name"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center|start"
+                android:text="@={viewModel.editFullName}"
+                android:textSize="@dimen/info_student_frag_value_text_size"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/info_general_frag_et_full_name"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:maxLines="1"
+                android:gravity="bottom|start"
+                android:text="@={viewModel.editFullName}"
+                android:background="@android:color/transparent"
+                android:textSize="@dimen/info_student_frag_value_text_size" />
+        </ViewSwitcher>
+
+        <!-- Student ID -->
+        <ImageView
+            android:id="@+id/info_general_frag_iv_id"
+            android:layout_width="@dimen/info_student_frag_icon_size"
+            android:layout_height="@dimen/info_student_frag_icon_size"
+            android:layout_marginTop="@dimen/info_student_frag_icon_margin_top"
+            android:contentDescription="Student ID"
+            android:src="@drawable/ic_id_user"
+            app:layout_constraintStart_toStartOf="@+id/info_general_frag_iv_user_avatar"
+            app:layout_constraintTop_toBottomOf="@+id/info_general_frag_iv_user_avatar" />
+
+        <TextView
+            android:id="@+id/info_general_frag_tv_student_id_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/infor_student_frag_id_student"
+            android:layout_marginStart="@dimen/info_student_frag_text_margin_start"
+            android:textColor="@color/grey"
+            android:textSize="@dimen/info_student_frag_label_text_size"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/info_general_frag_iv_id"
+            app:layout_constraintTop_toTopOf="@+id/info_general_frag_iv_id" />
+
+
+
+        <TextView
+            android:id="@+id/info_general_frag_tv_student_id"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/info_student_frag_text_margin_start"
+            android:layout_marginEnd="16dp"
+            android:gravity="start|center_vertical"
+            android:text="@{viewModel.selectedStudent.studentId}"
+            android:textSize="@dimen/info_student_frag_value_text_size"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/info_general_frag_iv_id"
+            app:layout_constraintTop_toBottomOf="@+id/info_general_frag_tv_student_id_label" />
+
+        <!-- Repeat ViewSwitcher pattern for Major -->
+        <ImageView
+            android:id="@+id/info_general_frag_iv_major"
+            android:layout_width="@dimen/info_student_frag_icon_size"
+            android:layout_height="@dimen/info_student_frag_icon_size"
+            android:layout_marginTop="@dimen/info_student_frag_icon_margin_top"
+            android:contentDescription="Major"
+            android:src="@drawable/ic_major"
+            app:layout_constraintStart_toStartOf="@+id/info_general_frag_iv_id"
+            app:layout_constraintTop_toBottomOf="@+id/info_general_frag_iv_id" />
+
+        <TextView
+            android:id="@+id/info_general_frag_tv_major_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/infor_student_frag_major"
+            android:layout_marginStart="@dimen/info_student_frag_text_margin_start"
+            android:textColor="@color/grey"
+            android:textSize="@dimen/info_student_frag_label_text_size"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/info_general_frag_iv_major"
+            app:layout_constraintTop_toTopOf="@+id/info_general_frag_iv_major" />
+
+        <TextView
+            android:id="@+id/info_general_frag_tv_major"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/info_student_frag_text_margin_start"
+            android:layout_marginEnd="16dp"
+            android:gravity="start|center_vertical"
+            android:text="@{viewModel.getMajorName(viewModel.selectedStudent.majorId)}"
+            android:textSize="@dimen/info_student_frag_value_text_size"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/info_general_frag_iv_major"
+            app:layout_constraintTop_toBottomOf="@+id/info_general_frag_tv_major_label" />
+
+
+        <!-- Repeat this pattern for Year of Admission, Academic Program, Gender -->
+        <!-- Add corresponding ImageView, TextView, and ViewSwitcher components -->
+        <!-- Use IDs like `info_general_frag_iv_year`, `info_general_frag_tv_year_label`, etc. -->
+
+        <!-- Control Buttons -->
+        <ImageButton
+            android:id="@+id/info_general_frag_switchToEditMode"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:backgroundTint="@android:color/transparent"
+            android:scaleType="fitCenter"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_edit_mode" />
+
+        <!-- Year of Admission -->
+
+        <ImageButton
+            android:id="@+id/info_general_frag_acceptChanges"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="48dp"
+            android:backgroundTint="@android:color/transparent"
+            android:scaleType="fitCenter"
+            android:visibility="@{viewModel.isEditing ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@drawable/ic_checkmark" />
+
+        <ImageButton
+            android:id="@+id/info_general_frag_cancelChanges"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="28dp"
+            android:layout_marginBottom="48dp"
+            android:backgroundTint="@android:color/transparent"
+            android:scaleType="fitCenter"
+            android:visibility="@{viewModel.isEditing ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/info_general_frag_acceptChanges"
+            app:srcCompat="@drawable/ic_cancelchange_info_student" />
+
+        <ImageView
+            android:id="@+id/info_general_frag_iv_year_of_admission"
+            android:layout_width="@dimen/info_student_frag_icon_size"
+            android:layout_height="@dimen/info_student_frag_icon_size"
+            android:layout_marginTop="@dimen/info_student_frag_icon_margin_top"
+            android:contentDescription="Year of Admission"
+            android:src="@drawable/ic_year_of_admission"
+            app:layout_constraintStart_toStartOf="@+id/info_general_frag_iv_major"
+            app:layout_constraintTop_toBottomOf="@+id/info_general_frag_iv_major" />
+
+        <TextView
+            android:id="@+id/info_general_frag_tv_year_of_admission_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/infor_student_frag_year_of_admission"
+            android:layout_marginStart="@dimen/info_student_frag_text_margin_start"
+            android:textColor="@color/grey"
+            android:textSize="@dimen/info_student_frag_label_text_size"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/info_general_frag_iv_year_of_admission"
+            app:layout_constraintTop_toTopOf="@+id/info_general_frag_iv_year_of_admission" />
+
+        <ViewSwitcher
+            android:id="@+id/info_general_frag_viewSwitcherYearOfAdmission"
+            android:layout_width="@dimen/info_student_frag_viewswitcher_width"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/info_student_frag_text_margin_start"
+            app:layout_constraintStart_toEndOf="@+id/info_general_frag_iv_year_of_admission"
+            app:layout_constraintTop_toBottomOf="@+id/info_general_frag_tv_year_of_admission_label">
+
+            <TextView
+                android:id="@+id/info_general_frag_tv_year_of_admission"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center|start"
+                android:text="@={viewModel.editYearOfAdmissionText}"
+                android:textSize="@dimen/info_student_frag_value_text_size"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/info_general_frag_et_year_of_admission"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:maxLines="1"
+                android:gravity="bottom|start"
+                android:inputType="number"
+                android:text="@={viewModel.editYearOfAdmissionText}"
+                android:background="@android:color/transparent"
+                android:textSize="@dimen/info_student_frag_value_text_size" />
+        </ViewSwitcher>
+
+        <!-- Academic Program -->
+        <ImageView
+            android:id="@+id/info_general_frag_iv_academic_program"
+            android:layout_width="@dimen/info_student_frag_icon_size"
+            android:layout_height="@dimen/info_student_frag_icon_size"
+            android:layout_marginTop="@dimen/info_student_frag_icon_margin_top"
+            android:contentDescription="Academic Program"
+            android:src="@drawable/ic_academic_program"
+            app:layout_constraintStart_toStartOf="@+id/info_general_frag_iv_year_of_admission"
+            app:layout_constraintTop_toBottomOf="@+id/info_general_frag_iv_year_of_admission" />
+
+        <TextView
+            android:id="@+id/info_general_frag_tv_academic_program_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/infor_student_frag_academic_program"
+            android:layout_marginStart="@dimen/info_student_frag_text_margin_start"
+            android:textColor="@color/grey"
+            android:textSize="@dimen/info_student_frag_label_text_size"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/info_general_frag_iv_academic_program"
+            app:layout_constraintTop_toTopOf="@+id/info_general_frag_iv_academic_program" />
+
+        <ViewSwitcher
+            android:id="@+id/info_general_frag_viewSwitcherAcademicProgram"
+            android:layout_width="@dimen/info_student_frag_viewswitcher_width"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/info_student_frag_text_margin_start"
+            app:layout_constraintStart_toEndOf="@+id/info_general_frag_iv_academic_program"
+            app:layout_constraintTop_toBottomOf="@+id/info_general_frag_tv_academic_program_label">
+
+            <TextView
+                android:id="@+id/info_general_frag_tv_academic_program"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center|start"
+                android:text="@={viewModel.editAcademicProgram}"
+                android:textSize="@dimen/info_student_frag_value_text_size"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/info_general_frag_et_academic_program"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:maxLines="1"
+                android:gravity="bottom|start"
+                android:text="@={viewModel.editAcademicProgram}"
+                android:background="@android:color/transparent"
+                android:textSize="@dimen/info_student_frag_value_text_size" />
+        </ViewSwitcher>
+
+        <!-- Gender -->
+        <ImageView
+            android:id="@+id/info_general_frag_iv_gender"
+            android:layout_width="@dimen/info_student_frag_icon_size"
+            android:layout_height="@dimen/info_student_frag_icon_size"
+            android:layout_marginTop="@dimen/info_student_frag_icon_margin_top"
+            android:contentDescription="Gender"
+            android:src="@drawable/ic_gender"
+            app:layout_constraintStart_toStartOf="@+id/info_general_frag_iv_academic_program"
+            app:layout_constraintTop_toBottomOf="@+id/info_general_frag_iv_academic_program" />
+
+        <TextView
+            android:id="@+id/info_general_frag_tv_gender_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/infor_student_frag_gender"
+            android:layout_marginStart="@dimen/info_student_frag_text_margin_start"
+            android:textColor="@color/grey"
+            android:textSize="@dimen/info_student_frag_label_text_size"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/info_general_frag_iv_gender"
+            app:layout_constraintTop_toTopOf="@+id/info_general_frag_iv_gender" />
+
+        <ViewSwitcher
+            android:id="@+id/info_general_frag_viewSwitcherGender"
+            android:layout_width="@dimen/info_student_frag_viewswitcher_width"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/info_student_frag_text_margin_start"
+            app:layout_constraintStart_toEndOf="@+id/info_general_frag_iv_gender"
+            app:layout_constraintTop_toBottomOf="@+id/info_general_frag_tv_gender_label">
+
+            <TextView
+                android:id="@+id/info_general_frag_tv_gender"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center|start"
+                android:text="@={viewModel.editGender}"
+                android:textSize="@dimen/info_student_frag_value_text_size"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/info_general_frag_et_gender"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:maxLines="1"
+                android:gravity="bottom|start"
+                android:text="@={viewModel.editGender}"
+                android:background="@android:color/transparent"
+                android:textSize="@dimen/info_student_frag_value_text_size" />
+        </ViewSwitcher>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

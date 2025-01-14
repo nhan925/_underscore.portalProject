@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_Admin_Dashboard"
+            android:icon="@drawable/ic_dashboard"
+            android:title="@string/menu_dashboard_admin" />
+
+        <item
+            android:id="@+id/nav_Admin_Notification"
+            android:icon="@drawable/ic_noti"
+            android:title="@string/menu_noti_admin" />
+
+        <item
+            android:id="@+id/nav_Admin_Manage_Enrollment_Period"
+            android:icon="@drawable/ic_schedule"
+            android:title="@string/menu_manage_enrollment_period" />
+
+        <item
+            android:id="@+id/nav_Admin_Manage_Class"
+            android:icon="@drawable/ic_add_library"
+            android:title="@string/menu_manage_class" />
+
+        <item
+            android:id="@+id/nav_Admin_Manage_Course"
+            android:icon="@drawable/ic_add_library"
+            android:title="@string/menu_manage_course" />
+
+        <item
+            android:id="@+id/nav_Admin_Manage_Semester"
+            android:icon="@drawable/ic_manage_semester"
+            android:title="@string/menu_manage_semester" />
+
+        <item
+            android:id="@+id/nav_Admin_Manage_Student"
+            android:icon="@drawable/ic_manage_semester"
+            android:title="@string/menu_manage_student" />
+
+        <item
+            android:id="@+id/nav_Admin_Review_Feedback"
+            android:icon="@drawable/ic_feedback_24"
+            android:title="@string/menu_reviewfeedback" />
+
+        <item
+            android:id="@+id/nav_Setting"
+            android:icon="@drawable/ic_setting"
+            android:title="@string/menu_setting" />
+
+    </group>
+</menu>

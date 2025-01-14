@@ -7,6 +7,7 @@ import com.github.kittinunf.fuel.Fuel
 import com.github.kittinunf.fuel.core.extensions.jsonBody
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import com.auth0.android.jwt.JWT
 
 object ApiServiceHelper {
     private val dotenv = EnvLoader.loadEnv()
@@ -220,7 +221,15 @@ object ApiServiceHelper {
         }
     }
 
-
+    fun getRoleFromJwtToken(): String? {
+        return try {
+            val jwt = jwtToken?.let { JWT(it) }
+            jwt?.getClaim("role")?.asString()
+        } catch (e: Exception) {
+            e.printStackTrace()
+            null
+        }
+    }
 
     // Example GET request with Authorization
     fun get(endpoint: String, callback: (String?) -> Unit) {
@@ -259,7 +268,6 @@ object ApiServiceHelper {
                 .jsonBody(jsonData)
                 .responseString { _, response, result ->
                     if (response.statusCode == 200) {
-                        // Switch to the main thread for UI update
                         Handler(Looper.getMainLooper()).post {
                             val resultString = result.get().trim('"')
                             if (resultString == "null")
@@ -268,7 +276,6 @@ object ApiServiceHelper {
                                 callback(resultString)
                         }
                     } else {
-                        // Handle error response
                         Handler(Looper.getMainLooper()).post {
                             callback(null)
                         }

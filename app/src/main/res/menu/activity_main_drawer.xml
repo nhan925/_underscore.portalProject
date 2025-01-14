@@ -56,9 +56,9 @@
             android:title="@string/menu_request" />
 
         <item
-            android:id="@+id/nav_Chatbox"
+            android:id="@+id/nav_Chatbot"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/menu_chatbox" />
+            android:title="@string/menu_chatbot" />
 
         <item
             android:id="@+id/nav_Feedback_Course"
