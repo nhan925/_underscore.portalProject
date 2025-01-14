@@ -3,7 +3,58 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation2"
-    app:startDestination="@+id/nav_Admin_Notification">
+    app:startDestination="@+id/nav_Admin_Dashboard">
+
+    <fragment
+        android:id="@+id/nav_Admin_Dashboard"
+        android:name="com.example.login_portal.ui.admin_dashboard.AdminDashboardFragment"
+        android:label="@string/menu_dashboard_admin"
+        tools:layout="@layout/fragment_admin_dashboard">
+
+        <action
+            android:id="@+id/action_nav_AdminDashboard_to_nav_AdminNoti"
+            app:destination="@id/nav_Admin_Notification"
+            app:popUpTo="@id/nav_Admin_Dashboard"
+            app:popUpToInclusive="true"/>
+
+        <action
+            android:id="@+id/action_nav_AdminDashboard_to_nav_AdminManageEnrollmentPeriod"
+            app:destination="@id/nav_Admin_Manage_Enrollment_Period"
+            app:popUpTo="@id/nav_Admin_Dashboard"
+            app:popUpToInclusive="true"/>
+
+        <action
+            android:id="@+id/action_nav_AdminDashboard_to_nav_AdminManageClass"
+            app:destination="@id/nav_Admin_Manage_Class"
+            app:popUpTo="@id/nav_Admin_Dashboard"
+            app:popUpToInclusive="true"/>
+
+        <action
+            android:id="@+id/action_nav_AdminDashboard_to_nav_AdminManageCourse"
+            app:destination="@id/nav_Admin_Manage_Course"
+            app:popUpTo="@id/nav_Admin_Dashboard"
+            app:popUpToInclusive="true"/>
+
+        <action
+            android:id="@+id/action_nav_AdminDashboard_to_nav_AdminManageSemester"
+            app:destination="@id/nav_Admin_Manage_Semester"
+            app:popUpTo="@id/nav_Admin_Dashboard"
+            app:popUpToInclusive="true"/>
+
+        <action
+            android:id="@+id/action_nav_AdminDashboard_to_nav_AdminManageStudent"
+            app:destination="@id/nav_Admin_Manage_Student"
+            app:popUpTo="@id/nav_Admin_Dashboard"
+            app:popUpToInclusive="true"/>
+
+        <action
+            android:id="@+id/action_nav_AdminDashboard_to_nav_AdminReviewFeedback"
+            app:destination="@id/nav_Admin_Review_Feedback"
+            app:popUpTo="@id/nav_Admin_Dashboard"
+            app:popUpToInclusive="true"/>
+
+
+    </fragment>
 
     <fragment
         android:id="@+id/nav_Admin_Notification"
@@ -34,6 +85,12 @@
         android:name="com.example.login_portal.ui.admin_manage_semester.AdminManageSemesterFragment"
         android:label="@string/menu_manage_semester"
         tools:layout="@layout/fragment_admin_manage_semester" />
+
+    <fragment
+        android:id="@+id/nav_Admin_Manage_Student"
+        android:name="com.example.login_portal.ui.admin_manage_student.AdminManageStudentFragment"
+        android:label="@string/menu_manage_student"
+        tools:layout="@layout/fragment_admin_manage_student" />
 
     <fragment
         android:id="@+id/nav_Admin_Review_Feedback"
