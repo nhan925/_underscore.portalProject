@@ -114,4 +114,6 @@ dependencies {
 
     // Thư viện decode jwt Token
     implementation(libs.jwtdecode)
+    implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.6.1") // Check for the latest version
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
 }

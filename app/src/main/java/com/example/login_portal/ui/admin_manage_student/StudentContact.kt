@@ -12,7 +12,6 @@ class StudentContact : Fragment() {
 
     private var _binding: FragmentAdminUpdateContactInfoBinding? = null
     private val binding get() = _binding!!
-
     private val viewModel: AdminManageStudentViewModel by activityViewModels()
 
     override fun onCreateView(
@@ -24,21 +23,38 @@ class StudentContact : Fragment() {
         binding.lifecycleOwner = viewLifecycleOwner
         binding.viewModel = viewModel
 
-        // Observe and update UI
-        viewModel.selectedStudent.observe(viewLifecycleOwner) { student ->
-            binding.infoContactFragTvPersonalEmail.text = student?.personalEmail
-            binding.infoContactFragTvPhoneLabel.text = student?.phoneNumber
-            binding.infoContactFragTvAddress.text = student?.address
-        }
-
         setupViewSwitchers()
         return binding.root
     }
 
     private fun setupViewSwitchers() {
-        binding.infoContactFragSwitchToEditMode.setOnClickListener { viewModel.startEditing() }
-        binding.infoContactFragAcceptChanges.setOnClickListener { viewModel.acceptChanges() }
-        binding.infoContactFragCancelChanges.setOnClickListener { viewModel.cancelEditing() }
+        binding.infoContactFragSwitchToEditMode.setOnClickListener {
+            val isEditing = viewModel.isEditing.value ?: false
+            toggleEditMode(!isEditing) // Toggle edit mode
+        }
+
+        binding.infoContactFragAcceptChanges.setOnClickListener {
+            viewModel.acceptChanges() // Save changes to backend
+            toggleEditMode(false)     // Exit edit mode
+        }
+
+        binding.infoContactFragCancelChanges.setOnClickListener {
+            viewModel.stopEditing()   // Reset changes
+            toggleEditMode(false)     // Exit edit mode
+        }
+    }
+
+    private fun toggleEditMode(isEditing: Boolean) {
+        binding.infoContactFragViewSwitcherEmail.showNext()
+        binding.infoContactFragViewSwitcherPhone.showNext()
+        binding.infoContactFragViewSwitcherAddress.showNext()
+
+        // Synchronize ViewModel editing state
+        if (isEditing) {
+            viewModel.startEditing()
+        } else {
+            viewModel.stopEditing()
+        }
     }
 
     override fun onDestroyView() {

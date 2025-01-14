@@ -3,6 +3,7 @@ package com.example.login_portal.ui.admin_manage_student
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import android.util.Log
 
 class AdminManageStudentViewModel : ViewModel() {
 
@@ -10,40 +11,57 @@ class AdminManageStudentViewModel : ViewModel() {
     val studentList: LiveData<List<StudentInfo>> get() = _studentList
 
     private val _selectedStudent = MutableLiveData<StudentInfo?>()
-    val selectedStudent: MutableLiveData<StudentInfo?> get() = _selectedStudent
+    val selectedStudent: LiveData<StudentInfo?> get() = _selectedStudent
 
     private val _isEditing = MutableLiveData<Boolean>()
     val isEditing: LiveData<Boolean> get() = _isEditing
 
-    private val _editPersonalEmail = MutableLiveData<String?>() // Bind email editing
-    val editPersonalEmail: MutableLiveData<String?> get() = _editPersonalEmail
-
-    private val _editPhoneNumber = MutableLiveData<String?>() // Bind phone editing
-    val editPhoneNumber: MutableLiveData<String?> get() = _editPhoneNumber
-
-    private val _editAddress = MutableLiveData<String?>() // Bind address editing
-    val editAddress: MutableLiveData<String?> get() = _editAddress
-
-    private val _showDatePickerEvent = MutableLiveData<Boolean>() // Trigger date picker
+    private val _showDatePickerEvent = MutableLiveData<Boolean>()
     val showDatePickerEvent: LiveData<Boolean> get() = _showDatePickerEvent
 
-    private var currentEditingStudent: StudentInfo? = null
+    val editFullName = MutableLiveData<String?>()
+    val editStudentId = MutableLiveData<String?>()
+    val editMajor = MutableLiveData<String?>()
+    val editYearOfAdmissionText = MutableLiveData<String>()  // Changed to String
+    val editAcademicProgram = MutableLiveData<String?>()
+    val editGender = MutableLiveData<String?>()
+
+    val editDateOfBirth = MutableLiveData<String?>()
+    val editNationality = MutableLiveData<String?>()
+    val editEthnicity = MutableLiveData<String?>()
+    val editIdentityCardNumber = MutableLiveData<String?>()
+    val editSchoolEmail = MutableLiveData<String?>()
+    val editPersonalEmail = MutableLiveData<String?>()
+    val editPhoneNumber = MutableLiveData<String?>()
+    val editAddress = MutableLiveData<String?>()
+
     private val allStudents = mutableListOf<StudentInfo>()
+    private var currentEditingStudent: StudentInfo? = null
 
     init {
         _isEditing.value = false
     }
 
-    // Fetch the list of students from the DAO
+    private fun getYearOfAdmissionAsInt(): Int? {
+        return editYearOfAdmissionText.value?.toIntOrNull()
+    }
+
     fun fetchStudentList() {
+        Log.d("AdminManageStudentViewModel", "Fetching student list...")
+
         UpdateStudentInfoDAO.fetchAListOfStudents { students ->
+            if (students.isNullOrEmpty()) {
+                Log.e("AdminManageStudentViewModel", "Failed to fetch students or list is empty")
+            } else {
+                Log.d("AdminManageStudentViewModel", "Fetched ${students.size} students successfully")
+            }
+
             allStudents.clear()
             allStudents.addAll(students)
             _studentList.postValue(allStudents)
         }
     }
 
-    // Search for students by query
     fun searchStudent(query: String?) {
         if (query.isNullOrBlank()) {
             _studentList.postValue(allStudents)
@@ -55,104 +73,149 @@ class AdminManageStudentViewModel : ViewModel() {
         }
     }
 
-    // Load specific student info for editing
     fun loadStudentInfoForEditing(studentId: String) {
-        val student = allStudents.find { it.studentId == studentId } ?: StudentInfo(
-            studentId = "Unknown",
-            userId = "Unknown",
-            identityCardNumber = "",
-            fullName = "Unknown Student",
-            address = "",
-            gender = "",
-            dateOfBirth = "",
-            phoneNumber = "",
-            academicProgram = "",
-            personalEmail = "",
-            schoolEmail = "",
-            yearOfAdmission = 0,
-            nationality = "",
-            ethnicity = "",
-            majorId = "",
-            newStudentId = ""
-        )
+        Log.d("AdminManageStudentViewModel", "Loading student info for ID: $studentId")
+
+        val student = allStudents.find { it.studentId == studentId } ?: createDefaultStudent()
         currentEditingStudent = student.copy()
         _selectedStudent.postValue(student)
-        // Set initial values for editable fields
-        _editPersonalEmail.value = student.personalEmail
-        _editPhoneNumber.value = student.phoneNumber
-        _editAddress.value = student.address
+
+        initializeEditingFields(student)
     }
 
-    // Enable editing mode
+    private fun createDefaultStudent() = StudentInfo(
+        studentId = "Unknown",
+        userId = "Unknown",
+        identityCardNumber = "",
+        fullName = "Unknown Student",
+        address = "",
+        gender = "",
+        dateOfBirth = "",
+        phoneNumber = "",
+        academicProgram = "",
+        personalEmail = "",
+        schoolEmail = "",
+        yearOfAdmission = 0,
+        nationality = "",
+        ethnicity = "",
+        majorId = "",
+        newStudentId = "",
+        avatarUrl = ""
+    )
+
+    private fun initializeEditingFields(student: StudentInfo) {
+        editFullName.value = student.fullName
+        editStudentId.value = student.studentId
+        editMajor.value = student.majorId
+        editYearOfAdmissionText.value = student.yearOfAdmission?.toString() ?: ""  // Changed
+        editAcademicProgram.value = student.academicProgram
+        editGender.value = student.gender
+        editDateOfBirth.value = student.dateOfBirth
+        editNationality.value = student.nationality
+        editEthnicity.value = student.ethnicity
+        editIdentityCardNumber.value = student.identityCardNumber
+        editSchoolEmail.value = student.schoolEmail
+        editPersonalEmail.value = student.personalEmail
+        editPhoneNumber.value = student.phoneNumber
+        editAddress.value = student.address
+    }
+
     fun startEditing() {
         _isEditing.value = true
     }
 
-    // Cancel editing and revert changes
-    fun cancelEditing() {
+    fun stopEditing() {
         _isEditing.value = false
-        _selectedStudent.value = currentEditingStudent // Revert to original
-        // Revert editable fields
-        _editPersonalEmail.value = currentEditingStudent?.personalEmail
-        _editPhoneNumber.value = currentEditingStudent?.phoneNumber
-        _editAddress.value = currentEditingStudent?.address
+        _selectedStudent.value = currentEditingStudent
+        initializeEditingFields(currentEditingStudent ?: return)
     }
 
-    // Accept changes and update the student info
     fun acceptChanges() {
-        _isEditing.value = false
-        currentEditingStudent?.let { updatedStudent ->
-            val newStudent = updatedStudent.copy(
-                personalEmail = _editPersonalEmail.value,
-                phoneNumber = _editPhoneNumber.value,
-                address = _editAddress.value
+        currentEditingStudent?.let { originalStudent ->
+            val updatedStudent = originalStudent.copy(
+                fullName = editFullName.value.orEmpty(),
+                studentId = editStudentId.value.orEmpty(),
+                majorId = editMajor.value.orEmpty(),
+                yearOfAdmission = getYearOfAdmissionAsInt() ?: originalStudent.yearOfAdmission,  // Changed
+                academicProgram = editAcademicProgram.value.orEmpty(),
+                gender = editGender.value.orEmpty(),
+                dateOfBirth = editDateOfBirth.value.orEmpty(),
+                nationality = editNationality.value.orEmpty(),
+                ethnicity = editEthnicity.value.orEmpty(),
+                identityCardNumber = editIdentityCardNumber.value.orEmpty(),
+                schoolEmail = editSchoolEmail.value.orEmpty(),
+                personalEmail = editPersonalEmail.value.orEmpty(),
+                phoneNumber = editPhoneNumber.value.orEmpty(),
+                address = editAddress.value.orEmpty()
             )
-            _selectedStudent.value = newStudent
-            updateStudentInfo(newStudent) { success ->
-                // Optionally handle success or failure
-            }
-        }
-    }
 
-    // Show date picker (for date of birth)
-    fun showDatePicker() {
-        _showDatePickerEvent.value = true
-    }
+            Log.d("acceptChanges", "Updated student object: $updatedStudent")
 
-    // Reset the date picker event after it's been handled
-    fun onDatePickerShown() {
-        _showDatePickerEvent.value = false
-    }
-
-    // Update student information in the backend and local list
-    private fun updateStudentInfo(updatedStudent: StudentInfo, callback: (Boolean) -> Unit) {
-        UpdateStudentInfoDAO.updateStudentInfo(
-            studentId = updatedStudent.studentId,
-            updatedFields = mapOf(
+            val updatedFields = mapOf(
                 "student_id_input" to updatedStudent.studentId,
                 "full_name_input" to updatedStudent.fullName,
                 "academic_program_input" to updatedStudent.academicProgram,
-                "year_of_admission_input" to updatedStudent.yearOfAdmission,
+                "year_of_admission_input" to getYearOfAdmissionAsInt(),  // Changed
                 "gender_input" to updatedStudent.gender,
                 "date_of_birth_input" to updatedStudent.dateOfBirth,
                 "nationality_input" to updatedStudent.nationality,
                 "ethnicity_input" to updatedStudent.ethnicity,
                 "identity_card_number_input" to updatedStudent.identityCardNumber,
+                "school_email_input" to updatedStudent.schoolEmail,
                 "personal_email_input" to updatedStudent.personalEmail,
                 "phone_number_input" to updatedStudent.phoneNumber,
                 "address_input" to updatedStudent.address,
-                "major_id_input" to updatedStudent.majorId,
-                "new_student_id_input" to updatedStudent.newStudentId
+                "major_id_input" to updatedStudent.majorId
             )
-        ) { success ->
-            if (success) {
-                val index = allStudents.indexOfFirst { it.studentId == updatedStudent.studentId }
-                if (index != -1) {
-                    allStudents[index] = updatedStudent
-                    _studentList.postValue(allStudents)
+
+            updateStudentInfo(updatedStudent) { success ->
+                if (success) {
+                    _selectedStudent.value = updatedStudent
+                    val index = allStudents.indexOfFirst { it.studentId == originalStudent.studentId }
+                    if (index != -1) {
+                        allStudents[index] = updatedStudent
+                        _studentList.postValue(allStudents)
+                    }
+                } else {
+                    Log.e("acceptChanges", "Failed to update student info via API")
                 }
             }
+        }
+
+        _isEditing.value = false
+    }
+
+    private fun updateStudentInfo(updatedStudent: StudentInfo, callback: (Boolean) -> Unit) {
+        val updatedFields = mapOf(
+            "student_id_input" to updatedStudent.studentId,
+            "full_name_input" to updatedStudent.fullName,
+            "academic_program_input" to updatedStudent.academicProgram,
+            "year_of_admission_input" to getYearOfAdmissionAsInt(),  // Changed
+            "gender_input" to updatedStudent.gender,
+            "date_of_birth_input" to updatedStudent.dateOfBirth,
+            "nationality_input" to updatedStudent.nationality,
+            "ethnicity_input" to updatedStudent.ethnicity,
+            "identity_card_number_input" to updatedStudent.identityCardNumber,
+            "school_email_input" to updatedStudent.schoolEmail,
+            "personal_email_input" to updatedStudent.personalEmail,
+            "phone_number_input" to updatedStudent.phoneNumber,
+            "address_input" to updatedStudent.address,
+            "major_id_input" to updatedStudent.majorId
+        )
+
+        UpdateStudentInfoDAO.updateStudentInfo(
+            studentId = updatedStudent.studentId,
+            updatedFields = updatedFields
+        ) { success ->
             callback(success)
         }
+    }
+
+    fun showDatePicker() {
+        _showDatePickerEvent.value = true
+    }
+
+    fun onDatePickerShown() {
+        _showDatePickerEvent.value = false
     }
 }

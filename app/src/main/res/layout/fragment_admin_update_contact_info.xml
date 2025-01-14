@@ -37,16 +37,6 @@
             app:layout_constraintBottom_toTopOf="@+id/info_contact_frag_viewSwitcherEmail"
             app:layout_constraintStart_toStartOf="@+id/info_contact_frag_viewSwitcherEmail" />
 
-        <EditText
-            android:id="@+id/info_contact_frag_et_email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@{viewModel.selectedStudent.personalEmail}"
-            android:enabled="@{viewModel.isEditing}"
-            android:text="@{viewModel.editPersonalEmail}"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
         <ViewSwitcher
             android:id="@+id/info_contact_frag_viewSwitcherEmail"
             android:layout_width="@dimen/info_student_frag_viewswitcher_width"
@@ -68,12 +58,12 @@
                 android:id="@+id/info_contact_frag_et_personal_email"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:hint="@{viewModel.selectedStudent.personalEmail}"
-                android:enabled="@{viewModel.isEditing}"
+                android:maxLines="1"
+                android:maxLength="45"
+                android:inputType="textEmailAddress"
+                android:gravity="bottom|start"
                 android:text="@={viewModel.editPersonalEmail}"
                 android:textSize="@dimen/info_student_frag_value_text_size" />
-
-
         </ViewSwitcher>
 
         <ImageView
@@ -204,25 +194,28 @@
             android:id="@+id/info_contact_frag_cancelChanges"
             android:layout_width="48dp"
             android:layout_height="48dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="24dp"
             android:backgroundTint="@android:color/transparent"
+            android:contentDescription="button_cancel_change"
             android:scaleType="fitCenter"
             android:visibility="@{viewModel.isEditing ? View.VISIBLE : View.GONE}"
-            android:contentDescription="button_cancel_change"
-            app:srcCompat="@drawable/ic_cancelchange_info_student"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/info_contact_frag_viewSwitcherAddress"/>
+            app:layout_constraintEnd_toStartOf="@+id/info_contact_frag_acceptChanges"
+            app:layout_constraintTop_toBottomOf="@+id/info_contact_frag_viewSwitcherAddress"
+            app:srcCompat="@drawable/ic_cancelchange_info_student" />
 
         <ImageButton
             android:id="@+id/info_contact_frag_acceptChanges"
             android:layout_width="48dp"
             android:layout_height="48dp"
+            android:layout_marginTop="40dp"
             android:backgroundTint="@android:color/transparent"
+            android:contentDescription="button_accept_change"
             android:scaleType="fitCenter"
             android:visibility="@{viewModel.isEditing ? View.VISIBLE : View.GONE}"
-            android:contentDescription="button_accept_change"
-            app:srcCompat="@drawable/ic_checkmark"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/info_contact_frag_viewSwitcherAddress"
-            app:layout_constraintEnd_toStartOf="@+id/info_contact_frag_cancelChanges"/>
+            app:srcCompat="@drawable/ic_checkmark" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

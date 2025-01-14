@@ -18,5 +18,11 @@ data class StudentInfo(
     @SerializedName("nationality") val nationality: String?,
     @SerializedName("ethnicity") val ethnicity: String?,
     @SerializedName("major_id") val majorId: String?,
-    @SerializedName("new_student_id") val newStudentId: String?
-)
+    @SerializedName("new_student_id_input") val newStudentId: String?,
+    val avatarUrl: String?
+) {
+    override fun toString(): String {
+        return "StudentInfo(studentId='$studentId', fullName='$fullName', gender='$gender', " +
+                "dateOfBirth='$dateOfBirth', yearOfAdmission=$yearOfAdmission)"
+    }
+}

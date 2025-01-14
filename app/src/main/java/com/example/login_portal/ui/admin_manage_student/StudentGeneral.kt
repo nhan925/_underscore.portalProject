@@ -12,7 +12,6 @@ class StudentGeneral : Fragment() {
 
     private var _binding: FragmentAdminUpdateGeneralInfoBinding? = null
     private val binding get() = _binding!!
-
     private val viewModel: AdminManageStudentViewModel by activityViewModels()
 
     override fun onCreateView(
@@ -24,23 +23,40 @@ class StudentGeneral : Fragment() {
         binding.lifecycleOwner = viewLifecycleOwner
         binding.viewModel = viewModel
 
-        // Observe and update UI
-        viewModel.selectedStudent.observe(viewLifecycleOwner) { student ->
-            binding.infoGeneralFragTvFullNameLabel.text = student?.fullName
-            binding.infoGeneralFragTvStudentIdLabel.text = student?.studentId
-            binding.infoGeneralFragTvMajorLabel.text = student?.majorId
-            binding.infoGeneralFragTvAcademicProgramLabel.text = student?.academicProgram
-            binding.infoGeneralFragTvGenderLabel.text = student?.gender
-        }
-
         setupViewSwitchers()
         return binding.root
     }
 
     private fun setupViewSwitchers() {
-        binding.infoGeneralFragSwitchToEditMode.setOnClickListener { viewModel.startEditing() }
-        binding.infoGeneralFragAcceptChanges.setOnClickListener { viewModel.acceptChanges() }
-        binding.infoGeneralFragCancelChanges.setOnClickListener { viewModel.cancelEditing() }
+        binding.infoGeneralFragSwitchToEditMode.setOnClickListener {
+            val isEditing = viewModel.isEditing.value ?: false
+            toggleEditMode(!isEditing) // Toggle edit mode
+        }
+
+        binding.infoGeneralFragAcceptChanges.setOnClickListener {
+            viewModel.acceptChanges() // Save changes to backend
+            toggleEditMode(false)     // Exit edit mode
+        }
+
+        binding.infoGeneralFragCancelChanges.setOnClickListener {
+            viewModel.stopEditing()   // Reset changes
+            toggleEditMode(false)     // Exit edit mode
+        }
+    }
+
+    private fun toggleEditMode(isEditing: Boolean) {
+        binding.infoGeneralFragViewSwitcherFullName.showNext()
+        binding.infoGeneralFragViewSwitcherStudentId.showNext()
+        binding.infoGeneralFragViewSwitcherMajor.showNext()
+        binding.infoGeneralFragViewSwitcherAcademicProgram.showNext()
+        binding.infoGeneralFragViewSwitcherGender.showNext()
+        binding.infoGeneralFragViewSwitcherYearOfAdmission.showNext()
+
+        if (isEditing) {
+            viewModel.startEditing()
+        } else {
+            viewModel.stopEditing()
+        }
     }
 
     override fun onDestroyView() {

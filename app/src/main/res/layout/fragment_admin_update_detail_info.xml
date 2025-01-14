@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
@@ -15,11 +16,12 @@
         tools:context="com.example.login_portal.ui.admin_manage_student.EditStudentInfoActivity">
 
         <!-- Date of Birth -->
+
         <ImageView
             android:id="@+id/info_detail_frag_iv_dob"
             android:layout_width="@dimen/info_student_frag_icon_size"
             android:layout_height="@dimen/info_student_frag_icon_size"
-            android:layout_marginTop="@dimen/info_student_frag_icon_margin_top"
+            android:layout_marginTop="24dp"
             android:layout_marginStart="30dp"
             android:contentDescription="Date of Birth"
             android:src="@drawable/ic_calendar"
@@ -35,24 +37,38 @@
             android:textColor="@color/grey"
             android:textSize="@dimen/info_student_frag_label_text_size"
             android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@id/info_detail_frag_iv_dob"
-            app:layout_constraintTop_toTopOf="@id/info_detail_frag_iv_dob" />
+            app:layout_constraintStart_toEndOf="@+id/info_detail_frag_iv_dob"
+            app:layout_constraintTop_toTopOf="@+id/info_detail_frag_iv_dob" />
 
-        <EditText
-            android:id="@+id/info_detail_frag_et_dob"
-            android:layout_width="wrap_content"
+        <ViewSwitcher
+            android:id="@+id/info_detail_frag_viewSwitcherDob"
+            android:layout_width="@dimen/info_student_frag_viewswitcher_width"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:focusable="false"
-            android:hint="@{viewModel.selectedStudent.dateOfBirth}"
-            android:inputType="none"
-            android:textSize="@dimen/info_student_frag_value_text_size"
-            app:layout_constraintStart_toStartOf="@+id/info_detail_frag_tv_dob_label"
-            app:layout_constraintTop_toBottomOf="@+id/info_detail_frag_tv_dob_label"
+            android:layout_marginStart="@dimen/info_student_frag_text_margin_start"
             app:layout_constraintBottom_toBottomOf="@+id/info_detail_frag_iv_dob"
-            app:layout_constraintVertical_bias="1.0"
-            android:onClick="@{() -> viewModel.showDatePicker()}" />
+            app:layout_constraintStart_toEndOf="@+id/info_detail_frag_iv_dob">
+
+            <TextView
+                android:id="@+id/info_detail_frag_tv_dob"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center|start"
+                android:text="@={viewModel.editDateOfBirth}"
+                android:textSize="@dimen/info_student_frag_value_text_size"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/info_detail_frag_et_dob"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:focusable="true"
+                android:clickable="true"
+                android:gravity="center|start"
+                android:text="@={viewModel.editDateOfBirth}"
+                android:onClick="@{() -> viewModel.showDatePicker()}"
+                android:textSize="@dimen/info_student_frag_value_text_size"
+                android:background="@android:color/transparent" />
+        </ViewSwitcher>
 
         <!-- Nationality -->
         <ImageView
@@ -62,8 +78,8 @@
             android:layout_marginTop="@dimen/info_student_frag_icon_margin_top"
             android:contentDescription="Nationality"
             android:src="@drawable/ic_id_user"
-            app:layout_constraintStart_toStartOf="@id/info_detail_frag_iv_dob"
-            app:layout_constraintTop_toBottomOf="@id/info_detail_frag_iv_dob" />
+            app:layout_constraintStart_toStartOf="@+id/info_detail_frag_iv_dob"
+            app:layout_constraintTop_toBottomOf="@+id/info_detail_frag_iv_dob" />
 
         <TextView
             android:id="@+id/info_detail_frag_tv_nationality_label"
@@ -74,22 +90,36 @@
             android:textColor="@color/grey"
             android:textSize="@dimen/info_student_frag_label_text_size"
             android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@id/info_detail_frag_iv_nationality"
-            app:layout_constraintTop_toTopOf="@id/info_detail_frag_iv_nationality" />
+            app:layout_constraintStart_toEndOf="@+id/info_detail_frag_iv_nationality"
+            app:layout_constraintTop_toTopOf="@+id/info_detail_frag_iv_nationality" />
 
-        <EditText
-            android:id="@+id/info_detail_frag_et_nationality"
-            android:layout_width="match_parent"
+        <ViewSwitcher
+            android:id="@+id/info_detail_frag_viewSwitcherNationality"
+            android:layout_width="@dimen/info_student_frag_viewswitcher_width"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:hint="@{viewModel.selectedStudent.nationality}"
-            android:inputType="text"
-            android:textSize="@dimen/info_student_frag_value_text_size"
-            app:layout_constraintStart_toStartOf="@id/info_detail_frag_tv_nationality_label"
-            app:layout_constraintTop_toBottomOf="@id/info_detail_frag_tv_nationality_label"
-            app:layout_constraintBottom_toBottomOf="@id/info_detail_frag_iv_nationality"
-            app:layout_constraintVertical_bias="1.0" />
+            android:layout_marginStart="@dimen/info_student_frag_text_margin_start"
+            app:layout_constraintBottom_toBottomOf="@+id/info_detail_frag_iv_nationality"
+            app:layout_constraintStart_toEndOf="@+id/info_detail_frag_iv_nationality">
+
+            <TextView
+                android:id="@+id/info_detail_frag_tv_nationality"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center|start"
+                android:text="@{viewModel.editNationality}"
+                android:textSize="@dimen/info_student_frag_value_text_size"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/info_detail_frag_et_nationality"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="bottom|start"
+                android:inputType="text"
+                android:text="@={viewModel.editNationality}"
+                android:textSize="@dimen/info_student_frag_value_text_size"
+                android:background="@android:color/transparent" />
+        </ViewSwitcher>
 
         <!-- Ethnicity -->
         <ImageView
@@ -99,8 +129,8 @@
             android:layout_marginTop="@dimen/info_student_frag_icon_margin_top"
             android:contentDescription="Ethnicity"
             android:src="@drawable/ic_id_user"
-            app:layout_constraintStart_toStartOf="@id/info_detail_frag_iv_nationality"
-            app:layout_constraintTop_toBottomOf="@id/info_detail_frag_iv_nationality" />
+            app:layout_constraintStart_toStartOf="@+id/info_detail_frag_iv_nationality"
+            app:layout_constraintTop_toBottomOf="@+id/info_detail_frag_iv_nationality" />
 
         <TextView
             android:id="@+id/info_detail_frag_tv_ethnicity_label"
@@ -111,22 +141,36 @@
             android:textColor="@color/grey"
             android:textSize="@dimen/info_student_frag_label_text_size"
             android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@id/info_detail_frag_iv_ethnicity"
-            app:layout_constraintTop_toTopOf="@id/info_detail_frag_iv_ethnicity" />
+            app:layout_constraintStart_toEndOf="@+id/info_detail_frag_iv_ethnicity"
+            app:layout_constraintTop_toTopOf="@+id/info_detail_frag_iv_ethnicity" />
 
-        <EditText
-            android:id="@+id/info_detail_frag_et_ethnicity"
-            android:layout_width="match_parent"
+        <ViewSwitcher
+            android:id="@+id/info_detail_frag_viewSwitcherEthnicity"
+            android:layout_width="@dimen/info_student_frag_viewswitcher_width"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:hint="@{viewModel.selectedStudent.ethnicity}"
-            android:inputType="text"
-            android:textSize="@dimen/info_student_frag_value_text_size"
-            app:layout_constraintStart_toStartOf="@id/info_detail_frag_tv_ethnicity_label"
-            app:layout_constraintTop_toBottomOf="@id/info_detail_frag_tv_ethnicity_label"
-            app:layout_constraintBottom_toBottomOf="@id/info_detail_frag_iv_ethnicity"
-            app:layout_constraintVertical_bias="1.0" />
+            android:layout_marginStart="@dimen/info_student_frag_text_margin_start"
+            app:layout_constraintBottom_toBottomOf="@+id/info_detail_frag_iv_ethnicity"
+            app:layout_constraintStart_toEndOf="@+id/info_detail_frag_iv_ethnicity">
+
+            <TextView
+                android:id="@+id/info_detail_frag_tv_ethnicity"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center|start"
+                android:text="@={viewModel.editEthnicity}"
+                android:textSize="@dimen/info_student_frag_value_text_size"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/info_detail_frag_et_ethnicity"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="bottom|start"
+                android:inputType="text"
+                android:text="@={viewModel.editEthnicity}"
+                android:textSize="@dimen/info_student_frag_value_text_size"
+                android:background="@android:color/transparent" />
+        </ViewSwitcher>
 
         <!-- ID Card -->
         <ImageView
@@ -134,10 +178,10 @@
             android:layout_width="@dimen/info_student_frag_icon_size"
             android:layout_height="@dimen/info_student_frag_icon_size"
             android:layout_marginTop="@dimen/info_student_frag_icon_margin_top"
-            android:contentDescription="ID Card"
+            android:contentDescription="CCCD"
             android:src="@drawable/ic_id_user"
-            app:layout_constraintStart_toStartOf="@id/info_detail_frag_iv_ethnicity"
-            app:layout_constraintTop_toBottomOf="@id/info_detail_frag_iv_ethnicity" />
+            app:layout_constraintStart_toStartOf="@+id/info_detail_frag_iv_ethnicity"
+            app:layout_constraintTop_toBottomOf="@+id/info_detail_frag_iv_ethnicity" />
 
         <TextView
             android:id="@+id/info_detail_frag_tv_idCard_label"
@@ -148,22 +192,36 @@
             android:textColor="@color/grey"
             android:textSize="@dimen/info_student_frag_label_text_size"
             android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@id/info_detail_frag_iv_idCard"
-            app:layout_constraintTop_toTopOf="@id/info_detail_frag_iv_idCard" />
+            app:layout_constraintStart_toEndOf="@+id/info_detail_frag_iv_idCard"
+            app:layout_constraintTop_toTopOf="@+id/info_detail_frag_iv_idCard" />
 
-        <EditText
-            android:id="@+id/info_detail_frag_et_idCard"
-            android:layout_width="match_parent"
+        <ViewSwitcher
+            android:id="@+id/info_detail_frag_viewSwitcherIdCard"
+            android:layout_width="@dimen/info_student_frag_viewswitcher_width"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:hint="@{viewModel.selectedStudent.identityCardNumber}"
-            android:inputType="text"
-            android:textSize="@dimen/info_student_frag_value_text_size"
-            app:layout_constraintStart_toStartOf="@id/info_detail_frag_tv_idCard_label"
-            app:layout_constraintTop_toBottomOf="@id/info_detail_frag_tv_idCard_label"
-            app:layout_constraintBottom_toBottomOf="@id/info_detail_frag_iv_idCard"
-            app:layout_constraintVertical_bias="1.0" />
+            android:layout_marginStart="@dimen/info_student_frag_text_margin_start"
+            app:layout_constraintBottom_toBottomOf="@+id/info_detail_frag_iv_idCard"
+            app:layout_constraintStart_toEndOf="@+id/info_detail_frag_iv_idCard">
+
+            <TextView
+                android:id="@+id/info_detail_frag_tv_idCard"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center|start"
+                android:text="@={viewModel.editIdentityCardNumber}"
+                android:textSize="@dimen/info_student_frag_value_text_size"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/info_detail_frag_et_idCard"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="bottom|start"
+                android:inputType="text"
+                android:text="@={viewModel.editIdentityCardNumber}"
+                android:textSize="@dimen/info_student_frag_value_text_size"
+                android:background="@android:color/transparent" />
+        </ViewSwitcher>
 
         <!-- Email -->
         <ImageView
@@ -173,8 +231,8 @@
             android:layout_marginTop="@dimen/info_student_frag_icon_margin_top"
             android:contentDescription="Email"
             android:src="@drawable/ic_email"
-            app:layout_constraintStart_toStartOf="@id/info_detail_frag_iv_idCard"
-            app:layout_constraintTop_toBottomOf="@id/info_detail_frag_iv_idCard" />
+            app:layout_constraintStart_toStartOf="@+id/info_detail_frag_iv_idCard"
+            app:layout_constraintTop_toBottomOf="@+id/info_detail_frag_iv_idCard" />
 
         <TextView
             android:id="@+id/info_detail_frag_tv_email_label"
@@ -185,62 +243,78 @@
             android:textColor="@color/grey"
             android:textSize="@dimen/info_student_frag_label_text_size"
             android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@id/info_contact_frag_iv_user"
-            app:layout_constraintTop_toTopOf="@id/info_contact_frag_iv_user" />
+            app:layout_constraintStart_toEndOf="@+id/info_contact_frag_iv_user"
+            app:layout_constraintTop_toTopOf="@+id/info_contact_frag_iv_user" />
 
-        <EditText
-            android:id="@+id/info_contact_frag_et_email"
-            android:layout_width="match_parent"
+        <ViewSwitcher
+            android:id="@+id/info_detail_frag_viewSwitcherEmail"
+            android:layout_width="@dimen/info_student_frag_viewswitcher_width"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:hint="@{viewModel.selectedStudent.schoolEmail}"
-            android:inputType="textEmailAddress"
-            android:textSize="@dimen/info_student_frag_value_text_size"
-            app:layout_constraintStart_toStartOf="@id/info_detail_frag_tv_email_label"
-            app:layout_constraintTop_toBottomOf="@id/info_detail_frag_tv_email_label"
-            app:layout_constraintBottom_toBottomOf="@id/info_contact_frag_iv_user"
-            app:layout_constraintVertical_bias="1.0" />
+            android:layout_marginStart="@dimen/info_student_frag_text_margin_start"
+            app:layout_constraintBottom_toBottomOf="@+id/info_contact_frag_iv_user"
+            app:layout_constraintStart_toEndOf="@+id/info_contact_frag_iv_user">
+
+            <TextView
+                android:id="@+id/info_detail_frag_tv_email"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center|start"
+                android:text="@={viewModel.editSchoolEmail}"
+                android:textSize="@dimen/info_student_frag_value_text_size"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/info_detail_frag_et_email"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="bottom|start"
+                android:inputType="textEmailAddress"
+                android:text="@={viewModel.editSchoolEmail}"
+                android:textSize="@dimen/info_student_frag_value_text_size"
+                android:background="@android:color/transparent" />
+        </ViewSwitcher>
 
         <!-- Edit, Accept, and Cancel Buttons -->
         <ImageButton
-            android:id="@+id/info_contact_frag_switchToEditMode"
+            android:id="@+id/info_detail_frag_switchToEditMode"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_marginEnd="16dp"
             android:layout_marginTop="16dp"
             android:backgroundTint="@android:color/transparent"
             android:scaleType="fitCenter"
+            android:contentDescription="Edit mode"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_edit_mode" />
 
         <ImageButton
-            android:id="@+id/info_contact_frag_acceptChanges"
+            android:id="@+id/info_detail_frag_acceptChanges"
             android:layout_width="48dp"
             android:layout_height="48dp"
+            android:layout_marginTop="284dp"
             android:layout_marginEnd="4dp"
-            android:layout_marginBottom="304dp"
             android:backgroundTint="@android:color/transparent"
             android:contentDescription="Accept changes"
             android:scaleType="fitCenter"
             android:visibility="@{viewModel.isEditing ? View.VISIBLE : View.GONE}"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/info_detail_frag_viewSwitcherDob"
             app:srcCompat="@drawable/ic_checkmark" />
 
         <ImageButton
-            android:id="@+id/info_contact_frag_cancelChanges"
+            android:id="@+id/info_detail_frag_cancelChanges"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_marginStart="272dp"
-            android:layout_marginBottom="304dp"
+            android:layout_marginTop="284dp"
+            android:layout_marginEnd="16dp"
             android:backgroundTint="@android:color/transparent"
             android:contentDescription="Cancel changes"
             android:scaleType="fitCenter"
             android:visibility="@{viewModel.isEditing ? View.VISIBLE : View.GONE}"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/info_detail_frag_acceptChanges"
+            app:layout_constraintTop_toBottomOf="@+id/info_detail_frag_viewSwitcherDob"
             app:srcCompat="@drawable/ic_cancelchange_info_student" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

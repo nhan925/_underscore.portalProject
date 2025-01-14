@@ -3,11 +3,11 @@ package com.example.login_portal.ui.admin_manage_student
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
-import androidx.viewpager2.widget.ViewPager2
 import com.example.login_portal.R
 import com.example.login_portal.databinding.ActivityAdminUpdateStudentInfoBinding
 import com.google.android.material.tabs.TabLayoutMediator
 import com.example.login_portal.BaseActivity
+import com.bumptech.glide.Glide
 
 class EditStudentInfoActivity : BaseActivity() {
 
@@ -19,29 +19,46 @@ class EditStudentInfoActivity : BaseActivity() {
         binding = ActivityAdminUpdateStudentInfoBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Get the student ID from the intent
         val studentId = intent.getStringExtra("STUDENT_ID")
-
-        // Initialize the ViewModel
         viewModel = ViewModelProvider(this).get(AdminManageStudentViewModel::class.java)
-        if (studentId != null) {
-            viewModel.loadStudentInfoForEditing(studentId)
+
+        // Fetch and observe student list
+        viewModel.fetchStudentList()
+        viewModel.studentList.observe(this) { studentList ->
+            if (!studentList.isNullOrEmpty() && studentId != null) {
+                viewModel.loadStudentInfoForEditing(studentId)
+            }
         }
 
-        // Setup TabLayout and ViewPager2
+        // Observe selected student
+        viewModel.selectedStudent.observe(this) { student ->
+            if (student != null) {
+                Glide.with(this)
+                    .load(student.avatarUrl ?: R.drawable.ic_default_avatar)
+                    .circleCrop()
+                    .into(binding.adminUpdateStudentAvatar)
+            }
+        }
+
+        setupTabLayoutAndViewPager()
+        setupBackButton()
+    }
+
+    private fun setupTabLayoutAndViewPager() {
         val adapter = FragmentPageAdapter(supportFragmentManager, lifecycle)
         binding.adminUpdateStudentViewpager.adapter = adapter
 
         TabLayoutMediator(binding.adminUpdateStudentTablayout, binding.adminUpdateStudentViewpager) { tab, position ->
             tab.text = when (position) {
-                0 -> "General"
-                1 -> "Detail"
-                2 -> "Contact"
+                0 -> getString(R.string.infor_student_frag_information_general)
+                1 -> getString(R.string.infor_student_frag_information_detail)
+                2 -> getString(R.string.infor_student_frag_information_contact)
                 else -> throw IllegalArgumentException("Invalid position")
             }
         }.attach()
+    }
 
-        // Handle the back button
+    private fun setupBackButton() {
         binding.topBar.findViewById<View>(R.id.btnBack).setOnClickListener {
             onBackPressed()
         }
