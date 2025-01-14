@@ -22,7 +22,6 @@ class AdminManageStudentFragment : Fragment() {
     private val binding get() = _binding!!
     private lateinit var viewModel: AdminManageStudentViewModel
     private lateinit var studentAdapter: StudentAdapter
-    private lateinit var searchAdapter: StudentAdapter
     private var originalStudents: List<StudentInfo> = listOf()
 
     override fun onCreateView(
@@ -33,12 +32,12 @@ class AdminManageStudentFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(AdminManageStudentViewModel::class.java)
         _binding = FragmentAdminManageStudentBinding.inflate(inflater, container, false)
 
-        setupMainRecyclerView()
+        setupRecyclerView()
         setupSearchView()
 
         viewModel.studentList.observe(viewLifecycleOwner) { students ->
-            studentAdapter.submitList(students)
             originalStudents = students
+            studentAdapter.submitList(students)
         }
 
         viewModel.fetchStudentList()
@@ -46,7 +45,7 @@ class AdminManageStudentFragment : Fragment() {
         return binding.root
     }
 
-    private fun setupMainRecyclerView() {
+    private fun setupRecyclerView() {
         studentAdapter = StudentAdapter { student ->
             val intent = Intent(requireContext(), EditStudentInfoActivity::class.java).apply {
                 putExtra("STUDENT_ID", student.studentId)
@@ -60,54 +59,59 @@ class AdminManageStudentFragment : Fragment() {
     }
 
     private fun setupSearchView() {
-        val searchBar = binding.studentSearchbar
-        val searchView = binding.studentSearchview
-        val searchRecyclerView = binding.studentSearchRecyclerView
-
-        // Setup search view with search bar
-        searchView.setupWithSearchBar(searchBar)
-
-        // Setup search recycler view
-        searchRecyclerView.layoutManager = LinearLayoutManager(requireContext())
-        searchAdapter = StudentAdapter { student ->
-            val intent = Intent(requireContext(), EditStudentInfoActivity::class.java).apply {
-                putExtra("STUDENT_ID", student.studentId)
-            }
-            startActivity(intent)
-            searchView.hide()
-        }
-        searchRecyclerView.adapter = searchAdapter
-
-        // Handle search bar click
-        searchBar.setOnClickListener {
-            originalStudents = viewModel.studentList.value ?: listOf()
-            searchAdapter.submitList(originalStudents)
-            searchView.show()
-        }
-
-        // Handle text changes in search view
-        searchView.editText.doOnTextChanged { text, _, _, _ ->
-            if (text.toString().isEmpty()) {
-                searchAdapter.submitList(originalStudents)
-            } else {
-                val normalizedQuery = text.toString().removeAccents()
-                val tokens = normalizedQuery.split(" ")
-                val filteredStudents = originalStudents.filter { student ->
-                    tokens.all { token ->
-                        student.fullName.removeAccents().contains(token, ignoreCase = true) ||
-                                student.studentId.contains(token, ignoreCase = true)
-                    }
+        binding.studentSearchView.apply {
+            setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+                override fun onQueryTextSubmit(query: String?): Boolean {
+                    hideKeyboard()
+                    return true
                 }
-                searchAdapter.submitList(filteredStudents)
+
+                override fun onQueryTextChange(text: String?): Boolean {
+                    if (text.isNullOrEmpty()) {
+                        studentAdapter.submitList(originalStudents)
+                    } else {
+                        val normalizedQuery = text.removeAccents()
+                        val tokens = normalizedQuery.split(" ")
+                        val filteredStudents = originalStudents.filter { student ->
+                            tokens.all { token ->
+                                student.fullName.removeAccents().contains(token, ignoreCase = true) ||
+                                        student.studentId.contains(token, ignoreCase = true)
+                            }
+                        }
+                        studentAdapter.submitList(filteredStudents)
+                    }
+                    return true
+                }
+            })
+
+            setOnQueryTextFocusChangeListener { _, hasFocus ->
+                if (hasFocus) {
+                    showKeyboard()
+                } else {
+                    hideKeyboard()
+                }
             }
         }
     }
 
-    // Extension function to remove accents from text
     private fun String.removeAccents(): String {
         return Normalizer.normalize(this, Normalizer.Form.NFD)
             .replace("\\p{InCombiningDiacriticalMarks}+".toRegex(), "")
             .lowercase()
+    }
+
+    private fun showKeyboard() {
+        val imm = requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        binding.studentSearchView.findFocus()?.let { view ->
+            imm.showSoftInput(view, InputMethodManager.SHOW_IMPLICIT)
+        }
+    }
+
+    private fun hideKeyboard() {
+        val imm = requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        binding.studentSearchView.findFocus()?.let { view ->
+            imm.hideSoftInputFromWindow(view.windowToken, 0)
+        }
     }
 
     override fun onDestroyView() {
