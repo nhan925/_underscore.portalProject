@@ -112,9 +112,13 @@
             android:exported="true"
              />
         <activity
+            android:name=".ui.admin_review_feedback.AdminReviewAppFeedbackDetailActivity"
+            android:exported="true"
+            />
+        <activity
             android:name=".ui.admin_manage_student.EditStudentInfoActivity"
-            android:exported="true" />
-
+            android:exported="true" 
+            />
 
     </application>
 
