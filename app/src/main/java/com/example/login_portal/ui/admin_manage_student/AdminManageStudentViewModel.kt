@@ -218,7 +218,6 @@ class AdminManageStudentViewModel : ViewModel() {
             "personal_email_input" to updatedStudent.personalEmail,
             "phone_number_input" to updatedStudent.phoneNumber,
             "address_input" to updatedStudent.address,
-            "major_id_input" to updatedStudent.majorId
         )
 
         UpdateStudentInfoDAO.updateStudentInfo(
