@@ -108,4 +108,9 @@
             app:destination="@id/nav_SetupPassword" />
     </fragment>
 
+    <fragment
+        android:id="@+id/nav_SetupPassword"
+        android:name="com.example.login_portal.ui.setting.SetupPassword"
+        android:layout="@layout/fragment_setup_password" />
+
 </navigation>
