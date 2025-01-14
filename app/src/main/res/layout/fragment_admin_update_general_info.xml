@@ -92,33 +92,19 @@
 
 
 
-        <ViewSwitcher
-            android:id="@+id/info_general_frag_viewSwitcherStudentId"
-            android:layout_width="@dimen/info_student_frag_viewswitcher_width"
+        <TextView
+            android:id="@+id/info_general_frag_tv_student_id"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/info_student_frag_text_margin_start"
+            android:layout_marginEnd="16dp"
+            android:gravity="start|center_vertical"
+            android:text="@{viewModel.selectedStudent.studentId}"
+            android:textSize="@dimen/info_student_frag_value_text_size"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/info_general_frag_iv_id"
-            app:layout_constraintTop_toBottomOf="@+id/info_general_frag_tv_student_id_label">
-
-            <TextView
-                android:id="@+id/info_general_frag_tv_student_id"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center|start"
-                android:text="@={viewModel.editStudentId}"
-                android:textSize="@dimen/info_student_frag_value_text_size"
-                android:textStyle="bold" />
-
-            <EditText
-                android:id="@+id/info_general_frag_et_student_id"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:maxLines="1"
-                android:gravity="bottom|start"
-                android:text="@={viewModel.editStudentId}"
-                android:background="@android:color/transparent"
-                android:textSize="@dimen/info_student_frag_value_text_size" />
-        </ViewSwitcher>
+            app:layout_constraintTop_toBottomOf="@+id/info_general_frag_tv_student_id_label" />
 
         <!-- Repeat ViewSwitcher pattern for Major -->
         <ImageView
@@ -143,37 +129,19 @@
             app:layout_constraintStart_toEndOf="@+id/info_general_frag_iv_major"
             app:layout_constraintTop_toTopOf="@+id/info_general_frag_iv_major" />
 
-        <!-- Major ViewSwitcher with fixed spacing -->
-        <!-- Major ViewSwitcher with consistent text alignment -->
-        <ViewSwitcher
-            android:id="@+id/info_general_frag_viewSwitcherMajor"
-            android:layout_width="@dimen/info_student_frag_viewswitcher_width"
+        <TextView
+            android:id="@+id/info_general_frag_tv_major"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/info_student_frag_text_margin_start"
+            android:layout_marginEnd="16dp"
+            android:gravity="start|center_vertical"
+            android:text="@{viewModel.getMajorName(viewModel.selectedStudent.majorId)}"
+            android:textSize="@dimen/info_student_frag_value_text_size"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/info_general_frag_iv_major"
-            app:layout_constraintTop_toBottomOf="@+id/info_general_frag_tv_major_label">
-
-            <TextView
-                android:id="@+id/info_general_frag_tv_major"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center|start"
-                android:text="@{viewModel.getMajorName(viewModel.selectedMajorId)}"
-                android:textSize="@dimen/info_student_frag_value_text_size"
-                android:textStyle="bold" />
-
-            <Spinner
-                android:id="@+id/info_general_frag_spinner_major"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:gravity="start|center_vertical"
-                android:paddingTop="8dp"
-                android:paddingBottom="8dp"
-                android:background="@android:color/transparent"
-                android:spinnerMode="dropdown"
-                android:dropDownVerticalOffset="48dp" />
-        </ViewSwitcher>
-
+            app:layout_constraintTop_toBottomOf="@+id/info_general_frag_tv_major_label" />
 
 
         <!-- Repeat this pattern for Year of Admission, Academic Program, Gender -->
