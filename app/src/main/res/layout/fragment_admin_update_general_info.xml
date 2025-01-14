@@ -143,6 +143,8 @@
             app:layout_constraintStart_toEndOf="@+id/info_general_frag_iv_major"
             app:layout_constraintTop_toTopOf="@+id/info_general_frag_iv_major" />
 
+        <!-- Major ViewSwitcher with fixed spacing -->
+        <!-- Major ViewSwitcher with consistent text alignment -->
         <ViewSwitcher
             android:id="@+id/info_general_frag_viewSwitcherMajor"
             android:layout_width="@dimen/info_student_frag_viewswitcher_width"
@@ -156,20 +158,23 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center|start"
-                android:text="@={viewModel.editMajor}"
+                android:text="@{viewModel.getMajorName(viewModel.selectedMajorId)}"
                 android:textSize="@dimen/info_student_frag_value_text_size"
                 android:textStyle="bold" />
 
-            <EditText
-                android:id="@+id/info_general_frag_et_major"
+            <Spinner
+                android:id="@+id/info_general_frag_spinner_major"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:maxLines="1"
-                android:gravity="bottom|start"
-                android:text="@={viewModel.editMajor}"
+                android:layout_height="48dp"
+                android:gravity="start|center_vertical"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
                 android:background="@android:color/transparent"
-                android:textSize="@dimen/info_student_frag_value_text_size" />
+                android:spinnerMode="dropdown"
+                android:dropDownVerticalOffset="48dp" />
         </ViewSwitcher>
+
+
 
         <!-- Repeat this pattern for Year of Admission, Academic Program, Gender -->
         <!-- Add corresponding ImageView, TextView, and ViewSwitcher components -->

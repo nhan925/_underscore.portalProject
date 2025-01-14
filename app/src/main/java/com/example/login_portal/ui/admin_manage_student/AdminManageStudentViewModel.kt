@@ -19,9 +19,14 @@ class AdminManageStudentViewModel : ViewModel() {
     private val _showDatePickerEvent = MutableLiveData<Boolean>()
     val showDatePickerEvent: LiveData<Boolean> get() = _showDatePickerEvent
 
+    private val _majorList = MutableLiveData<List<Major>>()
+    val majorList: LiveData<List<Major>> get() = _majorList
+
+    val selectedMajorId = MutableLiveData<String?>()
+    private val majorIdToNameMap = mutableMapOf<String, String>()
+
     val editFullName = MutableLiveData<String?>()
     val editStudentId = MutableLiveData<String?>()
-    val editMajor = MutableLiveData<String?>()
     val editYearOfAdmissionText = MutableLiveData<String>()  // Changed to String
     val editAcademicProgram = MutableLiveData<String?>()
     val editGender = MutableLiveData<String?>()
@@ -44,6 +49,20 @@ class AdminManageStudentViewModel : ViewModel() {
 
     private fun getYearOfAdmissionAsInt(): Int? {
         return editYearOfAdmissionText.value?.toIntOrNull()
+    }
+
+    fun fetchMajorList() {
+        UpdateStudentInfoDAO.fetchAllMajors { majors ->
+            _majorList.postValue(majors)
+            majorIdToNameMap.clear()
+            majors.forEach { major ->
+                majorIdToNameMap[major.major_id] = major.major_name
+            }
+        }
+    }
+
+    fun getMajorName(majorId: String?): String {
+        return majorIdToNameMap[majorId] ?: majorId ?: ""
     }
 
     fun fetchStudentList() {
@@ -79,7 +98,7 @@ class AdminManageStudentViewModel : ViewModel() {
         val student = allStudents.find { it.studentId == studentId } ?: createDefaultStudent()
         currentEditingStudent = student.copy()
         _selectedStudent.postValue(student)
-
+        selectedMajorId.value = student.majorId
         initializeEditingFields(student)
     }
 
@@ -106,7 +125,7 @@ class AdminManageStudentViewModel : ViewModel() {
     private fun initializeEditingFields(student: StudentInfo) {
         editFullName.value = student.fullName
         editStudentId.value = student.studentId
-        editMajor.value = student.majorId
+        selectedMajorId.value = student.majorId
         editYearOfAdmissionText.value = student.yearOfAdmission?.toString() ?: ""  // Changed
         editAcademicProgram.value = student.academicProgram
         editGender.value = student.gender
@@ -127,7 +146,10 @@ class AdminManageStudentViewModel : ViewModel() {
     fun stopEditing() {
         _isEditing.value = false
         _selectedStudent.value = currentEditingStudent
-        initializeEditingFields(currentEditingStudent ?: return)
+        currentEditingStudent?.let { student ->
+            initializeEditingFields(student)
+            selectedMajorId.value = student.majorId
+        }
     }
 
     fun acceptChanges() {
@@ -135,7 +157,7 @@ class AdminManageStudentViewModel : ViewModel() {
             val updatedStudent = originalStudent.copy(
                 fullName = editFullName.value.orEmpty(),
                 studentId = editStudentId.value.orEmpty(),
-                majorId = editMajor.value.orEmpty(),
+                majorId = selectedMajorId.value ?: originalStudent.majorId,
                 yearOfAdmission = getYearOfAdmissionAsInt() ?: originalStudent.yearOfAdmission,  // Changed
                 academicProgram = editAcademicProgram.value.orEmpty(),
                 gender = editGender.value.orEmpty(),
@@ -147,6 +169,7 @@ class AdminManageStudentViewModel : ViewModel() {
                 personalEmail = editPersonalEmail.value.orEmpty(),
                 phoneNumber = editPhoneNumber.value.orEmpty(),
                 address = editAddress.value.orEmpty()
+
             )
 
             Log.d("acceptChanges", "Updated student object: $updatedStudent")

@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.example.login_portal.databinding.FragmentAdminUpdateGeneralInfoBinding
+import android.widget.ArrayAdapter
+import android.widget.AdapterView
 
 class StudentGeneral : Fragment() {
 
@@ -24,7 +26,47 @@ class StudentGeneral : Fragment() {
         binding.viewModel = viewModel
 
         setupViewSwitchers()
+        setupMajorSpinner()
+        viewModel.fetchMajorList()
         return binding.root
+    }
+
+    private fun setupMajorSpinner() {
+        viewModel.majorList.observe(viewLifecycleOwner) { majors ->
+            val adapter = ArrayAdapter(
+                requireContext(),
+                android.R.layout.simple_spinner_item,
+                majors.map { it.major_name }
+            ).apply {
+                setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            }
+
+            binding.infoGeneralFragSpinnerMajor.adapter = adapter
+
+            // Set selected item based on current majorId
+            viewModel.selectedMajorId.value?.let { currentMajorId ->
+                val position = majors.indexOfFirst { it.major_id == currentMajorId }
+                if (position != -1) {
+                    binding.infoGeneralFragSpinnerMajor.setSelection(position)
+                }
+            }
+
+            binding.infoGeneralFragSpinnerMajor.onItemSelectedListener =
+                object : AdapterView.OnItemSelectedListener {
+                    override fun onItemSelected(
+                        parent: AdapterView<*>?,
+                        view: View?,
+                        position: Int,
+                        id: Long
+                    ) {
+                        if (viewModel.isEditing.value == true) {
+                            viewModel.selectedMajorId.value = majors[position].major_id
+                        }
+                    }
+
+                    override fun onNothingSelected(parent: AdapterView<*>?) {}
+                }
+        }
     }
 
     private fun setupViewSwitchers() {
