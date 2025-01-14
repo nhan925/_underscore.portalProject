@@ -10,31 +10,62 @@ import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
 import com.example.login_portal.R
 import com.example.login_portal.databinding.FragmentAdminManageSemesterBinding
+import com.example.login_portal.ui.admin_manage_semester.SemesterAdapter
+import android.content.Intent
+
 
 class AdminManageSemesterFragment : Fragment() {
-
     private var _binding: FragmentAdminManageSemesterBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
+    private lateinit var viewModel: AdminManageSemesterViewModel
+    private lateinit var adapter: SemesterAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val adminSemesterViewModel =
-            ViewModelProvider(this).get(AdminManageSemesterViewModel::class.java)
-
         _binding = FragmentAdminManageSemesterBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+        viewModel = ViewModelProvider(this).get(AdminManageSemesterViewModel::class.java)
 
-        val textView: TextView = binding.textAdminSemester
-        adminSemesterViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
+        setupRecyclerView()
+        setupObservers()
+        setupListeners()
+
+        return binding.root
+    }
+
+    private fun setupRecyclerView() {
+        adapter = SemesterAdapter(emptyList()) { semester ->
+            startActivity(
+                Intent(requireContext(), SemesterDetailActivity::class.java).apply {
+                    putExtra("SEMESTER_ID", semester.id)
+                    putExtra("IS_EDIT_MODE", true)
+                }
+            )
         }
-        return root
+        binding.semesterListRecyclerView.adapter = adapter
+    }
+
+    private fun setupObservers() {
+        viewModel.semesters.observe(viewLifecycleOwner) { semesters ->
+            adapter.updateSemesters(semesters ?: emptyList())
+        }
+    }
+
+    private fun setupListeners() {
+        binding.fabCreateSemester.setOnClickListener {
+            startActivity(
+                Intent(requireContext(), SemesterDetailActivity::class.java).apply {
+                    putExtra("IS_EDIT_MODE", false)
+                }
+            )
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.fetchSemesters()
     }
 
     override fun onDestroyView() {

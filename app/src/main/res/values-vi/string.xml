@@ -475,4 +475,16 @@
     <string name="review_feedback_detail_category_feedback">Góp ý</string>
     <string name="student_information">Thông tin sinh viên</string>
     <string name="search_by_name_id">Tìm kiếm theo tên hay MSSV</string>
+
+    <string name="semester_title_format">Học kỳ %1$d (%2$s)</string>
+    <string name="semester_start_date_format">Ngày bắt đầu: %s</string>
+    <string name="semester_end_date_format">Ngày kết thúc: %s</string>
+    <string name="create_semester">Thêm Học Kỳ</string>
+    <string name="delete_semester">Xóa</string>
+    <string name="update_semester">Sửa</string>
+    <string name="semester_number">Học Kỳ</string>
+    <string name="semester_start_date">Ngày bắt đầu</string>
+    <string name="semester_end_date">Ngày kết thúc</string>
+    <string name="payment_start_date">Ngày bắt đầu thu học phí</string>
+    <string name="payment_end_date">Ngày kết thúc thu học phí</string>
 </resources>

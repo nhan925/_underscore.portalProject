@@ -479,6 +479,19 @@
     <string name="student_information">Student Info</string>
     <string name="search_by_name_id">Search students by name or ID</string>
 
+    <string name="semester_title_format">Semester %1$d (%2$s)</string>
+    <string name="semester_start_date_format">Start Date: %s</string>
+    <string name="semester_end_date_format">End Date: %s</string>
+
+    <string name="create_semester">Create Semester</string>
+    <string name="delete_semester">Delete </string>
+    <string name="update_semester">Update</string>
+    <string name="semester_number">Semester </string>
+    <string name="semester_start_date">Start Date</string>
+    <string name="semester_end_date">End Date</string>
+    <string name="payment_start_date">Payment Start Date</string>
+    <string name="payment_end_date">Payment End Date</string>
+
 
 
 </resources>

@@ -120,6 +120,10 @@
             android:exported="true" 
             />
 
+        <activity android:name=".ui.admin_manage_semester.SemesterDetailActivity"
+            android:exported="true"
+            />
+
     </application>
 
 </manifest>
