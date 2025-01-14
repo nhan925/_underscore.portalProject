@@ -36,7 +36,7 @@ class AdminActivity : BaseActivity() {
                 R.id.nav_Admin_Notification, R.id.nav_Admin_Manage_Enrollment_Period,
                 R.id.nav_Admin_Manage_Course, R.id.nav_Admin_Manage_Class,
                 R.id.nav_Admin_Manage_Semester,R.id.nav_Admin_Review_Feedback,
-                R.id.nav_Admin_Manage_Student,R.id.nav_Setting
+                R.id.nav_Admin_Manage_Student,R.id.nav_Setting, R.id.nav_Admin_Dashboard
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
