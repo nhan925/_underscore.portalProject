@@ -1,11 +1,14 @@
 package com.example.login_portal.ui.admin_manage_course
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.login_portal.R
+
+
 
 class CourseAdapter(
     private var courses: List<Course>,
@@ -24,13 +27,15 @@ class CourseAdapter(
         return CourseViewHolder(view)
     }
 
+
     override fun onBindViewHolder(holder: CourseViewHolder, position: Int) {
         val course = courses[position]
+
         val context = holder.itemView.context
 
         holder.name.text = course.name
-        holder.code.text = context.getString(R.string.course_item_code, course.id)
-        holder.credits.text = context.getString(R.string.course_item_credits, course.credits)
+        holder.code.text = course.id
+        holder.credits.text = course.credits.toString()
 
         holder.itemView.setOnClickListener {
             onCourseClicked(course)

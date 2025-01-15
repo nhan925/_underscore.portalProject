@@ -58,6 +58,8 @@ class AdminManageCourseFragment : Fragment() {
 
     private fun setupSearchView() {
         binding.courseSearchView.apply {
+            queryHint = getString(R.string.search_course_hint)
+
             setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener {
                 override fun onQueryTextSubmit(query: String?): Boolean {
                     hideKeyboard()
@@ -65,19 +67,7 @@ class AdminManageCourseFragment : Fragment() {
                 }
 
                 override fun onQueryTextChange(text: String?): Boolean {
-                    if (text.isNullOrEmpty()) {
-                        adapter.updateCourses(originalCourses)
-                    } else {
-                        val normalizedQuery = text.removeAccents()
-                        val tokens = normalizedQuery.split(" ")
-                        val filteredCourses = originalCourses.filter { course ->
-                            tokens.all { token ->
-                                course.name.removeAccents().contains(token, ignoreCase = true) ||
-                                        course.id.contains(token, ignoreCase = true)
-                            }
-                        }
-                        adapter.updateCourses(filteredCourses)
-                    }
+                    filterCourses(text)
                     return true
                 }
             })
@@ -91,6 +81,46 @@ class AdminManageCourseFragment : Fragment() {
             }
         }
     }
+
+    private fun filterCourses(query: String?) {
+        if (query.isNullOrBlank()) {
+            adapter.updateCourses(originalCourses)
+            return
+        }
+
+        val searchText = query.removeAccents().lowercase().trim()
+
+        val filteredList = originalCourses.filter { course ->
+            course.name.removeAccents().lowercase().contains(searchText) ||
+                    course.id.lowercase().contains(searchText)
+        }
+
+        adapter.updateCourses(filteredList)
+    }
+
+    private fun setupObservers() {
+        viewModel.courses.observe(viewLifecycleOwner) { courses ->
+            originalCourses = courses
+            adapter.updateCourses(courses)
+
+            // If there's an active search, reapply the filter
+            val currentQuery = binding.courseSearchView.query?.toString()
+            if (!currentQuery.isNullOrBlank()) {
+                filterCourses(currentQuery)
+            }
+        }
+
+        viewModel.isLoading.observe(viewLifecycleOwner) { isLoading ->
+            binding.courseSearchView.isEnabled = !isLoading
+        }
+
+        viewModel.error.observe(viewLifecycleOwner) { error ->
+            if (error.isNotEmpty()) {
+                Toast.makeText(context, error, Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
 
     private fun String.removeAccents(): String {
         return Normalizer.normalize(this, Normalizer.Form.NFD)
@@ -108,21 +138,7 @@ class AdminManageCourseFragment : Fragment() {
         imm.showSoftInput(binding.courseSearchView, InputMethodManager.SHOW_IMPLICIT)
     }
 
-    private fun setupObservers() {
-        viewModel.courses.observe(viewLifecycleOwner) { courses ->
-            adapter.updateCourses(courses)
-        }
 
-        viewModel.isLoading.observe(viewLifecycleOwner) { isLoading ->
-            // Add loading indicator if needed
-        }
-
-        viewModel.error.observe(viewLifecycleOwner) { error ->
-            if (error.isNotEmpty()) {
-                Toast.makeText(context, error, Toast.LENGTH_SHORT).show()
-            }
-        }
-    }
 
     private fun setupListeners() {
         binding.fabAddCourse.setOnClickListener {

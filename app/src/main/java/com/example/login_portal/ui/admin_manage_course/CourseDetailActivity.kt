@@ -35,6 +35,7 @@ class CourseDetailActivity : BaseActivity() {
 
     private fun setupUI() {
         binding.apply {
+            // Configure button visibility
             layoutUpdateButtons.visibility = if (isEditMode) View.VISIBLE else View.GONE
             btnCreate.visibility = if (isEditMode) View.GONE else View.VISIBLE
 
@@ -55,9 +56,28 @@ class CourseDetailActivity : BaseActivity() {
                 majors.map { it.name }
             )
 
-            binding.dropdownMajor.setAdapter(adapter)
-            binding.dropdownMajor.setOnItemClickListener { _, _, position, _ ->
-                selectedMajorId = majors[position].id
+            binding.dropdownMajor.apply {
+                setAdapter(adapter)
+
+                // Pre-select major if in edit mode
+                if (isEditMode) {
+                    viewModel.courses.value?.find { it.id == courseId }?.let { course ->
+                        val selectedMajor = majors.find { it.id == course.majorId }
+                        selectedMajor?.let { major ->
+                            setText(major.name, false)
+                            selectedMajorId = major.id
+                        }
+                    }
+                }
+
+                setOnItemClickListener { _, _, position, _ ->
+                    selectedMajorId = majors[position].id
+                }
+
+                // Set hint
+                if (!isEditMode && text.isEmpty()) {
+                    hint = context.getString(R.string.select_major)
+                }
             }
         }
         viewModel.fetchMajors()
@@ -79,7 +99,7 @@ class CourseDetailActivity : BaseActivity() {
             etTuitionFee.setText(course.tuitionFee.toString())
             etOutlineUrl.setText(course.outlineUrl)
 
-            // Set major in dropdown
+            // Set major in dropdown (will be handled in setupMajorDropdown)
             viewModel.majors.value?.find { it.id == course.majorId }?.let { major ->
                 dropdownMajor.setText(major.name, false)
                 selectedMajorId = major.id
@@ -106,6 +126,13 @@ class CourseDetailActivity : BaseActivity() {
             btnDelete.setOnClickListener {
                 showDeleteConfirmationDialog()
             }
+
+            // Handle dropdown focus
+            dropdownMajor.setOnFocusChangeListener { view, hasFocus ->
+                if (!hasFocus && dropdownMajor.text.isEmpty()) {
+                    dropdownMajor.hint = getString(R.string.select_major)
+                }
+            }
         }
     }
 
@@ -116,6 +143,7 @@ class CourseDetailActivity : BaseActivity() {
                 etCredits.text.isNullOrEmpty() ||
                 etTuitionFee.text.isNullOrEmpty() ||
                 etOutlineUrl.text.isNullOrEmpty() ||
+                dropdownMajor.text.isEmpty() ||
                 selectedMajorId == null
             ) {
                 Toast.makeText(
@@ -132,11 +160,11 @@ class CourseDetailActivity : BaseActivity() {
     private fun createCourse() {
         val request = ManageCourseRequest(
             operation = "create",
-            courseId = binding.etCourseId.text.toString(),
-            courseName = binding.etCourseName.text.toString(),
+            courseId = binding.etCourseId.text.toString().trim(),
+            courseName = binding.etCourseName.text.toString().trim(),
             credits = binding.etCredits.text.toString().toIntOrNull() ?: 0,
             tuitionFee = binding.etTuitionFee.text.toString().toIntOrNull() ?: 0,
-            outlineUrl = binding.etOutlineUrl.text.toString(),
+            outlineUrl = binding.etOutlineUrl.text.toString().trim(),
             majorId = selectedMajorId
         )
 
@@ -152,10 +180,10 @@ class CourseDetailActivity : BaseActivity() {
         val request = ManageCourseRequest(
             operation = "update",
             courseId = courseId,
-            courseName = binding.etCourseName.text.toString(),
+            courseName = binding.etCourseName.text.toString().trim(),
             credits = binding.etCredits.text.toString().toIntOrNull() ?: 0,
             tuitionFee = binding.etTuitionFee.text.toString().toIntOrNull() ?: 0,
-            outlineUrl = binding.etOutlineUrl.text.toString(),
+            outlineUrl = binding.etOutlineUrl.text.toString().trim(),
             majorId = selectedMajorId
         )
 
@@ -171,7 +199,7 @@ class CourseDetailActivity : BaseActivity() {
         AlertDialog.Builder(this)
             .setTitle(getString(R.string.delete_course))
             .setMessage(getString(R.string.delete_course_confirmation))
-            .setPositiveButton(getString(R.string.delete_course)) { _, _ ->
+            .setPositiveButton(getString(R.string.delete_semester)) { _, _ ->
                 deleteCourse()
             }
             .setNegativeButton(getString(R.string.request_detail_cancel_op), null)
@@ -194,7 +222,13 @@ class CourseDetailActivity : BaseActivity() {
 
     private fun setupObservers() {
         viewModel.isLoading.observe(this) { isLoading ->
-            // Add loading indicator if needed
+            binding.apply {
+                // Toggle loading visibility if needed
+                cardInfo.isEnabled = !isLoading
+                btnCreate.isEnabled = !isLoading
+                btnUpdate.isEnabled = !isLoading
+                btnDelete.isEnabled = !isLoading
+            }
         }
 
         viewModel.error.observe(this) { error ->

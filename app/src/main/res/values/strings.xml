@@ -509,6 +509,7 @@
     <string name="delete_course_confirmation">Are you sure you want to delete this course?</string>
     <string name="error_loading_courses">Failed to load courses</string>
     <string name="error_loading_majors">Failed to load majors</string>
+    <string name="search_course_hint">Search by name or course code...</string>
 
 
 </resources>

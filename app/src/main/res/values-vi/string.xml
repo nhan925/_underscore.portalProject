@@ -506,4 +506,5 @@
     <string name="delete_course_confirmation">Bạn có chắc chắn muốn xóa môn học này?</string>
     <string name="error_loading_courses">Không thể tải danh sách môn học</string>
     <string name="error_loading_majors">Không thể tải danh sách ngành</string>
+    <string name="search_course_hint">Tìm theo tên hoặc mã môn học...</string>
 </resources>
