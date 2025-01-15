@@ -511,5 +511,27 @@
     <string name="error_loading_majors">Failed to load majors</string>
     <string name="search_course_hint">Search by name or course code...</string>
 
+    <string name="search_period_hint">Search registration periods...</string>
+
+    <string name="registration_period_detail">Registration Period</string>
+    <string name="period_name">Period Name</string>
+    <string name="select_semester">Select Semester</string>
+    <string name="start_date">Start Date</string>
+    <string name="end_date">End Date</string>
+    <string name="max_credits">Maximum Credits</string>
+    <string name="create_registration_period">Create Registration Period</string>
+    <string name="update_registration_period">Update </string>
+    <string name="delete_registration_period">Delete </string>
+    <string name="period_created">Registration period created successfully</string>
+    <string name="period_updated">Registration period updated successfully</string>
+    <string name="period_deleted">Registration period deleted successfully</string>
+    <string name="delete_period">Delete Registration Period</string>
+    <string name="delete_period_confirmation">Are you sure you want to delete this registration period?</string>
+    <string name="invalid_date_range">End date must be after start date</string>
+    <string name="status_upcoming">Upcoming</string>
+    <string name="status_open">Open</string>
+    <string name="status_closed">Closed</string>
+
+
 
 </resources>

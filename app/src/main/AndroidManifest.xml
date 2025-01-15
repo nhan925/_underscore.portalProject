@@ -127,6 +127,10 @@
             android:exported="true"
             />
 
+        <activity android:name=".ui.admin_manage_enrollment_period.RegistrationPeriodDetailActivity"
+            android:exported="true"
+            />
+
     </application>
 
 </manifest>
