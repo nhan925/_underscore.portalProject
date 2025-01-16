@@ -11,7 +11,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.login_portal"
-        minSdk = 24
+        minSdk = 26
         targetSdk = 35
         versionCode = 1
         versionName = "1.0"
@@ -116,4 +116,7 @@ dependencies {
     implementation(libs.jwtdecode)
     implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.6.1") // Check for the latest version
     implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
+    implementation ("androidx.lifecycle:lifecycle-runtime-ktx:2.6.1")
+    implementation("org.apache.poi:poi-ooxml:5.2.3")
+    implementation("org.apache.commons:commons-math3:3.6.1")
 }
