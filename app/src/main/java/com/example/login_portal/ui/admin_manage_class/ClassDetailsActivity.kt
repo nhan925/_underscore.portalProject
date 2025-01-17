@@ -7,6 +7,7 @@ import com.example.login_portal.BaseActivity
 import com.example.login_portal.databinding.ActivityClassDetailsBinding
 import com.google.android.material.tabs.TabLayoutMediator
 import androidx.viewpager2.widget.ViewPager2
+import com.example.login_portal.R
 
 class ClassDetailsActivity : BaseActivity() {
     private lateinit var binding: ActivityClassDetailsBinding
@@ -19,7 +20,7 @@ class ClassDetailsActivity : BaseActivity() {
         setContentView(binding.root)
 
         val classId = intent.getStringExtra("class_id") ?: run {
-            Toast.makeText(this, "Invalid class ID", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.error_invalid_class_id), Toast.LENGTH_SHORT).show()
             finish()
             return
         }
@@ -33,7 +34,6 @@ class ClassDetailsActivity : BaseActivity() {
     private fun setupToolbar() {
         binding.apply {
             btnBack.setOnClickListener { finish() }
-            // Set title or any other toolbar customization if needed
         }
     }
 
@@ -41,19 +41,15 @@ class ClassDetailsActivity : BaseActivity() {
         pagerAdapter = ClassDetailsPagerAdapter(this)
 
         binding.apply {
-            // Setup ViewPager2
             viewPager.apply {
                 adapter = pagerAdapter
-                // Disable swipe if needed
-                // isUserInputEnabled = false
             }
 
-            // Setup TabLayout with ViewPager2
             TabLayoutMediator(tabLayout, viewPager) { tab, position ->
                 tab.text = when (position) {
-                    0 -> "Info"
-                    1 -> "Students"
-                    2 -> "Grades"
+                    0 -> getString(R.string.tab_info)
+                    1 -> getString(R.string.tab_students)
+                    2 -> getString(R.string.tab_grades)
                     else -> ""
                 }
             }.attach()
@@ -66,8 +62,7 @@ class ClassDetailsActivity : BaseActivity() {
 
     private fun observeViewModel() {
         viewModel.classInfo.observe(this) { classInfo ->
-            // Update UI with class info if needed
-            // You might want to update the toolbar title or other UI elements
+            // Handle class info updates if needed
         }
 
         viewModel.error.observe(this) { error ->

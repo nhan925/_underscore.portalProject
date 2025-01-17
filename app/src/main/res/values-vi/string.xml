@@ -531,7 +531,7 @@
 
 
     <!-- General -->
-    <string name="app_name">Cổng Quản Lý Lớp Học</string>
+
     <string name="error">Lỗi</string>
     <string name="success">Thành công</string>
     <string name="ok">OK</string>
@@ -544,7 +544,7 @@
     <string name="back">Quay lại</string>
 
     <!-- Class Management -->
-    <string name="manage_classes">Quản Lý Lớp Học</string>
+    <string name="activity_admin_class">Lớp học</string>
     <string name="search_classes">Tìm kiếm lớp học...</string>
     <string name="add_class">Thêm Lớp</string>
     <string name="create_class">Tạo Lớp Mới</string>
@@ -552,18 +552,29 @@
     <string name="import_excel">Nhập từ Excel</string>
     <string name="select_file">Chọn Tệp</string>
     <string name="importing_classes">Nhập Lớp Học</string>
+    <string name="class_period_range">Tiết %1$d - %2$d</string>
+    <string name="field_current_enrollment">Đang đăng ký</string>
 
 
 
     <!-- Excel Import -->
-    <string name="error_select_excel">Please select a valid Excel file (.xls or .xlsx)</string>
-    <string name="error_process_file">Unable to process the selected file</string>
-    <string name="error_no_file">No file selected</string>
-    <string name="error_show_options">Unable to show options</string>
-    <string name="error_show_import">Unable to show import dialog</string>
-    <string name="error_update_file_info">Unable to update file information</string>
-    <string name="error_open_details">Unable to open class details</string>
-    <string name="msg_import_completed">Import completed successfully</string>
+    <string name="error_excel_invalid_format">Định dạng Excel không hợp lệ. Vui lòng kiểm tra mẫu.</string>
+    <string name="error_excel_empty">Tệp Excel trống.</string>
+    <string name="error_excel_reading">Lỗi đọc tệp Excel: %1$s</string>
+    <string name="error_excel_missing_headers">Thiếu các cột tiêu đề bắt buộc trong tệp Excel.</string>
+    <string name="error_excel_invalid_data">Dữ liệu không hợp lệ ở dòng %1$d</string>
+    <string name="error_excel_cannot_open">Không thể mở tệp</string>
+
+    <!-- Excel Import Validation -->
+    <string name="error_excel_period_range">Tiết học phải từ 1 đến 10</string>
+    <string name="error_excel_max_enrollment">Sĩ số tối đa phải lớn hơn 0</string>
+    <string name="error_excel_missing_cell">Thiếu ô dữ liệu bắt buộc</string>
+    <string name="error_excel_invalid_cell">Kiểu dữ liệu ô không hợp lệ</string>
+
+    <!-- Excel Import Results -->
+    <string name="msg_excel_import_success">Đã nhập thành công %1$d lớp học</string>
+    <string name="msg_excel_import_partial">Nhập một phần: Đã nhập %1$d trong %2$d lớp.\nCác dòng lỗi: %3$s</string>
+    <string name="msg_excel_import_failed">Không thể nhập lớp học nào.\nCác dòng lỗi: %1$s</string>
 
     <!-- Class Item Labels -->
     <string name="class_item_id">Mã lớp:</string>
@@ -623,4 +634,49 @@
     <string name="error_import_failed">Nhập dữ liệu thất bại</string>
     <string name="error_invalid_file">Định dạng tệp không hợp lệ</string>
     <string name="error_required_field">Trường này là bắt buộc</string>
+
+    <string name="validation_class_id_required">Yêu cầu nhập mã lớp</string>
+    <string name="validation_class_name_required">Yêu cầu nhập tên lớp</string>
+    <string name="validation_registration_period_required">Yêu cầu chọn đợt đăng ký</string>
+    <string name="validation_course_required">Yêu cầu chọn môn học</string>
+    <string name="validation_lecturer_required">Yêu cầu chọn giảng viên</string>
+    <string name="validation_day_required">Yêu cầu chọn thứ</string>
+    <string name="validation_room_required">Yêu cầu nhập phòng học</string>
+    <string name="validation_period_range">Tiết học phải từ 1 đến 10</string>
+    <string name="validation_invalid_start_period">Tiết bắt đầu không hợp lệ</string>
+    <string name="validation_invalid_end_period">Tiết kết thúc không hợp lệ</string>
+    <string name="validation_enrollment_positive">Sĩ số tối đa phải lớn hơn 0</string>
+    <string name="validation_invalid_enrollment">Sĩ số tối đa không hợp lệ</string>
+
+    <string name="import_excel_description">Chọn file excel hợp lệ</string>
+
+    <string name="importFile">Nhập</string>
+
+
+    <!-- Grade Management -->
+
+    <!-- Grade Table Headers -->
+    <string name="header_student_id">MSSV</string>
+    <string name="header_student_name">Họ và tên</string>
+    <string name="header_grade">Điểm</string>
+    <string name="header_feedback">Nhận xét</string>
+    <string name="header_note">Ghi chú</string>
+
+    <!-- Grade Messages -->
+    <string name="error_load_grades">Không thể tải điểm số</string>
+    <string name="error_reload_grades">Không thể tải lại điểm số</string>
+    <string name="msg_grades_save_success">Đã lưu tất cả điểm thành công</string>
+    <string name="msg_grades_save_partial">Không thể lưu điểm cho một số sinh viên</string>
+    <string name="error_enter_student_id">Vui lòng nhập MSSV</string>
+
+    <string name="error_add_student">Không thể thêm sinh viên</string>
+
+    <string name="title_add_student">Thêm Sinh Viên</string>
+    <string name="title_remove_student">Xóa Sinh Viên</string>
+    <string name="msg_confirm_remove_student">Bạn có chắc muốn xóa sinh viên %1$s?</string>
+    <string name="error_remove_student">Không thể xóa sinh viên</string>
+
+    <string name="error_no_file">Không có file</string>
+
+
 </resources>

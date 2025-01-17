@@ -78,30 +78,47 @@ class CreateClassViewModel : ViewModel() {
         selectedDayOfWeek = day
     }
 
-    fun validateInputs(): Map<String, String?> {
-        val errors = mutableMapOf<String, String?>()
+    companion object {
+        // Validation message keys
+        const val KEY_CLASS_ID_REQUIRED = "validation_class_id_required"
+        const val KEY_CLASS_NAME_REQUIRED = "validation_class_name_required"
+        const val KEY_REGISTRATION_REQUIRED = "validation_registration_period_required"
+        const val KEY_COURSE_REQUIRED = "validation_course_required"
+        const val KEY_LECTURER_REQUIRED = "validation_lecturer_required"
+        const val KEY_DAY_REQUIRED = "validation_day_required"
+        const val KEY_ROOM_REQUIRED = "validation_room_required"
+        const val KEY_PERIOD_RANGE = "validation_period_range"
+        const val KEY_INVALID_START_PERIOD = "validation_invalid_start_period"
+        const val KEY_INVALID_END_PERIOD = "validation_invalid_end_period"
+        const val KEY_ENROLLMENT_POSITIVE = "validation_enrollment_positive"
+        const val KEY_INVALID_ENROLLMENT = "validation_invalid_enrollment"
+        const val KEY_CREATE_FAILED = "msg_create_class_failed"
+    }
+
+    fun validateInputs(): Map<String, String> {
+        val errors = mutableMapOf<String, String>()
 
         // Required field validation
-        if (classId.value.isNullOrBlank()) errors["classId"] = "Class ID is required"
-        if (className.value.isNullOrBlank()) errors["className"] = "Class Name is required"
-        if (selectedRegistrationPeriod == null) errors["registrationPeriod"] = "Registration Period is required"
-        if (selectedCourse == null) errors["course"] = "Course is required"
-        if (selectedLecturer == null) errors["lecturer"] = "Lecturer is required"
-        if (selectedDayOfWeek == null) errors["dayOfWeek"] = "Day of Week is required"
-        if (room.value.isNullOrBlank()) errors["room"] = "Room is required"
+        if (classId.value.isNullOrBlank()) errors["classId"] = KEY_CLASS_ID_REQUIRED
+        if (className.value.isNullOrBlank()) errors["className"] = KEY_CLASS_NAME_REQUIRED
+        if (selectedRegistrationPeriod == null) errors["registrationPeriod"] = KEY_REGISTRATION_REQUIRED
+        if (selectedCourse == null) errors["course"] = KEY_COURSE_REQUIRED
+        if (selectedLecturer == null) errors["lecturer"] = KEY_LECTURER_REQUIRED
+        if (selectedDayOfWeek == null) errors["dayOfWeek"] = KEY_DAY_REQUIRED
+        if (room.value.isNullOrBlank()) errors["room"] = KEY_ROOM_REQUIRED
 
         // Number validation
         startPeriod.value?.toIntOrNull()?.let {
-            if (it < 1 || it > 10) errors["startPeriod"] = "Start Period must be between 1 and 10"
-        } ?: run { errors["startPeriod"] = "Invalid Start Period" }
+            if (it < 1 || it > 10) errors["startPeriod"] = KEY_PERIOD_RANGE
+        } ?: run { errors["startPeriod"] = KEY_INVALID_START_PERIOD }
 
         endPeriod.value?.toIntOrNull()?.let {
-            if (it < 1 || it > 10) errors["endPeriod"] = "End Period must be between 1 and 10"
-        } ?: run { errors["endPeriod"] = "Invalid End Period" }
+            if (it < 1 || it > 10) errors["endPeriod"] = KEY_PERIOD_RANGE
+        } ?: run { errors["endPeriod"] = KEY_INVALID_END_PERIOD }
 
         maxEnrollment.value?.toIntOrNull()?.let {
-            if (it < 1) errors["maxEnrollment"] = "Maximum Enrollment must be positive"
-        } ?: run { errors["maxEnrollment"] = "Invalid Maximum Enrollment" }
+            if (it < 1) errors["maxEnrollment"] = KEY_ENROLLMENT_POSITIVE
+        } ?: run { errors["maxEnrollment"] = KEY_INVALID_ENROLLMENT }
 
         return errors
     }

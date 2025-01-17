@@ -2,6 +2,7 @@ package com.example.login_portal.ui.admin_manage_class
 
 import android.content.Context
 import android.net.Uri
+import com.example.login_portal.R
 import org.apache.poi.ss.usermodel.Cell
 import org.apache.poi.ss.usermodel.CellType
 import org.apache.poi.ss.usermodel.Row
@@ -10,12 +11,20 @@ import java.io.IOException
 
 class ExcelImportHandler {
     companion object {
-        // Error messages
-        private const val ERROR_INVALID_FORMAT = "Invalid Excel format. Please check the template."
-        private const val ERROR_EMPTY_FILE = "Excel file is empty."
-        private const val ERROR_READING_FILE = "Error reading Excel file: "
-        private const val ERROR_MISSING_HEADERS = "Missing required headers in Excel file."
-        private const val ERROR_INVALID_DATA = "Invalid data in row "
+        // Message keys
+        private const val KEY_INVALID_FORMAT = "error_excel_invalid_format"
+        private const val KEY_EMPTY_FILE = "error_excel_empty"
+        private const val KEY_READING_FILE = "error_excel_reading"
+        private const val KEY_MISSING_HEADERS = "error_excel_missing_headers"
+        private const val KEY_INVALID_DATA = "error_excel_invalid_data"
+        private const val KEY_CANNOT_OPEN = "error_excel_cannot_open"
+        private const val KEY_PERIOD_RANGE = "error_excel_period_range"
+        private const val KEY_MAX_ENROLLMENT = "error_excel_max_enrollment"
+        private const val KEY_MISSING_CELL = "error_excel_missing_cell"
+        private const val KEY_INVALID_CELL = "error_excel_invalid_cell"
+        private const val KEY_IMPORT_SUCCESS = "msg_excel_import_success"
+        private const val KEY_IMPORT_PARTIAL = "msg_excel_import_partial"
+        private const val KEY_IMPORT_FAILED = "msg_excel_import_failed"
 
         // Required headers in correct order
         private val REQUIRED_HEADERS = listOf(
@@ -43,42 +52,37 @@ class ExcelImportHandler {
                         val workbook = WorkbookFactory.create(inputStream)
                         val sheet = workbook.getSheetAt(0)
 
-                        // Validate basic sheet structure
                         if (sheet.physicalNumberOfRows < 2) {
-                            onComplete(false, ERROR_EMPTY_FILE)
+                            onComplete(false, context.getString(R.string.error_excel_empty))
                             return
                         }
 
-                        // Validate headers
                         val headerRow = sheet.getRow(0)
                         if (!validateHeaders(headerRow)) {
-                            onComplete(false, ERROR_MISSING_HEADERS)
+                            onComplete(false, context.getString(R.string.error_excel_missing_headers))
                             return
                         }
 
-                        // Process data rows
-                        val totalRows = sheet.physicalNumberOfRows - 1 // Excluding header
+                        val totalRows = sheet.physicalNumberOfRows - 1
                         var successCount = 0
                         var failedRows = mutableListOf<Int>()
 
-                        // Process each row
                         for (i in 1 until sheet.physicalNumberOfRows) {
                             val row = sheet.getRow(i)
                             try {
-                                val classInfo = extractClassInfo(row)
+                                val classInfo = extractClassInfo(row, context)
                                 if (classInfo != null) {
                                     ClassDAO.manageClass("add", classInfo) { success ->
                                         if (success) {
                                             successCount++
                                         } else {
-                                            failedRows.add(i + 1) // Add 1 to account for 0-based index
+                                            failedRows.add(i + 1)
                                         }
 
                                         onProgress(successCount, totalRows)
 
-                                        // Check if all rows are processed
                                         if (successCount + failedRows.size == totalRows) {
-                                            handleCompletion(successCount, totalRows, failedRows, onComplete)
+                                            handleCompletion(context, successCount, totalRows, failedRows, onComplete)
                                         }
                                     }
                                 } else {
@@ -91,60 +95,57 @@ class ExcelImportHandler {
                             }
                         }
                     } catch (e: Exception) {
-                        onComplete(false, "$ERROR_READING_FILE${e.message}")
+                        onComplete(false, context.getString(R.string.error_excel_reading, e.message))
                     }
                 } ?: run {
-                    onComplete(false, "Could not open file")
+                    onComplete(false, context.getString(R.string.error_excel_cannot_open))
                 }
             } catch (e: IOException) {
-                onComplete(false, "$ERROR_READING_FILE${e.message}")
+                onComplete(false, context.getString(R.string.error_excel_reading, e.message))
             }
         }
 
         private fun validateHeaders(headerRow: Row?): Boolean {
             if (headerRow == null) return false
-
             return REQUIRED_HEADERS.withIndex().all { (index, expectedHeader) ->
                 headerRow.getCell(index)?.stringCellValue?.trim()?.lowercase() == expectedHeader
             }
         }
 
-        private fun extractClassInfo(row: Row): ClassInfo? {
+        private fun extractClassInfo(row: Row, context: Context): ClassInfo? {
             try {
-                // Helper function to safely get cell values
                 fun getCellStringValue(cell: Cell?): String {
                     return when {
-                        cell == null -> throw Exception("Missing required cell")
+                        cell == null -> throw Exception(context.getString(R.string.error_excel_missing_cell))
                         cell.cellType == CellType.STRING -> cell.stringCellValue.trim()
                         cell.cellType == CellType.NUMERIC -> cell.numericCellValue.toInt().toString()
-                        else -> throw Exception("Invalid cell type")
+                        else -> throw Exception(context.getString(R.string.error_excel_invalid_cell))
                     }
                 }
 
                 fun getCellIntValue(cell: Cell?): Int {
                     return when {
-                        cell == null -> throw Exception("Missing required cell")
+                        cell == null -> throw Exception(context.getString(R.string.error_excel_missing_cell))
                         cell.cellType == CellType.NUMERIC -> cell.numericCellValue.toInt()
                         cell.cellType == CellType.STRING -> cell.stringCellValue.trim().toInt()
-                        else -> throw Exception("Invalid cell type")
+                        else -> throw Exception(context.getString(R.string.error_excel_invalid_cell))
                     }
                 }
 
-                // Validate and extract data
                 return ClassInfo(
                     classId = getCellStringValue(row.getCell(0)),
                     className = getCellStringValue(row.getCell(1)),
                     startPeriod = getCellIntValue(row.getCell(2)).also {
-                        require(it in 1..10) { "Start period must be between 1 and 10" }
+                        require(it in 1..10) { context.getString(R.string.error_excel_period_range) }
                     },
                     endPeriod = getCellIntValue(row.getCell(3)).also {
-                        require(it in 1..10) { "End period must be between 1 and 10" }
+                        require(it in 1..10) { context.getString(R.string.error_excel_period_range) }
                     },
                     dayOfWeek = getCellStringValue(row.getCell(4)),
                     room = getCellStringValue(row.getCell(5)),
-                    enrollment = 0, // Always starts at 0 for new classes
+                    enrollment = 0,
                     maxEnrollment = getCellIntValue(row.getCell(6)).also {
-                        require(it > 0) { "Max enrollment must be positive" }
+                        require(it > 0) { context.getString(R.string.error_excel_max_enrollment) }
                     },
                     registrationPeriodId = getCellIntValue(row.getCell(7)),
                     courseId = getCellStringValue(row.getCell(8)),
@@ -156,20 +157,21 @@ class ExcelImportHandler {
         }
 
         private fun handleCompletion(
+            context: Context,
             successCount: Int,
             totalRows: Int,
             failedRows: List<Int>,
             onComplete: (Boolean, String?) -> Unit
         ) {
             val message = when {
-                successCount == totalRows ->
-                    "Successfully imported all $successCount classes"
-                successCount > 0 ->
-                    "Partially successful: Imported $successCount out of $totalRows classes.\n" +
-                            "Failed rows: ${failedRows.joinToString(", ")}"
-                else ->
-                    "Failed to import any classes.\n" +
-                            "Failed rows: ${failedRows.joinToString(", ")}"
+                successCount == totalRows -> context.getString(R.string.msg_excel_import_success, successCount)
+                successCount > 0 -> context.getString(
+                    R.string.msg_excel_import_partial,
+                    successCount,
+                    totalRows,
+                    failedRows.joinToString(", ")
+                )
+                else -> context.getString(R.string.msg_excel_import_failed, failedRows.joinToString(", "))
             }
             onComplete(successCount > 0, message)
         }

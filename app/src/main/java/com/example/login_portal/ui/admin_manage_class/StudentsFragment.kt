@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.login_portal.R
 import com.example.login_portal.databinding.FragmentClassStudentsBinding
 import com.example.login_portal.databinding.DialogAddStudentBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -64,7 +65,7 @@ class StudentsFragment : Fragment() {
                         studentAdapter.updateStudents(students)
                         updateEmptyState(students.isEmpty())
                     } else {
-                        showError("Failed to load students")
+                        showError(getString(R.string.error_load_failed))
                     }
                 }
             }
@@ -74,7 +75,7 @@ class StudentsFragment : Fragment() {
     private fun showAddStudentDialog() {
         val dialogBinding = DialogAddStudentBinding.inflate(layoutInflater)
         val dialog = MaterialAlertDialogBuilder(requireContext())
-            .setTitle("Add Student")
+            .setTitle(getString(R.string.add_student))
             .setView(dialogBinding.root)
             .create()
 
@@ -85,7 +86,7 @@ class StudentsFragment : Fragment() {
                     addStudent(studentId)
                     dialog.dismiss()
                 } else {
-                    studentIdInput.error = "Please enter a student ID"
+                    studentIdInput.error = getString(R.string.error_enter_student_id)
                 }
             }
 
@@ -105,10 +106,10 @@ class StudentsFragment : Fragment() {
                 if (isAdded) {
                     showLoading(false)
                     if (success) {
-                        showSuccess("Student added successfully")
+                        showSuccess(getString(R.string.msg_student_added))
                         loadStudents()
                     } else {
-                        showError("Failed to add student")
+                        showError(getString(R.string.error_add_student))
                     }
                 }
             }
@@ -117,12 +118,12 @@ class StudentsFragment : Fragment() {
 
     private fun showDeleteStudentDialog(student: Student) {
         MaterialAlertDialogBuilder(requireContext())
-            .setTitle("Remove Student")
-            .setMessage("Are you sure you want to remove ${student.fullName}?")
-            .setPositiveButton("Remove") { _, _ ->
+            .setTitle(getString(R.string.title_remove_student))
+            .setMessage(getString(R.string.msg_confirm_remove_student, student.fullName))
+            .setPositiveButton(getString(R.string.remove)) { _, _ ->
                 removeStudent(student)
             }
-            .setNegativeButton("Cancel", null)
+            .setNegativeButton(getString(R.string.cancel), null)
             .show()
     }
 
@@ -134,11 +135,11 @@ class StudentsFragment : Fragment() {
                 if (isAdded) {
                     showLoading(false)
                     if (success) {
-                        showSuccess("Student removed successfully")
+                        showSuccess(getString(R.string.msg_student_removed))
                         loadStudents()
                         refreshGrades()
                     } else {
-                        showError("Failed to remove student")
+                        showError(getString(R.string.error_remove_student))
                     }
                 }
             }

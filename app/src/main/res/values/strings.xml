@@ -547,7 +547,6 @@
     <string name="back">Back</string>
 
     <!-- Class Management -->
-    <string name="manage_classes">Manage Classes</string>
     <string name="search_classes">Search classes...</string>
     <string name="add_class">Add Class</string>
     <string name="create_class">Create Class</string>
@@ -556,15 +555,28 @@
     <string name="select_file">Select File</string>
     <string name="importing_classes">Importing Classes</string>
 
+    <string name="class_period_range">Period %1$d - %2$d</string>
+
+
+
     <!-- Excel Import -->
-    <string name="error_select_excel">Please select a valid Excel file (.xls or .xlsx)</string>
-    <string name="error_process_file">Unable to process the selected file</string>
-    <string name="error_no_file">No file selected</string>
-    <string name="error_show_options">Unable to show options</string>
-    <string name="error_show_import">Unable to show import dialog</string>
-    <string name="error_update_file_info">Unable to update file information</string>
-    <string name="error_open_details">Unable to open class details</string>
-    <string name="msg_import_completed">Import completed successfully</string>
+    <string name="error_excel_invalid_format">Invalid Excel format. Please check the template.</string>
+    <string name="error_excel_empty">Excel file is empty.</string>
+    <string name="error_excel_reading">Error reading Excel file: %1$s</string>
+    <string name="error_excel_missing_headers">Missing required headers in Excel file.</string>
+    <string name="error_excel_invalid_data">Invalid data in row %1$d</string>
+    <string name="error_excel_cannot_open">Could not open file</string>
+
+    <!-- Excel Import Validation -->
+    <string name="error_excel_period_range">Start period must be between 1 and 10</string>
+    <string name="error_excel_max_enrollment">Max enrollment must be positive</string>
+    <string name="error_excel_missing_cell">Missing required cell</string>
+    <string name="error_excel_invalid_cell">Invalid cell type</string>
+
+    <!-- Excel Import Results -->
+    <string name="msg_excel_import_success">Successfully imported all %1$d classes</string>
+    <string name="msg_excel_import_partial">Partially successful: Imported %1$d out of %2$d classes.\nFailed rows: %3$s</string>
+    <string name="msg_excel_import_failed">Failed to import any classes.\nFailed rows: %1$s</string>
 
     <!-- Class Item Labels -->
     <string name="class_item_id">Class ID:</string>
@@ -580,6 +592,7 @@
     <string name="field_start_period">Start Period</string>
     <string name="field_end_period">End Period</string>
     <string name="field_room">Room</string>
+    <string name="field_current_enrollment">Current Enrollment</string>
     <string name="field_max_enrollment">Maximum Enrollment</string>
 
     <!-- Tab Labels -->
@@ -625,6 +638,46 @@
     <string name="error_invalid_file">Invalid file format</string>
     <string name="error_required_field">This field is required</string>
 
+
+    <string name="validation_class_id_required">Class ID is required</string>
+    <string name="validation_class_name_required">Class Name is required</string>
+    <string name="validation_registration_period_required">Registration Period is required</string>
+    <string name="validation_course_required">Course is required</string>
+    <string name="validation_lecturer_required">Lecturer is required</string>
+    <string name="validation_day_required">Day of Week is required</string>
+    <string name="validation_room_required">Room is required</string>
+    <string name="validation_period_range">Period must be between 1 and 10</string>
+    <string name="validation_invalid_start_period">Invalid Start Period</string>
+    <string name="validation_invalid_end_period">Invalid End Period</string>
+    <string name="validation_enrollment_positive">Maximum Enrollment must be positive</string>
+    <string name="validation_invalid_enrollment">Invalid Maximum Enrollment</string>
+
+
+    <!-- Grade Management -->
+
+
+    <!-- Grade Table Headers -->
+    <string name="header_student_id">Student ID</string>
+    <string name="header_student_name">Name</string>
+    <string name="header_grade">Grade</string>
+    <string name="header_feedback">Feedback</string>
+    <string name="header_note">Note</string>
+
+    <!-- Grade Messages -->
+    <string name="error_load_grades">Failed to load grades</string>
+    <string name="error_reload_grades">Failed to reload grades</string>
+    <string name="msg_grades_save_success">All grades saved successfully</string>
+    <string name="msg_grades_save_partial">Failed to save grades for some students</string>
+    <string name="error_enter_student_id">Please enter a student ID</string>
+    <string name="error_add_student">Can not add students to class</string>
+
+    <string name="title_add_student">Add Student</string>
+    <string name="title_remove_student">Remove Student</string>
+    <string name="msg_confirm_remove_student">Are you sure you want to remove %1$s?</string>
+    <string name="error_remove_student">Failed to remove student</string>
+    <string name="error_no_file">No File loaded\n</string>
+    <string name="import_excel_description">Please select an Excel file with the required format</string>
+    <string name="importFile">Import\n</string>
 
 
 </resources>

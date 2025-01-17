@@ -49,7 +49,8 @@ class GradesFragment : Fragment() {
                 if (grades != null) {
                     populateGradesTable(grades)
                 } else {
-                    Toast.makeText(context, "Failed to load grades", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, getString(R.string.error_load_grades), Toast.LENGTH_SHORT).show()
+
                 }
             }
         }
@@ -61,7 +62,7 @@ class GradesFragment : Fragment() {
                 if (grades != null) {
                     populateGradesTable(grades) // Refresh the grades table
                 } else {
-                    Toast.makeText(context, "Failed to reload grades", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, getString(R.string.error_reload_grades), Toast.LENGTH_SHORT).show()
                 }
             }
         }
@@ -90,7 +91,14 @@ class GradesFragment : Fragment() {
             )
         }
 
-        val headers = listOf("Student ID", "Name", "Grade", "Feedback", "Note")
+        val headers = listOf(
+            R.string.header_student_id,
+            R.string.header_student_name,
+            R.string.header_grade,
+            R.string.header_feedback,
+            R.string.header_note
+        ).map { getString(it) }
+
         headers.forEach { headerText ->
             val textView = TextView(context).apply {
                 text = headerText
@@ -194,7 +202,7 @@ class GradesFragment : Fragment() {
             if (gradeText.isNotEmpty()) {
                 val grade = gradeText.toDoubleOrNull()
                 if (grade == null || grade < 0 || grade > 10) {
-                    inputs.gradeInput.error = "Invalid grade (0-10)"
+                    inputs.gradeInput.error = getString(R.string.invalid_grade)
                     isValid = false
                 }
             }
@@ -238,16 +246,13 @@ class GradesFragment : Fragment() {
     }
 
     private fun showSaveResult(successCount: Int, failedStudents: List<String>) {
-        val message = when {
-            failedStudents.isEmpty() -> "All grades saved successfully"
-            else -> "Failed to save grades for some students"
+        val message = if (failedStudents.isEmpty()) {
+            getString(R.string.msg_grades_save_success)
+        } else {
+            getString(R.string.msg_grades_save_partial)
         }
 
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
-
-        if (failedStudents.isNotEmpty()) {
-            // Highlight failed rows or show error message
-        }
     }
 
     override fun onDestroyView() {

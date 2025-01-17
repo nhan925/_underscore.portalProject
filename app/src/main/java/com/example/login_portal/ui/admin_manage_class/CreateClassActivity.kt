@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.activity.viewModels
+import com.example.login_portal.R
 import com.example.login_portal.databinding.ActivityCreateClassBinding
 import com.example.login_portal.ui.admin_manage_class.CreateClassViewModel
 
@@ -77,6 +78,16 @@ class CreateClassActivity : BaseActivity() {
             viewModel.setDayOfWeek(daysOfWeek[position])
         }
     }
+    private fun showValidationErrors(errorKeys: String) {
+        errorKeys.split("|")
+            .map { key -> getString(resources.getIdentifier(key, "string", packageName)) }
+            .joinToString("\n")
+            .let { errorMessage ->
+                Toast.makeText(this, errorMessage, Toast.LENGTH_LONG).show()
+            }
+    }
+
+
 
     private fun setupButtons() {
         binding.btnBack.setOnClickListener {
@@ -84,17 +95,15 @@ class CreateClassActivity : BaseActivity() {
         }
 
         binding.btnCreate.setOnClickListener {
-            if (validateInputs()) {
-                viewModel.createClass(
-                    onSuccess = {
-                        Toast.makeText(this, "Class created successfully", Toast.LENGTH_SHORT).show()
-                        finish()
-                    },
-                    onError = { error ->
-                        Toast.makeText(this, error, Toast.LENGTH_SHORT).show()
-                    }
-                )
-            }
+            viewModel.createClass(
+                onSuccess = {
+                    Toast.makeText(this, getString(R.string.msg_class_created), Toast.LENGTH_SHORT).show()
+                    finish()
+                },
+                onError = { errorKeys ->
+                    showValidationErrors(errorKeys)
+                }
+            )
         }
     }
 

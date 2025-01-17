@@ -11,7 +11,7 @@
         android:id="@+id/titleText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Import Classes from Excel"
+        android:text="@string/import_excel"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent"
@@ -22,7 +22,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Please select an Excel file with the required format"
+        android:text="@string/import_excel_description"
         app:layout_constraintTop_toBottomOf="@id/titleText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -32,7 +32,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Select File"
+        android:text="@string/select_file"
         app:layout_constraintTop_toBottomOf="@id/descriptionText"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -62,13 +62,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
-            android:text="Cancel" />
+            android:text="@string/cancel" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/importButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Import" />
+            android:text="@string/importFile" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

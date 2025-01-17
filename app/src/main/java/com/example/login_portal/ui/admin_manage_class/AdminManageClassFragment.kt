@@ -46,11 +46,11 @@ class AdminManageClassFragment : Fragment() {
                     viewModel.setSelectedExcelFile(uri)
                     updateImportDialogWithFile(uri)
                 } else {
-                    showError(getString(R.string.error_select_excel))
+                    showError(getString(R.string.error_invalid_file))
                 }
             } catch (e: Exception) {
                 Log.e("ExcelPicker", "Error processing file: ${e.message}")
-                showError(getString(R.string.error_process_file))
+                showError(getString(R.string.error_load_failed))
             }
         } else {
             Log.e("ExcelPicker", "No file selected")

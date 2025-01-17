@@ -36,7 +36,7 @@
                 android:id="@+id/tvHeader"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Create New Class"
+                android:text="@string/activity_admin_class"
                 android:textColor="@android:color/black"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -66,7 +66,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
-                    android:hint="Class ID">
+                    android:hint="@string/field_class_id">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/classIdInput"
@@ -83,7 +83,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
-                    android:hint="Class Name">
+                    android:hint="@string/field_class_name">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/classNameInput"
@@ -100,7 +100,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
-                    android:hint="Registration Period">
+                    android:hint="@string/field_registration_period">
 
                     <AutoCompleteTextView
                         android:id="@+id/registrationPeriodDropdown"
@@ -116,7 +116,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
-                    android:hint="Course">
+                    android:hint="@string/field_course">
 
                     <AutoCompleteTextView
                         android:id="@+id/courseDropdown"
@@ -132,7 +132,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
-                    android:hint="Lecturer">
+                    android:hint="@string/field_lecturer">
 
                     <AutoCompleteTextView
                         android:id="@+id/lecturerDropdown"
@@ -148,7 +148,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
-                    android:hint="Day of Week">
+                    android:hint="@string/field_day_of_week">
 
                     <AutoCompleteTextView
                         android:id="@+id/dayOfWeekDropdown"
@@ -164,7 +164,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
-                    android:hint="Start Period">
+                    android:hint="@string/field_start_period">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/startPeriodInput"
@@ -181,7 +181,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
-                    android:hint="End Period">
+                    android:hint="@string/field_end_period">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/endPeriodInput"
@@ -198,7 +198,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
-                    android:hint="Room">
+                    android:hint="@string/field_room">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/roomInput"
@@ -215,7 +215,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="32dp"
-                    android:hint="Maximum Enrollment">
+                    android:hint="@string/field_max_enrollment">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/maxEnrollmentInput"
@@ -235,7 +235,7 @@
             android:layout_width="match_parent"
             android:layout_height="64dp"
             android:layout_margin="16dp"
-            android:text="CREATE CLASS"
+            android:text="@string/create_class"
             android:visibility="visible"
             app:backgroundTint="@android:color/holo_blue_dark"
             app:cornerRadius="8dp"
