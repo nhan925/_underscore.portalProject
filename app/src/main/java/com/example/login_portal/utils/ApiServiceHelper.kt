@@ -276,6 +276,7 @@ object ApiServiceHelper {
                                 callback(resultString)
                         }
                     } else {
+                        Log.d("ApiServiceHelper", "Request failed with response body: ${response.body().asString("application/json")}")
                         Handler(Looper.getMainLooper()).post {
                             callback(null)
                         }

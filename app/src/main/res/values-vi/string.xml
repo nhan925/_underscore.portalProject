@@ -475,4 +475,208 @@
     <string name="review_feedback_detail_category_feedback">Góp ý</string>
     <string name="student_information">Thông tin sinh viên</string>
     <string name="search_by_name_id">Tìm kiếm theo tên hay MSSV</string>
+
+    <string name="semester_title_format">Học kỳ %1$d (%2$s)</string>
+    <string name="semester_start_date_format">Ngày bắt đầu: %s</string>
+    <string name="semester_end_date_format">Ngày kết thúc: %s</string>
+    <string name="create_semester">Thêm Học Kỳ</string>
+    <string name="delete_semester">Xóa</string>
+    <string name="update_semester">Sửa</string>
+    <string name="semester_number">Học Kỳ</string>
+    <string name="semester_start_date">Ngày bắt đầu</string>
+    <string name="semester_end_date">Ngày kết thúc</string>
+    <string name="payment_start_date">Ngày bắt đầu thu học phí</string>
+    <string name="payment_end_date">Ngày kết thúc thu học phí</string>
+
+
+    <string name="create_course">Tạo môn học</string>
+    <string name="course_detail">Môn học</string>
+    <string name="course_name">Tên môn học</string>
+    <string name="course_credits">Số tín chỉ</string>
+    <string name="course_tuition">Học phí</string>
+    <string name="course_major">Ngành</string>
+    <string name="select_major">Chọn ngành</string>
+    <string name="course_outline">Đề cương môn học</string>
+
+    <string name="fill_all_fields">Vui lòng điền đầy đủ thông tin</string>
+    <string name="course_created">Tạo môn học thành công</string>
+    <string name="course_updated">Cập nhật môn học thành công</string>
+    <string name="course_deleted">Xóa môn học thành công</string>
+    <string name="delete_course">Xóa Môn học</string>
+    <string name="delete_course_confirmation">Bạn có chắc chắn muốn xóa môn học này?</string>
+    <string name="error_loading_courses">Không thể tải danh sách môn học</string>
+    <string name="error_loading_majors">Không thể tải danh sách ngành</string>
+    <string name="search_course_hint">Tìm theo tên hoặc mã môn học...</string>
+
+    <string name="search_period_hint">Tìm kiếm đợt đăng ký...</string>
+
+    <string name="registration_period_detail">Đợt Đăng ký học phần</string>
+    <string name="period_name">Tên đợt đăng ký</string>
+    <string name="select_semester">Chọn học kỳ</string>
+    <string name="start_date">Ngày bắt đầu</string>
+    <string name="end_date">Ngày kết thúc</string>
+    <string name="max_credits">Số tín chỉ tối đa</string>
+    <string name="create_registration_period">Tạo đợt đăng ký</string>
+    <string name="update_registration_period">Cập nhật </string>
+    <string name="delete_registration_period">Xóa </string>
+    <string name="period_created">Tạo đợt đăng ký thành công</string>
+    <string name="period_updated">Cập nhật đợt đăng ký thành công</string>
+    <string name="period_deleted">Xóa đợt đăng ký thành công</string>
+    <string name="delete_period">Xóa đợt đăng ký</string>
+    <string name="delete_period_confirmation">Bạn có chắc chắn muốn xóa đợt đăng ký này?</string>
+    <string name="invalid_date_range">Ngày kết thúc phải sau ngày bắt đầu</string>
+    <string name="status_upcoming">Sắp mở</string>
+    <string name="status_open">Đang mở</string>
+    <string name="status_closed">Đã đóng</string>
+
+
+    <!-- General -->
+
+    <string name="error">Lỗi</string>
+    <string name="success">Thành công</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Hủy</string>
+    <string name="retry">Thử lại</string>
+    <string name="save">Lưu</string>
+    <string name="delete">Xóa</string>
+    <string name="remove">Xóa</string>
+    <string name="add">Thêm</string>
+    <string name="back">Quay lại</string>
+
+    <!-- Class Management -->
+    <string name="activity_admin_class">Lớp học</string>
+    <string name="search_classes">Tìm kiếm lớp học...</string>
+    <string name="add_class">Thêm Lớp</string>
+    <string name="create_class">Tạo Lớp Mới</string>
+    <string name="class_details">Chi Tiết Lớp Học</string>
+    <string name="import_excel">Nhập từ Excel</string>
+    <string name="select_file">Chọn Tệp</string>
+    <string name="importing_classes">Nhập Lớp Học</string>
+    <string name="class_period_range">Tiết %1$d - %2$d</string>
+    <string name="field_current_enrollment">Đang đăng ký</string>
+
+
+
+    <!-- Excel Import -->
+    <string name="error_excel_invalid_format">Định dạng Excel không hợp lệ. Vui lòng kiểm tra mẫu.</string>
+    <string name="error_excel_empty">Tệp Excel trống.</string>
+    <string name="error_excel_reading">Lỗi đọc tệp Excel: %1$s</string>
+    <string name="error_excel_missing_headers">Thiếu các cột tiêu đề bắt buộc trong tệp Excel.</string>
+    <string name="error_excel_invalid_data">Dữ liệu không hợp lệ ở dòng %1$d</string>
+    <string name="error_excel_cannot_open">Không thể mở tệp</string>
+
+    <!-- Excel Import Validation -->
+    <string name="error_excel_period_range">Tiết học phải từ 1 đến 10</string>
+    <string name="error_excel_max_enrollment">Sĩ số tối đa phải lớn hơn 0</string>
+    <string name="error_excel_missing_cell">Thiếu ô dữ liệu bắt buộc</string>
+    <string name="error_excel_invalid_cell">Kiểu dữ liệu ô không hợp lệ</string>
+
+    <!-- Excel Import Results -->
+    <string name="msg_excel_import_success">Đã nhập thành công %1$d lớp học</string>
+    <string name="msg_excel_import_partial">Nhập một phần: Đã nhập %1$d trong %2$d lớp.\nCác dòng lỗi: %3$s</string>
+    <string name="msg_excel_import_failed">Không thể nhập lớp học nào.\nCác dòng lỗi: %1$s</string>
+
+    <!-- Class Item Labels -->
+    <string name="class_item_id">Mã lớp:</string>
+
+
+    <!-- Class Form Fields -->
+    <string name="field_class_id">Mã lớp</string>
+    <string name="field_class_name">Tên lớp</string>
+    <string name="field_registration_period">Đợt đăng ký</string>
+    <string name="field_course">Môn học</string>
+    <string name="field_lecturer">Giảng viên</string>
+    <string name="field_day_of_week">Thứ</string>
+    <string name="field_start_period">Tiết bắt đầu</string>
+    <string name="field_end_period">Tiết kết thúc</string>
+    <string name="field_room">Phòng</string>
+    <string name="field_max_enrollment">Sĩ số tối đa</string>
+
+    <!-- Tab Labels -->
+    <string name="tab_info">Thông tin</string>
+    <string name="tab_students">Sinh viên</string>
+    <string name="tab_grades">Điểm số</string>
+
+    <!-- Student Management -->
+    <string name="add_student">Thêm Sinh Viên</string>
+    <string name="remove_student">Xóa Sinh Viên</string>
+    <string name="remove_student_confirm">Bạn có chắc muốn xóa %1$s?</string>
+    <string name="no_students">Không có sinh viên</string>
+    <string name="student_id">MSSV</string>
+    <string name="student_name">Họ tên sinh viên</string>
+
+    <!-- Grade Management -->
+    <string name="save_grades">Lưu Điểm</string>
+    <string name="grade">Điểm</string>
+    <string name="feedback">Nhận xét</string>
+    <string name="note">Ghi chú</string>
+    <string name="invalid_grade">Điểm không hợp lệ (0-10)</string>
+
+    <!-- Messages -->
+    <string name="msg_class_created">Tạo lớp thành công</string>
+    <string name="msg_class_updated">Cập nhật lớp thành công</string>
+    <string name="msg_class_deleted">Xóa lớp thành công</string>
+    <string name="msg_student_added">Thêm sinh viên thành công</string>
+    <string name="msg_student_removed">Xóa sinh viên thành công</string>
+    <string name="msg_grades_saved">Lưu tất cả điểm thành công</string>
+    <string name="msg_grades_partial_save">Không thể lưu điểm cho một số sinh viên</string>
+    <string name="msg_no_file_selected">Chưa chọn tệp</string>
+    <string name="msg_import_success">Đã nhập thành công %1$d lớp</string>
+    <string name="msg_import_partial">Nhập một phần: Đã nhập %1$d trong tổng số %2$d lớp</string>
+    <string name="msg_import_failed">Không thể nhập lớp nào</string>
+
+    <!-- Error Messages -->
+    <string name="error_invalid_class_id">Mã lớp không hợp lệ</string>
+    <string name="error_load_failed">Không thể tải dữ liệu</string>
+    <string name="error_update_failed">Cập nhật thất bại</string>
+    <string name="error_delete_failed">Xóa thất bại</string>
+    <string name="error_add_failed">Thêm thất bại</string>
+    <string name="error_import_failed">Nhập dữ liệu thất bại</string>
+    <string name="error_invalid_file">Định dạng tệp không hợp lệ</string>
+    <string name="error_required_field">Trường này là bắt buộc</string>
+
+    <string name="validation_class_id_required">Yêu cầu nhập mã lớp</string>
+    <string name="validation_class_name_required">Yêu cầu nhập tên lớp</string>
+    <string name="validation_registration_period_required">Yêu cầu chọn đợt đăng ký</string>
+    <string name="validation_course_required">Yêu cầu chọn môn học</string>
+    <string name="validation_lecturer_required">Yêu cầu chọn giảng viên</string>
+    <string name="validation_day_required">Yêu cầu chọn thứ</string>
+    <string name="validation_room_required">Yêu cầu nhập phòng học</string>
+    <string name="validation_period_range">Tiết học phải từ 1 đến 10</string>
+    <string name="validation_invalid_start_period">Tiết bắt đầu không hợp lệ</string>
+    <string name="validation_invalid_end_period">Tiết kết thúc không hợp lệ</string>
+    <string name="validation_enrollment_positive">Sĩ số tối đa phải lớn hơn 0</string>
+    <string name="validation_invalid_enrollment">Sĩ số tối đa không hợp lệ</string>
+
+    <string name="import_excel_description">Chọn file excel hợp lệ</string>
+
+    <string name="importFile">Nhập</string>
+
+
+    <!-- Grade Management -->
+
+    <!-- Grade Table Headers -->
+    <string name="header_student_id">MSSV</string>
+    <string name="header_student_name">Họ và tên</string>
+    <string name="header_grade">Điểm</string>
+    <string name="header_feedback">Nhận xét</string>
+    <string name="header_note">Ghi chú</string>
+
+    <!-- Grade Messages -->
+    <string name="error_load_grades">Không thể tải điểm số</string>
+    <string name="error_reload_grades">Không thể tải lại điểm số</string>
+    <string name="msg_grades_save_success">Đã lưu tất cả điểm thành công</string>
+    <string name="msg_grades_save_partial">Không thể lưu điểm cho một số sinh viên</string>
+    <string name="error_enter_student_id">Vui lòng nhập MSSV</string>
+
+    <string name="error_add_student">Không thể thêm sinh viên</string>
+
+    <string name="title_add_student">Thêm Sinh Viên</string>
+    <string name="title_remove_student">Xóa Sinh Viên</string>
+    <string name="msg_confirm_remove_student">Bạn có chắc muốn xóa sinh viên %1$s?</string>
+    <string name="error_remove_student">Không thể xóa sinh viên</string>
+
+    <string name="error_no_file">Không có file</string>
+
+
 </resources>

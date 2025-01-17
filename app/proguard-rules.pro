@@ -19,3 +19,10 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+# Prevent Apache POI warnings
+-dontwarn org.apache.poi.**
+-dontwarn org.apache.commons.**
+
+# For MethodHandle warnings
+-dontwarn java.lang.invoke.MethodHandle
+-keep class java.lang.invoke.MethodHandle { *; }
