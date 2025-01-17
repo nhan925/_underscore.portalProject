@@ -12,6 +12,9 @@ class AdminManageClassViewModel : ViewModel() {
     private val _classes = MutableLiveData<List<ClassInfo>?>(emptyList())
     val classes: MutableLiveData<List<ClassInfo>?> = _classes
 
+    private var originalClasses: List<ClassInfo> = emptyList()
+
+
     // Loading state - default to false
     private val _isLoading = MutableLiveData(false)
     val isLoading: LiveData<Boolean> = _isLoading
@@ -49,17 +52,30 @@ class AdminManageClassViewModel : ViewModel() {
 
             if (classList != null) {
                 if (classList.isNotEmpty()) {
-                    _classes.value = classList
+                    originalClasses = classList // Store the fetched data in originalClasses
+                    _classes.value = classList // Update LiveData with the fetched data
                 } else {
                     _error.value = ErrorState.Error("No classes found")
                     _classes.value = emptyList()
+                    originalClasses = emptyList()
                 }
             } else {
                 _error.value = ErrorState.Error("Failed to load classes. API returned null.")
                 _classes.value = emptyList()
+                originalClasses = emptyList()
             }
         }
     }
+
+    fun filterClasses(predicate: (ClassInfo) -> Boolean) {
+        _classes.value = originalClasses.filter(predicate)
+    }
+
+
+    fun resetClassFilter() {
+        _classes.value = originalClasses
+    }
+
 
     fun searchClasses(query: String) {
         val currentClasses = _classes.value.orEmpty()

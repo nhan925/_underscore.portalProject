@@ -8,6 +8,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
@@ -23,6 +24,10 @@ import com.example.login_portal.databinding.LayoutExcelImportDialogBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.progressindicator.LinearProgressIndicator
+import com.google.android.material.textfield.TextInputLayout
+import org.apache.poi.sl.draw.geom.Context
+import java.text.Normalizer
+
 
 
 class AdminManageClassFragment : Fragment() {
@@ -100,20 +105,61 @@ class AdminManageClassFragment : Fragment() {
 
     private fun setupSearchView() {
         binding.classSearchView.apply {
-            queryHint = "Search classes..."
-            setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            queryHint = getString(R.string.search_classes)
+
+            setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener {
                 override fun onQueryTextSubmit(query: String?): Boolean {
-                    query?.let { viewModel.searchClasses(it) }
+                    hideKeyboard()
                     return true
                 }
 
-                override fun onQueryTextChange(newText: String?): Boolean {
-                    newText?.let { viewModel.searchClasses(it) }
+                override fun onQueryTextChange(text: String?): Boolean {
+                    filterClasses(text)
                     return true
                 }
             })
+
+            setOnQueryTextFocusChangeListener { _, hasFocus ->
+                if (hasFocus) {
+                    showKeyboard()
+                } else {
+                    hideKeyboard()
+                }
+            }
         }
     }
+
+    private fun filterClasses(query: String?) {
+        if (query.isNullOrBlank()) {
+            viewModel.resetClassFilter()
+            return
+        }
+
+        val searchText = query.removeAccents().lowercase().trim()
+
+        viewModel.filterClasses { classInfo ->
+            classInfo.className.removeAccents().lowercase().contains(searchText) ||
+                    classInfo.classId.lowercase().contains(searchText)
+        }
+    }
+
+
+    private fun String.removeAccents(): String {
+        return Normalizer.normalize(this, Normalizer.Form.NFD)
+            .replace("\\p{InCombiningDiacriticalMarks}+".toRegex(), "")
+            .lowercase()
+    }
+
+    private fun hideKeyboard() {
+        val imm = requireContext().getSystemService(android.content.Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(binding.classSearchView.windowToken, 0)
+    }
+
+    private fun showKeyboard() {
+        val imm = requireContext().getSystemService(android.content.Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.showSoftInput(binding.classSearchView, InputMethodManager.SHOW_IMPLICIT)
+    }
+
 
     private fun setupFab() {
         binding.addClassFab.apply {
