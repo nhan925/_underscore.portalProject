@@ -136,6 +136,7 @@ class StudentsFragment : Fragment() {
                     if (success) {
                         showSuccess("Student removed successfully")
                         loadStudents()
+                        refreshGrades()
                     } else {
                         showError("Failed to remove student")
                     }
@@ -143,6 +144,13 @@ class StudentsFragment : Fragment() {
             }
         }
     }
+
+    private fun refreshGrades() {
+        val parentFragmentManager = parentFragmentManager
+        val gradesFragment = parentFragmentManager.fragments.find { it is GradesFragment } as? GradesFragment
+        gradesFragment?.reloadGrades()
+    }
+
 
     private fun observeViewModel() {
         viewModel.classInfo.observe(viewLifecycleOwner) { classInfo ->

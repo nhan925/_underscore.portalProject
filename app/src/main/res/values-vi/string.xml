@@ -528,4 +528,99 @@
     <string name="status_upcoming">Sắp mở</string>
     <string name="status_open">Đang mở</string>
     <string name="status_closed">Đã đóng</string>
+
+
+    <!-- General -->
+    <string name="app_name">Cổng Quản Lý Lớp Học</string>
+    <string name="error">Lỗi</string>
+    <string name="success">Thành công</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Hủy</string>
+    <string name="retry">Thử lại</string>
+    <string name="save">Lưu</string>
+    <string name="delete">Xóa</string>
+    <string name="remove">Xóa</string>
+    <string name="add">Thêm</string>
+    <string name="back">Quay lại</string>
+
+    <!-- Class Management -->
+    <string name="manage_classes">Quản Lý Lớp Học</string>
+    <string name="search_classes">Tìm kiếm lớp học...</string>
+    <string name="add_class">Thêm Lớp</string>
+    <string name="create_class">Tạo Lớp Mới</string>
+    <string name="class_details">Chi Tiết Lớp Học</string>
+    <string name="import_excel">Nhập từ Excel</string>
+    <string name="select_file">Chọn Tệp</string>
+    <string name="importing_classes">Nhập Lớp Học</string>
+
+
+
+    <!-- Excel Import -->
+    <string name="error_select_excel">Please select a valid Excel file (.xls or .xlsx)</string>
+    <string name="error_process_file">Unable to process the selected file</string>
+    <string name="error_no_file">No file selected</string>
+    <string name="error_show_options">Unable to show options</string>
+    <string name="error_show_import">Unable to show import dialog</string>
+    <string name="error_update_file_info">Unable to update file information</string>
+    <string name="error_open_details">Unable to open class details</string>
+    <string name="msg_import_completed">Import completed successfully</string>
+
+    <!-- Class Item Labels -->
+    <string name="class_item_id">Mã lớp:</string>
+
+
+    <!-- Class Form Fields -->
+    <string name="field_class_id">Mã lớp</string>
+    <string name="field_class_name">Tên lớp</string>
+    <string name="field_registration_period">Đợt đăng ký</string>
+    <string name="field_course">Môn học</string>
+    <string name="field_lecturer">Giảng viên</string>
+    <string name="field_day_of_week">Thứ</string>
+    <string name="field_start_period">Tiết bắt đầu</string>
+    <string name="field_end_period">Tiết kết thúc</string>
+    <string name="field_room">Phòng</string>
+    <string name="field_max_enrollment">Sĩ số tối đa</string>
+
+    <!-- Tab Labels -->
+    <string name="tab_info">Thông tin</string>
+    <string name="tab_students">Sinh viên</string>
+    <string name="tab_grades">Điểm số</string>
+
+    <!-- Student Management -->
+    <string name="add_student">Thêm Sinh Viên</string>
+    <string name="remove_student">Xóa Sinh Viên</string>
+    <string name="remove_student_confirm">Bạn có chắc muốn xóa %1$s?</string>
+    <string name="no_students">Không có sinh viên</string>
+    <string name="student_id">MSSV</string>
+    <string name="student_name">Họ tên sinh viên</string>
+
+    <!-- Grade Management -->
+    <string name="save_grades">Lưu Điểm</string>
+    <string name="grade">Điểm</string>
+    <string name="feedback">Nhận xét</string>
+    <string name="note">Ghi chú</string>
+    <string name="invalid_grade">Điểm không hợp lệ (0-10)</string>
+
+    <!-- Messages -->
+    <string name="msg_class_created">Tạo lớp thành công</string>
+    <string name="msg_class_updated">Cập nhật lớp thành công</string>
+    <string name="msg_class_deleted">Xóa lớp thành công</string>
+    <string name="msg_student_added">Thêm sinh viên thành công</string>
+    <string name="msg_student_removed">Xóa sinh viên thành công</string>
+    <string name="msg_grades_saved">Lưu tất cả điểm thành công</string>
+    <string name="msg_grades_partial_save">Không thể lưu điểm cho một số sinh viên</string>
+    <string name="msg_no_file_selected">Chưa chọn tệp</string>
+    <string name="msg_import_success">Đã nhập thành công %1$d lớp</string>
+    <string name="msg_import_partial">Nhập một phần: Đã nhập %1$d trong tổng số %2$d lớp</string>
+    <string name="msg_import_failed">Không thể nhập lớp nào</string>
+
+    <!-- Error Messages -->
+    <string name="error_invalid_class_id">Mã lớp không hợp lệ</string>
+    <string name="error_load_failed">Không thể tải dữ liệu</string>
+    <string name="error_update_failed">Cập nhật thất bại</string>
+    <string name="error_delete_failed">Xóa thất bại</string>
+    <string name="error_add_failed">Thêm thất bại</string>
+    <string name="error_import_failed">Nhập dữ liệu thất bại</string>
+    <string name="error_invalid_file">Định dạng tệp không hợp lệ</string>
+    <string name="error_required_field">Trường này là bắt buộc</string>
 </resources>

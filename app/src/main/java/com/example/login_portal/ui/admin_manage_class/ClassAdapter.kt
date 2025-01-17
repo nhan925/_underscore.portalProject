@@ -3,14 +3,14 @@ package com.example.login_portal.ui.admin_manage_class
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.login_portal.databinding.ClassItemBinding
+import com.example.login_portal.databinding.AdminClassItemBinding
 
 class ClassAdapter(private val onClassClick: (ClassInfo) -> Unit) :
     RecyclerView.Adapter<ClassAdapter.ClassViewHolder>() {
 
     private var classes = listOf<ClassInfo>()
 
-    inner class ClassViewHolder(private val binding: ClassItemBinding) :
+    inner class ClassViewHolder(private val binding: AdminClassItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(classInfo: ClassInfo) {
@@ -30,7 +30,7 @@ class ClassAdapter(private val onClassClick: (ClassInfo) -> Unit) :
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ClassViewHolder {
-        val binding = ClassItemBinding.inflate(
+        val binding = AdminClassItemBinding.inflate(
             LayoutInflater.from(parent.context), parent, false
         )
         return ClassViewHolder(binding)

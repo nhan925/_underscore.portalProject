@@ -55,6 +55,19 @@ class GradesFragment : Fragment() {
         }
     }
 
+    fun reloadGrades() {
+        viewModel.classInfo.value?.let { classInfo ->
+            ClassDAO.getStudentGrades(classInfo.classId) { grades ->
+                if (grades != null) {
+                    populateGradesTable(grades) // Refresh the grades table
+                } else {
+                    Toast.makeText(context, "Failed to reload grades", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+    }
+
+
     private fun populateGradesTable(grades: List<StudentGrade>) {
         studentGrades.clear()
         binding.gradesTable.removeAllViews()

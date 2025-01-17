@@ -28,6 +28,7 @@ class ClassDetailsViewModel : ViewModel() {
     // Class details form fields
     val classId = MutableLiveData<String>()
     val className = MutableLiveData<String>()
+
     val startPeriod = MutableLiveData<String>()
     val endPeriod = MutableLiveData<String>()
     val room = MutableLiveData<String>()
@@ -67,6 +68,7 @@ class ClassDetailsViewModel : ViewModel() {
     private fun updateFormFields(classInfo: ClassInfo) {
         classId.value = classInfo.classId
         className.value = classInfo.className
+
         startPeriod.value = classInfo.startPeriod.toString()
         endPeriod.value = classInfo.endPeriod.toString()
         room.value = classInfo.room

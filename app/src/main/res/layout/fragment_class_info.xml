@@ -58,6 +58,7 @@
                         android:hint="Class Name">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/classNameInput"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@={viewModel.className}" />
@@ -132,6 +133,7 @@
                         android:hint="Start Period">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/startPeriodInput"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:inputType="number"
@@ -147,6 +149,7 @@
                         android:hint="End Period">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/endPeriodInput"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:inputType="number"
@@ -162,6 +165,7 @@
                         android:hint="Room">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/roomInput"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:inputType="text"
@@ -193,6 +197,7 @@
                         android:hint="Maximum Enrollment">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/maxEnrollmentInput"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:inputType="number"
