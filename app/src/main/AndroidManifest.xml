@@ -9,6 +9,10 @@
         android:name="android.permission.READ_EXTERNAL_STORAGE"
         android:maxSdkVersion="32" />
 
+
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:name=".MyApplication"
         android:allowBackup="true"
@@ -118,6 +122,25 @@
         <activity
             android:name=".ui.admin_manage_student.EditStudentInfoActivity"
             android:exported="true" 
+            />
+
+        <activity android:name=".ui.admin_manage_semester.SemesterDetailActivity"
+            android:exported="true"
+            />
+        <activity android:name=".ui.admin_manage_course.CourseDetailActivity"
+            android:exported="true"
+            />
+
+        <activity android:name=".ui.admin_manage_enrollment_period.RegistrationPeriodDetailActivity"
+            android:exported="true"
+            />
+
+        <activity android:name=".ui.admin_manage_class.ClassDetailsActivity"
+            android:exported="true"
+            />
+
+        <activity android:name=".ui.admin_manage_class.CreateClassActivity"
+            android:exported="true"
             />
 
     </application>

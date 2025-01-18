@@ -12,9 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.login_portal.databinding.FragmentAdminManageStudentBinding
 import androidx.appcompat.widget.SearchView
-import androidx.core.widget.doOnTextChanged
 import java.text.Normalizer
-
 
 class AdminManageStudentFragment : Fragment() {
 
@@ -46,12 +44,15 @@ class AdminManageStudentFragment : Fragment() {
     }
 
     private fun setupRecyclerView() {
-        studentAdapter = StudentAdapter { student ->
-            val intent = Intent(requireContext(), EditStudentInfoActivity::class.java).apply {
-                putExtra("STUDENT_ID", student.studentId)
-            }
-            startActivity(intent)
-        }
+        studentAdapter = StudentAdapter(
+            onStudentClick = { student ->
+                val intent = Intent(requireContext(), EditStudentInfoActivity::class.java).apply {
+                    putExtra("STUDENT_ID", student.studentId)
+                }
+                startActivity(intent)
+            },
+            isAdminManageScreen = true  // This will hide the delete button
+        )
         binding.studentListRecyclerView.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = studentAdapter
