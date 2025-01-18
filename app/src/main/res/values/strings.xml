@@ -704,6 +704,9 @@
     <string name="import_progress_message">%d/%d classes imported</string>
     <string name="create_class_failed">Create Class failed</string>
     <string name="admin_nav_description">Full management permissions</string>
+    <string name="admin_create_noti">Create Notification</string>
+    <string name="admin_registration_period_text">Registration Period</string>
+    <string name="search_semester_hint">Search semester...</string>
 
 
 </resources>

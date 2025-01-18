@@ -114,7 +114,7 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnImportant"
         style="@style/Widget.MaterialComponents.Button"
-        android:layout_width="160dp"
+        android:layout_width="170dp"
         android:layout_height="64dp"
         android:layout_marginBottom="16dp"
         android:paddingHorizontal="24dp"
@@ -129,7 +129,7 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnDelete"
         style="@style/Widget.MaterialComponents.Button"
-        android:layout_width="160dp"
+        android:layout_width="170dp"
         android:layout_height="64dp"
         android:layout_marginBottom="16dp"
         android:paddingHorizontal="24dp"
