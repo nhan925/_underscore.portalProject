@@ -23,6 +23,7 @@ import com.example.login_portal.databinding.FragmentAdminManageClassBinding
 import com.example.login_portal.databinding.LayoutAddClassOptionsBinding
 import com.example.login_portal.databinding.LayoutExcelImportDialogBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.progressindicator.LinearProgressIndicator
 import com.google.android.material.textfield.TextInputLayout
@@ -210,7 +211,11 @@ class AdminManageClassFragment : Fragment() {
             dialog.setOnShowListener { dialogInterface ->
                 val bottomSheetDialog = dialogInterface as BottomSheetDialog
                 val bottomSheet = bottomSheetDialog.findViewById<View>(com.google.android.material.R.id.design_bottom_sheet)
-                bottomSheet?.layoutParams?.height = (resources.displayMetrics.heightPixels * 0.5).toInt()
+                //bottomSheet?.layoutParams?.height = (resources.displayMetrics.heightPixels * 0.5).toInt()
+                bottomSheet?.let {
+                    val behavior = BottomSheetBehavior.from(it)
+                    behavior.peekHeight = (resources.displayMetrics.heightPixels * 0.25).toInt() // Example: 40% of screen height
+                }
             }
 
             dialog.setContentView(dialogBinding.root)
