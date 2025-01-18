@@ -114,29 +114,23 @@ class ClassInfoFragment : Fragment() {
         }
 
         // Day of Week Dropdown
-        val isEnglish = resources.configuration.locales[0].language == "en"
-        val displayDays = DayOfWeekUtil.getDisplayDays(isEnglish)
-
-        val adapter = ArrayAdapter(
+        val daysOfWeek = listOf("Thứ 2", "Thứ 3", "Thứ 4", "Thứ 5", "Thứ 6", "Thứ 7")
+        val dayAdapter = ArrayAdapter(
             requireContext(),
             android.R.layout.simple_dropdown_item_1line,
-            displayDays
+            daysOfWeek
         )
-
         binding.dayOfWeekDropdown.apply {
-            setAdapter(adapter)
-            dropDownVerticalOffset = -48
-            dropDownHeight = (resources.displayMetrics.heightPixels * 0.4).toInt()
+            setAdapter(dayAdapter)
+            dropDownVerticalOffset = 8
+            setDropDownHeight(resources.displayMetrics.heightPixels / 3)
 
-            // Set initial value based on database value
             viewModel.classInfo.value?.let { classInfo ->
-                val displayIndex = DayOfWeekUtil.getDisplayIndex(classInfo.dayOfWeek)
-                setText(displayDays[displayIndex], false)
+                setText(classInfo.dayOfWeek, false)
             }
 
             setOnItemClickListener { _, _, position, _ ->
-                val dbValue = DayOfWeekUtil.getDbValue(position)
-                viewModel.setDayOfWeek(dbValue)
+                viewModel.setDayOfWeek(daysOfWeek[position])
             }
         }
     }
@@ -214,43 +208,43 @@ class ClassInfoFragment : Fragment() {
 
         when {
             binding.classNameInput.text.isNullOrBlank() -> {
-                showError("Class name is required")
+                showError(getString(R.string.error_class_name_required))
                 return false
             }
             startPeriod == null || startPeriod !in 1..10 -> {
-                showError("Start period must be between 1 and 10")
+                showError(getString(R.string.error_start_period_invalid))
                 return false
             }
             endPeriod == null || endPeriod !in 1..10 -> {
-                showError("End period must be between 1 and 10")
+                showError(getString(R.string.error_end_period_invalid))
                 return false
             }
             startPeriod > endPeriod -> {
-                showError("Start period cannot be greater than end period")
+                showError(getString(R.string.error_start_period_greater))
                 return false
             }
             binding.roomInput.text.isNullOrBlank() -> {
-                showError("Room is required")
+                showError(getString(R.string.error_room_required))
                 return false
             }
             maxEnrollment == null || maxEnrollment <= 0 -> {
-                showError("Maximum enrollment must be greater than 0")
+                showError(getString(R.string.error_max_enrollment))
                 return false
             }
             binding.registrationPeriodDropdown.text.isNullOrBlank() -> {
-                showError("Registration period is required")
+                showError(getString(R.string.error_registration_period_required))
                 return false
             }
             binding.courseDropdown.text.isNullOrBlank() -> {
-                showError("Course is required")
+                showError(getString(R.string.error_course_required))
                 return false
             }
             binding.lecturerDropdown.text.isNullOrBlank() -> {
-                showError("Lecturer is required")
+                showError(getString(R.string.error_lecturer_required))
                 return false
             }
             binding.dayOfWeekDropdown.text.isNullOrBlank() -> {
-                showError("Day of week is required")
+                showError(getString(R.string.error_day_of_week_required))
                 return false
             }
         }
@@ -261,7 +255,7 @@ class ClassInfoFragment : Fragment() {
     private fun updateClassInfo() {
         viewModel.updateClass(
             onSuccess = {
-                showSuccess("Class updated successfully")
+                showSuccess(getString(R.string.msg_class_updated))
                 activity?.finish()
             },
             onError = { error ->
@@ -272,23 +266,23 @@ class ClassInfoFragment : Fragment() {
 
     private fun showDeleteConfirmation() {
         AlertDialog.Builder(requireContext())
-            .setTitle("Delete Class")
-            .setMessage("Are you sure you want to delete this class?")
-            .setPositiveButton("Delete") { _, _ ->
+            .setTitle(getString(R.string.delete_class))
+            .setMessage(getString(R.string.confirm_delete_class))
+            .setPositiveButton(getString(R.string.delete)) { _, _ ->
                 deleteClass()
             }
-            .setNegativeButton("Cancel", null)
+            .setNegativeButton(getString(R.string.cancel), null)
             .show()
     }
 
     private fun deleteClass() {
         viewModel.deleteClass(
             onSuccess = {
-                showSuccess("Class deleted successfully")
+                showSuccess(getString(R.string.msg_class_deleted))
                 activity?.finish()
             },
             onError = { error ->
-                showError(error)
+                showError(getString(R.string.class_deleted_failed))
             }
         )
     }

@@ -1,9 +1,10 @@
 package com.example.login_portal.ui.admin_manage_class
 
+import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import com.example.login_portal.R
 
 class CreateClassViewModel : ViewModel() {
     // Input fields with two-way binding
@@ -78,55 +79,40 @@ class CreateClassViewModel : ViewModel() {
         selectedDayOfWeek = day
     }
 
-    companion object {
-        // Validation message keys
-        const val KEY_CLASS_ID_REQUIRED = "validation_class_id_required"
-        const val KEY_CLASS_NAME_REQUIRED = "validation_class_name_required"
-        const val KEY_REGISTRATION_REQUIRED = "validation_registration_period_required"
-        const val KEY_COURSE_REQUIRED = "validation_course_required"
-        const val KEY_LECTURER_REQUIRED = "validation_lecturer_required"
-        const val KEY_DAY_REQUIRED = "validation_day_required"
-        const val KEY_ROOM_REQUIRED = "validation_room_required"
-        const val KEY_PERIOD_RANGE = "validation_period_range"
-        const val KEY_INVALID_START_PERIOD = "validation_invalid_start_period"
-        const val KEY_INVALID_END_PERIOD = "validation_invalid_end_period"
-        const val KEY_ENROLLMENT_POSITIVE = "validation_enrollment_positive"
-        const val KEY_INVALID_ENROLLMENT = "validation_invalid_enrollment"
-        const val KEY_CREATE_FAILED = "msg_create_class_failed"
-    }
-
-    fun validateInputs(): Map<String, String> {
+    fun validateInputs(context: Context): Map<String, String> {
         val errors = mutableMapOf<String, String>()
 
         // Required field validation
-        if (classId.value.isNullOrBlank()) errors["classId"] = KEY_CLASS_ID_REQUIRED
-        if (className.value.isNullOrBlank()) errors["className"] = KEY_CLASS_NAME_REQUIRED
-        if (selectedRegistrationPeriod == null) errors["registrationPeriod"] = KEY_REGISTRATION_REQUIRED
-        if (selectedCourse == null) errors["course"] = KEY_COURSE_REQUIRED
-        if (selectedLecturer == null) errors["lecturer"] = KEY_LECTURER_REQUIRED
-        if (selectedDayOfWeek == null) errors["dayOfWeek"] = KEY_DAY_REQUIRED
-        if (room.value.isNullOrBlank()) errors["room"] = KEY_ROOM_REQUIRED
+        if (classId.value.isNullOrBlank()) errors["classId"] = context.getString(R.string.validation_class_id_required)
+        if (className.value.isNullOrBlank()) errors["className"] = context.getString(R.string.validation_class_name_required)
+        if (selectedRegistrationPeriod == null) errors["registrationPeriod"] = context.getString(R.string.validation_registration_period_required)
+        if (selectedCourse == null) errors["course"] = context.getString(R.string.validation_course_required)
+        if (selectedLecturer == null) errors["lecturer"] = context.getString(R.string.validation_lecturer_required)
+        if (selectedDayOfWeek == null) errors["dayOfWeek"] = context.getString(R.string.validation_day_required)
+        if (room.value.isNullOrBlank()) errors["room"] = context.getString(R.string.validation_room_required)
 
         // Number validation
         startPeriod.value?.toIntOrNull()?.let {
-            if (it < 1 || it > 10) errors["startPeriod"] = KEY_PERIOD_RANGE
-        } ?: run { errors["startPeriod"] = KEY_INVALID_START_PERIOD }
+            if (it < 1 || it > 10) errors["startPeriod"] = context.getString(R.string.validation_period_range)
+        } ?: run { errors["startPeriod"] = context.getString(R.string.validation_invalid_start_period) }
 
         endPeriod.value?.toIntOrNull()?.let {
-            if (it < 1 || it > 10) errors["endPeriod"] = KEY_PERIOD_RANGE
-        } ?: run { errors["endPeriod"] = KEY_INVALID_END_PERIOD }
+            if (it < 1 || it > 10) errors["endPeriod"] = context.getString(R.string.validation_period_range)
+        } ?: run { errors["endPeriod"] = context.getString(R.string.validation_invalid_end_period) }
 
         maxEnrollment.value?.toIntOrNull()?.let {
-            if (it < 1) errors["maxEnrollment"] = KEY_ENROLLMENT_POSITIVE
-        } ?: run { errors["maxEnrollment"] = KEY_INVALID_ENROLLMENT }
+            if (it < 1) errors["maxEnrollment"] = context.getString(R.string.validation_enrollment_positive)
+        } ?: run { errors["maxEnrollment"] = context.getString(R.string.validation_invalid_enrollment) }
 
         return errors
     }
 
-    fun createClass(onSuccess: () -> Unit, onError: (String) -> Unit) {
-        val validationErrors = validateInputs()
+    fun createClass(context: Context, onSuccess: () -> Unit, onError: (String) -> Unit) {
+        val validationErrors = validateInputs(context)
         if (validationErrors.isNotEmpty()) {
-            onError(validationErrors.values.filterNotNull().joinToString("\n"))
+            // Combine validation errors into a single localized message
+            val errorMessage = validationErrors.values.joinToString("\n")
+            onError(errorMessage)
             return
         }
 
@@ -150,10 +136,10 @@ class CreateClassViewModel : ViewModel() {
             if (success) {
                 onSuccess()
             } else {
-                onError("Failed to create class")
+                // Use a localized error message if the class creation fails
+                onError(context.getString(R.string.create_class_failed))
             }
         }
     }
-
 
 }

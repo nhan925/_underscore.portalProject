@@ -6,16 +6,19 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="8dp"
+    android:layout_marginBottom="0dp"
     android:background="?attr/selectableItemBackground"
     app:cardBackgroundColor="@android:color/white"
     app:cardElevation="2dp"
-    app:cardCornerRadius="8dp">
+    app:cardCornerRadius="8dp"
+    app:strokeWidth="0dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="8dp">
 
+        <!-- Tên sinh viên -->
         <TextView
             android:id="@+id/student_item_name"
             android:layout_width="0dp"
@@ -29,6 +32,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/btnDelete" />
 
+        <!-- Mã sinh viên -->
         <TextView
             android:id="@+id/student_item_id"
             android:layout_width="0dp"
@@ -42,6 +46,7 @@
             app:layout_constraintTop_toBottomOf="@id/student_item_name"
             app:layout_constraintEnd_toStartOf="@+id/btnDelete" />
 
+        <!-- Giới tính -->
         <TextView
             android:id="@+id/student_item_gender"
             android:layout_width="0dp"
@@ -56,6 +61,7 @@
             app:layout_constraintTop_toBottomOf="@id/student_item_id"
             app:layout_constraintEnd_toStartOf="@+id/btnDelete" />
 
+        <!-- Nút xóa -->
         <ImageButton
             android:id="@+id/btnDelete"
             android:layout_width="48dp"
@@ -67,5 +73,4 @@
             app:layout_constraintBottom_toBottomOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </com.google.android.material.card.MaterialCardView>

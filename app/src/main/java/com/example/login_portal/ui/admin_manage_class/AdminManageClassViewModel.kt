@@ -6,6 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.login_portal.R
 
 class AdminManageClassViewModel : ViewModel() {
     // LiveData for class list - initialize with empty list instead of null
@@ -108,7 +109,7 @@ class AdminManageClassViewModel : ViewModel() {
     fun importClassesFromExcel(context: Context) {
         val uri = selectedExcelUri
         if (uri == null) {
-            _error.value = ErrorState.Error("No file selected")
+            _error.value = ErrorState.Error(context.getString(R.string.error_no_file_selected))
             return
         }
 
@@ -120,7 +121,10 @@ class AdminManageClassViewModel : ViewModel() {
                 _importProgress.value = ImportProgress(
                     current = current,
                     total = total,
-                    message = "$current/$total classes imported"
+                    message = context.getString(
+                        R.string.import_progress_message,
+                        current,
+                        total)
                 )
             },
             onComplete = { success, message ->
@@ -129,7 +133,7 @@ class AdminManageClassViewModel : ViewModel() {
                     loadClasses() // Reload the class list after successful import
                     _error.value = ErrorState.None
                 } else {
-                    _error.value = ErrorState.Error(message ?: "Import failed")
+                    _error.value = ErrorState.Error(message ?: context.getString(R.string.error_import_failed))
                 }
                 selectedExcelUri = null // Reset selected file
             }
@@ -148,4 +152,6 @@ class AdminManageClassViewModel : ViewModel() {
         _error.value = ErrorState.None
         _importProgress.value = ImportProgress()
     }
+
+
 }
