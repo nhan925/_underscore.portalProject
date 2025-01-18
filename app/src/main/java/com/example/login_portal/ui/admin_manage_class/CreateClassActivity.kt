@@ -67,7 +67,7 @@ class CreateClassActivity : BaseActivity() {
         }
 
         // Day of Week Dropdown
-        val daysOfWeek = listOf("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday")
+        val daysOfWeek = listOf("Thứ 2", "Thứ 3", "Thứ 4", "Thứ 5", "Thứ 6", "Thứ 7")
         val dayAdapter = ArrayAdapter(
             this,
             android.R.layout.simple_dropdown_item_1line,
@@ -96,15 +96,16 @@ class CreateClassActivity : BaseActivity() {
 
         binding.btnCreate.setOnClickListener {
             viewModel.createClass(
+                context = this,
                 onSuccess = {
+                    // Show a localized success message and finish the activity
                     Toast.makeText(this, getString(R.string.msg_class_created), Toast.LENGTH_SHORT).show()
-
-
                     setResult(RESULT_OK)
                     finish()
                 },
                 onError = { errorKeys ->
-                    showValidationErrors(errorKeys)
+                    // Show validation errors as a Toast
+                    Toast.makeText(this, errorKeys, Toast.LENGTH_LONG).show()
                 }
             )
         }

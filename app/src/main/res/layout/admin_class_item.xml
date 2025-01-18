@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
@@ -8,6 +9,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:layout_marginBottom="0dp"
+        app:cardElevation="2dp"
+        app:cardCornerRadius="8dp"
+        app:strokeWidth="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -15,10 +20,8 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/class_item_constraint_layout"
-            android:layout_width="429dp"
-            android:layout_height="132dp"
-            android:background="?attr/selectableItemBackground">
-
+            android:layout_width="match_parent"
+            android:layout_height="131dp">
 
             <TextView
                 android:id="@+id/class_item_id"
@@ -121,14 +124,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
                 android:alpha="0.8"
                 android:text="@string/class_item_slot"
                 android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/textView21"
-                app:layout_constraintTop_toBottomOf="@+id/textView21"
-                app:layout_constraintVertical_bias="0.121" />
+                app:layout_constraintTop_toBottomOf="@+id/textView21" />
 
             <TextView
                 android:id="@+id/class_item_slot"
@@ -161,5 +162,4 @@
                 app:layout_constraintTop_toTopOf="@+id/textView27" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

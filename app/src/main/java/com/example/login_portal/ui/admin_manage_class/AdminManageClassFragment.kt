@@ -93,6 +93,12 @@ class AdminManageClassFragment : Fragment() {
         observeViewModel()
     }
 
+    override fun onResume() {
+        super.onResume()
+        // Refresh classes whenever the Fragment is resumed
+        viewModel.refreshClasses()
+    }
+
     private fun setupRecyclerView() {
         classAdapter = ClassAdapter { classInfo ->
             navigateToClassDetails(classInfo)
@@ -211,7 +217,7 @@ class AdminManageClassFragment : Fragment() {
             dialog.show()
         } catch (e: Exception) {
             Log.e("AdminManageClass", "Error showing options dialog: ${e.message}")
-            showError("Unable to show options")
+            showError(getString(R.string.error_show_options))
         }
     }
 
@@ -245,7 +251,7 @@ class AdminManageClassFragment : Fragment() {
             currentExcelDialog?.show()
         } catch (e: Exception) {
             Log.e("AdminManageClass", "Error showing import dialog: ${e.message}")
-            showError("Unable to show import dialog")
+            showError(getString(R.string.error_update_import))
         }
     }
 
@@ -258,13 +264,13 @@ class AdminManageClassFragment : Fragment() {
             }
         } catch (e: Exception) {
             Log.e("AdminManageClass", "Error updating import dialog: ${e.message}")
-            showError("Unable to update file information")
+            showError(getString(R.string.error_update_import))
         }
     }
 
     private fun showImportProgress() {
         val progressDialog = MaterialAlertDialogBuilder(requireContext())
-            .setTitle("Importing Classes")
+            .setTitle(getString(R.string.importing_classes))
             .setView(LinearProgressIndicator(requireContext()).apply {
                 isIndeterminate = true
             })
@@ -284,7 +290,7 @@ class AdminManageClassFragment : Fragment() {
             when (error) {
                 is AdminManageClassViewModel.ErrorState.Error -> {
                     progressDialog.dismiss()
-                    showError(error.message)
+                    showError(getString(R.string.error_import_failed))
                 }
                 else -> {}
             }
@@ -344,7 +350,7 @@ class AdminManageClassFragment : Fragment() {
             })
         } catch (e: Exception) {
             Log.e("AdminManageClass", "Error navigating to details: ${e.message}")
-            showError("Unable to open class details")
+            showError(getString(R.string.error_navigate_details))
         }
     }
 
