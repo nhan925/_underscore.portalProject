@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.login_portal.databinding.FragmentAdminManageStudentBinding
 import androidx.appcompat.widget.SearchView
+import com.example.login_portal.R
 import java.text.Normalizer
 
 class AdminManageStudentFragment : Fragment() {
@@ -61,6 +62,7 @@ class AdminManageStudentFragment : Fragment() {
 
     private fun setupSearchView() {
         binding.studentSearchView.apply {
+            queryHint = getString(R.string.search_by_name_id)
             setOnQueryTextListener(object : SearchView.OnQueryTextListener {
                 override fun onQueryTextSubmit(query: String?): Boolean {
                     hideKeyboard()

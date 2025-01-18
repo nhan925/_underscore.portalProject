@@ -42,6 +42,7 @@ class AdminManageSemesterFragment : Fragment() {
 
     private fun setupSearchView() {
         binding.semesterSearchView.apply {
+            queryHint = getString(R.string.search_semester_hint)
             setOnQueryTextListener(object : SearchView.OnQueryTextListener {
                 override fun onQueryTextSubmit(query: String?): Boolean {
                     hideKeyboard()
