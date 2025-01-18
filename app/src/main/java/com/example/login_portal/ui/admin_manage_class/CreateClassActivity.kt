@@ -98,6 +98,9 @@ class CreateClassActivity : BaseActivity() {
             viewModel.createClass(
                 onSuccess = {
                     Toast.makeText(this, getString(R.string.msg_class_created), Toast.LENGTH_SHORT).show()
+
+
+                    setResult(RESULT_OK)
                     finish()
                 },
                 onError = { errorKeys ->

@@ -95,7 +95,6 @@ class GradesFragment : Fragment() {
             R.string.header_student_id,
             R.string.header_student_name,
             R.string.header_grade,
-            R.string.header_feedback,
             R.string.header_note
         ).map { getString(it) }
 
@@ -141,18 +140,7 @@ class GradesFragment : Fragment() {
         }
         row.addView(gradeInput)
 
-        // Feedback Input
-        val feedbackInput = EditText(context).apply {
-            setText(grade.feedback ?: "")
-            inputType = InputType.TYPE_CLASS_TEXT
-            layoutParams = TableRow.LayoutParams(
-                TableRow.LayoutParams.WRAP_CONTENT,
-                TableRow.LayoutParams.WRAP_CONTENT
-            ).apply {
-                setMargins(8, 8, 8, 8)
-            }
-        }
-        row.addView(feedbackInput)
+
 
         // Note Input
         val noteInput = EditText(context).apply {
@@ -172,7 +160,6 @@ class GradesFragment : Fragment() {
         studentGrades[grade.studentId] = StudentGradeInputs(
             grade.studentId,
             gradeInput,
-            feedbackInput,
             noteInput
         )
     }
@@ -218,7 +205,7 @@ class GradesFragment : Fragment() {
 
             studentGrades.forEach { (studentId, inputs) ->
                 val grade = inputs.gradeInput.text.toString().toDoubleOrNull()
-                val feedback = inputs.feedbackInput.text.toString()
+
                 val note = inputs.noteInput.text.toString()
 
                 if (grade != null) {
@@ -226,7 +213,6 @@ class GradesFragment : Fragment() {
                         classId = classInfo.classId,
                         studentId = studentId,
                         grade = grade,
-                        feedback = feedback.ifEmpty { null },
                         note = note.ifEmpty { null }
                     ) { success ->
                         if (success) {

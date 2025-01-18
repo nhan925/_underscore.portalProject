@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import com.example.login_portal.R
 import com.example.login_portal.databinding.FragmentClassInfoBinding
 import com.google.android.material.textfield.TextInputEditText
 
@@ -113,23 +114,29 @@ class ClassInfoFragment : Fragment() {
         }
 
         // Day of Week Dropdown
-        val daysOfWeek = listOf("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday")
-        val dayAdapter = ArrayAdapter(
+        val isEnglish = resources.configuration.locales[0].language == "en"
+        val displayDays = DayOfWeekUtil.getDisplayDays(isEnglish)
+
+        val adapter = ArrayAdapter(
             requireContext(),
             android.R.layout.simple_dropdown_item_1line,
-            daysOfWeek
+            displayDays
         )
-        binding.dayOfWeekDropdown.apply {
-            setAdapter(dayAdapter)
-            dropDownVerticalOffset = 8
-            setDropDownHeight(resources.displayMetrics.heightPixels / 3)
 
+        binding.dayOfWeekDropdown.apply {
+            setAdapter(adapter)
+            dropDownVerticalOffset = -48
+            dropDownHeight = (resources.displayMetrics.heightPixels * 0.4).toInt()
+
+            // Set initial value based on database value
             viewModel.classInfo.value?.let { classInfo ->
-                setText(classInfo.dayOfWeek, false)
+                val displayIndex = DayOfWeekUtil.getDisplayIndex(classInfo.dayOfWeek)
+                setText(displayDays[displayIndex], false)
             }
 
             setOnItemClickListener { _, _, position, _ ->
-                viewModel.setDayOfWeek(daysOfWeek[position])
+                val dbValue = DayOfWeekUtil.getDbValue(position)
+                viewModel.setDayOfWeek(dbValue)
             }
         }
     }
