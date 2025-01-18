@@ -76,6 +76,15 @@ class AdminManageClassViewModel : ViewModel() {
         _classes.value = originalClasses
     }
 
+    fun refreshClasses() {
+        _isLoading.value = true
+        ClassDAO.getClasses { classes ->
+            _classes.value = classes ?: emptyList()
+            _isLoading.value = false
+        }
+    }
+
+
 
     fun searchClasses(query: String) {
         val currentClasses = _classes.value.orEmpty()

@@ -18,7 +18,7 @@ class StudentAdapter(private val onDeleteClick: (Student) -> Unit) :
                 studentItemId.text = student.studentId
                 studentItemName.text = student.fullName
                 // If you need to handle click events, use the root view
-                root.setOnClickListener {
+                btnDelete.setOnClickListener {
                     onDeleteClick(student)
                 }
             }

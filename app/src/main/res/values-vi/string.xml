@@ -564,6 +564,7 @@
     <string name="error_excel_missing_headers">Thiếu các cột tiêu đề bắt buộc trong tệp Excel.</string>
     <string name="error_excel_invalid_data">Dữ liệu không hợp lệ ở dòng %1$d</string>
     <string name="error_excel_cannot_open">Không thể mở tệp</string>
+    <string name="add_single_class">Thêm lớp lẻ</string>
 
     <!-- Excel Import Validation -->
     <string name="error_excel_period_range">Tiết học phải từ 1 đến 10</string>
@@ -604,6 +605,7 @@
     <string name="no_students">Không có sinh viên</string>
     <string name="student_id">MSSV</string>
     <string name="student_name">Họ tên sinh viên</string>
+
 
     <!-- Grade Management -->
     <string name="save_grades">Lưu Điểm</string>

@@ -148,7 +148,6 @@ object ClassDAO {
         studentId: String,
         grade: Double,
         note: String?,
-        feedback: String?,
         callback: (Boolean) -> Unit
     ) {
         val request = mapOf(
@@ -156,7 +155,7 @@ object ClassDAO {
             "p_student_id" to studentId,
             "p_course_grade" to grade,
             "p_note" to note,
-            "p_feedback" to feedback
+
         )
 
         ApiServiceHelper.post("/rpc/manage_grades", request) { response ->

@@ -554,6 +554,7 @@
     <string name="import_excel">Import from Excel</string>
     <string name="select_file">Select File</string>
     <string name="importing_classes">Importing Classes</string>
+    <string name="add_single_class">Add Single Class</string>
 
     <string name="class_period_range">Period %1$d - %2$d</string>
 

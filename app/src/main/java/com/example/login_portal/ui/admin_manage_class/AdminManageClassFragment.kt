@@ -1,5 +1,6 @@
 package com.example.login_portal.ui.admin_manage_class
 
+import android.app.Activity.RESULT_OK
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -27,6 +28,7 @@ import com.google.android.material.progressindicator.LinearProgressIndicator
 import com.google.android.material.textfield.TextInputLayout
 import org.apache.poi.sl.draw.geom.Context
 import java.text.Normalizer
+
 
 
 
@@ -160,6 +162,13 @@ class AdminManageClassFragment : Fragment() {
         imm.showSoftInput(binding.classSearchView, InputMethodManager.SHOW_IMPLICIT)
     }
 
+    private val createClassLauncher =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == RESULT_OK) {
+                viewModel.refreshClasses()
+            }
+        }
+
 
     private fun setupFab() {
         binding.addClassFab.apply {
@@ -175,10 +184,13 @@ class AdminManageClassFragment : Fragment() {
             val dialog = BottomSheetDialog(requireContext())
             val dialogBinding = LayoutAddClassOptionsBinding.inflate(layoutInflater)
 
+
             dialogBinding.apply {
                 // Add single class option
                 addSingleClassCard.setOnClickListener {
-                    startActivity(Intent(requireContext(), CreateClassActivity::class.java))
+                    //startActivity(Intent(requireContext(), CreateClassActivity::class.java))
+                    val intent = Intent(requireContext(), CreateClassActivity::class.java)
+                    createClassLauncher.launch(intent)
                     dialog.dismiss()
                 }
 
@@ -187,6 +199,12 @@ class AdminManageClassFragment : Fragment() {
                     showImportExcelDialog()
                     dialog.dismiss()
                 }
+            }
+
+            dialog.setOnShowListener { dialogInterface ->
+                val bottomSheetDialog = dialogInterface as BottomSheetDialog
+                val bottomSheet = bottomSheetDialog.findViewById<View>(com.google.android.material.R.id.design_bottom_sheet)
+                bottomSheet?.layoutParams?.height = (resources.displayMetrics.heightPixels * 0.5).toInt()
             }
 
             dialog.setContentView(dialogBinding.root)

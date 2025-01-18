@@ -142,9 +142,7 @@ class CourseDetailActivity : BaseActivity() {
                 etCourseName.text.isNullOrEmpty() ||
                 etCredits.text.isNullOrEmpty() ||
                 etTuitionFee.text.isNullOrEmpty() ||
-                etOutlineUrl.text.isNullOrEmpty() ||
-                dropdownMajor.text.isEmpty() ||
-                selectedMajorId == null
+                etOutlineUrl.text.isNullOrEmpty()
             ) {
                 Toast.makeText(
                     this@CourseDetailActivity,

@@ -63,6 +63,5 @@ data class StudentGrade(
 data class StudentGradeInputs(
     val studentId: String,
     val gradeInput: EditText,
-    val feedbackInput: EditText,
     val noteInput: EditText
 )
